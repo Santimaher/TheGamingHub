@@ -18,9 +18,9 @@ public class Plataforma {
 	private Long id;
 	
 	@Column(unique = true)
-	private String Nombre;
+	private String nombre;
 	
-	private String Img;
+	private String img;
 	
 	@ManyToMany
 	private Collection<Juego> juego;
@@ -41,19 +41,19 @@ public class Plataforma {
 	}
 
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
 
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
 
 	public String getImg() {
-		return Img;
+		return img;
 	}
 
 	public void setImg(String img) {
-		Img = img;
+		this.img = img;
 	}
 
 	public Collection<Juego> getJuego() {
@@ -63,6 +63,8 @@ public class Plataforma {
 	public void setJuego(Collection<Juego> juego) {
 		this.juego = juego;
 	}
+
+	
 	
 	
 	

@@ -4,10 +4,26 @@
 	<tr>
 		<th>Nombre</th>
 		<th>Imagen</th>
+		<th>Acciones<th>
 	</tr>
 	<tr th:each="plataforma:${plataformas}">
-		<td th:text="${plataforma.Nombre}"></td>
-		<td th:text="${plataforma.Img}"></td>
+		<td th:text="${plataforma.nombre}"></td>
+		<td th:text="${plataforma.img}"></td>
+		
+		<td class="row">
+				<form action="/plataforma/u" method="get">
+					<input type="hidden" name="id" th:value="${plataforma.id}" />
+					<button onclick="submit()">
+						<img src="/img/edit.png" height="20" width="20">
+					</button>
+				</form>
+				<form action="/plataforma/d" method="post">
+					<input type="hidden" name="id" th:value="${plataforma.id}" />
+					<button onclick="submit()">
+						<img src="/img/delete.png" height="20" width="20">
+					</button>
+				</form>
+		</td>
 	</tr>
 	</table>
 </div>

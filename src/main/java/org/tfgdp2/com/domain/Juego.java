@@ -18,17 +18,17 @@ public class Juego {
 	private Long id;
 	
 	@Column(unique = true)
-	private String Nombre;
+	private String nombre;
 	
-	private double Precio;
+	private double precio;
 	
-	private Integer Stock;
+	private Integer stock;
 	
-	private String Desarrolladora;
+	private String desarrolladora;
 	
-	private String URL;
+	private String url;
 	
-	private String Img;
+	private String img;
 	
 	@ManyToMany(mappedBy = "juego")
 	private Collection<Plataforma> plataforma;
@@ -50,51 +50,51 @@ public class Juego {
 	}
 
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
 
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
 
 	public double getPrecio() {
-		return Precio;
+		return precio;
 	}
 
 	public void setPrecio(double precio) {
-		Precio = precio;
+		this.precio = precio;
 	}
 
 	public Integer getStock() {
-		return Stock;
+		return stock;
 	}
 
 	public void setStock(Integer stock) {
-		Stock = stock;
+		this.stock = stock;
 	}
 
 	public String getDesarrolladora() {
-		return Desarrolladora;
+		return desarrolladora;
 	}
 
 	public void setDesarrolladora(String desarrolladora) {
-		Desarrolladora = desarrolladora;
+		this.desarrolladora = desarrolladora;
 	}
 
-	public String getURL() {
-		return URL;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setURL(String uRL) {
-		URL = uRL;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public String getImg() {
-		return Img;
+		return img;
 	}
 
 	public void setImg(String img) {
-		Img = img;
+		this.img = img;
 	}
 
 	public Collection<Plataforma> getPlataforma() {
@@ -104,6 +104,7 @@ public class Juego {
 	public void setPlataforma(Collection<Plataforma> plataforma) {
 		this.plataforma = plataforma;
 	}
+
 	
 	
 	
