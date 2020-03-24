@@ -30,7 +30,7 @@ public class Juego {
 	
 	private String Img;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "juego")
 	private Collection<Plataforma> plataforma;
 	//------------------CONSTRUCTOR-------------------------------//
 

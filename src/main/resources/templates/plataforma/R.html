@@ -1,0 +1,13 @@
+<div class="container">
+<h1>Listado Plataformas</h1>
+	<table class="table table-striped">
+	<tr>
+		<th>Nombre</th>
+		<th>Imagen</th>
+	</tr>
+	<tr th:each="plataforma:${plataformas}">
+		<td th:text="${plataforma.Nombre}"></td>
+		<td th:text="${plataforma.Img}"></td>
+	</tr>
+	</table>
+</div>
