@@ -7,14 +7,14 @@
 	</div>
 	
 	
-		<div class="col-4" th:if="${session.persona == null}">
+		<div class="col-4" th:if="${session.usuario == null}">
 			<a href="/registro">Registro</a>
 			/
 			<a href="/login">Login</a>
 		</div>
 	
-		<div class="col-4" th:if="${session.persona != null}">
-			<span th:text="${session.persona.nombre}"></span>
+		<div class="col-4" th:if="${session.usuario != null}">
+			<span th:text="${session.usuario.nombre}"></span>
 		/
 			( <a href="/logout">Logout</a> )
 		</div>
