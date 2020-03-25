@@ -1,6 +1,6 @@
 <div class="container">
 	<h1>Editar participante</h1>
-	<form method="post" action="/participante/u" class="form">
+	<form method="post" enctype="multipart/form-data" action="/participante/u" class="form">
 		Nombre<br>
 		<input type="text" name="nombre" th:value="${participante.nombre}" autofocus="autofocus"><br>
 		Apellidos<br>
@@ -14,7 +14,11 @@
 		Imagen <br>
 		<img th:src="${participante.img}" height="40" width="40"/><br>
 		<input type="file" name="img" class="form-item">  <br>
-		
+		Nominación
+		<select name="idNominacion">
+			<option th:each="nominacion:${nominaciones}" th:text="${nominacion.nombre}" th:value="${nominacion.id}" th:selected="${participante.nominado.id==nominacion.id}"></option>
+		</select>
+		<br>
 		<input type="hidden" name="id" th:value="${participante.id}"/>
 		
 		<input type="submit" class="form-item" /><br>
