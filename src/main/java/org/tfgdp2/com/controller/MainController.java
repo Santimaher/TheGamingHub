@@ -23,7 +23,6 @@ public class MainController {
 	@GetMapping("/")
 	public String principio(ModelMap m) {
 		m.put("view", "home.html");
-		
 		return "/_t/frame";
 	}
 	
