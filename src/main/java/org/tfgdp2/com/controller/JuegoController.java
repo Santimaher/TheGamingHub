@@ -20,7 +20,6 @@ public class JuegoController {
 	public String read(ModelMap m) {
 		List<Juego> juegos = repoJuego.findAll();
 		m.put("juegos", juegos);
-
 		m.put("view", "/juego/R");
 		return "/_t/frame";
 	}

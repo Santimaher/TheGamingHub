@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Juego {
@@ -32,6 +33,9 @@ public class Juego {
 	
 	@ManyToMany(mappedBy = "juego")
 	private Collection<Plataforma> plataforma;
+	
+	@ManyToOne
+	private Categoria contiene;
 	//------------------CONSTRUCTOR-------------------------------//
 
 	public Juego() {
@@ -103,6 +107,14 @@ public class Juego {
 
 	public void setPlataforma(Collection<Plataforma> plataforma) {
 		this.plataforma = plataforma;
+	}
+
+	public Categoria getContiene() {
+		return contiene;
+	}
+
+	public void setContiene(Categoria contiene) {
+		this.contiene = contiene;
 	}
 
 	

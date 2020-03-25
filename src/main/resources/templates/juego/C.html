@@ -1,0 +1,7 @@
+<fieldset>
+		<legend>Aficiones (gustos)</legend>
+			<span th:each="aficion:${aficiones}" >
+				<input type="checkbox" th:id="|idg-${aficion.id}|" th:name="idAficionGusta[]" th:value="${aficion.id}"/>
+				<label th:for="|idg-${aficion.id}|" th:text="${aficion.nombre}"></label>
+			</span>
+		</fieldset>
