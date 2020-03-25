@@ -1,5 +1,6 @@
 package org.tfgdp2.com.domain;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -23,6 +24,8 @@ public class Juego {
 	
 	private double precio;
 	
+	private LocalDate fechaLanzamiento;
+	
 	private Integer stock;
 	
 	private String desarrolladora;
@@ -31,16 +34,19 @@ public class Juego {
 	
 	private String img;
 	
-	@ManyToMany(mappedBy = "juego")
-	private Collection<Plataforma> plataforma;
+	private String teaser;
 	
-	@ManyToOne
-	private Categoria categoria;
+	@ManyToMany
+	private Collection<Plataforma> plataformas;
+	
+	@ManyToMany
+	private Collection<Categoria> categorias;
 	//------------------CONSTRUCTOR-------------------------------//
 
 	public Juego() {
 		super();
-		this.plataforma = new ArrayList<>();
+		this.plataformas = new ArrayList<>();
+		this.categorias = new ArrayList<>();
 		
 	}
 	//-----------------------GETTERS Y SETTERS--------------------------//
@@ -101,22 +107,42 @@ public class Juego {
 		this.img = img;
 	}
 
-	public Collection<Plataforma> getPlataforma() {
-		return plataforma;
+	public Collection<Plataforma> getPlataformas() {
+		return plataformas;
 	}
 
-	public void setPlataforma(Collection<Plataforma> plataforma) {
-		this.plataforma = plataforma;
+	public void setPlataformas(Collection<Plataforma> plataforma) {
+		this.plataformas = plataforma;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
+
+
+	public String getTeaser() {
+		return teaser;
 	}
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	public void setTeaser(String teaser) {
+		this.teaser = teaser;
 	}
 
+	public Collection<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(Collection<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+
+	public LocalDate getFechaLanzamiento() {
+		return fechaLanzamiento;
+	}
+
+	public void setFechaLanzamiento(LocalDate fechaLanzamiento) {
+		this.fechaLanzamiento = fechaLanzamiento;
+	}
+
+	
+	
 	
 
 	

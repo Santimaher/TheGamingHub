@@ -10,8 +10,40 @@
 		<th>Teaser</th>
 		<th>IMG</th>
 		<th>Categoria</th>
+		<th>Acciones</th>
 	</tr>
-	<tr>
+	<tr th:each="juego:${juegos}">
+	<td th:text="${juego.nombre}"></td>
+	<td th:text="|${juego.precio} €|"></td>
+	<td th:text="|${juego.stock} .ud|"></td>
+	<td th:text="${juego.desarrolladora}"></td>
+	<td>
+		<ul th:each="plataforma:${juego.plataformas}">
+			<li th:text="${plataforma.nombre}"></li>
+		</ul>
+	</td>
+	<td th:text="${juego.url}"></td>
+	<td th:text="${juego.teaser}"></td>
+	<td th:text="${juego.img}"></td>
+	<td>
+		<ul th:each="categoria:${juego.categorias}" >
+			<li th:text="${categoria.nombre}"></li>
+		</ul>
+	</td>	
+	<td class="row">
+				<form action="/juego/u" method="get">
+					<input type="hidden" name="id" th:value="${juego.id}" />
+					<button onclick="submit()">
+						<img src="/img/edit.png" height="20" width="20">
+					</button>
+				</form>
+				<form action="/juego/d" method="post">
+					<input type="hidden" name="id" th:value="${juego.id}" />
+					<button onclick="submit()">
+						<img src="/img/delete.png" height="20" width="20">
+					</button>
+				</form>
+		</td>
 	</tr>
 	</table>
 </div>

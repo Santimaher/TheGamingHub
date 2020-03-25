@@ -7,7 +7,7 @@
 	<tr>
 	<tr th:each="categoria:${categorias}">
 		<td th:text="${categoria.nombre}"></td>
-				<td class="row">
+		<td class="row">
 				<form action="/categoria/u" method="get">
 					<input type="hidden" name="id" th:value="${categoria.id}" />
 					<button onclick="submit()">

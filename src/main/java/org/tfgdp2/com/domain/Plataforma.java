@@ -22,13 +22,13 @@ public class Plataforma {
 	
 	private String img;
 	
-	@ManyToMany
-	private Collection<Juego> juego;
+	@ManyToMany(mappedBy = "plataformas")
+	private Collection<Juego> juegos;
 	//-----------------------------CONSTRUCTOR---------------------------//
 
 	public Plataforma() {
 		super();
-		this.juego = new ArrayList<>();
+		this.juegos = new ArrayList<>();
 	}
 	//------------------------GETTERS Y SETTERS----------------------//
 
@@ -56,12 +56,12 @@ public class Plataforma {
 		this.img = img;
 	}
 
-	public Collection<Juego> getJuego() {
-		return juego;
+	public Collection<Juego> getJuegos() {
+		return juegos;
 	}
 
-	public void setJuego(Collection<Juego> juego) {
-		this.juego = juego;
+	public void setJuegos(Collection<Juego> juego) {
+		this.juegos = juego;
 	}
 
 	
