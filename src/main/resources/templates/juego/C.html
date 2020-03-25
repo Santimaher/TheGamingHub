@@ -1,0 +1,40 @@
+<div class="container">
+<h1>Nuevo Juego</h1>
+	<form method="post" action="/juego/c">
+	<label for="nombreJ">Nombre del Juego</label>
+	<input type="text" id="nombreJ" name="nombre">
+	<br>
+	<label for="precioJ">Precio del Juego(€)</label>
+	<input type="text" id="nombreJ" name="precio">
+	<br>
+	<label for="stockJ">Stock del Juego</label>
+	<input type="number" id="stockJ" name="stock" min="0" max="500" step="10">
+	<br>
+	<label for="desaJ">Desarrolladora del Juego</label>
+	<input type="text" id="desaJ" name="desarrolladora">
+	<br>
+	<label for="urlJ">Url del Foro del Juego</label>
+	<input type="text" id="urlJ" name="url">
+	<br>
+	<label for="imgJ">Imagen del Juego</label>
+	<input type="text" id="imgJ" name="img">
+	<br>
+	
+	<fieldset>
+		<legend>Plataformas disponibles</legend>
+			<span th:each="plataforma:${plataformas}" >
+				<input type="checkbox" th:id="|pla-${plataforma.id}|" th:name="idPlataforma[]" th:value="${plataforma.id}"/>
+				<label th:for="|pla-${plataforma.id}|" th:text="${plataforma.nombre}"></label>
+			</span>
+	</fieldset>
+
+	<fieldset>
+		<legend>Categorias</legend>
+			<span th:each="categoria:${categorias}" >
+				<input type="checkbox" th:id="|cat-${categoria.id}|" th:name="idCat[]" th:value="${categoria.id}"/>
+				<label th:for="|cat-${categoria.id}|" th:text="${categoria.nombre}"></label>
+			</span>
+	</fieldset>	
+	<input type="submit">
+	</form>
+</div>

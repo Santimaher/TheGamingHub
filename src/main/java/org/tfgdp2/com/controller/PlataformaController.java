@@ -83,7 +83,7 @@ public class PlataformaController {
 		try {
 			repoPlataforma.delete(repoPlataforma.getOne(id));
 		} catch (Exception e) {
-			PRG.error("Error al borrar el producto", "/plataforma/r");
+			PRG.error("Error al borrar la Plataforma", "/plataforma/r");
 		}
 
 		return "redirect:/plataforma/r";

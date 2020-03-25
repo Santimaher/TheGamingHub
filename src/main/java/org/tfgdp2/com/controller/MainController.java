@@ -73,4 +73,10 @@ public class MainController {
 		s.invalidate();
 		return "redirect:/";
 	}
+	@GetMapping("/registro")
+	public String registro() 
+	{
+		return "redirect:/usuario/c";
+		
+	}
 }
