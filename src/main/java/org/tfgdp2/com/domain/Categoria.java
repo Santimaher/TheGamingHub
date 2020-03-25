@@ -20,7 +20,7 @@ public class Categoria {
 	@Column(unique = true)
 	private String nombre;
 	
-	@OneToMany(mappedBy = "contiene")
+	@OneToMany(mappedBy = "categoria")
 	private Collection<Juego> juegos;
 
 	

@@ -35,7 +35,7 @@ public class Juego {
 	private Collection<Plataforma> plataforma;
 	
 	@ManyToOne
-	private Categoria contiene;
+	private Categoria categoria;
 	//------------------CONSTRUCTOR-------------------------------//
 
 	public Juego() {
@@ -109,13 +109,15 @@ public class Juego {
 		this.plataforma = plataforma;
 	}
 
-	public Categoria getContiene() {
-		return contiene;
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
-	public void setContiene(Categoria contiene) {
-		this.contiene = contiene;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
+
+	
 
 	
 	
