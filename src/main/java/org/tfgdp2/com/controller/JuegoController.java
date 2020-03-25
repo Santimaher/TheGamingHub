@@ -144,5 +144,19 @@ public class JuegoController {
 		PRG.info("Juego " + nombre + " actualizado correctamente", "/juego/r");
 
 	}
+	
+	@PostMapping("d")
+	public String dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException {
+
+		
+		try {
+			repoJuego.delete(repoJuego.getOne(id));
+		} catch (Exception e) {
+			PRG.error("Error al borrar el Juego", "/juego/r");
+		}
+
+		return "redirect:/juego/r";
+
+	}
 
 }

@@ -85,7 +85,7 @@ public class CategoriaController {
 			PRG.error("Error al borrar la Categoria", "/categoria/r");
 		}
 
-		return "redirect:/plataforma/r";
+		return "redirect:/juego/r";
 
 	}
 }
