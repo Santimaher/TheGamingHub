@@ -50,4 +50,42 @@ public class CategoriaController {
 		}
 		PRG.info("Categoria " + nombre + " creada correctamente", "/categoria/r");
 	}
+	
+	@GetMapping("u")
+	public String uGet(@RequestParam("id") Long idCategoria, ModelMap m, HttpSession s) throws DangerException {
+		
+		m.put("categoria", repoCategoria.getOne(idCategoria));
+		m.put("view", "/categoria/U");
+		return "/_t/frame";
+	}
+
+	@PostMapping("u")
+	public void uPost(@RequestParam("nombre") String nombreCategoria, @RequestParam("id") Long idCategoria, HttpSession s)
+			throws DangerException, InfoException {
+		
+		try {
+			Categoria cat = repoCategoria.getOne(idCategoria);
+			cat.setNombre(nombreCategoria);
+		
+			repoCategoria.save(cat);
+			
+		} catch (Exception e) {
+			PRG.error("Categoria " + nombreCategoria + " duplicada", "/categoria/r");
+		}
+		PRG.info("Categoria " + nombreCategoria + " actualizada correctamente", "/categoria/r");
+	}
+	
+	@PostMapping("d")
+	public String dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException {
+
+		
+		try {
+			repoCategoria.delete(repoCategoria.getOne(id));
+		} catch (Exception e) {
+			PRG.error("Error al borrar la Categoria", "/categoria/r");
+		}
+
+		return "redirect:/plataforma/r";
+
+	}
 }
