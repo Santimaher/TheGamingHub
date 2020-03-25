@@ -36,6 +36,7 @@ public class Participante {
 		this.apellido = apellido;
 		this.bio = bio;
 		this.teaser = teaser;
+		
 	}
 
 	//==============================
@@ -85,6 +86,14 @@ public class Participante {
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+	public Nominacion getNominado() {
+		return nominado;
+	}
+
+	public void setNominado(Nominacion nominado) {
+		this.nominado = nominado;
 	}
 	
 	

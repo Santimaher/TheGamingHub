@@ -1,0 +1,11 @@
+<div class="container">
+<h1>Editar Nominación</h1>
+	<form method="post" action="/nominacion/u">
+	<input type="hidden" th:value="${nominacion.id}" name="id">
+	<label for="nombreN">Nombre de la Nominación</label><br>
+	<input th:value="${nominacion.nombre}" type="text" id="nombreN" name="nombre">
+	<br>
+	<input type="submit">
+	</form>
+
+</div>
