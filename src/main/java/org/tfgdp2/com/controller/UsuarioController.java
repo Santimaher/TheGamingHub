@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.tfgdp2.com.domain.Usuario;
 import org.tfgdp2.com.exception.DangerException;
+import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.UsuarioRepository;
 
@@ -88,14 +89,14 @@ public class UsuarioController {
 	}
 
 	@PostMapping("d")
-	public String d(@RequestParam("id") Long id, HttpSession s) throws DangerException {
+	public void d(@RequestParam("id") Long id, HttpSession s) throws DangerException, InfoException {
 		Usuario u = usuarioRepo.getOne(id);
 
 		try {
 			usuarioRepo.delete(u);
 		} catch (Exception e) {
-			PRG.error("Error al borrar " + u.getNombre(), "/persona/r");
+			PRG.error("Error al borrar " + u.getNombre(), "/usuario/r");
 		}
-		return "redirect:/usuario/r";
+		PRG.info("Usuario borrado correctamente", "/usuario/r");
 	}
 }

@@ -77,7 +77,7 @@ public class PlataformaController {
 	}
 	
 	@PostMapping("d")
-	public String dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException {
+	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {
 
 		
 		try {
@@ -86,7 +86,7 @@ public class PlataformaController {
 			PRG.error("Error al borrar la Plataforma", "/plataforma/r");
 		}
 
-		return "redirect:/plataforma/r";
+		PRG.info("Plataforma borrada correctamente", "/plataforma/r");
 
 	}
 

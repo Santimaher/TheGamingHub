@@ -52,15 +52,15 @@ public class NominacionController {
 			}
 		  
 		  @PostMapping("d")
-		  public String delete(@RequestParam("id") Long id) throws DangerException {
+		  public void delete(@RequestParam("id") Long id) throws DangerException, InfoException {
 			  try {
 				  Nominacion n = repoNominacion.getOne(id);
 				  repoNominacion.delete(n);
 			  }catch(Exception e) {
-				  PRG.error("Error al eliminar la nominacióna actual","/nominacion/r");
+				  PRG.error("Error al eliminar la nominación actual","/nominacion/r");
 			  }
 			  
-			  return "redirect:/nominacion/r";
+			  PRG.info("Nominación borrada correctamente", "/nominacion/r");
 		  }
 			@GetMapping("u")
 			public String updateGet(@RequestParam("id") Long idPais, ModelMap m){

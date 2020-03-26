@@ -146,7 +146,7 @@ public class JuegoController {
 	}
 	
 	@PostMapping("d")
-	public String dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException {
+	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {
 
 		
 		try {
@@ -155,7 +155,7 @@ public class JuegoController {
 			PRG.error("Error al borrar el Juego", "/juego/r");
 		}
 
-		return "redirect:/juego/r";
+		PRG.info("Juego borrado correctamente", "/juego/r");
 
 	}
 

@@ -76,7 +76,7 @@ public class CategoriaController {
 	}
 	
 	@PostMapping("d")
-	public String dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException {
+	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {
 
 		
 		try {
@@ -85,7 +85,7 @@ public class CategoriaController {
 			PRG.error("Error al borrar la Categoria", "/categoria/r");
 		}
 
-		return "redirect:/juego/r";
+		PRG.info("Categoria borrada correctamente", "/categoria/r");
 
 	}
 }
