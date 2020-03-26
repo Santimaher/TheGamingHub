@@ -150,7 +150,7 @@ public class JuegoController {
 
 		
 		try {
-			repoJuego.delete(repoJuego.getOne(id));
+			repoJuego.deleteById(id);
 		} catch (Exception e) {
 			PRG.error("Error al borrar el Juego", "/juego/r");
 		}
