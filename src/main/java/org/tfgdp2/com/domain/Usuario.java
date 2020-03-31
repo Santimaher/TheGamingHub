@@ -27,8 +27,8 @@ public class Usuario {
 
 //	@ManyToMany(mappedBy="votacion")
 //    private Collection<Juego> votaciones;
-//	@OneToMany(mappedBy="entradaForo")
-//    private Collection<EntradaForo> entradas;
+	@OneToMany(mappedBy="escribe")
+    private Collection<EntradaForo> entradas;
 //	@OneToMany(mappedBy="factura")
 //    private Collection<Factura> facturas;
 //this.votaciones=new ArrayList<>;
