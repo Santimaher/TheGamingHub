@@ -6,6 +6,8 @@ import org.tfgdp2.com.domain.Juego;
 
 @Repository
 public interface JuegoRepository extends JpaRepository<Juego, Long> {	
+	
 	public Long deleteJuegoById (Long id);
+	
 	
 }
