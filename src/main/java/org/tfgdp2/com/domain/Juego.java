@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -41,19 +42,18 @@ public class Juego {
 	@ManyToMany
 	private Collection<Categoria> categorias;
 	
-	@OneToOne(mappedBy = "juego")
-	private Foro foro;
+	@OneToMany(mappedBy = "juego")
+	private Collection<Foro> foro;
+	
+	
 	// ------------------CONSTRUCTOR-------------------------------//
 
 	public Juego() {
 		super();
 		this.plataformas = new ArrayList<>();
 		this.categorias = new ArrayList<>();
-		this.foro = new Foro("Fan Art");
-		this.foro = new Foro("Debug");
-		this.foro = new Foro("Memes");
-		this.foro = new Foro("Misc");
-
+		this.foro = new ArrayList<>();
+		init(this.foro);
 	}
 	// -----------------------GETTERS Y SETTERS--------------------------//
 
@@ -137,12 +137,19 @@ public class Juego {
 		this.fechaLanzamiento = fechaLanzamiento;
 	}
 
-	public Foro getForo() {
+	public Collection<Foro> getForo() {
 		return foro;
 	}
 
-	public void setForo(Foro foro) {
+	public void setForo(Collection<Foro> foro) {
 		this.foro = foro;
+	}
+
+	private void init(Collection<Foro> foro2) {
+		foro2.add(new Foro("Fan Art"));
+		foro2.add(new Foro("Debug"));
+		foro2.add(new Foro("Memes"));
+		foro2.add(new Foro("Misc"));
 	}
 	
 	
