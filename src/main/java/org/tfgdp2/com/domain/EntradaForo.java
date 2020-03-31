@@ -21,7 +21,7 @@ public class EntradaForo {
 	@ManyToOne
 	private Usuario creador;
 //@ManyToOne
-//private Foro perteneciente;
+//private Foro pertenece;
 	
 	public EntradaForo() {
 		this.ranking=0;
