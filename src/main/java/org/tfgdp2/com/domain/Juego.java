@@ -11,45 +11,51 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Juego {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(unique = true)
 	private String nombre;
-	
+
 	private double precio;
-	
+
 	private LocalDate fechaLanzamiento;
-	
+
 	private Integer stock;
-	
+
 	private String desarrolladora;
-	
-	private String url;
-	
+
 	private String img;
-	
+
 	private String teaser;
-	
+
 	@ManyToMany
 	private Collection<Plataforma> plataformas;
-	
+
 	@ManyToMany
 	private Collection<Categoria> categorias;
-	//------------------CONSTRUCTOR-------------------------------//
+	
+	@OneToOne(mappedBy = "juego")
+	private Foro foro;
+	// ------------------CONSTRUCTOR-------------------------------//
 
 	public Juego() {
 		super();
 		this.plataformas = new ArrayList<>();
 		this.categorias = new ArrayList<>();
-		
+		this.foro = new Foro("Fan Art");
+		this.foro = new Foro("Debug");
+		this.foro = new Foro("Memes");
+		this.foro = new Foro("Misc");
+
 	}
-	//-----------------------GETTERS Y SETTERS--------------------------//
+	// -----------------------GETTERS Y SETTERS--------------------------//
 
 	public Long getId() {
 		return id;
@@ -91,14 +97,6 @@ public class Juego {
 		this.desarrolladora = desarrolladora;
 	}
 
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
 	public String getImg() {
 		return img;
 	}
@@ -114,8 +112,6 @@ public class Juego {
 	public void setPlataformas(Collection<Plataforma> plataforma) {
 		this.plataformas = plataforma;
 	}
-
-
 
 	public String getTeaser() {
 		return teaser;
@@ -141,13 +137,13 @@ public class Juego {
 		this.fechaLanzamiento = fechaLanzamiento;
 	}
 
-	
-	
-	
+	public Foro getForo() {
+		return foro;
+	}
 
+	public void setForo(Foro foro) {
+		this.foro = foro;
+	}
 	
 	
-	
-	
-
 }

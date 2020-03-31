@@ -55,7 +55,7 @@ public class JuegoController {
 	@PostMapping("c")
 	public void cPost(@RequestParam("nombre") String nombre, @RequestParam("precio") Double precio,
 			@RequestParam("stock") Integer stock, @RequestParam("desarrolladora") String desarrolladora,
-			@RequestParam("url") String url, @RequestParam("img") String img, @RequestParam("teaser") String teaser,
+			@RequestParam("img") String img, @RequestParam("teaser") String teaser,
 			@RequestParam(value = "idPlataforma[]") List<Long> idsPlataforma,
 			@RequestParam(value = "idCat[]") List<Long> idsCat,
 			@RequestParam("flan") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate flan, HttpSession s)
@@ -66,7 +66,6 @@ public class JuegoController {
 			j.setPrecio(precio);
 			j.setStock(stock);
 			j.setDesarrolladora(desarrolladora);
-			j.setUrl(url);
 			j.setImg(img);
 			j.setTeaser(teaser);
 			j.setFechaLanzamiento(flan);
@@ -103,7 +102,7 @@ public class JuegoController {
 	@PostMapping("u")
 	public void uPost(@RequestParam("id") Long id, @RequestParam("nombre") String nombre,
 			@RequestParam("precio") Double precio, @RequestParam("stock") Integer stock,
-			@RequestParam("desarrolladora") String desarrolladora, @RequestParam("url") String url,
+			@RequestParam("desarrolladora") String desarrolladora,
 			@RequestParam("img") String img, @RequestParam("teaser") String teaser,
 			@RequestParam(value = "idPlataforma[]") List<Long> idsPlataforma,
 			@RequestParam(value = "idCat[]") List<Long> idsCat,
@@ -114,8 +113,7 @@ public class JuegoController {
 			j.setNombre(nombre);
 			j.setPrecio(precio);
 			j.setStock(stock);
-			j.setDesarrolladora(desarrolladora);
-			j.setUrl(url);
+			j.setDesarrolladora(desarrolladora);			
 			j.setImg(img);
 			j.setTeaser(teaser);
 			j.setFechaLanzamiento(flan);
