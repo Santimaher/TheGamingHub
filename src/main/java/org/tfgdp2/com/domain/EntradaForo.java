@@ -20,7 +20,7 @@ public class EntradaForo {
 	private Date fechaPublicacion;
 	@ManyToOne
 	private Usuario creador;
-//@ManyToOne
+	@ManyToOne
 	private Foro pertenece;
 	
 	public EntradaForo() {
