@@ -19,9 +19,9 @@ public class EntradaForo {
 	private String comentario;
 	private Date fechaPublicacion;
 	@ManyToOne
-	private Usuario creador;
-   @ManyToOne
-   private Foro pertenece;
+	private Usuario escribe;
+    @ManyToOne
+    private Foro pertenece;
 	
 	public EntradaForo() {
 		this.ranking=0;
@@ -60,12 +60,22 @@ public class EntradaForo {
 		this.fechaPublicacion = fechaPublicacion;
 	}
 
-	public Usuario getCreador() {
-		return creador;
+	public Usuario getEscribe() {
+		return escribe;
 	}
 
-	public void setCreador(Usuario creador) {
-		this.creador = creador;
+	public void setEscribe(Usuario escribe) {
+		this.escribe = escribe;
 	}
+
+	public Foro getPertenece() {
+		return pertenece;
+	}
+
+	public void setPertenece(Foro pertenece) {
+		this.pertenece = pertenece;
+	}
+
+
 	
 }
