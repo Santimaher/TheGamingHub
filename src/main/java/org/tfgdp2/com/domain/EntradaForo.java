@@ -20,8 +20,8 @@ public class EntradaForo {
 	private Date fechaPublicacion;
 	@ManyToOne
 	private Usuario creador;
-   //@ManyToOne
-   //private Foro perteneciente;
+   @ManyToOne
+   private Foro pertenece;
 	
 	public EntradaForo() {
 		this.ranking=0;
