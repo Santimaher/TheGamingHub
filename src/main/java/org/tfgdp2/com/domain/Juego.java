@@ -53,7 +53,6 @@ public class Juego {
 		this.plataformas = new ArrayList<>();
 		this.categorias = new ArrayList<>();
 		this.foro = new ArrayList<>();
-		init(this.foro);
 	}
 	// -----------------------GETTERS Y SETTERS--------------------------//
 
@@ -145,12 +144,7 @@ public class Juego {
 		this.foro = foro;
 	}
 
-	private void init(Collection<Foro> foro2) {
-		foro2.add(new Foro("Fan Art"));
-		foro2.add(new Foro("Debug"));
-		foro2.add(new Foro("Memes"));
-		foro2.add(new Foro("Misc"));
-	}
+	
 	
 	
 }

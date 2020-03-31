@@ -2,6 +2,7 @@ package org.tfgdp2.com.controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -15,12 +16,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.tfgdp2.com.domain.Categoria;
+import org.tfgdp2.com.domain.Foro;
 import org.tfgdp2.com.domain.Juego;
 import org.tfgdp2.com.domain.Plataforma;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.CategoriaRepository;
+import org.tfgdp2.com.repository.ForoRepository;
 import org.tfgdp2.com.repository.JuegoRepository;
 import org.tfgdp2.com.repository.PlataformaRepository;
 
@@ -33,7 +36,8 @@ public class JuegoController {
 	private CategoriaRepository repoCat;
 	@Autowired
 	private PlataformaRepository repoPlat;
-
+	@Autowired
+	private ForoRepository repoForo;
 	@GetMapping("r")
 	public String read(ModelMap m) {
 		List<Juego> juegos = repoJuego.findAll();
@@ -82,8 +86,30 @@ public class JuegoController {
 				j.getCategorias().add(cat);
 			}
 			repoJuego.save(j);
+			
+			Foro f1 = new Foro("Fan Art");
+			f1.setJuego(j);
+			j.getForo().add(f1);
+			Foro f2 = new Foro("Debug");
+			f2.setJuego(j);
+			j.getForo().add(f2);
+			Foro f3 = new Foro("Memes");
+			f3.setJuego(j);
+			j.getForo().add(f3);
+			Foro f4 = new Foro("Misc");
+			f4.setJuego(j);
+			j.getForo().add(f4);
+			
+			repoForo.save(f1);
+			repoForo.save(f2);
+			repoForo.save(f3);
+			repoForo.save(f4);
+			
+			
+			
 		} catch (Exception e) {
-			PRG.error("Juego " + nombre + " duplicado", "/juego/c");
+			//PRG.error("Juego " + nombre + " duplicado", "/juego/c");
+			PRG.error(e.getMessage());
 		}
 		PRG.info("Juego " + nombre + " creado correctamente", "/juego/r");
 
