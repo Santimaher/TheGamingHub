@@ -1,0 +1,14 @@
+<div class="container">
+	<h1>Editar entrada de foro</h1>
+
+	<form method="post" action="/entradaForo/u" class="form">
+			<input type="hidden" th:value="${entrada.id}" name="id">
+		Comentario <input th:value="${entrada.comentario}" type="text" name="comentario" class="form-item"> <br>
+		<input type="submit"><br>
+	</form>
+	
+		<a href="/">
+		<button>Cancelar</button>
+	</a>
+	
+</div>
