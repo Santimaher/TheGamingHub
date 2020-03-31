@@ -145,7 +145,7 @@ public class Juego {
 		this.foro = foro;
 	}
 
-	public void init(Collection<Foro> foro2) {
+	private void init(Collection<Foro> foro2) {
 		foro2.add(new Foro("Fan Art"));
 		foro2.add(new Foro("Debug"));
 		foro2.add(new Foro("Memes"));
