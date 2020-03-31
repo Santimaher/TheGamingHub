@@ -20,9 +20,9 @@ public class EntradaForo {
 	private Date fechaPublicacion;
 	@ManyToOne
 	private Usuario creador;
-//@ManyToOne
-//private Foro pertenece;
-	
+
+	@ManyToOne
+	private Foro pertenece;
 	public EntradaForo() {
 		this.ranking=0;
 		this.fechaPublicacion=new Date();
@@ -67,5 +67,7 @@ public class EntradaForo {
 	public void setCreador(Usuario creador) {
 		this.creador = creador;
 	}
+	
+	
 	
 }
