@@ -2,6 +2,7 @@ package org.tfgdp2.com.controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -87,23 +88,31 @@ public class JuegoController {
 			}
 			repoJuego.save(j);
 			
-			Foro f1 = new Foro("Fan Art");
-			f1.setJuego(j);
-			j.getForo().add(f1);
-			Foro f2 = new Foro("Debug");
-			f2.setJuego(j);
-			j.getForo().add(f2);
-			Foro f3 = new Foro("Memes");
-			f3.setJuego(j);
-			j.getForo().add(f3);
-			Foro f4 = new Foro("Misc");
-			f4.setJuego(j);
-			j.getForo().add(f4);
+			ArrayList<String> tipos = new ArrayList<>(Arrays.asList("Fan Art","Debug","Memes","Misc"));
+			for (String tipo : tipos) {
+				Foro f = new Foro(tipo);
+				f.setJuego(j);
+				j.getForo().add(f);
+				repoForo.save(f);
+			}
 			
-			repoForo.save(f1);
-			repoForo.save(f2);
-			repoForo.save(f3);
-			repoForo.save(f4);
+//			Foro f1 = new Foro("Fan Art");
+//			f1.setJuego(j);
+//			j.getForo().add(f1);
+//			Foro f2 = new Foro("Debug");
+//			f2.setJuego(j);
+//			j.getForo().add(f2);
+//			Foro f3 = new Foro("Memes");
+//			f3.setJuego(j);
+//			j.getForo().add(f3);
+//			Foro f4 = new Foro("Misc");
+//			f4.setJuego(j);
+//			j.getForo().add(f4);
+//			
+//			repoForo.save(f1);
+//			repoForo.save(f2);
+//			repoForo.save(f3);
+//			repoForo.save(f4);
 			
 			
 			
