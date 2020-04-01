@@ -48,7 +48,7 @@ public class EntradaForoController {
 		}catch(Exception e) {
 			PRG.error("Comentario no creado", "/entradaForo/c");
 		}	
-		return "redirect:/entradaForo/r";
+		return "redirect:/juego/r";
 	}
 	@GetMapping("u")
 	public String update(ModelMap m, @RequestParam("id") Long idEntrada) throws DangerException {
