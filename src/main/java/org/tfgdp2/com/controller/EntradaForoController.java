@@ -19,7 +19,11 @@ public class EntradaForoController {
 	
 	@Autowired
 	private EntradaForoRepository repoEntrada;
-	
+	@PostMapping("r")
+	public String leer(@RequestParam("id") Long id, ModelMap m) {
+		m.put("entradas",repoEntrada.findByPerteneceId(id));
+		return "_t/frame";
+	}
 	@GetMapping("c")
 	public String crear(ModelMap m) {
 		m.put("view", "/entradaForo/c");

@@ -6,5 +6,5 @@ import org.tfgdp2.com.domain.EntradaForo;
 
 @Repository
 public interface EntradaForoRepository extends JpaRepository<EntradaForo, Long>{
-
+	public EntradaForo findByPerteneceId(Long id);
 }
