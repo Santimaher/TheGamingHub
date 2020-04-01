@@ -5,16 +5,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.tfgdp2.com.domain.Nominacion;
+import org.tfgdp2.com.domain.Nominacion_Participante;
 import org.tfgdp2.com.domain.Participante;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.PRG;
-import org.tfgdp2.com.repository.NominacionRepository;
+import org.tfgdp2.com.repository.NominacionParticipanteRepository;
 import org.tfgdp2.com.repository.ParticipanteRepository;
 
 import java.io.File;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,7 @@ public class ParticipanteController {
 	private ParticipanteRepository repoParticipante;
 	
 	@Autowired
-	private NominacionRepository repoNominacion;
+	private NominacionParticipanteRepository repoNominacion;
 	
 	@GetMapping("c")
 	public String crearGet(ModelMap m) {
@@ -47,15 +48,16 @@ public class ParticipanteController {
 			@RequestParam("img") MultipartFile imgFile,
 			@RequestParam("bio")String bio,
 			@RequestParam("teaser") String teaser,
-			@RequestParam(value="idNominacion", required =false) Long idN) throws DangerException  {
+			@RequestParam(value="idNominacion[]", required =false)  List<Long>idNom) throws DangerException  {
 		
 		try {
 			Participante participante = new Participante(nombre,apellido,bio,teaser);
 			
-			if(idN!=null) {
-				Nominacion nominacionParticipante = repoNominacion.getOne(idN);
-				nominacionParticipante.getNominados().add(participante);
-				participante.setNominado(nominacionParticipante);
+			
+			for (Long id: idNom) {
+				Nominacion_Participante np = repoNominacion.getOne(id);
+				np.getParticipantes().add(participante);
+				participante.getNominado().add(np);
 			}
 			
 			String uploadDir = "/img/upload/";
@@ -117,7 +119,7 @@ public class ParticipanteController {
 			@RequestParam("img") MultipartFile imgFile,
 			@RequestParam("bio")String bio,
 			@RequestParam("teaser") String teaser,
-			@RequestParam("idNominacion") Long idN) throws DangerException, InfoException {
+			@RequestParam("idNominacion[]") List<Long> idN) throws DangerException, InfoException {
 		try {
 			
 				Participante participante = repoParticipante.getOne(idParticipante);
@@ -127,16 +129,6 @@ public class ParticipanteController {
         		participante.setBio(bio);
         		participante.setTeaser(teaser);
 			
-        		//=======NOMINACION
-				Nominacion nominacionParticipante = repoNominacion.getOne(idN);
-				Nominacion nomAnt=participante.getNominado();
-				
-				nomAnt.getNominados().remove(participante);
-				participante.setNominado(null);
-				
-				nominacionParticipante.getNominados().add(participante);
-				participante.setNominado(nominacionParticipante);
-				//==============
 				
 				//============IMG
 			String uploadDir = "/img/upload/";

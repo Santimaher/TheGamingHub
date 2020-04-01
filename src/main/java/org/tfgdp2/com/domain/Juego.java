@@ -38,10 +38,14 @@ public class Juego {
 
 	@ManyToMany
 	private Collection<Plataforma> plataformas;
-
-	@ManyToMany
-	private Collection<Categoria> categorias;
 	
+	@ManyToMany
+	private Collection<Categoria_Juego> pertenece;
+	
+	@ManyToMany
+	private Collection<Nominacion_Juego> nominado;
+
+
 	@OneToMany(mappedBy = "juego")
 	private Collection<Foro> foro;
 	
@@ -51,8 +55,9 @@ public class Juego {
 	public Juego() {
 		super();
 		this.plataformas = new ArrayList<>();
-		this.categorias = new ArrayList<>();
 		this.foro = new ArrayList<>();
+		this.nominado =  new ArrayList<>();
+		this.pertenece=new ArrayList<>();
 	}
 	// -----------------------GETTERS Y SETTERS--------------------------//
 
@@ -120,14 +125,6 @@ public class Juego {
 		this.teaser = teaser;
 	}
 
-	public Collection<Categoria> getCategorias() {
-		return categorias;
-	}
-
-	public void setCategorias(Collection<Categoria> categorias) {
-		this.categorias = categorias;
-	}
-
 	public LocalDate getFechaLanzamiento() {
 		return fechaLanzamiento;
 	}
@@ -144,7 +141,23 @@ public class Juego {
 		this.foro = foro;
 	}
 
+
 	
+	public Collection<Categoria_Juego> getPertenece() {
+		return pertenece;
+	}
+
+	public void setPertenece(Collection<Categoria_Juego> pertenece) {
+		this.pertenece = pertenece;
+	}
+
+	public Collection<Nominacion_Juego> getNominado() {
+		return nominado;
+	}
+
+	public void setNominado(Collection<Nominacion_Juego> nominado) {
+		this.nominado = nominado;
+	}
 	
 	
 }

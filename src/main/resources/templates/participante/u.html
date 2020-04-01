@@ -15,7 +15,7 @@
 		<img th:src="${participante.img}" height="40" width="40"/><br>
 		<input type="file" name="img" class="form-item">  <br>
 		Nominación
-		<select name="idNominacion">
+		<select name="idNominacion[]">
 			<option th:each="nominacion:${nominaciones}" th:text="${nominacion.nombre}" th:value="${nominacion.id}" th:selected="${participante.nominado.id==nominacion.id}"></option>
 		</select>
 		<br>
