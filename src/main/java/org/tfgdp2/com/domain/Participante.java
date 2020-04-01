@@ -1,9 +1,13 @@
 package org.tfgdp2.com.domain;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -25,9 +29,16 @@ public class Participante {
 	@ManyToOne
 	private Nominacion nominado;
 	
+	@ManyToMany
+	private Collection <Nominacion_Juego> nominados;
+
+	@ManyToOne
+	private Categoria_Participante participante;
+	
 	//=========================
 	public Participante() {
 		super();
+		this.nominados = new ArrayList<>();
 	}
 	
 	public Participante(String nombre, String apellido, String bio, String teaser) {
@@ -36,6 +47,7 @@ public class Participante {
 		this.apellido = apellido;
 		this.bio = bio;
 		this.teaser = teaser;
+		this.nominados = new ArrayList<>();
 		
 	}
 
@@ -96,5 +108,22 @@ public class Participante {
 		this.nominado = nominado;
 	}
 	
+	public Categoria_Participante getParticipante() {
+		return participante;
+	}
+
+	public void setParticipante(Categoria_Participante participante) {
+		this.participante = participante;
+	}
+
+	public Collection<Nominacion_Juego> getNominados() {
+		return nominados;
+	}
+
+	public void setNominados(Collection<Nominacion_Juego> nominados) {
+		this.nominados = nominados;
+	}
+
+
 	
 }

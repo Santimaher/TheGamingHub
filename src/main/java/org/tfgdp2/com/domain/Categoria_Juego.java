@@ -9,64 +9,59 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 @Entity
-public class Categoria {
-
+public class Categoria_Juego {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	@Column(unique = true)
 	private String nombre;
 	
-	@ManyToMany(mappedBy = "categorias")
+	@ManyToMany (mappedBy="pertenece")
 	private Collection<Juego> juegos;
 
+	//=================================================
 	
-	
-	//----------Constructor------------//
-	public Categoria() {
+	public Categoria_Juego(String nombre) {
 		super();
-		this.juegos = new ArrayList<>();
+		this.nombre = nombre;
+		this.juegos = new ArrayList<Juego>();
 	}
-
 	
-	//---------------GETTERS Y SETTERS-----------------//
-
+	public Categoria_Juego() {
+		super();
+		this.juegos = new ArrayList<Juego>();
+	}
+	
+	//=================================================
+	
 	public Long getId() {
 		return id;
 	}
 
-
-
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-
 
 	public String getNombre() {
 		return nombre;
 	}
 
-
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-
 
 	public Collection<Juego> getJuegos() {
 		return juegos;
 	}
 
-
-
 	public void setJuegos(Collection<Juego> juegos) {
 		this.juegos = juegos;
 	}
+	
+	
 	
 }
