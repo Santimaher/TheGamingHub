@@ -29,7 +29,8 @@ public class ForoController {
 	
 	@GetMapping("r")
 	public String read(ModelMap m) {
-		
+		m.put("entradas", repoEntrada.findAll());
+		m.put("view", "foro/r");
 		return "/_t/frame";
 	}
 
