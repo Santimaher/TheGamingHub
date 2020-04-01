@@ -21,7 +21,6 @@ public class Nominacion_Participante {
 	@Column(unique = true)
 	private String nombre;
 	
-	private Participante idParticipante;
 	
 	@ManyToMany(mappedBy="nominado")
 	private Collection<Participante> participantes;
@@ -36,7 +35,6 @@ public class Nominacion_Participante {
 	public Nominacion_Participante(String nombre, Participante idParticipante) {
 		super();
 		this.nombre = nombre;
-		this.idParticipante = idParticipante;
 		this.participantes = new ArrayList<>();
 	}
 
@@ -61,13 +59,6 @@ public class Nominacion_Participante {
 		this.nombre = nombre;
 	}
 
-	public Participante getIdParticipante() {
-		return idParticipante;
-	}
-
-	public void setIdParticipante(Participante idParticipante) {
-		this.idParticipante = idParticipante;
-	}
 
 	public Collection<Participante> getParticipantes() {
 		return participantes;
