@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.tfgdp2.com.domain.EntradaForo;
+import org.tfgdp2.com.domain.Foro;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.EntradaForoRepository;
+import org.tfgdp2.com.repository.ForoRepository;
 
 @Controller
 @RequestMapping(value= "/entradaForo")
@@ -19,22 +21,29 @@ public class EntradaForoController {
 	
 	@Autowired
 	private EntradaForoRepository repoEntrada;
+	@Autowired
+	private ForoRepository repoForo;
 	@GetMapping("r")
 	public String leer(@RequestParam("id") Long id, ModelMap m) {
 		m.put("view","/entradaForo/r");
+		m.put("id",id);
 		m.put("entradas",repoEntrada.findByPerteneceId(id));
 		return "_t/frame";
 	}
 	@GetMapping("c")
-	public String crear(ModelMap m) {
+	public String crear(ModelMap m,@RequestParam("id") Long id) {
 		m.put("view", "/entradaForo/c");
+		m.put("id", id);
 		return "_t/frame";
 	}
 	@PostMapping("c")
-	public String cPost(@RequestParam("comentario") String comentario) throws DangerException{
+	public String cPost(@RequestParam("id") Long id,@RequestParam("comentario") String comentario) throws DangerException{
 		try {
 			EntradaForo entrada = new EntradaForo();
 			entrada.setComentario(comentario);
+			Foro f=repoForo.getOne(id);
+			entrada.setPertenece(f);
+			f.getPertenecen().add(entrada);
 			repoEntrada.save(entrada);
 		}catch(Exception e) {
 			PRG.error("Comentario no creado", "/entradaForo/c");

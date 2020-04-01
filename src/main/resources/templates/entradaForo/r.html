@@ -1,8 +1,15 @@
 <div class="container">
+<form action="http://localhost:8080/entradaForo/crear" method="get">
+					<input type="hidden" name="id" th:value="${id}" />
+					<button onclick="submit()">
+						Crear
+					</button>
+				</form>
 <table class="table table-striped">
 		<tr>
 			<th>Comentario</th>
 		</tr>
+		 
 		<tr th:each="entrada:${entradas}">
 		<td th:text="${entrada.comentario}"></td>
 		<td class="row">
