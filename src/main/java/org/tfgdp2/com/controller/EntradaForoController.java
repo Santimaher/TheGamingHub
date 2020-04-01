@@ -27,7 +27,7 @@ public class EntradaForoController {
 	public String leer(@RequestParam("id") Long id, ModelMap m) {
 		m.put("view","/entradaForo/r");
 		m.put("id",id);
-		m.put("entradas",repoEntrada.findByPerteneceId(id));
+		m.put("entradas",repoEntrada.findByPerteneceIdOrderByRankingDesc(id));
 		return "_t/frame";
 	}
 	@GetMapping("c")
@@ -37,7 +37,7 @@ public class EntradaForoController {
 		return "_t/frame";
 	}
 	@PostMapping("c")
-	public String cPost(@RequestParam("id") Long id,@RequestParam("comentario") String comentario) throws DangerException{
+	public String cPost(@RequestParam("id") Long id,@RequestParam("comentario") String comentario,ModelMap m) throws DangerException{
 		try {
 			EntradaForo entrada = new EntradaForo();
 			entrada.setComentario(comentario);
@@ -45,16 +45,37 @@ public class EntradaForoController {
 			entrada.setPertenece(f);
 			f.getPertenecen().add(entrada);
 			repoEntrada.save(entrada);
+			//TODO enlazar usuario
 		}catch(Exception e) {
 			PRG.error("Comentario no creado", "/entradaForo/c");
 		}	
-		return "redirect:/juego/r";
+		m.put("id", id);
+
+		return "/entradaForo/salvoconducto";
 	}
 	@GetMapping("u")
 	public String update(ModelMap m, @RequestParam("id") Long idEntrada) throws DangerException {
 		m.put("entrada", repoEntrada.getOne(idEntrada));
 		m.put("view", "/entradaForo/u");
 		return "_t/frame";
+	}
+	@GetMapping("like")
+	public String darLike(ModelMap m, @RequestParam("id") Long idEntrada,@RequestParam("idForo") Long id) throws DangerException {
+		EntradaForo e=repoEntrada.getOne(idEntrada);
+		e.setRanking(e.getRanking()+1);
+		repoEntrada.save(e);
+		m.put("id", id);
+
+		return "/entradaForo/salvoconducto";
+	}
+	@GetMapping("dislike")
+	public String quitarLike(ModelMap m, @RequestParam("id") Long idEntrada,@RequestParam("idForo") Long id) throws DangerException {
+		EntradaForo e=repoEntrada.getOne(idEntrada);
+		e.setRanking(e.getRanking()-1);
+		repoEntrada.save(e);
+		m.put("id", id);
+
+		return "/entradaForo/salvoconducto";
 	}
 	
 	@PostMapping("u")
