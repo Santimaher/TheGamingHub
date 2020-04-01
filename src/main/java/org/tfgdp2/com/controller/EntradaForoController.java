@@ -21,6 +21,7 @@ public class EntradaForoController {
 	private EntradaForoRepository repoEntrada;
 	@GetMapping("r")
 	public String leer(@RequestParam("id") Long id, ModelMap m) {
+		m.put("view","/entradaForo/r");
 		m.put("entradas",repoEntrada.findByPerteneceId(id));
 		return "_t/frame";
 	}
