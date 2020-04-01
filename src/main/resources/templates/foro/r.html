@@ -1,8 +1,10 @@
 <div class="container">
-<form action="http://localhost:8080/entradaForo/r">
+	<h1 th:text="|Foro del juego ${juego.nombre}|"></h1>
 	<div th:each="foro:${foros}">
-	<input type="submit" th:value="${foro.nombre}">
+	<form action="http://localhost:8080/entradaForo/r">
+	<input type="submit" th:value="${foro.tipo}">
 	<input  name="id" type="hidden" th:value="${foro.id}">
-	</div>
 	</form>
+	</div>
+	
 </div>
