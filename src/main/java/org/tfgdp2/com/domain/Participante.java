@@ -26,19 +26,17 @@ public class Participante {
 	
 	private String img;
 	
-	@ManyToOne
-	private Nominacion nominado;
 	
 	@ManyToMany
-	private Collection <Nominacion_Juego> nominados;
+	private Collection <Nominacion_Participante> nominado;
 
 	@ManyToOne
-	private Categoria_Participante participante;
+	private Categoria_Participante pertenece;
 	
 	//=========================
 	public Participante() {
 		super();
-		this.nominados = new ArrayList<>();
+		this.nominado = new ArrayList<>();
 	}
 	
 	public Participante(String nombre, String apellido, String bio, String teaser) {
@@ -47,7 +45,7 @@ public class Participante {
 		this.apellido = apellido;
 		this.bio = bio;
 		this.teaser = teaser;
-		this.nominados = new ArrayList<>();
+		this.nominado = new ArrayList<>();
 		
 	}
 
@@ -99,30 +97,25 @@ public class Participante {
 	public void setImg(String img) {
 		this.img = img;
 	}
+	
 
-	public Nominacion getNominado() {
+	public Collection<Nominacion_Participante> getNominado() {
 		return nominado;
 	}
 
-	public void setNominado(Nominacion nominado) {
+	public void setNominado(Collection<Nominacion_Participante> nominado) {
 		this.nominado = nominado;
 	}
-	
-	public Categoria_Participante getParticipante() {
-		return participante;
+
+	public Categoria_Participante getPertenece() {
+		return pertenece;
 	}
 
-	public void setParticipante(Categoria_Participante participante) {
-		this.participante = participante;
+	public void setPertenece(Categoria_Participante pertenece) {
+		this.pertenece = pertenece;
 	}
 
-	public Collection<Nominacion_Juego> getNominados() {
-		return nominados;
-	}
 
-	public void setNominados(Collection<Nominacion_Juego> nominados) {
-		this.nominados = nominados;
-	}
 
 
 	
