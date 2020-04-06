@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -34,9 +35,21 @@ public class Usuario {
 //this.votaciones=new ArrayList<>;
 //this.entradas=new ArrayList<>;
 //this.facturas=new ArrayList<>;
-	public Usuario() {
 	
+	@ManyToOne
+	private Votacion_Participante votado;
+	
+	@ManyToOne
+	private Votacion_Juego juegovotado;
+	
+	//===============================================
+	public Usuario() {
+		
 	}
+	
+	//===============================================
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -73,4 +86,29 @@ public class Usuario {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
+	
+	public Collection<EntradaForo> getEntradas() {
+		return entradas;
+	}
+
+	public void setEntradas(Collection<EntradaForo> entradas) {
+		this.entradas = entradas;
+	}
+
+	public Votacion_Participante getVotado() {
+		return votado;
+	}
+
+	public void setVotado(Votacion_Participante votado) {
+		this.votado = votado;
+	}
+
+	public Votacion_Juego getJuegovotado() {
+		return juegovotado;
+	}
+
+	public void setJuegovotado(Votacion_Juego juegovotado) {
+		this.juegovotado = juegovotado;
+	}
+
 }

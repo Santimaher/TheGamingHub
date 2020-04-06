@@ -27,6 +27,9 @@ public class Nominacion_Juego {
 	@ManyToOne
 	private Premio_Juego premio;
 	
+	@ManyToOne
+	private Votacion_Juego votacion;
+	
 	//================================================
 	
 	public Nominacion_Juego() {
@@ -39,9 +42,6 @@ public class Nominacion_Juego {
 		this.nombre = nombre;
 		this.juegos = new ArrayList<>();
 	}
-
-	
-
 	
 	//===================================================================
 	public Long getId() {
@@ -75,6 +75,14 @@ public class Nominacion_Juego {
 
 	public void setPremio(Premio_Juego premio) {
 		this.premio = premio;
+	}
+
+	public Votacion_Juego getVotacion() {
+		return votacion;
+	}
+
+	public void setVotacion(Votacion_Juego votacion) {
+		this.votacion = votacion;
 	}
 	
 	
