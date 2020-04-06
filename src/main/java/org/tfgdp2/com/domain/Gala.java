@@ -20,6 +20,9 @@ public class Gala {
 	
 	private String edicion;
 	
+	private boolean isActivo;
+	
+	private String observaciones;
 	@Column(unique = true)
 	private LocalDate inicio;
 	
@@ -32,14 +35,12 @@ public class Gala {
 	@OneToMany(mappedBy = "tiene")
 	private Collection<Premio_Juego> premiosJ;
 	
-	@OneToMany(mappedBy = "pertenece")
-	private Collection<Historico> pertenece;
 	//------------CONSTRUCTOR----------------
 	public Gala() {
 		super();
 		this.premiosJ = new ArrayList<>();
 		this.premiosP = new ArrayList<>();
-		this.pertenece = new ArrayList<>();
+		
 	}
 	//---------------GETTERS Y SETTERS-------------------
 	public Long getId() {
@@ -66,12 +67,7 @@ public class Gala {
 	public void setPremiosJ(Collection<Premio_Juego> premiosJ) {
 		this.premiosJ = premiosJ;
 	}
-	public Collection<Historico> getPertenece() {
-		return pertenece;
-	}
-	public void setPertenece(Collection<Historico> pertenece) {
-		this.pertenece = pertenece;
-	}
+	
 	public LocalDate getInicio() {
 		return inicio;
 	}
@@ -83,6 +79,18 @@ public class Gala {
 	}
 	public void setFin(LocalDate fin) {
 		this.fin = fin;
+	}
+	public boolean isActivo() {
+		return isActivo;
+	}
+	public void setActivo(boolean isActivo) {
+		this.isActivo = isActivo;
+	}
+	public String getObservaciones() {
+		return observaciones;
+	}
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
 	}
 	
 	
