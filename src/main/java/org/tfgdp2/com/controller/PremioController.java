@@ -48,9 +48,9 @@ public class PremioController {
 	  repoNomJuego.save(nj); 
 	  } 
 			  }catch(Exception e) { 
-				  PRG.error("Error al crear la nominación","/premio/c"); 
+				  PRG.error("Error al crear el premio","/premio/c"); 
 				  }
-	  PRG.info("Nominación creada correctamente.","premio/r"); 
+	  PRG.info("Premio creado correctamente.","premio/r"); 
 	  }
 	  
 	  
@@ -72,7 +72,7 @@ public class PremioController {
 	  repoNomPar.delete(n);
 	  
 	  }catch(Exception e) {
-	  PRG.error("Error al eliminar la nominación","/premio/r"); 
+	  PRG.error("Error al eliminar el premio","/premio/r"); 
 	  } 
 		  return "redirect:/premio/r"; 
 		  }
@@ -84,7 +84,7 @@ public class PremioController {
 	  repoNomJuego.delete(njuego);
 	  
 	  }catch(Exception e) {
-	  PRG.error("Error al eliminar la nominación","/premio/r"); 
+	  PRG.error("Error al eliminar el premio","/premio/r"); 
 	  } 
 		  return "redirect:/premio/r"; 
 		  }

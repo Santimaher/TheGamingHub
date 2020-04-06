@@ -1,8 +1,8 @@
 <div class="container">
-<h1>Listado Nominaciones</h1>
+<h1>Listado de premios</h1>
 	<table class="table table-striped">
 	<tr>
-		<th>Nominaciones Participantes</th>
+		<th>Premios para participantes</th>
 	
 	</tr>
 	<tr th:each="nparticipante:${nomPartipantes}">
@@ -12,13 +12,13 @@
 		<a href="/nominacion/addVotoP">
 		  <button>Añadir Voto</button>
 	      </a>
-				<form action="/nominacion/addVotoP" method="get">
+				<form action="/premio/addVotoP" method="get">
 					<input type="hidden" name="id" th:value="${nparticipante.id}" />
 					<button onclick="submit()">
 						Añadir Voto
 					</button>
 				</form>
-				<form action="/nominacion/dP" method="post">
+				<form action="/premio/dP" method="post">
 					<input type="hidden" name="id" th:value="${nparticipante.id}" />
 					<button onclick="submit()">
 						<img src="/img/delete.png" height="20" width="20">
@@ -27,20 +27,20 @@
 		</td>
 	</tr>
 	<tr>
-		<th>Nominaciones Juegos</th>
+		<th>Premios para juegos</th>
 	
 	</tr>
 	<tr th:each="njuego:${nomJuegos}">
 		<td th:text="${njuego.nombre}"></td>
 		
 		<td class="row">
-				<form action="/nominacion/addVoto" method="get">
+				<form action="/premio/addVoto" method="get">
 					<input type="hidden" name="id" th:value="${njuego.id}" />
 					<button onclick="submit()">
 						Añadir Voto
 					</button>
 				</form>
-				<form action="/nominacion/dJ" method="post">
+				<form action="/premio/dJ" method="post">
 					<input type="hidden" name="id" th:value="${njuego.id}" />
 					<button onclick="submit()">
 						<img src="/img/delete.png" height="20" width="20">
@@ -49,7 +49,7 @@
 		</td>
 	</tr>
 	</table>
-	<a href="/nominacion/c">
+	<a href="/premio/c">
 		<button>Crear</button>
 	</a>
 </div>
