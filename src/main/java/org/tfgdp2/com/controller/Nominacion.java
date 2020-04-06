@@ -64,26 +64,25 @@ public class Nominacion {
 	public String deleteP(@RequestParam("id") Long id) throws DangerException {
 		try {
 			
-			/*Participante p = repoParticipante.getOne(id);
-			repoParticipante.delete(p);*/
+			Nominacion_Participante n=repoNomPar.getOne(id);
+			repoNomPar.delete(n);
 			
 		}catch(Exception e) {
-			PRG.error("Error al crear el participante","/participante/r");
+			PRG.error("Error al eliminar la nominación","/nominacion/r");
 		}
-		return "redirect:/participante/r";
+		return "redirect:/nominacion/r";
 	}
 	
 	@PostMapping("dJ")
 	public String deleteJ(@RequestParam("id") Long id) throws DangerException {
 		try {
-			
-			/*Participante p = repoParticipante.getOne(id);
-			repoParticipante.delete(p);*/
-			
+			Nominacion_Juego njuego = repoNomJuego.getOne(id);
+			repoNomJuego.delete(njuego);
+					
 		}catch(Exception e) {
-			PRG.error("Error al crear el participante","/participante/r");
+			PRG.error("Error al eliminar la nominación","/nominacion/r");
 		}
-		return "redirect:/participante/r";
+		return "redirect:/nominacion/r";
 	}
 	
 }
