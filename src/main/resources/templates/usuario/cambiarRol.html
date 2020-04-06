@@ -1,0 +1,11 @@
+<div class="container">
+	<h1>Editar Rol</h1>
+	<form method="post" action="/usuario/cambiarRolPost" class="form">
+	<input type="hidden" name="id" th:value="${usuario.id}">
+	<select name="rol">
+	<option value="admin">Admin</option>
+	<option value="auth">Normal</option>
+	</select>
+		<input type="submit" class="form-item" />
+	</form>
+</div>

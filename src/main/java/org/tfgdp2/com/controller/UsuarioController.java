@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.tfgdp2.com.domain.Usuario;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
+import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.UsuarioRepository;
 
@@ -98,5 +99,31 @@ public class UsuarioController {
 			PRG.error("Error al borrar " + u.getNombre(), "/usuario/r");
 		}
 		PRG.info("Usuario borrado correctamente", "/usuario/r");
+	}
+	@PostMapping("cambiarRol")
+	public String cambiarRol(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
+		 H.isRolOK("admin", s);
+		m.put("usuario", usuarioRepo.getOne(id));
+		m.put("view", "/usuario/cambiarRol");
+		return "/_t/frame";
+
+	}
+
+	@PostMapping("cambiarRolPost")
+	public String cambiarRolPost(@RequestParam("rol") String rol,
+			@RequestParam("id") Long id, HttpSession s) throws DangerException {
+		String nombre="";
+
+		try {
+           H.isRolOK("admin", s);
+			Usuario usuario = usuarioRepo.getOne(id);
+			usuario.setRol(rol);
+            nombre=usuario.getNombre();
+			usuarioRepo.save(usuario);
+
+		} catch (Exception e) {
+			PRG.error("Error al editar el rol de " + nombre, "/usuario/r");
+		}
+		return "redirect:/usuario/r";
 	}
 }
