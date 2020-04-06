@@ -7,11 +7,13 @@
 				</form>
 <table class="table table-striped">
 		<tr>
+		    <th>Ranking</th>
 			<th>Comentario</th>
 			<th>Fecha de publicacion</th>
 		</tr>
 		 
 		<tr th:each="entrada:${entradas}">
+		<td th:text="${entrada.ranking}"></td>
 		<td th:text="${entrada.comentario}"></td>
 		<td th:text="${entrada.fechaPublicacion}"></td>
 		<td class="row">
