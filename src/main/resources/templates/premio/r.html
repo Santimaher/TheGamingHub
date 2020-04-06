@@ -2,14 +2,17 @@
 <h1>Listado Nominaciones</h1>
 	<table class="table table-striped">
 	<tr>
-		<th>Nombre</th>
-		<th>Acciones<th>
+		<th>Nominaciones Participantes</th>
+	
 	</tr>
 	<tr th:each="nparticipante:${nomPartipantes}">
 		<td th:text="${nparticipante.nombre}"></td>
 		
 		<td class="row">
-				<form action="/nominacion/addVoto" method="get">
+		<a href="/nominacion/addVotoP">
+		  <button>Añadir Voto</button>
+	      </a>
+				<form action="/nominacion/addVotoP" method="get">
 					<input type="hidden" name="id" th:value="${nparticipante.id}" />
 					<button onclick="submit()">
 						Añadir Voto
@@ -22,6 +25,10 @@
 					</button>
 				</form>
 		</td>
+	</tr>
+	<tr>
+		<th>Nominaciones Juegos</th>
+	
 	</tr>
 	<tr th:each="njuego:${nomJuegos}">
 		<td th:text="${njuego.nombre}"></td>
