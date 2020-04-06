@@ -1,8 +1,16 @@
 <div class="container">
 <form action="http://localhost:8080/entradaForo/c" method="get">
 					<input type="hidden" name="id" th:value="${id}" />
+					<input type="hidden" name="idJuego" th:value="${idJuego}">
 					<button onclick="submit()">
 						Crear
+					</button>
+				</form>
+				
+				<form action="/foro/r" method="get">
+					<input type="hidden" name="id" th:value="${idJuego}">
+					<button onclick="submit()">
+						Menu
 					</button>
 				</form>
 <table class="table table-striped">
