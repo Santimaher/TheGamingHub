@@ -35,6 +35,9 @@ public class Juego {
 	private String img;
 
 	private String teaser;
+	
+	private boolean isNominado;
+
 
 	@ManyToMany
 	private Collection<Plataforma> plataformas;
@@ -107,6 +110,14 @@ public class Juego {
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+	
+	public boolean isNominado() {
+		return isNominado;
+	}
+
+	public void setVotado(boolean isNominado) {
+		this.isNominado = isNominado;
 	}
 
 	public Collection<Plataforma> getPlataformas() {

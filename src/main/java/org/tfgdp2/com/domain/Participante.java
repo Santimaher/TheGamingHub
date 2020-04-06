@@ -26,7 +26,9 @@ public class Participante {
 	
 	private String img;
 	
+	private boolean isNominado;
 	
+
 	@ManyToMany
 	private Collection <Nominacion_Participante> nominado;
 
@@ -45,6 +47,17 @@ public class Participante {
 		this.apellido = apellido;
 		this.bio = bio;
 		this.teaser = teaser;
+		this.nominado = new ArrayList<>();
+		
+	}
+	
+	public Participante(String nombre, String apellido, String bio, String teaser, boolean isNominado) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.bio = bio;
+		this.teaser = teaser;
+		this.isNominado=isNominado;
 		this.nominado = new ArrayList<>();
 		
 	}
@@ -98,6 +111,13 @@ public class Participante {
 		this.img = img;
 	}
 	
+	public boolean isNominado() {
+		return isNominado;
+	}
+
+	public void setVotado(boolean isNominado) {
+		this.isNominado = isNominado;
+	}
 
 	public Collection<Nominacion_Participante> getNominado() {
 		return nominado;

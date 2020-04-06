@@ -1,0 +1,30 @@
+<div class="container">
+	<!-- <h1>Listado de participantes a nominar</h1> -->
+	<span th:text="|Listado de participantes para: ${premio.nombre} |"></span>
+	<table class="table table-striped">
+		<tr>
+			<th>Nombre de Nominados</th>
+		</tr>
+
+		<tr th:each="p:${participantes}">
+
+			<td th:text="${p.nombre}"></td>
+			<td class="row">
+				<form action="/premio/addVotoP" method="get">
+					<input type="hidden" name="id" th:value="${p.id}" />
+					<input type="hidden" name="idPremio" th:value="${premio.id}">
+					<button onclick="submit()">
+						<img src="/img/add.png" height="20" width="20">
+					</button>
+				</form>
+			</td>
+		</tr>
+
+	</table>
+	
+	<a href="/participante/c">
+		<button>Crear</button>
+	</a> <a href="/">
+		<button>Cancelar</button>
+	</a>
+</div>
