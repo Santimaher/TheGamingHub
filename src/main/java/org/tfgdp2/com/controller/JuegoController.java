@@ -95,30 +95,10 @@ public class JuegoController {
 				j.getForo().add(f);
 				repoForo.save(f);
 			}
-			
-//			Foro f1 = new Foro("Fan Art");
-//			f1.setJuego(j);
-//			j.getForo().add(f1);
-//			Foro f2 = new Foro("Debug");
-//			f2.setJuego(j);
-//			j.getForo().add(f2);
-//			Foro f3 = new Foro("Memes");
-//			f3.setJuego(j);
-//			j.getForo().add(f3);
-//			Foro f4 = new Foro("Misc");
-//			f4.setJuego(j);
-//			j.getForo().add(f4);
-//			
-//			repoForo.save(f1);
-//			repoForo.save(f2);
-//			repoForo.save(f3);
-//			repoForo.save(f4);
-			
-			
-			
+						
 		} catch (Exception e) {
-			//PRG.error("Juego " + nombre + " duplicado", "/juego/c");
-			PRG.error(e.getMessage());
+			PRG.error("Juego " + nombre + " duplicado", "/juego/c");
+		
 		}
 		PRG.info("Juego " + nombre + " creado correctamente", "/juego/r");
 
@@ -181,9 +161,13 @@ public class JuegoController {
 	@PostMapping("d")
 	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {		
 		try {
+			List<Foro> forosAsociados = repoForo.findAllByJuego_id(id);
+			for (Foro foro : forosAsociados) {
+				repoForo.delete(foro);
+			}
 			repoJuego.deleteById(id);
 		} catch (Exception e) {
-			PRG.error("Error al borrar el Juego", "/juego/r");
+			PRG.error("Error al borrar el Juego"+e.getMessage(), "/juego/r");
 		}
 
 		PRG.info("Juego borrado correctamente", "/juego/r");

@@ -60,8 +60,5 @@ public class Categoria_Juego {
 
 	public void setJuegos(Collection<Juego> juegos) {
 		this.juegos = juegos;
-	}
-	
-	
-	
+	}	
 }

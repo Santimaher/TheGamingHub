@@ -140,8 +140,6 @@ public class Juego {
 	public void setForo(Collection<Foro> foro) {
 		this.foro = foro;
 	}
-
-
 	
 	public Collection<Categoria_Juego> getPertenece() {
 		return pertenece;
