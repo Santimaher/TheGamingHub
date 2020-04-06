@@ -16,7 +16,7 @@ public class H {
 	public static void isRolOK(String rol, HttpSession s) throws DangerException {
 		Usuario usuario = null;
 
-		if (s.getAttribute("persona") != null) {
+		if (s.getAttribute("usuario") != null) {
 			usuario = (Usuario) s.getAttribute("usuario");
 		}
 

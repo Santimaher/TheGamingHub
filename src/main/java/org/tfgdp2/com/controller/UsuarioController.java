@@ -104,7 +104,7 @@ public class UsuarioController {
 	public String cambiarRol(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
 		 H.isRolOK("admin", s);
 		m.put("usuario", usuarioRepo.getOne(id));
-		m.put("view", "/usuario/u");
+		m.put("view", "/usuario/cambiarRol");
 		return "/_t/frame";
 
 	}
