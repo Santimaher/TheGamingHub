@@ -41,7 +41,7 @@ public class Nominacion_Participante {
 		this.participantes = new ArrayList<>();
 	}
 	
-	public Nominacion_Participante(String nombre, Participante idParticipante) {
+	public Nominacion_Participante(String nombre) {
 		super();
 		this.nombre = nombre;
 		this.participantes = new ArrayList<>();

@@ -5,18 +5,36 @@
 		<th>Nombre</th>
 		<th>Acciones<th>
 	</tr>
-	<tr th:each="nominacion:${nominaciones}">
-		<td th:text="${nominacion.nombre}"></td>
+	<tr th:each="nparticipante:${nomPartipantes}">
+		<td th:text="${nparticipante.nombre}"></td>
 		
 		<td class="row">
-				<form action="/nominacion/u" method="get">
-					<input type="hidden" name="id" th:value="${nominacion.id}" />
+				<form action="/nominacion/addVoto" method="get">
+					<input type="hidden" name="id" th:value="${nparticipante.id}" />
 					<button onclick="submit()">
-						<img src="/img/edit.png" height="20" width="20">
+						Añadir Voto
 					</button>
 				</form>
-				<form action="/nominacion/d" method="post">
-					<input type="hidden" name="id" th:value="${nominacion.id}" />
+				<form action="/nominacion/dP" method="post">
+					<input type="hidden" name="id" th:value="${nparticipante.id}" />
+					<button onclick="submit()">
+						<img src="/img/delete.png" height="20" width="20">
+					</button>
+				</form>
+		</td>
+	</tr>
+	<tr th:each="njuego:${nomJuegos}">
+		<td th:text="${njuego.nombre}"></td>
+		
+		<td class="row">
+				<form action="/nominacion/addVoto" method="get">
+					<input type="hidden" name="id" th:value="${njuego.id}" />
+					<button onclick="submit()">
+						Añadir Voto
+					</button>
+				</form>
+				<form action="/nominacion/dJ" method="post">
+					<input type="hidden" name="id" th:value="${njuego.id}" />
 					<button onclick="submit()">
 						<img src="/img/delete.png" height="20" width="20">
 					</button>

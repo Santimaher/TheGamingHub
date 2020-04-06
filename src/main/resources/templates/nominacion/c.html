@@ -1,9 +1,13 @@
 <div class="container">
 	<h1>Nueva Nominacion</h1>
 
-	<form method="post" enctype="multipart/form-data" action="/nominacion/c" class="form">
+	<form method="post"  action="/nominacion/c" class="form">
 
 		Nombre <input type="text" name="nombre" class="form-item"> <br>
+		Tipo de Nominación <select type="text" name="tipo" class="form-item"> 
+		<option value="participante"> Participante Indiviual </option>
+		<option value="juego"> Juego </option>
+		</select><br>
 		<input type="submit"><br>
 	</form>
 	
