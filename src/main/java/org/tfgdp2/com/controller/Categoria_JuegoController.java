@@ -15,6 +15,7 @@ import org.tfgdp2.com.domain.Categoria_Juego;
 import org.tfgdp2.com.domain.Plataforma;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
+import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.Categoria_JuegoRepository;
 
@@ -34,7 +35,8 @@ public class Categoria_JuegoController {
 	}
 
 	@GetMapping("c")
-	public String cGet(ModelMap m) {
+	public String cGet(ModelMap m,HttpSession s) throws DangerException {
+		H.isRolOK("admin", s);
 		m.put("view", "/categoria/c");
 		return "/_t/frame";
 	}
@@ -43,6 +45,7 @@ public class Categoria_JuegoController {
 	public void crearPost(ModelMap m, @RequestParam("nombre") String nombre, HttpSession s)
 			throws DangerException, InfoException {
 		try {
+			H.isRolOK("admin", s);
 			Categoria_Juego cat = new Categoria_Juego();
 			cat.setNombre(nombre);
 			repoCategoria_Juego.save(cat);
@@ -54,7 +57,7 @@ public class Categoria_JuegoController {
 
 	@GetMapping("u")
 	public String uGet(@RequestParam("id") Long idCategoria, ModelMap m, HttpSession s) throws DangerException {
-
+		H.isRolOK("admin", s);
 		m.put("categoria", repoCategoria_Juego.getOne(idCategoria));
 		m.put("view", "/categoria/U");
 		return "/_t/frame";
@@ -65,6 +68,7 @@ public class Categoria_JuegoController {
 			HttpSession s) throws DangerException, InfoException {
 
 		try {
+			H.isRolOK("admin", s);
 			Categoria_Juego cat = repoCategoria_Juego.getOne(idCategoria);
 			cat.setNombre(nombreCategoria);
 
@@ -80,6 +84,7 @@ public class Categoria_JuegoController {
 	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {
 
 		try {
+			H.isRolOK("admin", s);
 			repoCategoria_Juego.delete(repoCategoria_Juego.getOne(id));
 		} catch (Exception e) {
 			PRG.error("Error al borrar la Categoria", "/categoria/r");

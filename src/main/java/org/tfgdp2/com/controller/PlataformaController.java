@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.tfgdp2.com.domain.Plataforma;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
+import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.PlataformaRepository;
 
@@ -33,7 +34,8 @@ public class PlataformaController {
 	}
 
 	@GetMapping("c")
-	public String cGet(ModelMap m) {
+	public String cGet(ModelMap m,HttpSession s) throws DangerException {
+		H.isRolOK("admin", s);
 		m.put("view", "/plataforma/c");
 		return "/_t/frame";
 	}
@@ -41,7 +43,9 @@ public class PlataformaController {
 	@PostMapping("c")
 	public void crearPost(ModelMap m, @RequestParam("nombre") String nombre, @RequestParam("imagen") String imagen,
 			HttpSession s) throws DangerException, InfoException {
+		
 		try {
+			H.isRolOK("admin", s);
 			Plataforma plataforma = new Plataforma();
 			plataforma.setNombre(nombre);
 			plataforma.setImg(imagen);
@@ -54,7 +58,7 @@ public class PlataformaController {
 	
 	@GetMapping("u")
 	public String uGet(@RequestParam("id") Long idPlataforma, ModelMap m, HttpSession s) throws DangerException {
-		
+		H.isRolOK("admin", s);
 		m.put("plataforma", repoPlataforma.getOne(idPlataforma));
 		m.put("view", "/plataforma/U");
 		return "/_t/frame";
@@ -65,6 +69,7 @@ public class PlataformaController {
 			throws DangerException, InfoException {
 		
 		try {
+			H.isRolOK("admin", s);
 			Plataforma p = repoPlataforma.getOne(idPlataforma);
 			p.setNombre(nombrePlataforma);
 			p.setImg(imagen);
@@ -78,9 +83,10 @@ public class PlataformaController {
 	
 	@PostMapping("d")
 	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {
-
+	
 		
 		try {
+			H.isRolOK("admin", s);
 			repoPlataforma.delete(repoPlataforma.getOne(id));
 		} catch (Exception e) {
 			PRG.error("Error al borrar la Plataforma", "/plataforma/r");

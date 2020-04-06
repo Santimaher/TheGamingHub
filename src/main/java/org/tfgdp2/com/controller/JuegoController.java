@@ -22,6 +22,7 @@ import org.tfgdp2.com.domain.Juego;
 import org.tfgdp2.com.domain.Plataforma;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
+import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.Categoria_JuegoRepository;
 import org.tfgdp2.com.repository.ForoRepository;
@@ -49,7 +50,8 @@ public class JuegoController {
 	}
 
 	@GetMapping("c")
-	public String cGet(ModelMap m) {
+	public String cGet(ModelMap m,HttpSession s) throws DangerException {
+		H.isRolOK("admin", s);
 		List<Plataforma> plataformas = repoPlat.findAll();
 		m.put("plataformas", plataformas);
 		m.put("categorias", repoCategoriaJ.findAll());
@@ -65,7 +67,9 @@ public class JuegoController {
 			@RequestParam(value = "idCat[]") List<Long> idsCat,
 			@RequestParam("flan") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate flan, HttpSession s)
 			throws DangerException, InfoException {
+		
 		try {
+			H.isRolOK("admin", s);
 			Juego j = new Juego();
 			j.setNombre(nombre);
 			j.setPrecio(precio);
@@ -106,7 +110,7 @@ public class JuegoController {
 
 	@GetMapping("u")
 	public String ueGet(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
-
+		H.isRolOK("admin", s);
 		m.put("juego", repoJuego.getOne(id));
 		m.put("plataformas", repoPlat.findAll());
 		m.put("categorias", repoCategoriaJ.findAll());
@@ -124,6 +128,7 @@ public class JuegoController {
 			@RequestParam("flan") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate flan, HttpSession s)
 			throws DangerException, InfoException {
 		try {
+			H.isRolOK("admin", s);
 			Juego j = repoJuego.getOne(id);
 			j.setNombre(nombre);
 			j.setPrecio(precio);
@@ -161,6 +166,7 @@ public class JuegoController {
 	@PostMapping("d")
 	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {		
 		try {
+			H.isRolOK("admin", s);
 			List<Foro> forosAsociados = repoForo.findAllByJuego_id(id);
 			for (Foro foro : forosAsociados) {
 				repoForo.delete(foro);

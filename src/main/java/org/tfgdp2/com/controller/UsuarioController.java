@@ -56,6 +56,7 @@ public class UsuarioController {
 
 	@GetMapping("r")
 	public String read(ModelMap m, HttpSession s) throws DangerException {
+		H.isRolOK("auth", s);
 		List<Usuario> usuarios = usuarioRepo.findAll();
 		m.put("usuarios", usuarios);
 		m.put("view", "/usuario/r");
@@ -64,6 +65,7 @@ public class UsuarioController {
 
 	@PostMapping("u")
 	public String u(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
+		H.isRolOK("auth", s);
 		m.put("usuario", usuarioRepo.getOne(id));
 		m.put("view", "/usuario/u");
 		return "/_t/frame";
@@ -73,9 +75,9 @@ public class UsuarioController {
 	@PostMapping("uPost")
 	public String uPost(@RequestParam("nombre") String nombreusuario, @RequestParam("loginname") String log,
 			@RequestParam("id") Long id, @RequestParam("email") String email, HttpSession s) throws DangerException {
-
+		
 		try {
-
+			H.isRolOK("auth", s);
 			Usuario usuario = usuarioRepo.getOne(id);
 			usuario.setNombre(nombreusuario);
 			usuario.setLoginname(log);
@@ -94,6 +96,7 @@ public class UsuarioController {
 		Usuario u = usuarioRepo.getOne(id);
 
 		try {
+			H.isRolOK("auth", s);
 			usuarioRepo.delete(u);
 		} catch (Exception e) {
 			PRG.error("Error al borrar " + u.getNombre(), "/usuario/r");

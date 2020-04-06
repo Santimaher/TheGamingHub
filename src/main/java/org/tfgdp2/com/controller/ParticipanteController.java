@@ -9,6 +9,7 @@ import org.tfgdp2.com.domain.Nominacion_Participante;
 import org.tfgdp2.com.domain.Participante;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
+import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.NominacionParticipanteRepository;
 import org.tfgdp2.com.repository.ParticipanteRepository;
@@ -16,6 +17,8 @@ import org.tfgdp2.com.repository.ParticipanteRepository;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,8 +35,10 @@ public class ParticipanteController {
 	private NominacionParticipanteRepository repoNominacion;
 	
 	@GetMapping("c")
-	public String crearGet(ModelMap m) {
+	public String crearGet(ModelMap m,HttpSession s) throws DangerException {
+		
 	try {
+		H.isRolOK("admin", s);
 		m.put("nominaciones", repoNominacion.findAll());
 		m.put("view", "participante/c");
 		
@@ -48,9 +53,11 @@ public class ParticipanteController {
 			@RequestParam("img") MultipartFile imgFile,
 			@RequestParam("bio")String bio,
 			@RequestParam("teaser") String teaser,
-			@RequestParam(value="idNominacion[]", required =false)  List<Long>idNom) throws DangerException  {
+			@RequestParam(value="idNominacion[]", required =false)  List<Long>idNom,
+			HttpSession s) throws DangerException  {
 		
 		try {
+			H.isRolOK("admin", s);
 			Participante participante = new Participante(nombre,apellido,bio,teaser);
 			
 			
@@ -93,8 +100,10 @@ public class ParticipanteController {
 	}
 	
 	@PostMapping("d")
-	public String delete(@RequestParam("id") Long id) throws DangerException {
+	public String delete(@RequestParam("id") Long id,HttpSession s) throws DangerException {
+		
 		try {
+			H.isRolOK("admin", s);
 			Participante p = repoParticipante.getOne(id);
 			repoParticipante.delete(p);
 			
@@ -105,7 +114,8 @@ public class ParticipanteController {
 	}
 	
 	@GetMapping("u")
-	public String update(ModelMap m,@RequestParam("id") Long id) {
+	public String update(ModelMap m,@RequestParam("id") Long id,HttpSession s) throws DangerException {
+		H.isRolOK("admin", s);
 		m.put("nominaciones", repoNominacion.findAll());
 		m.put("participante", repoParticipante.getOne(id));
 		m.put("view","participante/u");
@@ -119,9 +129,11 @@ public class ParticipanteController {
 			@RequestParam("img") MultipartFile imgFile,
 			@RequestParam("bio")String bio,
 			@RequestParam("teaser") String teaser,
-			@RequestParam("idNominacion[]") List<Long> idN) throws DangerException, InfoException {
+			@RequestParam("idNominacion[]") List<Long> idN,
+			HttpSession s) throws DangerException, InfoException {
+		
 		try {
-			
+			H.isRolOK("admin", s);
 				Participante participante = repoParticipante.getOne(idParticipante);
         
         		participante.setNombre(nombre);
