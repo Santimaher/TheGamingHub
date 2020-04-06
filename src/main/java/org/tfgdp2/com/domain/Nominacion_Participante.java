@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -24,6 +25,9 @@ public class Nominacion_Participante {
 	
 	@ManyToMany(mappedBy="nominado")
 	private Collection<Participante> participantes;
+	
+	@ManyToOne
+	private Premio_Participante premio;
 	
 	//================================================
 	
@@ -66,6 +70,14 @@ public class Nominacion_Participante {
 
 	public void setParticipantes(Collection<Participante> participantes) {
 		this.participantes = participantes;
+	}
+
+	public Premio_Participante getPremio() {
+		return premio;
+	}
+
+	public void setPremio(Premio_Participante premio) {
+		this.premio = premio;
 	}
 	
 	
