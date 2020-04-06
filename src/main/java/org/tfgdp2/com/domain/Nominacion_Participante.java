@@ -29,8 +29,13 @@ public class Nominacion_Participante {
 	@ManyToOne
 	private Premio_Participante premio;
 	
+	@ManyToOne
+	
+	private Nominacion_Participante votacion;
+	
 	//================================================
 	
+
 	public Nominacion_Participante() {
 		super();
 		this.participantes = new ArrayList<>();
@@ -80,7 +85,14 @@ public class Nominacion_Participante {
 		this.premio = premio;
 	}
 	
-	
+
+	public Nominacion_Participante getVotacion() {
+		return votacion;
+	}
+
+	public void setVotacion(Nominacion_Participante votacion) {
+		this.votacion = votacion;
+	}
 	
 	
 }
