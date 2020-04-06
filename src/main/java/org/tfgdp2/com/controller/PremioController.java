@@ -120,7 +120,16 @@ public class PremioController {
 	  
 	  @PostMapping("addVotoP")
 	  public void addVotoPost(@RequestParam("id") Long idParticipante, @RequestParam("idPremio") Long idPremio) {
-		  Participante parti = repoParticipante.getOne(idParticipante) ;
+		  Participante parti = repoParticipante.getOne(idParticipante);
 		  Premio_Participante premioP = repoPremioPar.getOne(idPremio);
+		  try {
+			  Integer aux= parti.getCantidadVotos();
+			  aux=+1;
+			  parti.setCantidadVotos(aux);
+			  Nominacion_Participante nompar= new Nominacion_Participante();
+			  nompar.getParticipantes().add(parti);
+		  }catch(Exception e) {
+			  
+		  }
 	  }
 }

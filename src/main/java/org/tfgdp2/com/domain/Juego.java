@@ -36,6 +36,10 @@ public class Juego {
 
 	private String teaser;
 	
+	private Integer cantidadVotos;
+	
+	
+
 	private boolean isNominado;
 
 
@@ -112,7 +116,20 @@ public class Juego {
 		this.img = img;
 	}
 	
-	public boolean isNominado() {
+	public Integer getCantidadVotos() {
+		return cantidadVotos;
+	}
+
+	public void setCantidadVotos(Integer cantidadVotos) {
+		this.cantidadVotos = cantidadVotos;
+	}
+
+	public void setNominado(boolean isNominado) {
+		this.isNominado = isNominado;
+	}
+	
+
+	public boolean getIsNominado() {
 		return isNominado;
 	}
 

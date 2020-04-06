@@ -26,6 +26,9 @@ public class Participante {
 	
 	private String img;
 	
+	private Integer cantidadVotos;
+	
+
 	private boolean isNominado;
 	
 
@@ -109,15 +112,24 @@ public class Participante {
 
 	public void setImg(String img) {
 		this.img = img;
+		
+	}
+	public Integer getCantidadVotos() {
+		return cantidadVotos;
+	}
+
+	public void setCantidadVotos(Integer cantidadVotos) {
+		this.cantidadVotos = cantidadVotos;
+	}
+
+	public void setNominado(boolean isNominado) {
+		this.isNominado = isNominado;
 	}
 	
 	public boolean isNominado() {
 		return isNominado;
 	}
 
-	public void setVotado(boolean isNominado) {
-		this.isNominado = isNominado;
-	}
 
 	public Collection<Nominacion_Participante> getNominado() {
 		return nominado;
