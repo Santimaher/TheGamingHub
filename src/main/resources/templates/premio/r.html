@@ -6,8 +6,7 @@
 	
 	</tr>
 	<tr th:each="nparticipante:${nomPartipantes}">
-		<td th:text="${nparticipante.nombre}"></td>
-		
+		<td th:text="${nparticipante.nombre?.isVotado}"></td>
 		<td class="row">
 		<a href="/nominacion/addVotoP">
 		  <button>Añadir Voto</button>

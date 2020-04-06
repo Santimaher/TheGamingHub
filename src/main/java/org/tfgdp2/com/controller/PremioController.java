@@ -9,11 +9,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.tfgdp2.com.domain.Nominacion_Juego;
 import org.tfgdp2.com.domain.Nominacion_Participante;
+import org.tfgdp2.com.domain.Participante;
+import org.tfgdp2.com.domain.Premio_Juego;
+import org.tfgdp2.com.domain.Premio_Participante;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.PRG;
+import org.tfgdp2.com.repository.JuegoRepository;
 import org.tfgdp2.com.repository.NominacionJuegoRepository;
 import org.tfgdp2.com.repository.NominacionParticipanteRepository;
+import org.tfgdp2.com.repository.ParticipanteRepository;
+import org.tfgdp2.com.repository.PremioJuegoRepository;
+import org.tfgdp2.com.repository.PremioParticipanteRepository;
 
 @Controller
 @RequestMapping("/premio")
@@ -24,6 +31,18 @@ public class PremioController {
 	
 	@Autowired
 	private NominacionParticipanteRepository repoNomPar;
+	
+	@Autowired
+	private PremioParticipanteRepository repoPremioPar;
+	
+	@Autowired
+	private PremioJuegoRepository repoPremioJuego;
+	
+	@Autowired
+	private ParticipanteRepository repoParticipante;
+	
+	@Autowired
+	private JuegoRepository repoJuego;
 	
 	
 	  @GetMapping("c") 
@@ -41,11 +60,12 @@ public class PremioController {
 	  InfoException{ 
 		  try {
 			  if(tipo=="participante") { 
-				  Nominacion_Participante np = new Nominacion_Participante(nombre); 
-				  repoNomPar.save(np); 
+				  
+				  Premio_Participante pp = new Premio_Participante(nombre); 
+				  repoPremioPar.save(pp); 
 				  }else {
-	  Nominacion_Juego nj = new Nominacion_Juego(nombre);
-	  repoNomJuego.save(nj); 
+					  Premio_Juego pj = new Premio_Juego(nombre);
+	  	              repoPremioJuego.save(pj); 
 	  } 
 			  }catch(Exception e) { 
 				  PRG.error("Error al crear el premio","/premio/c"); 
@@ -57,8 +77,8 @@ public class PremioController {
 	  @GetMapping("r") 
 	  public String r(ModelMap m) {
 		  
-		  m.put("nomPartipantes",repoNomPar.findAll()); 
-		  m.put("nomJuegos",repoNomJuego.findAll()); 
+		  m.put("nomPartipantes",repoPremioPar.findAll()); 
+		  m.put("nomJuegos",repoPremioJuego.findAll()); 
 		  m.put("view", "premio/r");
 		  
 		  return "_t/frame"; 
@@ -68,8 +88,8 @@ public class PremioController {
 	  public String deleteP(@RequestParam("id") Long id) throws DangerException { 
 		  try {
 	  
-	  Nominacion_Participante n=repoNomPar.getOne(id); 
-	  repoNomPar.delete(n);
+	  Premio_Participante n=repoPremioPar.getOne(id); 
+	  repoPremioPar.delete(n);
 	  
 	  }catch(Exception e) {
 	  PRG.error("Error al eliminar el premio","/premio/r"); 
@@ -80,8 +100,8 @@ public class PremioController {
 	  @PostMapping("dJ") 
 	  public String deleteJ(@RequestParam("id") Long id) throws DangerException { 
 		  try { 
-			  Nominacion_Juego njuego = repoNomJuego.getOne(id);
-	  repoNomJuego.delete(njuego);
+			  Premio_Juego njuego = repoPremioJuego.getOne(id);
+			  repoPremioJuego.delete(njuego);
 	  
 	  }catch(Exception e) {
 	  PRG.error("Error al eliminar el premio","/premio/r"); 
@@ -90,7 +110,17 @@ public class PremioController {
 		  }
 	 
 	
-	public void addVotoP(ModelMap m) {
-		//m.put("view", value)
+	  @GetMapping("addVotoP")
+	public String addVotoP(ModelMap m,@RequestParam("id") Long id) {
+		m.put("premio",repoPremioPar.getOne(id));
+		m.put("participantes",repoParticipante.findByIsNominadoTrue());
+		m.put("view", "premmio/addVotoP");
+		return "_t/frame";
 	}
+	  
+	  @PostMapping("addVotoP")
+	  public void addVotoPost(@RequestParam("id") Long idParticipante, @RequestParam("idPremio") Long idPremio) {
+		  Participante parti = repoParticipante.getOne(idParticipante) ;
+		  Premio_Participante premioP = repoPremioPar.getOne(idPremio);
+	  }
 }

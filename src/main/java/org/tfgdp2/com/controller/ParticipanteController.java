@@ -15,7 +15,6 @@ import org.tfgdp2.com.repository.NominacionParticipanteRepository;
 import org.tfgdp2.com.repository.ParticipanteRepository;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
