@@ -22,7 +22,7 @@ public class Nominacion_Juego {
 	private String nombre;
 	
 	@ManyToMany(mappedBy="nominado")
-	private Collection<Participante> juegos; 
+	private Collection<Juego> juegos; 
 	
 	@ManyToOne
 	private Premio_Juego premio;
@@ -61,11 +61,11 @@ public class Nominacion_Juego {
 		this.nombre = nombre;
 	}
 
-	public Collection<Participante> getJuegos() {
+	public Collection<Juego> getJuegos() {
 		return juegos;
 	}
 
-	public void setJuegos(Collection<Participante> juegos) {
+	public void setJuegos(Collection<Juego> juegos) {
 		this.juegos = juegos;
 	}
 
