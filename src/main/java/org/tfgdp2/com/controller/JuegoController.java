@@ -16,12 +16,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.tfgdp2.com.domain.Categoria_Juego;
 import org.tfgdp2.com.domain.Foro;
 import org.tfgdp2.com.domain.Juego;
 import org.tfgdp2.com.domain.Plataforma;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.PRG;
+import org.tfgdp2.com.repository.Categoria_JuegoRepository;
 import org.tfgdp2.com.repository.ForoRepository;
 import org.tfgdp2.com.repository.JuegoRepository;
 import org.tfgdp2.com.repository.PlataformaRepository;
@@ -35,6 +37,9 @@ public class JuegoController {
 	private PlataformaRepository repoPlat;
 	@Autowired
 	private ForoRepository repoForo;
+	@Autowired
+	private Categoria_JuegoRepository repoCategoriaJ;
+	
 	@GetMapping("r")
 	public String read(ModelMap m) {
 		List<Juego> juegos = repoJuego.findAll();
@@ -47,6 +52,7 @@ public class JuegoController {
 	public String cGet(ModelMap m) {
 		List<Plataforma> plataformas = repoPlat.findAll();
 		m.put("plataformas", plataformas);
+		m.put("categorias", repoCategoriaJ.findAll());
 		m.put("view", "/juego/c");
 		return "/_t/frame";
 	}
@@ -73,6 +79,12 @@ public class JuegoController {
 				Plataforma pl = repoPlat.getOne(id);
 				pl.getJuegos().add(j);
 				j.getPlataformas().add(pl);
+			}
+			
+			for (Long id : idsCat) {
+				Categoria_Juego cat = repoCategoriaJ.getOne(id);
+				cat.getJuegos().add(j);
+				j.getPertenece().add(cat);
 			}
 			repoJuego.save(j);
 			
@@ -117,6 +129,7 @@ public class JuegoController {
 
 		m.put("juego", repoJuego.getOne(id));
 		m.put("plataformas", repoPlat.findAll());
+		m.put("categorias", repoCategoriaJ.findAll());
 		m.put("view", "/juego/U");
 		return "/_t/frame";
 	}
@@ -148,6 +161,15 @@ public class JuegoController {
 				plataformasNew.add(pl);
 			}
 			j.setPlataformas(plataformasNew);
+			
+			List<Categoria_Juego> categoriasNew = new ArrayList<Categoria_Juego>();
+			for (Long idCat : idsCat) {
+				Categoria_Juego cat = repoCategoriaJ.getOne(idCat);
+				cat.getJuegos().add(j);
+				categoriasNew.add(cat);
+			}
+			j.setPertenece(categoriasNew);
+			
 			repoJuego.save(j);
 		} catch (Exception e) {
 			PRG.error("Error al actualizar " + nombre , "/juego/c");
@@ -157,9 +179,7 @@ public class JuegoController {
 	}
 	
 	@PostMapping("d")
-	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {
-
-		
+	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {		
 		try {
 			repoJuego.deleteById(id);
 		} catch (Exception e) {

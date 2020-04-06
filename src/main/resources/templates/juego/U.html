@@ -35,7 +35,7 @@
 	<fieldset>
 		<legend>Categorias</legend>
 			<span th:each="categoria:${categorias}" >
-				<input type="checkbox" th:id="|cat-${categoria.id}|" th:name="idCat[]" th:value="${categoria.id}" th:checked="${juego.categorias.contains(categoria)}"/>
+				<input type="checkbox" th:id="|cat-${categoria.id}|" th:name="idCat[]" th:value="${categoria.id}" th:checked="${juego.pertenece.contains(categoria)}"/>
 				<label th:for="|cat-${categoria.id}|" th:text="${categoria.nombre}"></label>
 			</span>
 	</fieldset>	

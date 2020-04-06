@@ -34,7 +34,7 @@
 			<td th:text="${juego.teaser}"></td>
 			<td th:text="${juego.img}"></td>
 			<td>
-				<ul th:each="categoria:${juego.categorias}">
+				<ul th:each="categoria:${juego.pertenece}">
 					<li th:text="${categoria.nombre}"></li>
 				</ul>
 			</td>
