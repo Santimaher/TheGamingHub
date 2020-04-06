@@ -18,9 +18,10 @@ public class Gala {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(unique = true)
 	private String edicion;
 	
-	private boolean isActivo;
+	private boolean activo;
 	
 	private String observaciones;
 	@Column(unique = true)
@@ -80,17 +81,18 @@ public class Gala {
 	public void setFin(LocalDate fin) {
 		this.fin = fin;
 	}
-	public boolean isActivo() {
-		return isActivo;
-	}
-	public void setActivo(boolean isActivo) {
-		this.isActivo = isActivo;
-	}
+	
 	public String getObservaciones() {
 		return observaciones;
 	}
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
+	}
+	public boolean isActivo() {
+		return activo;
+	}
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 	
 	
