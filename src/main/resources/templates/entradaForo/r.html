@@ -1,17 +1,27 @@
 <div class="container">
 <form action="http://localhost:8080/entradaForo/c" method="get">
 					<input type="hidden" name="id" th:value="${id}" />
+					<input type="hidden" name="idJuego" th:value="${idJuego}">
 					<button onclick="submit()">
 						Crear
 					</button>
 				</form>
+				
+				<form action="/foro/r" method="get">
+					<input type="hidden" name="id" th:value="${idJuego}">
+					<button onclick="submit()">
+						Menu
+					</button>
+				</form>
 <table class="table table-striped">
 		<tr>
+		    <th>Ranking</th>
 			<th>Comentario</th>
 			<th>Fecha de publicacion</th>
 		</tr>
 		 
 		<tr th:each="entrada:${entradas}">
+		<td th:text="${entrada.ranking}"></td>
 		<td th:text="${entrada.comentario}"></td>
 		<td th:text="${entrada.fechaPublicacion}"></td>
 		<td class="row">

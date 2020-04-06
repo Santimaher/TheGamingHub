@@ -30,6 +30,7 @@ public class EntradaForoController {
 	public String leer(@RequestParam("id") Long id, ModelMap m) {
 		m.put("view","/entradaForo/r");
 		m.put("id",id);
+		m.put("idJuego", repoForo.getOne(id).getJuego().getId());
 		m.put("entradas",repoEntrada.findByPerteneceIdOrderByRankingDesc(id));
 		return "_t/frame";
 	}
