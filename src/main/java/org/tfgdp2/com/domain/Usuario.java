@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class Usuario {
 
 //	@ManyToMany(mappedBy="votacion")
 //    private Collection<Juego> votaciones;
-	@OneToMany(mappedBy="escribe")
+	@OneToMany(mappedBy="escribe",fetch= FetchType.EAGER)
     private Collection<EntradaForo> entradas;
 //	@OneToMany(mappedBy="factura")
 //    private Collection<Factura> facturas;

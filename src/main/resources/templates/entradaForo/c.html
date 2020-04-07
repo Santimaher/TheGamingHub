@@ -3,7 +3,8 @@
 
 	<form method="post" action="/entradaForo/c" class="form">
 
-		Comentario <input type="text" name="comentario" class="form-item"> <br>
+		Comentario <br>
+		<textarea name="comentario" cols="30" rows="5" min="1"></textarea> <br>
 		<input type="hidden" name="id" th:value="${id}" />
 		<input type="submit"><br>
 	</form>

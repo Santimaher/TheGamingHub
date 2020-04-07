@@ -9,5 +9,5 @@ import org.tfgdp2.com.domain.EntradaForo;
 @Repository
 public interface EntradaForoRepository extends JpaRepository<EntradaForo, Long>{
 	public List <EntradaForo> findByPerteneceIdOrderByRankingDesc(Long id);
-
+	public List <EntradaForo> findByPerteneceIdAndEscribeIdOrderByRankingDesc(Long idForo,Long idUsuario);
 }
