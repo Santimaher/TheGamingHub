@@ -42,7 +42,7 @@ public class ParticipanteController {
 		m.put("view", "participante/c");
 		
 	}catch(Exception e) {
-		m.put("view", "/");	
+		m.put("view", "home");	
 	}
 	return "_t/frame";
 	}
