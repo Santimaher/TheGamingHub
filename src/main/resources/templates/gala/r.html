@@ -1,33 +1,46 @@
 <div class="container">
-<table class="table table-stripped">
-	<th>
-		<td>Edicion</td>
-		<td>Fecha de Inicio</td>
-		<td>Fecha Fin</td>
-		<td>Añadir Observacion</td>
-		<td>Gala activa?</td>
-	</th>
-	<tr th:each="gala:${galas}">
-		<td th:text="${gala.edicion}"></td>
-		<td th:text="${gala.inicio}"></td>
-		<td th:text="${gala.fin}"></td>
-		<td>
-			<form action="/gala/observacion" method="get">
-				<input type="hidden" name="id" th:value="${gala.id}" />
-				<button onclick="submit()">
-					Añadir observacion
-				</button>
-			</form>
-		</td>
-		<td>
-			<form action="/gala/activar" method="post">
-				<input type="hidden" name="id" th:value="${gala.id}" />
-				<button onclick="submit()">
-					Activar/Desactivar
-				</button>
-			</form>
-		</td>
-		<td th:text="${gala.activo} ? '✔':'X' "></td>
-	</tr>
-</table>
+	<table class="table table-stripped">
+		<tr>
+			<th>Edicion</th>
+			<th>Fecha de Inicio</th>
+			<th>Fecha Fin</th>			
+			<th>Observacion</th>
+			<th>Gala activa?</th>
+			<th>Acciones</th>
+		<tr>
+		<tr th:each="gala:${galas}">
+			<td th:text="${gala.edicion}"></td>
+			<td th:text="${gala.inicio}"></td>
+			<td th:text="${gala.fin}"></td>
+			<td th:text="${gala.observaciones}"></td>
+			<td th:text="${gala.activo} ? 'Activada':'Desactivada'"></td>
+			<td>
+				<form action="/gala/observacion" method="get">
+					<input type="hidden" name="id" th:value="${gala.id}" />
+					<button onclick="submit()">Añadir observacion</button>
+				</form>
+				<br/>
+				<form action="/gala/activar" method="post">
+					<input type="hidden" name="id" th:value="${gala.id}" />
+					<button onclick="submit()">Activar/Desactivar</button>
+				</form>
+				<br/>
+				<form action="/gala/u" method="get">
+					<input type="hidden" name="id" th:value="${gala.id}" />
+					<button onclick="submit()">
+						<img src="/img/edit.png" height="20" width="20">
+					</button>
+				</form>
+				<br/>
+				<form action="/gala/d" method="post">
+					<input type="hidden" name="id" th:value="${gala.id}" />
+					<button onclick="submit()">
+						<img src="/img/delete.png" height="20" width="20">
+					</button>
+				</form>
+			</td>
+
+
+		</tr>
+	</table>
 </div>

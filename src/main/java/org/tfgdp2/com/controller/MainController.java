@@ -14,10 +14,43 @@ import org.tfgdp2.com.domain.Usuario;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
+import org.tfgdp2.com.repository.Categoria_JuegoRepository;
+import org.tfgdp2.com.repository.EntradaForoRepository;
+import org.tfgdp2.com.repository.ForoRepository;
+import org.tfgdp2.com.repository.GalaRepository;
+import org.tfgdp2.com.repository.JuegoRepository;
+import org.tfgdp2.com.repository.NominacionJuegoRepository;
+import org.tfgdp2.com.repository.NominacionParticipanteRepository;
+import org.tfgdp2.com.repository.ParticipanteRepository;
+import org.tfgdp2.com.repository.PlataformaRepository;
+import org.tfgdp2.com.repository.PremioJuegoRepository;
+import org.tfgdp2.com.repository.PremioParticipanteRepository;
 import org.tfgdp2.com.repository.UsuarioRepository;
 
 @Controller
 public class MainController {
+	@Autowired
+	private Categoria_JuegoRepository repoCategoriaJ;
+	@Autowired
+	private EntradaForoRepository repoEntradaF;
+	@Autowired
+	private ForoRepository repoForo;
+	@Autowired
+	private GalaRepository repoGala;
+	@Autowired
+	private JuegoRepository repoJuego;
+	@Autowired
+	private NominacionJuegoRepository repoNomJ;
+	@Autowired
+	private NominacionParticipanteRepository repoNomP;
+	@Autowired
+	private ParticipanteRepository repoParticipante;
+	@Autowired
+	private PlataformaRepository repoPlataforma;
+	@Autowired
+	private PremioJuegoRepository repoPremioJ;
+	@Autowired
+	private PremioParticipanteRepository repoPremioP;
 	@Autowired
 	private UsuarioRepository usuarioRepo;
 	
@@ -80,6 +113,7 @@ public class MainController {
 		return "redirect:/usuario/c";
 		
 	}
+
 	@GetMapping("/cambioContrasenia")
 	public String cambioContrasenia(ModelMap m,HttpSession s) 
 	{
@@ -109,4 +143,41 @@ public class MainController {
 	}
 		
 	
+
+	
+
+	@GetMapping("/init")
+	public String initGet(ModelMap m) throws DangerException {
+		if (usuarioRepo.getByLoginname("admin") != null) {
+			PRG.error("BD no vacía");
+		}
+		m.put("view", "/anonymous/init");
+		return "/_t/frame";
+	}
+	
+	@PostMapping("/init")
+	public String initPost(@RequestParam("password") String password, ModelMap m) throws DangerException {
+		if (usuarioRepo.getByLoginname("admin") != null) {
+			PRG.error("Operación no válida. BD no vacía");
+		}
+		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
+		if (!bpe.matches(password, bpe.encode("admin"))) { // Password harcoded
+			PRG.error("Contraseña incorrecta","/init");
+		}
+		repoCategoriaJ.deleteAll();
+		repoEntradaF.deleteAll();
+		repoForo.deleteAll();
+		repoGala.deleteAll();
+		repoJuego.deleteAll();
+		repoNomJ.deleteAll();
+		repoNomP.deleteAll();
+		repoParticipante.deleteAll();
+		repoPlataforma.deleteAll();
+		repoPremioJ.deleteAll();
+		repoPremioP.deleteAll();
+		usuarioRepo.deleteAll();
+		usuarioRepo.save(new Usuario("admin", "admin",bpe.encode("admin"), "admin"));
+		return "redirect:/";
+	}
+
 }

@@ -7,4 +7,5 @@ import org.tfgdp2.com.domain.Gala;
 @Repository
 public interface GalaRepository extends JpaRepository<Gala, Long> {
 
+	public Long deleteGalaById (Long id);
 }

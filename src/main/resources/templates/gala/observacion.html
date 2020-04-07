@@ -2,7 +2,7 @@
 	<h1 th:text="|Observaciones de la gala ${gala.edicion}|"></h1>
 	<form action="observacion" method="post">
 	<input type="hidden" name="id" th:value="${gala.id}">
-	<textarea rows="50" cols="50" name="observacion"></textarea>
+	<textarea rows="10" cols="50" th:text="${gala.observaciones}" name="observacion"></textarea>
 	<input type="submit">
 	</form>
 </div>
