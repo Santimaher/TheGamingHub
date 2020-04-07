@@ -50,7 +50,7 @@ public class PremioController {
 		  try {
 	  m.put("view","premio/c"); 
 	  }catch(Exception e) {
-		  m.put("view", "/");
+		  m.put("view", "home");
 		  }
 	  return "_t/frame";
 	  }
@@ -63,23 +63,24 @@ public class PremioController {
 				  
 				  Premio_Participante pp = new Premio_Participante(nombre); 
 				  repoPremioPar.save(pp); 
-				  }else {
+				  }
+			  if(tipo=="juego"){
 					  Premio_Juego pj = new Premio_Juego(nombre);
 	  	              repoPremioJuego.save(pj); 
 	  } 
 			  }catch(Exception e) { 
-				  PRG.error("Error al crear el premio","/premio/c"); 
+				  PRG.error("Error al crear el premio. "+e.getMessage()+"","/premio/c"); 
 				  }
-	  PRG.info("Premio creado correctamente.","premio/r"); 
+		  PRG.info("Creado correctamente","/premio/rParticipante");
 	  }
 	  
 	  
-	  @GetMapping("r") 
+	  @GetMapping("rParticipante") 
 	  public String r(ModelMap m) {
 		  
 		  m.put("nomPartipantes",repoPremioPar.findAll()); 
 		  m.put("nomJuegos",repoPremioJuego.findAll()); 
-		  m.put("view", "premio/r");
+		  m.put("view", "premio/rParticipante");
 		  
 		  return "_t/frame"; 
 		  }
@@ -113,7 +114,7 @@ public class PremioController {
 	  @GetMapping("addVotoP")
 	public String addVotoP(ModelMap m,@RequestParam("id") Long id) {
 		m.put("premio",repoPremioPar.getOne(id));
-		m.put("participantes",repoParticipante.findByIsNominadoTrue());
+		//m.put("participantes",repoParticipante.findByIsNominadoTrue());
 		m.put("view", "premmio/addVotoP");
 		return "_t/frame";
 	}

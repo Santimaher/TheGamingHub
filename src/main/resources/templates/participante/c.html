@@ -8,10 +8,7 @@
 		Biografía <input type="text" name="bio" class="form-item"> <br>
 		Teaser <input type="text" name="teaser" class="form-item"><br>
 		Imagen<input type="file" name="img" class="form-item">  <br>
-		Nominación
-		<select name="idNominacion[]">
-			<option th:each="nominacion:${nominaciones}" th:text="${nominacion.nombre}" th:value="${nominacion.id}"></option>
-		</select>
+
 		<br/>
 		<input type="submit" class="form-item"><br>
 	</form>

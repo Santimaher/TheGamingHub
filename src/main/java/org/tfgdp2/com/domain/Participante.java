@@ -28,8 +28,8 @@ public class Participante {
 	
 	private Integer cantidadVotos;
 	
-
-	private boolean isNominado;
+	private boolean estaNominado;
+	
 	
 
 	@ManyToMany
@@ -54,13 +54,13 @@ public class Participante {
 		
 	}
 	
-	public Participante(String nombre, String apellido, String bio, String teaser, boolean isNominado) {
+	public Participante(String nombre, String apellido, String bio, String teaser, boolean estaNominado) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.bio = bio;
 		this.teaser = teaser;
-		this.isNominado=isNominado;
+		this.estaNominado=estaNominado;
 		this.nominado = new ArrayList<>();
 		
 	}
@@ -117,19 +117,18 @@ public class Participante {
 	public Integer getCantidadVotos() {
 		return cantidadVotos;
 	}
+	
+	public boolean isEstaNominado() {
+		return estaNominado;
+	}
+
+	public void setEstaNominado(boolean estaNominado) {
+		this.estaNominado = estaNominado;
+	}
 
 	public void setCantidadVotos(Integer cantidadVotos) {
 		this.cantidadVotos = cantidadVotos;
 	}
-
-	public void setNominado(boolean isNominado) {
-		this.isNominado = isNominado;
-	}
-	
-	public boolean isNominado() {
-		return isNominado;
-	}
-
 
 	public Collection<Nominacion_Participante> getNominado() {
 		return nominado;

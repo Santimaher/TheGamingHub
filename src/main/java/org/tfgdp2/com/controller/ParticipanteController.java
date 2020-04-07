@@ -52,19 +52,11 @@ public class ParticipanteController {
 			@RequestParam("img") MultipartFile imgFile,
 			@RequestParam("bio")String bio,
 			@RequestParam("teaser") String teaser,
-			@RequestParam(value="idNominacion[]", required =false)  List<Long>idNom,
 			HttpSession s) throws DangerException  {
 		
 		try {
 			H.isRolOK("admin", s);
 			Participante participante = new Participante(nombre,apellido,bio,teaser);
-			
-			
-			for (Long id: idNom) {
-				Nominacion_Participante np = repoNominacion.getOne(id);
-				np.getParticipantes().add(participante);
-				participante.getNominado().add(np);
-			}
 			
 			String uploadDir = "/img/upload/";
 			String uploadDirRealPath = "";
@@ -86,7 +78,7 @@ public class ParticipanteController {
 			repoParticipante.save(participante);			
 			
 		}catch(Exception e) {
-			PRG.error("Error al crear el participante", "/participante/c");
+			PRG.error("Error al crear el participante "+e.getStackTrace()+"", "/participante/c");
 		}
 		
 		return "redirect:/participante/r";
@@ -128,7 +120,6 @@ public class ParticipanteController {
 			@RequestParam("img") MultipartFile imgFile,
 			@RequestParam("bio")String bio,
 			@RequestParam("teaser") String teaser,
-			@RequestParam("idNominacion[]") List<Long> idN,
 			HttpSession s) throws DangerException, InfoException {
 		
 		try {

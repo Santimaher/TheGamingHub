@@ -6,9 +6,9 @@
 	
 	</tr>
 	<tr th:each="nparticipante:${nomPartipantes}">
-		<td th:text="${nparticipante.nombre?.isVotado}"></td>
+		<td th:text="${nparticipante.nombrePremio?.estaNominado}"></td>
 		<td class="row">
-		<a href="/nominacion/addVotoP">
+		<a href="/premio/addVotoP">
 		  <button>Añadir Voto</button>
 	      </a>
 				<form action="/premio/addVotoP" method="get">
@@ -30,7 +30,7 @@
 	
 	</tr>
 	<tr th:each="njuego:${nomJuegos}">
-		<td th:text="${njuego.nombre}"></td>
+		<td th:text="${njuego.nombrePremio}"></td>
 		
 		<td class="row">
 				<form action="/premio/addVoto" method="get">

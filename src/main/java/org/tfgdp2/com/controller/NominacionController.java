@@ -36,8 +36,8 @@ public class NominacionController {
 	@PostMapping("nominarParticipante")
 	public void nominarPpost(@RequestParam("id") Long idParticipante) throws InfoException, DangerException {
 		Participante p = repoParticipante.getOne(idParticipante);
-		p.setNominado(true);
-		if(p.isNominado()) {
+		p.setEstaNominado(true);
+		if(p.isEstaNominado()) {
 			PRG.info("Participante nominado correctamente.", "nominacion/nominarParticipante");
 		} else {
 			PRG.error("El partipante no se pudo nominar");
@@ -54,8 +54,8 @@ public class NominacionController {
 	@PostMapping("nominarJuego")
 	public void nominarJpost(@RequestParam("id") Long idJuego) throws DangerException, InfoException{
 		Juego j = repoJuego.getOne(idJuego);
-		j.setNominado(true);
-		if(j.isNominado()) {
+		j.setEstaNominado(true);
+		if(j.isEstaNominado()) {
 			PRG.info("El juego nominado correctamente.", "nominacion/nominarParticipante");
 		} else {
 			PRG.error("El juego no se pudo nominar");

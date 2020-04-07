@@ -38,9 +38,8 @@ public class Juego {
 	
 	private Integer cantidadVotos;
 	
-	
+	private boolean estaNominado;
 
-	private boolean isNominado;
 
 
 	@ManyToMany
@@ -123,17 +122,15 @@ public class Juego {
 	public void setCantidadVotos(Integer cantidadVotos) {
 		this.cantidadVotos = cantidadVotos;
 	}
+	
+	
 
-	public boolean isNominado() {
-		return isNominado;
+	public boolean isEstaNominado() {
+		return estaNominado;
 	}
 
-	public void setNominado(boolean isNominado) {
-		this.isNominado = isNominado;
-	}
-
-	public void setVotado(boolean isNominado) {
-		this.isNominado = isNominado;
+	public void setEstaNominado(boolean estaNominado) {
+		this.estaNominado = estaNominado;
 	}
 
 	public Collection<Plataforma> getPlataformas() {
