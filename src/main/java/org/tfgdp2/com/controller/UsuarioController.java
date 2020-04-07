@@ -63,21 +63,48 @@ public class UsuarioController {
 		return "/_t/frame";
 	}
 
-	@PostMapping("u")
-	public String u(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
+	
+	@GetMapping("uUsuario")
+	public String uUsuario(ModelMap m, HttpSession s) throws DangerException {
 		H.isRolOK("auth", s);
-		m.put("usuario", usuarioRepo.getOne(id));
-		m.put("view", "/usuario/u");
+		Usuario usu=(Usuario) s.getAttribute("usuario");
+		m.put("usuario", usuarioRepo.getOne(usu.getId()));
+		m.put("view", "/usuario/uUsuario");
 		return "/_t/frame";
 
 	}
-
-	@PostMapping("uPost")
-	public String uPost(@RequestParam("nombre") String nombreusuario, @RequestParam("loginname") String log,
+	@PostMapping("uUsuarioPost")
+	public String uUsuarioPost(@RequestParam("nombre") String nombreusuario, @RequestParam("loginname") String log,
 			@RequestParam("id") Long id, @RequestParam("email") String email, HttpSession s) throws DangerException {
 		
 		try {
 			H.isRolOK("auth", s);
+			Usuario usuario = usuarioRepo.getOne(id);
+			usuario.setNombre(nombreusuario);
+			usuario.setLoginname(log);
+			usuario.setEmail(email);
+
+			usuarioRepo.save(usuario);
+
+		} catch (Exception e) {
+			PRG.error("Error al editar " + nombreusuario, "/usuario/r");
+		}
+		return "redirect:/usuario/r";
+	}
+	@PostMapping("uAdmin")
+	public String uAdmin(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
+		H.isRolOK("admin", s);
+		m.put("usuario", usuarioRepo.getOne(id));
+		m.put("view", "/usuario/uAdmin");
+		return "/_t/frame";
+
+	}
+	@PostMapping("uAdminPost")
+	public String uAdminPost(@RequestParam("nombre") String nombreusuario, @RequestParam("loginname") String log,
+			@RequestParam("id") Long id, @RequestParam("email") String email, HttpSession s) throws DangerException {
+		
+		try {
+			H.isRolOK("admin", s);
 			Usuario usuario = usuarioRepo.getOne(id);
 			usuario.setNombre(nombreusuario);
 			usuario.setLoginname(log);

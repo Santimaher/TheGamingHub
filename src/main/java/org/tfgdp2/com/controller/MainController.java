@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.tfgdp2.com.domain.Usuario;
 import org.tfgdp2.com.exception.DangerException;
+import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.UsuarioRepository;
 
@@ -79,4 +80,33 @@ public class MainController {
 		return "redirect:/usuario/c";
 		
 	}
+	@GetMapping("/cambioContrasenia")
+	public String cambioContrasenia(ModelMap m,HttpSession s) 
+	{
+		m.put("usuario",s.getAttribute("usuario"));
+		m.put("view", "/usuario/cambiarContrasenia");
+		return "/_t/frame";
+		
+	}
+	@PostMapping("/cambioContrasenia")
+	public String cambioContrasenia(ModelMap m,HttpSession s,@RequestParam("id")Long id,@RequestParam("passwordAc")String actual,@RequestParam("passwordNu")String nueva ) throws DangerException 
+	{
+		Usuario usu=null;
+		try {
+			
+			H.isRolOK("auth", s);
+			 usu = usuarioRepo.getOne(id);
+			if (!(new BCryptPasswordEncoder()).matches(actual, usu.getPassword())) {
+				throw new Exception();
+			}
+			usu.setPassword(nueva);
+			usuarioRepo.save(usu);
+
+		} catch (Exception e) {
+			PRG.error("Error al editar la contraseña de " + usu.getNombre() , "/usuario/r");
+		}
+		return "redirect:/usuario/r";
+	}
+		
+	
 }
