@@ -47,6 +47,18 @@ public class Usuario {
 		
 	}
 	
+	
+	
+	public Usuario(String nombre, String loginname, String password, String rol) {
+		super();
+		this.nombre = nombre;
+		this.loginname = loginname;
+		this.password = password;
+		this.rol = rol;
+	}
+
+
+
 	//===============================================
 	
 	
