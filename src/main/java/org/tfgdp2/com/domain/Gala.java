@@ -21,7 +21,7 @@ public class Gala {
 	@Column(unique = true)
 	private String edicion;
 	
-	private boolean activo;
+	private Boolean activo;
 	
 	private String observaciones;
 	@Column(unique = true)
@@ -88,12 +88,13 @@ public class Gala {
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
 	}
-	public boolean isActivo() {
+	public Boolean getActivo() {
 		return activo;
 	}
-	public void setActivo(boolean activo) {
+	public void setActivo(Boolean activo) {
 		this.activo = activo;
 	}
+
 	
 	
 	

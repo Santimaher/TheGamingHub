@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.tfgdp2.com.domain.Foro;
 import org.tfgdp2.com.domain.Gala;
 import org.tfgdp2.com.domain.Plataforma;
 import org.tfgdp2.com.exception.DangerException;
@@ -88,16 +89,14 @@ public class GalaController {
 	@PostMapping("activar")
 	public void activar(ModelMap m,
 			@RequestParam("id") Long id,
-			HttpSession s) throws DangerException, InfoException {		
+			HttpSession s) throws DangerException, InfoException {	
 		try {
-			Gala g = repoGala.getOne(id);
-			Boolean estado = g.isActivo();
-			if(estado=true) {
+			Gala g = repoGala.getOne(id);			
+			if(g.getActivo()) {
 				g.setActivo(false);
-				
 			}
 			else {
-				g.setActivo(true);
+				g.setActivo(true);				
 				
 			}
 			repoGala.save(g);
@@ -106,5 +105,50 @@ public class GalaController {
 			PRG.error("Fallo en activar/desactivar gala", "/gala/r");
 		}
 		PRG.info("Estado cambiado", "/gala/r");
+	}
+	
+	@GetMapping("u")
+	public String uGet(@RequestParam("id") Long idGala, ModelMap m, HttpSession s) throws DangerException {
+		//H.isRolOK("admin", s);
+		m.put("gala", repoGala.getOne(idGala));
+		m.put("view", "/gala/U");
+		return "/_t/frame";
+	}
+	
+	@PostMapping("u")
+	public void uPost(ModelMap m,
+			@RequestParam("id") Long idGala,
+			@RequestParam("edicion") String edicion,
+			@RequestParam("inicio")
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inicio,
+			@RequestParam("fin")
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fin,
+			HttpSession s) throws DangerException, InfoException {
+		
+		try {
+			Gala g = repoGala.getOne(idGala);
+			g.setEdicion(edicion);
+			g.setInicio(inicio);
+			g.setFin(fin);
+			
+			repoGala.save(g);
+			
+		} catch (Exception e) {
+			PRG.error("Gala " + edicion + " duplicada", "/gala/r");
+		}
+		PRG.info("Gala " + edicion + " actualizada correctamente", "/gala/r");
+	}
+	
+	@PostMapping("d")
+	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {		
+		try {
+			//H.isRolOK("admin", s);
+			repoGala.deleteGalaById(id);
+		} catch (Exception e) {
+			PRG.error("Error al borrar la Gala", "/gala/r");
+		}
+
+		PRG.info("Gala borrada correctamente", "/juego/r");
+
 	}
 }
