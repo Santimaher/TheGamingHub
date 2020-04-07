@@ -25,112 +25,116 @@ import org.tfgdp2.com.repository.PremioParticipanteRepository;
 @Controller
 @RequestMapping("/premio")
 public class PremioController {
-	 
+
 	@Autowired
 	private NominacionJuegoRepository repoNomJuego;
-	
+
 	@Autowired
 	private NominacionParticipanteRepository repoNomPar;
-	
+
 	@Autowired
 	private PremioParticipanteRepository repoPremioPar;
-	
+
 	@Autowired
 	private PremioJuegoRepository repoPremioJuego;
-	
+
 	@Autowired
 	private ParticipanteRepository repoParticipante;
-	
+
 	@Autowired
 	private JuegoRepository repoJuego;
-	
-	
-	  @GetMapping("c") 
-	  public String cGet(ModelMap m) { 
-		  try {
-	  m.put("view","premio/c"); 
-	  }catch(Exception e) {
-		  m.put("view", "home");
-		  }
-	  return "_t/frame";
-	  }
-	  
-	  @PostMapping("c")
-	  public void cPost(@RequestParam("nombre") String nombre, @RequestParam("tipo") String tipo) throws DangerException,
-	  InfoException{ 
-		  try {
-			  if(tipo=="participante") { 
-				  
-				  Premio_Participante pp = new Premio_Participante(nombre); 
-				  repoPremioPar.save(pp); 
-				  }
-			  if(tipo=="juego"){
-					  Premio_Juego pj = new Premio_Juego(nombre);
-	  	              repoPremioJuego.save(pj); 
-	  } 
-			  }catch(Exception e) { 
-				  PRG.error("Error al crear el premio. "+e.getMessage()+"","/premio/c"); 
-				  }
-		  PRG.info("Creado correctamente","/premio/rParticipante");
-	  }
-	  
-	  
-	  @GetMapping("rParticipante") 
-	  public String r(ModelMap m) {
-		  
-		  m.put("nomPartipantes",repoPremioPar.findAll()); 
-		  m.put("nomJuegos",repoPremioJuego.findAll()); 
-		  m.put("view", "premio/rParticipante");
-		  
-		  return "_t/frame"; 
-		  }
-	  
-	  @PostMapping("dP") 
-	  public String deleteP(@RequestParam("id") Long id) throws DangerException { 
-		  try {
-	  
-	  Premio_Participante n=repoPremioPar.getOne(id); 
-	  repoPremioPar.delete(n);
-	  
-	  }catch(Exception e) {
-	  PRG.error("Error al eliminar el premio","/premio/r"); 
-	  } 
-		  return "redirect:/premio/r"; 
-		  }
-	  
-	  @PostMapping("dJ") 
-	  public String deleteJ(@RequestParam("id") Long id) throws DangerException { 
-		  try { 
-			  Premio_Juego njuego = repoPremioJuego.getOne(id);
-			  repoPremioJuego.delete(njuego);
-	  
-	  }catch(Exception e) {
-	  PRG.error("Error al eliminar el premio","/premio/r"); 
-	  } 
-		  return "redirect:/premio/r"; 
-		  }
-	 
-	
-	  @GetMapping("addVotoP")
-	public String addVotoP(ModelMap m,@RequestParam("id") Long id) {
-		m.put("premio",repoPremioPar.getOne(id));
-		//m.put("participantes",repoParticipante.findByIsNominadoTrue());
+
+	@GetMapping("c")
+	public String cGet(ModelMap m) {
+		try {
+			m.put("view", "premio/c");
+		} catch (Exception e) {
+			m.put("view", "home");
+		}
+		return "_t/frame";
+	}
+
+	@PostMapping("c")
+	public void cPost(@RequestParam("nombre") String nombre, @RequestParam("tipo") String tipo)
+			throws DangerException, InfoException {
+		
+			if (tipo.equals("participante")) {
+				try {
+				Premio_Participante pp = new Premio_Participante(nombre);
+				repoPremioPar.save(pp);
+				}
+				catch (Exception e) {
+					PRG.error("Error al crear el premio. " + e.getMessage() + "", "/premio/c");
+				}
+			}
+			if (tipo.equals("juego")) {
+				try {
+				Premio_Juego pj = new Premio_Juego(nombre);
+				repoPremioJuego.save(pj);
+				}
+				catch (Exception e) {
+					PRG.error("Error al crear el premio. " + e.getMessage() + "", "/premio/c");
+				}
+			}
+		 
+		PRG.info("Premio creado", "/premio/rParticipante");
+	}
+
+	@GetMapping("rParticipante")
+	public String r(ModelMap m) {
+
+		m.put("nomPartipantes", repoPremioPar.findAll());
+		m.put("nomJuegos", repoPremioJuego.findAll());
+		m.put("view", "premio/rParticipante");
+
+		return "_t/frame";
+	}
+
+	@PostMapping("dP")
+	public String deleteP(@RequestParam("id") Long id) throws DangerException {
+		try {
+
+			Premio_Participante n = repoPremioPar.getOne(id);
+			repoPremioPar.delete(n);
+
+		} catch (Exception e) {
+			PRG.error("Error al eliminar el premio", "/premio/r");
+		}
+		return "redirect:/premio/r";
+	}
+
+	@PostMapping("dJ")
+	public String deleteJ(@RequestParam("id") Long id) throws DangerException {
+		try {
+			Premio_Juego njuego = repoPremioJuego.getOne(id);
+			repoPremioJuego.delete(njuego);
+
+		} catch (Exception e) {
+			PRG.error("Error al eliminar el premio", "/premio/r");
+		}
+		return "redirect:/premio/r";
+	}
+
+	@GetMapping("addVotoP")
+	public String addVotoP(ModelMap m, @RequestParam("id") Long id) {
+		m.put("premio", repoPremioPar.getOne(id));
+		// m.put("participantes",repoParticipante.findByIsNominadoTrue());
 		m.put("view", "premmio/addVotoP");
 		return "_t/frame";
 	}
-	  
-	  @PostMapping("addVotoP")
-	  public void addVotoPost(@RequestParam("id") Long idParticipante, @RequestParam("idPremio") Long idPremio) {
-		  Participante parti = repoParticipante.getOne(idParticipante);
-		  Premio_Participante premioP = repoPremioPar.getOne(idPremio);
-		  try {
-			  Integer aux= parti.getCantidadVotos();
-			  aux=+1;
-			  parti.setCantidadVotos(aux);
-			  Nominacion_Participante nompar= new Nominacion_Participante();
-			  nompar.getParticipantes().add(parti);
-		  }catch(Exception e) {
-			  
-		  }
-	  }
+
+	@PostMapping("addVotoP")
+	public void addVotoPost(@RequestParam("id") Long idParticipante, @RequestParam("idPremio") Long idPremio) {
+		Participante parti = repoParticipante.getOne(idParticipante);
+		Premio_Participante premioP = repoPremioPar.getOne(idPremio);
+		try {
+			Integer aux = parti.getCantidadVotos();
+			aux = +1;
+			parti.setCantidadVotos(aux);
+			Nominacion_Participante nompar = new Nominacion_Participante();
+			nompar.getParticipantes().add(parti);
+		} catch (Exception e) {
+
+		}
+	}
 }

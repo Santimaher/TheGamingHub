@@ -6,11 +6,9 @@
 	
 	</tr>
 	<tr th:each="nparticipante:${nomPartipantes}">
-		<td th:text="${nparticipante.nombrePremio?.estaNominado}"></td>
+	<!-- .estaNominado -->
+		<td th:text="${nparticipante.nombrePremio}"></td>
 		<td class="row">
-		<a href="/premio/addVotoP">
-		  <button>Añadir Voto</button>
-	      </a>
 				<form action="/premio/addVotoP" method="get">
 					<input type="hidden" name="id" th:value="${nparticipante.id}" />
 					<button onclick="submit()">
