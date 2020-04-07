@@ -124,13 +124,12 @@ public class Juego {
 		this.cantidadVotos = cantidadVotos;
 	}
 
+	public boolean isNominado() {
+		return isNominado;
+	}
+
 	public void setNominado(boolean isNominado) {
 		this.isNominado = isNominado;
-	}
-	
-
-	public boolean getIsNominado() {
-		return isNominado;
 	}
 
 	public void setVotado(boolean isNominado) {

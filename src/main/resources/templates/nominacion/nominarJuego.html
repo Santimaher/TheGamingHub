@@ -1,0 +1,33 @@
+<div class="container">
+	<h1>Nominar Juegos</h1>
+	<table class="table table-striped">
+		<tr>
+			<th>Nombre</th>
+			
+		</tr>
+
+		<tr th:each="j:${juegos}">
+			<td class="row">
+				<form action="/nominacion/nominarJuego" method="get">
+					<input type="hidden" name="id" th:value="${j.id}" />
+					<button onclick="submit()">
+						Nominar
+					</button>
+				</form>
+				<form action="/juego/d" method="post">
+					<input type="hidden" name="id" th:value="${j.id}" />
+					<button onclick="submit()">
+						<img src="/img/delete.png" height="20" width="20">
+					</button>
+				</form>
+			</td>
+		</tr>
+
+	</table>
+	
+	<a href="/juego/c">
+		<button>Crear</button>
+	</a> <a href="/">
+		<button>Cancelar</button>
+	</a>
+</div>
