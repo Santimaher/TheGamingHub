@@ -37,7 +37,7 @@ public class GalaController {
 	
 	@GetMapping("c")
 	public String cGet(ModelMap m,HttpSession s) throws DangerException {
-		//H.isRolOK("admin", s);		
+		H.isRolOK("admin", s);		
 		m.put("view", "/gala/c");
 		return "/_t/frame";
 	}
@@ -64,7 +64,8 @@ public class GalaController {
 		PRG.info("Gala " + edicion + " creada correctamente", "/gala/r");
 	}
 	@GetMapping("observacion")
-	public String observacion(ModelMap m,@RequestParam("id") Long id) {
+	public String observacion(ModelMap m,@RequestParam("id") Long id, HttpSession s) throws DangerException {
+		H.isRolOK("admin", s);
 		m.put("gala", repoGala.getOne(id));
 		m.put("view", "/gala/observacion");
 		return "/_t/frame";
@@ -91,6 +92,7 @@ public class GalaController {
 			@RequestParam("id") Long id,
 			HttpSession s) throws DangerException, InfoException {	
 		try {
+			H.isRolOK("admin", s);
 			Gala g = repoGala.getOne(id);			
 			if(g.getActivo()) {
 				g.setActivo(false);
@@ -109,7 +111,7 @@ public class GalaController {
 	
 	@GetMapping("u")
 	public String uGet(@RequestParam("id") Long idGala, ModelMap m, HttpSession s) throws DangerException {
-		//H.isRolOK("admin", s);
+		H.isRolOK("admin", s);
 		m.put("gala", repoGala.getOne(idGala));
 		m.put("view", "/gala/U");
 		return "/_t/frame";
@@ -142,7 +144,7 @@ public class GalaController {
 	@PostMapping("d")
 	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {		
 		try {
-			//H.isRolOK("admin", s);
+			H.isRolOK("admin", s);
 			repoGala.deleteGalaById(id);
 		} catch (Exception e) {
 			PRG.error("Error al borrar la Gala", "/gala/r");
