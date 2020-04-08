@@ -68,9 +68,8 @@ public class EntradaForoController {
 		}catch(Exception e) {
 			PRG.error("Error al crear la entrada", "/entradaForo/c");
 		}	
-		m.put("id", id);
 
-		return "/entradaForo/salvoconducto";
+		return "redirect:http://localhost:8080/entradaForo/r?id="+id;
 	}
 	@GetMapping("u")
 	public String update(ModelMap m, @RequestParam("id") Long idEntrada,HttpSession s) throws DangerException {
@@ -85,8 +84,7 @@ public class EntradaForoController {
 		EntradaForo e=repoEntrada.getOne(idEntrada);
 		e.setRanking(e.getRanking()+1);
 		repoEntrada.save(e);
-		m.put("id", id);
-		return "/entradaForo/salvoconducto";
+		return "redirect:http://localhost:8080/entradaForo/r?id="+id;
 	}
 	@GetMapping("dislike")
 	public String quitarLike(ModelMap m, @RequestParam("id") Long idEntrada,@RequestParam("idForo") Long id,HttpSession s) throws DangerException {
@@ -94,9 +92,7 @@ public class EntradaForoController {
 		EntradaForo e=repoEntrada.getOne(idEntrada);
 		e.setRanking(e.getRanking()-1);
 		repoEntrada.save(e);
-		m.put("id", id);
-
-		return "/entradaForo/salvoconducto";
+		return "redirect:http://localhost:8080/entradaForo/r?id="+id;
 	}
 	
 	@PostMapping("u")
@@ -110,8 +106,8 @@ public class EntradaForoController {
 		}catch(Exception e) {
 			PRG.error("Error al actualizar la entrada", "/juego/r");
 		}
-		m.put("id", entradaU.getPertenece().getId());
-		return "/entradaForo/salvoconducto";
+		Long id=entradaU.getPertenece().getId();
+		return "redirect:http://localhost:8080/entradaForo/r?id="+id;
 	}
 	
 	@PostMapping("d")
