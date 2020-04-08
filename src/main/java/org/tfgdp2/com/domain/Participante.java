@@ -28,7 +28,7 @@ public class Participante {
 	
 	private Integer cantidadVotos;
 	
-	private boolean estaNominado;
+	private Boolean estaNominado;
 	
 	
 
@@ -54,7 +54,7 @@ public class Participante {
 		
 	}
 	
-	public Participante(String nombre, String apellido, String bio, String teaser, boolean estaNominado) {
+	public Participante(String nombre, String apellido, String bio, String teaser, Boolean estaNominado) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -117,12 +117,12 @@ public class Participante {
 	public Integer getCantidadVotos() {
 		return cantidadVotos;
 	}
-	
-	public boolean isEstaNominado() {
+
+	public Boolean getEstaNominado() {
 		return estaNominado;
 	}
 
-	public void setEstaNominado(boolean estaNominado) {
+	public void setEstaNominado(Boolean estaNominado) {
 		this.estaNominado = estaNominado;
 	}
 

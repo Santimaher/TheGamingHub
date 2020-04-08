@@ -7,8 +7,9 @@
 		</tr>
 
 		<tr th:each="p:${participantes}">
+		<td th:text="${p.nombre}"></td>
 			<td class="row">
-				<form action="/nominacion/nominarParticipante" method="get">
+				<form action="/nominacion/nominarParticipante" method="post">
 					<input type="hidden" name="id" th:value="${p.id}" />
 					<button onclick="submit()">
 						Nominar

@@ -29,16 +29,16 @@ public class NominacionController {
 	@GetMapping("nominarParticipante")
 	public String nominarParticipante(ModelMap m) {
 		m.put("participantes", repoParticipante.findAll());
-		m.put("view", "nomacion/nominarParticipante");
+		m.put("view", "nominacion/nominarParticipante");
 		return "_t/frame";
 	}
 	
 	@PostMapping("nominarParticipante")
 	public void nominarPpost(@RequestParam("id") Long idParticipante) throws InfoException, DangerException {
 		Participante p = repoParticipante.getOne(idParticipante);
-		p.setEstaNominado(true);
-		if(p.isEstaNominado()) {
-			PRG.info("Participante nominado correctamente.", "nominacion/nominarParticipante");
+		if(p.getEstaNominado()==false) {
+			p.setEstaNominado(true);
+			//PRG.info("Participante nominado correctamente.");
 		} else {
 			PRG.error("El partipante no se pudo nominar");
 		}
@@ -47,15 +47,15 @@ public class NominacionController {
 	@GetMapping("nominarJuego")
 	public String nominarJuego(ModelMap m) {
 		m.put("juegos",repoJuego.findAll());
-		m.put("view", "nomacion/nominarJuego");
+		m.put("view", "nominacion/nominarJuego");
 		return ("_t/frame");
 	}
 	
 	@PostMapping("nominarJuego")
 	public void nominarJpost(@RequestParam("id") Long idJuego) throws DangerException, InfoException{
 		Juego j = repoJuego.getOne(idJuego);
-		j.setEstaNominado(true);
-		if(j.isEstaNominado()) {
+		if(j.getEstaNominado()==false) {
+			j.setEstaNominado(true);
 			PRG.info("El juego nominado correctamente.", "nominacion/nominarParticipante");
 		} else {
 			PRG.error("El juego no se pudo nominar");

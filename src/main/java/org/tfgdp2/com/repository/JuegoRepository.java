@@ -11,7 +11,7 @@ import org.tfgdp2.com.domain.Juego;
 public interface JuegoRepository extends JpaRepository<Juego, Long> {	
 	
 	public Long deleteJuegoById (Long id);
-	//public List<Juego> findByIsNominadoTrue();
+	public List<Juego> findByEstaNominadoTrue();
 
 	
 }

@@ -9,5 +9,5 @@ import org.tfgdp2.com.domain.Participante;
 @Repository
 public interface ParticipanteRepository extends JpaRepository<Participante,Long>{
 
-	//public List<Participante> findByIsNominadoTrue();
+	public List<Participante> findByEstaNominadoTrue();
 }
