@@ -36,12 +36,20 @@ public class NominacionController {
 	@PostMapping("nominarParticipante")
 	public void nominarPpost(@RequestParam("id") Long idParticipante) throws InfoException, DangerException {
 		Participante p = repoParticipante.getOne(idParticipante);
-		if(p.getEstaNominado()==false) {
-			p.setEstaNominado(true);
-			//PRG.info("Participante nominado correctamente.");
+		try {
+		if(p.getEstaNominado()) {
+			p.setEstaNominado(false);
+			
 		} else {
+			p.setEstaNominado(true);
+			
+		}
+		repoParticipante.save(p);
+		}
+		catch (Exception e) {
 			PRG.error("El partipante no se pudo nominar");
 		}
+		PRG.info("Participante nominado correctamente.");
 	}
 	
 	@GetMapping("nominarJuego")

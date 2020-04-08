@@ -54,16 +54,16 @@ public class Participante {
 		
 	}
 	
-	public Participante(String nombre, String apellido, String bio, String teaser, Boolean estaNominado) {
-		super();
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.bio = bio;
-		this.teaser = teaser;
-		this.estaNominado=estaNominado;
-		this.nominado = new ArrayList<>();
-		
-	}
+//	public Participante(String nombre, String apellido, String bio, String teaser, Boolean estaNominado) {
+//		super();
+//		this.nombre = nombre;
+//		this.apellido = apellido;
+//		this.bio = bio;
+//		this.teaser = teaser;
+//		this.estaNominado=estaNominado;
+//		this.nominado = new ArrayList<>();
+//		
+//	}
 
 	//==============================
 	public Long getId() {
