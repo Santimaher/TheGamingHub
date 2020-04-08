@@ -38,7 +38,7 @@ public class Juego {
 	
 	private Integer cantidadVotos;
 	
-	private boolean estaNominado;
+	private Boolean estaNominado;
 
 
 
@@ -123,13 +123,12 @@ public class Juego {
 		this.cantidadVotos = cantidadVotos;
 	}
 	
-	
 
-	public boolean isEstaNominado() {
+	public Boolean getEstaNominado() {
 		return estaNominado;
 	}
 
-	public void setEstaNominado(boolean estaNominado) {
+	public void setEstaNominado(Boolean estaNominado) {
 		this.estaNominado = estaNominado;
 	}
 

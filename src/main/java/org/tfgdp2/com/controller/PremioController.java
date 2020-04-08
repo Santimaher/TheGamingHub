@@ -118,8 +118,8 @@ public class PremioController {
 	@GetMapping("addVotoP")
 	public String addVotoP(ModelMap m, @RequestParam("id") Long id) {
 		m.put("premio", repoPremioPar.getOne(id));
-		// m.put("participantes",repoParticipante.findByIsNominadoTrue());
-		m.put("view", "premmio/addVotoP");
+	    m.put("participantes",repoParticipante.findByEstaNominadoTrue());
+		m.put("view", "premio/addVotoP");
 		return "_t/frame";
 	}
 
