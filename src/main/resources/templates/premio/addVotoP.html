@@ -1,6 +1,6 @@
 <div class="container">
 	<!-- <h1>Listado de participantes a nominar</h1> -->
-	<span th:text="|Listado de participantes para: ${premio.nombre} |"></span>
+	<span th:text="|Listado de participantes para: ${premio.nombrePremio} |"></span>
 	<table class="table table-striped">
 		<tr>
 			<th>Nombre de Nominados</th>
@@ -10,7 +10,7 @@
 
 			<td th:text="${p.nombre}"></td>
 			<td class="row">
-				<form action="/premio/addVotoP" method="get">
+				<form action="/premio/addVotoP" method="post">
 					<input type="hidden" name="id" th:value="${p.id}" />
 					<input type="hidden" name="idPremio" th:value="${premio.id}">
 					<button onclick="submit()">
