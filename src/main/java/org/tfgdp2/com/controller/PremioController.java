@@ -77,15 +77,15 @@ public class PremioController {
 				}
 			}
 		 
-		PRG.info("Premio creado", "/premio/rParticipante");
+		PRG.info("Premio creado", "/premio/r");
 	}
 
-	@GetMapping("rParticipante")
+	@GetMapping("r")
 	public String r(ModelMap m) {
 
 		m.put("nomPartipantes", repoPremioPar.findAll());
 		m.put("nomJuegos", repoPremioJuego.findAll());
-		m.put("view", "premio/rParticipante");
+		m.put("view", "premio/r");
 
 		return "_t/frame";
 	}
