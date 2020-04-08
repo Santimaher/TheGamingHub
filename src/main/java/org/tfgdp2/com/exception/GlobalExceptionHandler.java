@@ -13,9 +13,12 @@ public class GlobalExceptionHandler {
 	public RedirectView danger(HttpSession s, DangerException e) {
 		String mensaje = e.getMessage() != null && e.getMessage() != "" ? e.getMessage().split("@")[0] : "Ha ocurrido un error. Pulsa para volver a home";
 		String link = e.getMessage() != null && e.getMessage() != "" && e.getMessage().split("@").length >1 ? e.getMessage().split("@")[1] : "/";
+		String id = e.getMessage() != null && e.getMessage() != "" && e.getMessage().split("@").length >2 ?  e.getMessage().split("@")[2] : "";
+		
 
 		s.setAttribute("_mensaje", mensaje);
 	    s.setAttribute("_link", link);
+	    s.setAttribute("_id", id);
 	    s.setAttribute("_severity", "danger");
 	    
 	    return new RedirectView("/info");
@@ -25,9 +28,11 @@ public class GlobalExceptionHandler {
 	public RedirectView info(HttpSession s, InfoException e) {
 		String mensaje = e.getMessage() != null && e.getMessage() != "" ? e.getMessage().split("@")[0] : "Ha ocurrido un error. Pulsa para volver a home";
 		String link = e.getMessage() != null && e.getMessage() != "" && e.getMessage().split("@").length >1 ? e.getMessage().split("@")[1] : "/";
-
+		String id = e.getMessage() != null && e.getMessage() != "" && e.getMessage().split("@").length >2 ?  e.getMessage().split("@")[2] : "";
+		
 		s.setAttribute("_mensaje", mensaje);
 	    s.setAttribute("_link", link);
+	    s.setAttribute("_id", id);
 	    s.setAttribute("_severity", "info");
 	    
 	    return new RedirectView("/info");

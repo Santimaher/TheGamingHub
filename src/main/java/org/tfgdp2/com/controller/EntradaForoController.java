@@ -112,13 +112,15 @@ public class EntradaForoController {
 	
 	@PostMapping("d")
 	public void dPost(@RequestParam("id") Long id,ModelMap m,HttpSession s) throws DangerException, InfoException {
+		Long idforo=repoEntrada.getOne(id).getPertenece().getId();
 		try {
-			H.isRolOK("admin", s);
+			
+			H.isRolOK("auth", s);
 			repoEntrada.delete(repoEntrada.getOne(id));
 		}catch(Exception e) {
-			PRG.error("Error al borrar la entrada del foro", "/entradaForo/r");
+			PRG.error(e.getMessage(), "/entradaForo/r",idforo);
 		}
-		PRG.info("Entrada del foro borrada correctamente", "/entradaForo/r");
+		PRG.info("Entrada del foro borrada correctamente", "/entradaForo/r",idforo);
 	}
 
 }
