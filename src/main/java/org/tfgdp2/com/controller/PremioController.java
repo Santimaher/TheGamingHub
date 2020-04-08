@@ -127,11 +127,16 @@ public class PremioController {
 	public void addVotoPost(@RequestParam("id") Long idParticipante, @RequestParam("idPremio") Long idPremio) throws DangerException, InfoException {
 		Participante parti = repoParticipante.getOne(idParticipante);
 		//Premio_Participante premioP = repoPremioPar.getOne(idPremio);
-		
+		try {
 			Integer aux = parti.getCantidadVotos()+1;
 			parti.setCantidadVotos(aux);
-			Nominacion_Participante nompar = new Nominacion_Participante();
-			nompar.getParticipantes().add(parti);
+			repoParticipante.save(parti);
+		}
+		catch (Exception e) {
+			PRG.info("Not ok");	
+		}
+//			Nominacion_Participante nompar = new Nominacion_Participante();
+//			nompar.getParticipantes().add(parti);
 			PRG.info("ok");	
 	}
 }
