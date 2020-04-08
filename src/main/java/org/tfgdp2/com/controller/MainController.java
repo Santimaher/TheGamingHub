@@ -68,7 +68,7 @@ public class MainController {
 		String severity = s.getAttribute("_severity") != null ? (String) s.getAttribute("_severity") : "info";
 		String link = s.getAttribute("_link") != null ? (String) s.getAttribute("_link") : "/";
 		String id = s.getAttribute("_id") != null ? (String) s.getAttribute("_id") : "";
-		String linkcompleto=link+"?id="+id;
+		
 		s.removeAttribute("_mensaje");
 		s.removeAttribute("_severity");
 		s.removeAttribute("_link");
@@ -76,7 +76,9 @@ public class MainController {
 
 		m.put("mensaje", mensaje);
 		m.put("severity", severity);
-		m.put("link",linkcompleto);
+		m.put("link",link);
+		m.put("id",id);
+
 
 		m.put("view", "/_t/info");
 		return "/_t/frame";
