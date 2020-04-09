@@ -75,9 +75,9 @@ public class Categoria_JuegoController {
 			repoCategoria_Juego.save(cat);
 
 		} catch (Exception e) {
-			PRG.error("Categoria " + nombreCategoria + " duplicada", "/categoria/r");
+			PRG.error("Categoria " + nombreCategoria + " duplicada", "/categoria/R");
 		}
-		PRG.info("Categoria " + nombreCategoria + " actualizada correctamente", "/categoria/r");
+		PRG.info("Categoria " + nombreCategoria + " actualizada correctamente", "/categoria/R");
 	}
 
 	@PostMapping("d")
@@ -87,10 +87,10 @@ public class Categoria_JuegoController {
 			H.isRolOK("admin", s);
 			repoCategoria_Juego.delete(repoCategoria_Juego.getOne(id));
 		} catch (Exception e) {
-			PRG.error("Error al borrar la Categoria", "/categoria/r");
+			PRG.error("Error al borrar la Categoria", "/categoria/R");
 		}
 
-		PRG.info("Categoria borrada correctamente", "/categoria/r");
+		PRG.info("Categoria borrada correctamente", "/categoria/R");
 
 	}
 

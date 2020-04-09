@@ -1,0 +1,10 @@
+<div class="container">
+<h1>Editar Categoria</h1>
+	<form method="post" action="/categoriaParticipante/u">
+	<input type="hidden" th:value="${categoria.id}" name="id">
+	<label for="nombreCat">Nombre de la Categoria</label>
+	<input th:value="${categoria.nombre}" type="text" id="nombreCat" name="nombre">
+	<input type="submit">
+	</form>
+
+</div>

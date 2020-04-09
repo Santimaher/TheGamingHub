@@ -5,12 +5,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.tfgdp2.com.domain.Categoria_Juego;
+import org.tfgdp2.com.domain.Categoria_Participante;
 import org.tfgdp2.com.domain.Nominacion_Participante;
 import org.tfgdp2.com.domain.Participante;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
+import org.tfgdp2.com.repository.Categoria_ParticipanteRepository;
 import org.tfgdp2.com.repository.NominacionParticipanteRepository;
 import org.tfgdp2.com.repository.ParticipanteRepository;
 
@@ -31,14 +34,14 @@ public class ParticipanteController {
 	private ParticipanteRepository repoParticipante;
 	
 	@Autowired
-	private NominacionParticipanteRepository repoNominacion;
+	private Categoria_ParticipanteRepository repoCategoriaP;
 	
 	@GetMapping("c")
 	public String crearGet(ModelMap m,HttpSession s) throws DangerException {
 		
 	try {
 		H.isRolOK("admin", s);
-		m.put("nominaciones", repoNominacion.findAll());
+		m.put("categorias", repoCategoriaP.findAll());
 		m.put("view", "participante/c");
 		
 	}catch(Exception e) {
@@ -52,11 +55,18 @@ public class ParticipanteController {
 			@RequestParam("img") MultipartFile imgFile,
 			@RequestParam("bio")String bio,
 			@RequestParam("teaser") String teaser,
+			@RequestParam(value = "idCat") Long idCat,
 			HttpSession s) throws DangerException  {
 		
 		try {
 			H.isRolOK("admin", s);
+			
+			//=============================C
+			
 			Participante participante = new Participante(nombre,apellido,bio,teaser);
+			
+			//===================IMÁGEN
+			
 			String uploadDir = "/img/upload/";
 			String uploadDirRealPath = "";
 			String fileName = "_p";
@@ -74,6 +84,16 @@ public class ParticipanteController {
 
 			String img = uploadDir + fileName + "." + fileExtension;
 			participante.setImg(img);
+			
+			//===================CATEGORIA
+			
+			Categoria_Participante cat = repoCategoriaP.getOne(idCat);
+			cat.getParticipantes().add(participante);
+			
+			participante.setPertenece(cat);
+
+			//==================================================
+			
 			repoParticipante.save(participante);			
 			
 		}catch(Exception e) {
@@ -106,7 +126,7 @@ public class ParticipanteController {
 	@GetMapping("u")
 	public String update(ModelMap m,@RequestParam("id") Long id,HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
-		m.put("nominaciones", repoNominacion.findAll());
+		m.put("categorias", repoCategoriaP.findAll());
 		m.put("participante", repoParticipante.getOne(id));
 		m.put("view","participante/u");
 		return "_t/frame";

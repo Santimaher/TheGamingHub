@@ -2,12 +2,23 @@
 	<h1>Nuevo Participante</h1>
 
 	<form method="post" enctype="multipart/form-data" action="/participante/c" class="form">
-
-		Nombre <input type="text" name="nombre" class="form-item"> <br>
-		Apellido <input type="text" name="apellido" class="form-item"> <br>
-		Biografía <input type="text" name="bio" class="form-item"> <br>
-		Teaser <input type="text" name="teaser" class="form-item"><br>
-		Imagen<input type="file" name="img" class="form-item">  <br>
+		<label for ="nombre">Nombre</label>
+		<input type="text" name="nombre" class="form-item"> <br>
+		<label for="apellido">Apellido</label>
+		<input type="text" name="apellido" class="form-item"> <br>
+		<label for="bio">Biografía</label>
+		<input type="text" name="bio" class="form-item"> <br>
+		<label for="teaser">Teaser</label>
+		<input type="text" name="teaser" class="form-item"><br>
+		<label for="img">Imagen</label>
+		<input type="file" name="img" class="form-item">  <br>
+		<fieldset>
+		<legend>Categorias</legend>
+			<span th:each="categoria:${categorias}" >
+				<input type="checkbox" th:id="|cat-${categoria.id}|" th:name="idCat" th:value="${categoria.id}"/>
+				<label th:for="|cat-${categoria.id}|" th:text="${categoria.nombre}"></label>
+			</span>
+	</fieldset>	
 
 		<br/>
 		<input type="submit" class="form-item"><br>
