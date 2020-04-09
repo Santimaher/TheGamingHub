@@ -57,7 +57,6 @@ public class ParticipanteController {
 		try {
 			H.isRolOK("admin", s);
 			Participante participante = new Participante(nombre,apellido,bio,teaser);
-			participante.setEstaNominado(false);
 			String uploadDir = "/img/upload/";
 			String uploadDirRealPath = "";
 			String fileName = "_p";

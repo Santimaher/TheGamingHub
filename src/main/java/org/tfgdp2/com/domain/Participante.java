@@ -50,6 +50,7 @@ public class Participante {
 		this.apellido = apellido;
 		this.bio = bio;
 		this.teaser = teaser;
+		this.estaNominado=false;
 		this.cantidadVotos=0;
 		this.nominado = new ArrayList<>();
 		

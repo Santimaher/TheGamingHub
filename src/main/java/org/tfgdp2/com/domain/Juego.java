@@ -64,6 +64,7 @@ public class Juego {
 		this.foro = new ArrayList<>();
 		this.nominado =  new ArrayList<>();
 		this.pertenece=new ArrayList<>();
+		this.estaNominado=false;
 	}
 	// -----------------------GETTERS Y SETTERS--------------------------//
 
