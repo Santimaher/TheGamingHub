@@ -131,12 +131,18 @@ public class PremioController {
 			Integer aux = parti.getCantidadVotos()+1;
 			parti.setCantidadVotos(aux);
 			repoParticipante.save(parti);
+			Nominacion_Participante nompar = new Nominacion_Participante();
+			Premio_Participante pp = repoPremioPar.getOne(idPremio);
+			nompar.setPremio(pp);
+			nompar.setNombre(pp.getNombrePremio());
+			//nompar.setVotacion(parti);
+			nompar.getParticipantes().add(parti);
+			repoNomPar.save(nompar);
 		}
 		catch (Exception e) {
 			PRG.info("Not ok");	
 		}
-//			Nominacion_Participante nompar = new Nominacion_Participante();
-//			nompar.getParticipantes().add(parti);
+
 			PRG.info("ok");	
 	}
 }
