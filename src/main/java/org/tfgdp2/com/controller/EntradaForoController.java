@@ -53,7 +53,7 @@ public class EntradaForoController {
 		return "_t/frame";
 	}
 	@PostMapping("c")
-	public String cPost(@RequestParam("id") Long id,@RequestParam("comentario") String comentario,ModelMap m,HttpSession s) throws DangerException{
+	public void cPost(@RequestParam("id") Long id,@RequestParam("comentario") String comentario,ModelMap m,HttpSession s) throws DangerException, InfoException{
 		try {
 			H.isRolOK("auth", s);
 			EntradaForo entrada = new EntradaForo();
@@ -69,7 +69,7 @@ public class EntradaForoController {
 			PRG.error("Error al crear la entrada", "/entradaForo/c");
 		}	
 
-		return "redirect:http://localhost:8080/entradaForo/r?id="+id;
+		PRG.info("Entrada del foro editada correctamente", "/entradaForo/r",id);
 	}
 	@GetMapping("u")
 	public String update(ModelMap m, @RequestParam("id") Long idEntrada,HttpSession s) throws DangerException {
@@ -79,24 +79,24 @@ public class EntradaForoController {
 		return "_t/frame";
 	}
 	@GetMapping("like")
-	public String darLike(ModelMap m, @RequestParam("id") Long idEntrada,@RequestParam("idForo") Long id,HttpSession s) throws DangerException {
+	public void darLike(ModelMap m, @RequestParam("id") Long idEntrada,@RequestParam("idForo") Long id,HttpSession s) throws DangerException, InfoException {
 		H.isRolOK("auth", s);
 		EntradaForo e=repoEntrada.getOne(idEntrada);
 		e.setRanking(e.getRanking()+1);
 		repoEntrada.save(e);
-		return "redirect:http://localhost:8080/entradaForo/r?id="+id;
+		PRG.info("Entrada del foro editada correctamente", "/entradaForo/r",id);
 	}
 	@GetMapping("dislike")
-	public String quitarLike(ModelMap m, @RequestParam("id") Long idEntrada,@RequestParam("idForo") Long id,HttpSession s) throws DangerException {
+	public void quitarLike(ModelMap m, @RequestParam("id") Long idEntrada,@RequestParam("idForo") Long id,HttpSession s) throws DangerException, InfoException {
 		H.isRolOK("auth", s);
 		EntradaForo e=repoEntrada.getOne(idEntrada);
 		e.setRanking(e.getRanking()-1);
 		repoEntrada.save(e);
-		return "redirect:http://localhost:8080/entradaForo/r?id="+id;
+		PRG.info("Entrada del foro editada correctamente", "/entradaForo/r",id);
 	}
 	
 	@PostMapping("u")
-	public String uPost(@RequestParam("comentario") String comentario,@RequestParam("idEntrada") Long idEntrada,HttpSession s,ModelMap m) throws InfoException, DangerException {
+	public void uPost(@RequestParam("comentario") String comentario,@RequestParam("idEntrada") Long idEntrada,HttpSession s,ModelMap m) throws InfoException, DangerException {
 		EntradaForo entradaU=null;
 		try {
 			H.isRolOK("auth", s);
@@ -107,7 +107,7 @@ public class EntradaForoController {
 			PRG.error("Error al actualizar la entrada", "/juego/r");
 		}
 		Long id=entradaU.getPertenece().getId();
-		return "redirect:http://localhost:8080/entradaForo/r?id="+id;
+		PRG.info("Entrada del foro editada correctamente", "/entradaForo/r",id);
 	}
 	
 	@PostMapping("d")
