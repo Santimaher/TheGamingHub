@@ -15,6 +15,7 @@ import org.tfgdp2.com.domain.Premio_Participante;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.PRG;
+import org.tfgdp2.com.repository.GalaRepository;
 import org.tfgdp2.com.repository.JuegoRepository;
 import org.tfgdp2.com.repository.NominacionJuegoRepository;
 import org.tfgdp2.com.repository.NominacionParticipanteRepository;
@@ -43,6 +44,9 @@ public class PremioController {
 
 	@Autowired
 	private JuegoRepository repoJuego;
+	
+	@Autowired
+	private GalaRepository repoGala;
 
 	@GetMapping("c")
 	public String cGet(ModelMap m) {

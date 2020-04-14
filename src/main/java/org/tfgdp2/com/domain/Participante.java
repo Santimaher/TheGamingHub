@@ -26,8 +26,6 @@ public class Participante {
 	
 	private String img;
 	
-	private Integer cantidadVotos;
-	
 	private Boolean estaNominado;
 	
 	
@@ -51,7 +49,7 @@ public class Participante {
 		this.bio = bio;
 		this.teaser = teaser;
 		this.estaNominado=false;
-		this.cantidadVotos=0;
+		
 		this.nominado = new ArrayList<>();
 		
 	}
@@ -116,9 +114,6 @@ public class Participante {
 		this.img = img;
 		
 	}
-	public Integer getCantidadVotos() {
-		return cantidadVotos;
-	}
 
 	public Boolean getEstaNominado() {
 		return estaNominado;
@@ -126,10 +121,6 @@ public class Participante {
 
 	public void setEstaNominado(Boolean estaNominado) {
 		this.estaNominado = estaNominado;
-	}
-
-	public void setCantidadVotos(Integer cantidadVotos) {
-		this.cantidadVotos = cantidadVotos;
 	}
 
 	public Collection<Nominacion_Participante> getNominado() {

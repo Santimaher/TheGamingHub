@@ -22,6 +22,7 @@ public class Nominacion_Participante {
 	@Column(unique = true)
 	private String nombre;
 	
+	private Integer cantidadVotos;
 	
 	@ManyToMany(mappedBy="nominado")
 	private Collection<Participante> participantes;
@@ -29,21 +30,22 @@ public class Nominacion_Participante {
 	@ManyToOne
 	private Premio_Participante premio;
 	
-	@ManyToOne
-	
-	private Nominacion_Participante votacion;
+	@ManyToOne	
+	private Participante votacion;
 	
 	//================================================
 	
 
 	public Nominacion_Participante() {
 		super();
+		this.cantidadVotos=0;
 		this.participantes = new ArrayList<>();
 	}
 	
 	public Nominacion_Participante(String nombre) {
 		super();
 		this.nombre = nombre;
+		this.cantidadVotos=0;
 		this.participantes = new ArrayList<>();
 	}
 
@@ -84,15 +86,25 @@ public class Nominacion_Participante {
 	public void setPremio(Premio_Participante premio) {
 		this.premio = premio;
 	}
-	
 
-	public Nominacion_Participante getVotacion() {
+	public Participante getVotacion() {
 		return votacion;
 	}
 
-	public void setVotacion(Nominacion_Participante votacion) {
+	public void setVotacion(Participante votacion) {
 		this.votacion = votacion;
 	}
+
+	public Integer getCantidadVotos() {
+		return cantidadVotos;
+	}
+
+	public void setCantidadVotos(Integer cantidadVotos) {
+		this.cantidadVotos = cantidadVotos;
+	}
+	
+
+	
 	
 	
 }
