@@ -61,6 +61,8 @@ public class NominacionController {
 		Premio_Participante pr = repoPremioP.getOne(idPremio);
 		p.setEstaNominado(true);
 		Nominacion_Participante np = new Nominacion_Participante();
+		np.getParticipantes().add(p);
+		p.getNominado().add(np);
 		np.setNombre(p.getNombre());
 		np.setPremio(pr);
 		pr.getPremiados().add(np);

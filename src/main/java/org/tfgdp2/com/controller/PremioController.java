@@ -1,5 +1,7 @@
 package org.tfgdp2.com.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,6 +15,8 @@ import org.tfgdp2.com.domain.Nominacion_Participante;
 import org.tfgdp2.com.domain.Participante;
 import org.tfgdp2.com.domain.Premio_Juego;
 import org.tfgdp2.com.domain.Premio_Participante;
+import org.tfgdp2.com.domain.Usuario;
+//import org.tfgdp2.com.domain.Votacion_Participante;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.PRG;
@@ -23,6 +27,8 @@ import org.tfgdp2.com.repository.NominacionParticipanteRepository;
 import org.tfgdp2.com.repository.ParticipanteRepository;
 import org.tfgdp2.com.repository.PremioJuegoRepository;
 import org.tfgdp2.com.repository.PremioParticipanteRepository;
+//import org.tfgdp2.com.repository.VotacionJuegoRepository;
+//import org.tfgdp2.com.repository.VotacionParticipanteRepository;
 
 @Controller
 @RequestMapping("/premio")
@@ -54,6 +60,12 @@ public class PremioController {
 	
 	@Autowired
 	private NominacionJuegoRepository repoNJ;
+	
+//	@Autowired
+//	private VotacionParticipanteRepository repoVP;
+//	
+//	@Autowired
+//	private VotacionJuegoRepository repoVJ;
 
 	@GetMapping("c")
 	public String cGet(ModelMap m) {
@@ -141,15 +153,18 @@ public class PremioController {
 	}
 
 	@PostMapping("addVotoP")
-	public void addVotoPost(@RequestParam("id") Long idNominado) throws DangerException, InfoException {
-		
-		try {
-			Nominacion_Participante np = repoNP.getOne(idNominado);
+	public void addVotoPost(@RequestParam("id") Long idNominado,HttpSession s) throws DangerException, InfoException {
+		Usuario u = (Usuario) s.getAttribute("usuario");
+		Nominacion_Participante np = repoNP.getOne(idNominado);
+//		Votacion_Participante vp = new Votacion_Participante(np, u);
+		try {			
 			np.setCantidadVotos(np.getCantidadVotos()+1);
-			repoNP.save(np);			
-		}
-		catch (Exception e) {
-			PRG.info("Not ok");	
+					
+			u.getVotadosP().add(np);
+			np.getVotacionesP().add(u);
+			repoNP.save(np);	
+		} catch (Exception e) {
+			PRG.info(e.getMessage());
 		}
 
 			PRG.info("ok");	

@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -30,8 +31,8 @@ public class Nominacion_Participante {
 	@ManyToOne
 	private Premio_Participante premio;
 	
-	@ManyToOne	
-	private Participante votacion;
+	@ManyToMany
+	private Collection<Usuario> votacionesP;
 	
 	//================================================
 	
@@ -39,6 +40,7 @@ public class Nominacion_Participante {
 	public Nominacion_Participante() {
 		super();
 		this.cantidadVotos=0;
+		this.votacionesP=new ArrayList<>();
 		this.participantes = new ArrayList<>();
 	}
 	
@@ -46,6 +48,7 @@ public class Nominacion_Participante {
 		super();
 		this.nombre = nombre;
 		this.cantidadVotos=0;
+		this.votacionesP=new ArrayList<>();
 		this.participantes = new ArrayList<>();
 	}
 
@@ -87,14 +90,6 @@ public class Nominacion_Participante {
 		this.premio = premio;
 	}
 
-	public Participante getVotacion() {
-		return votacion;
-	}
-
-	public void setVotacion(Participante votacion) {
-		this.votacion = votacion;
-	}
-
 	public Integer getCantidadVotos() {
 		return cantidadVotos;
 	}
@@ -102,8 +97,27 @@ public class Nominacion_Participante {
 	public void setCantidadVotos(Integer cantidadVotos) {
 		this.cantidadVotos = cantidadVotos;
 	}
-	
 
+	public Collection<Usuario> getVotacionesP() {
+		return votacionesP;
+	}
+
+	public void setVotacionesP(Collection<Usuario> votacionesP) {
+		this.votacionesP = votacionesP;
+	}
+
+//	public Collection<Votacion_Participante> getVotacionesP() {
+//		return votacionesP;
+//	}
+//
+//	public void setVotacionesP(Collection<Votacion_Participante> votacionesP) {
+//		this.votacionesP = votacionesP;
+//	}
+	
+	
+	
+	
+	
 	
 	
 	
