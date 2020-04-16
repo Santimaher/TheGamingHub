@@ -51,21 +51,15 @@ public class PremioController {
 
 	@Autowired
 	private JuegoRepository repoJuego;
-	
+
 	@Autowired
 	private GalaRepository repoGala;
-	
+
 	@Autowired
 	private NominacionParticipanteRepository repoNP;
-	
+
 	@Autowired
 	private NominacionJuegoRepository repoNJ;
-	
-//	@Autowired
-//	private VotacionParticipanteRepository repoVP;
-//	
-//	@Autowired
-//	private VotacionJuegoRepository repoVJ;
 
 	@GetMapping("c")
 	public String cGet(ModelMap m) {
@@ -80,32 +74,30 @@ public class PremioController {
 	@PostMapping("c")
 	public void cPost(@RequestParam("nombre") String nombre, @RequestParam("tipo") String tipo)
 			throws DangerException, InfoException {
-		
-			if (tipo.equals("participante")) {
-				try {
+
+		if (tipo.equals("participante")) {
+			try {
 				Premio_Participante pp = new Premio_Participante(nombre);
 				Gala g = repoGala.findTopByOrderByEdicionDesc();
 				pp.setTiene(g);
 				g.getPremiosP().add(pp);
 				repoPremioPar.save(pp);
-				}
-				catch (Exception e) {
-					PRG.error("Error al crear el premio. " + e.getMessage() + "", "/premio/c");
-				}
+			} catch (Exception e) {
+				PRG.error("Error al crear el premio. " + e.getMessage() + "", "/premio/c");
 			}
-			if (tipo.equals("juego")) {
-				try {
+		}
+		if (tipo.equals("juego")) {
+			try {
 				Premio_Juego pj = new Premio_Juego(nombre);
 				Gala g = repoGala.findTopByOrderByEdicionDesc();
 				pj.setTiene(g);
 				g.getPremiosJ().add(pj);
 				repoPremioJuego.save(pj);
-				}
-				catch (Exception e) {
-					PRG.error("Error al crear el premio. " + e.getMessage() + "", "/premio/c");
-				}
+			} catch (Exception e) {
+				PRG.error("Error al crear el premio. " + e.getMessage() + "", "/premio/c");
 			}
-		 
+		}
+
 		PRG.info("Premio creado", "/premio/r");
 	}
 
@@ -147,49 +139,48 @@ public class PremioController {
 	@GetMapping("addVotoP")
 	public String addVotoP(ModelMap m, @RequestParam("id") Long id) {
 		m.put("premio", repoPremioPar.getOne(id));
-	    m.put("nominados",repoNP.findByPremioId(id));
+		m.put("nominados", repoNP.findByPremioId(id));
 		m.put("view", "premio/addVotoP");
 		return "_t/frame";
 	}
 
 	@PostMapping("addVotoP")
-	public void addVotoPost(@RequestParam("id") Long idNominado,HttpSession s) throws DangerException, InfoException {
+	public void addVotoPost(@RequestParam("id") Long idNominado, HttpSession s) throws DangerException, InfoException {
 		Usuario u = (Usuario) s.getAttribute("usuario");
 		Nominacion_Participante np = repoNP.getOne(idNominado);
 //		Votacion_Participante vp = new Votacion_Participante(np, u);
-		try {			
-			np.setCantidadVotos(np.getCantidadVotos()+1);
-					
+		try {
+			np.setCantidadVotos(np.getCantidadVotos() + 1);
+
 			u.getVotadosP().add(np);
 			np.getVotacionesP().add(u);
-			repoNP.save(np);	
+			repoNP.save(np);
 		} catch (Exception e) {
 			PRG.info(e.getMessage());
 		}
 
-			PRG.info("ok");	
+		PRG.info("ok");
 	}
-	
+
 	@GetMapping("addVotoJ")
 	public String addVotoJ(ModelMap m, @RequestParam("id") Long id) {
 		m.put("premio", repoPremioJuego.getOne(id));
-	    m.put("nominados",repoNJ.findByPremioId(id));
+		m.put("nominados", repoNJ.findByPremioId(id));
 		m.put("view", "premio/addVotoJ");
 		return "_t/frame";
 	}
 
 	@PostMapping("addVotoJ")
 	public void addVotoJPost(@RequestParam("id") Long idNominado) throws DangerException, InfoException {
-		
+
 		try {
 			Nominacion_Juego nj = repoNJ.getOne(idNominado);
-			nj.setCantidadVotos(nj.getCantidadVotos()+1);
-			repoNJ.save(nj);			
-		}
-		catch (Exception e) {
-			PRG.info("Not ok");	
+			nj.setCantidadVotos(nj.getCantidadVotos() + 1);
+			repoNJ.save(nj);
+		} catch (Exception e) {
+			PRG.info("Not ok");
 		}
 
-			PRG.info("ok");	
+		PRG.info("ok");
 	}
 }

@@ -12,55 +12,49 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
 @Entity
 public class Nominacion_Participante {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(unique = true)
 	private String nombre;
-	
+
 	private Integer cantidadVotos;
-	
-	@ManyToMany(mappedBy="nominado")
+
+	@ManyToMany(mappedBy = "nominado")
 	private Collection<Participante> participantes;
-	
+
 	@ManyToOne
 	private Premio_Participante premio;
-	
+
 	@ManyToMany
 	private Collection<Usuario> votacionesP;
-	
-	//================================================
-	
+
+	// ================================================
 
 	public Nominacion_Participante() {
 		super();
-		this.cantidadVotos=0;
-		this.votacionesP=new ArrayList<>();
+		this.cantidadVotos = 0;
+		this.votacionesP = new ArrayList<>();
 		this.participantes = new ArrayList<>();
 	}
-	
+
 	public Nominacion_Participante(String nombre) {
 		super();
 		this.nombre = nombre;
-		this.cantidadVotos=0;
-		this.votacionesP=new ArrayList<>();
+		this.cantidadVotos = 0;
+		this.votacionesP = new ArrayList<>();
 		this.participantes = new ArrayList<>();
 	}
 
-	
-
-	
-	//===================================================================
+	// ===================================================================
 	public Long getId() {
 		return id;
 	}
 
-	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -72,7 +66,6 @@ public class Nominacion_Participante {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 
 	public Collection<Participante> getParticipantes() {
 		return participantes;
@@ -106,19 +99,4 @@ public class Nominacion_Participante {
 		this.votacionesP = votacionesP;
 	}
 
-//	public Collection<Votacion_Participante> getVotacionesP() {
-//		return votacionesP;
-//	}
-//
-//	public void setVotacionesP(Collection<Votacion_Participante> votacionesP) {
-//		this.votacionesP = votacionesP;
-//	}
-	
-	
-	
-	
-	
-	
-	
-	
 }

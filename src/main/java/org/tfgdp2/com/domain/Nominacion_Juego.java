@@ -14,47 +14,46 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Nominacion_Juego {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(unique = true)
 	private String nombre;
-	
+
 	private Integer cantidadVotos;
-	
-	@ManyToMany(mappedBy="nominado")
-	private Collection<Juego> juegos; 
-	
+
+	@ManyToMany(mappedBy = "nominado")
+	private Collection<Juego> juegos;
+
 	@ManyToOne
 	private Premio_Juego premio;
-	
+
 	@ManyToMany
 	private Collection<Usuario> votacionesJ;
-	
-	//================================================
-	
+
+	// ================================================
+
 	public Nominacion_Juego() {
 		super();
-		this.votacionesJ=new ArrayList<>();
-		this.cantidadVotos=0;
+		this.votacionesJ = new ArrayList<>();
+		this.cantidadVotos = 0;
 		this.juegos = new ArrayList<>();
 	}
-	
+
 	public Nominacion_Juego(String nombre) {
 		super();
 		this.nombre = nombre;
-		this.cantidadVotos=0;
+		this.cantidadVotos = 0;
 		this.juegos = new ArrayList<>();
 	}
-	
-	//===================================================================
+
+	// ===================================================================
 	public Long getId() {
 		return id;
 	}
 
-	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -83,7 +82,6 @@ public class Nominacion_Juego {
 		this.premio = premio;
 	}
 
-	
 	public Integer getCantidadVotos() {
 		return cantidadVotos;
 	}
@@ -100,14 +98,4 @@ public class Nominacion_Juego {
 		this.votacionesJ = votacionesJ;
 	}
 
-//	public Collection<Votacion_Juego> getVotacionesJ() {
-//		return votacionesJ;
-//	}
-//
-//	public void setVotacionesJ(Collection<Votacion_Juego> votacionesJ) {
-//		this.votacionesJ = votacionesJ;
-//	}
-	
-	
-	
 }
