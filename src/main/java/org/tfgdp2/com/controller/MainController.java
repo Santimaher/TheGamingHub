@@ -29,8 +29,7 @@ import org.tfgdp2.com.repository.PremioJuegoRepository;
 import org.tfgdp2.com.repository.PremioParticipanteRepository;
 import org.tfgdp2.com.repository.UsuarioRepository;
 
-@CrossOrigin(origins = "http://localhost:4200")
-@RestController
+@Controller
 public class MainController {
 	@Autowired
 	private Categoria_JuegoRepository repoCategoriaJ;
