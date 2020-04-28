@@ -36,7 +36,7 @@ public class Juego {
 
 	private String teaser;
 	
-	private Integer cantidadVotos;
+	
 	
 	private Boolean estaNominado;
 
@@ -65,6 +65,7 @@ public class Juego {
 		this.nominado =  new ArrayList<>();
 		this.pertenece=new ArrayList<>();
 		this.estaNominado=false;
+		
 	}
 	// -----------------------GETTERS Y SETTERS--------------------------//
 
@@ -116,15 +117,6 @@ public class Juego {
 		this.img = img;
 	}
 	
-	public Integer getCantidadVotos() {
-		return cantidadVotos;
-	}
-
-	public void setCantidadVotos(Integer cantidadVotos) {
-		this.cantidadVotos = cantidadVotos;
-	}
-	
-
 	public Boolean getEstaNominado() {
 		return estaNominado;
 	}

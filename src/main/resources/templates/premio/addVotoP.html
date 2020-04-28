@@ -6,12 +6,12 @@
 			<th>Nombre de Nominados</th>
 		</tr>
 
-		<tr th:each="p:${participantes}">
+		<tr th:each="n:${nominados}">
 
-			<td th:text="${p.nombre}"></td>
+			<td th:text="${n.nombre}"></td>
 			<td class="row">
 				<form action="/premio/addVotoP" method="post">
-					<input type="hidden" name="id" th:value="${p.id}" />
+					<input type="hidden" name="id" th:value="${n.id}" />
 					<input type="hidden" name="idPremio" th:value="${premio.id}">
 					<button onclick="submit()">
 						<img src="/img/add.png" height="20" width="20">

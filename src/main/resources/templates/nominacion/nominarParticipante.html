@@ -11,6 +11,9 @@
 			<td class="row">
 				<form action="/nominacion/nominarParticipante" method="post">
 					<input type="hidden" name="id" th:value="${p.id}" />
+					<select name="premio">
+						<option th:each="premio:${premioP}" th:value="${premio.id}" th:text="${premio.nombrePremio}"></option>
+					</select>
 					<button onclick="submit()">
 						Nominar
 					</button>

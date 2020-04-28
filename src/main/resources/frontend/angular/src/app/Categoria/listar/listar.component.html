@@ -1,0 +1,25 @@
+<div class="container">
+<nb-card>
+    <nb-card-header> Categoria
+        <button nbButton>Añadir</button>
+    </nb-card-header>
+    
+    <nb-card-body>
+        <div class="container">
+            <div class="row">
+                <div class="col-4">ID</div>
+                <div class="col-4">NOMBRE</div>
+                <div class="col-4">ACCIONES</div>
+            </div>
+            <div *ngFor="let categoria of categorias" class="row">
+                <div class="col-4">{{categoria.id}}</div>
+                <div class="col-4">{{categoria.nombre}}</div>
+                <div class="col-4">
+                    <button nbButton status="warning">Editar</button>
+                    <button nbButton status="danger">Borrar</button>
+                </div>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>
+</div>

@@ -10,52 +10,51 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToMany;
 
 @Entity
 public class Nominacion_Participante {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(unique = true)
 	private String nombre;
-	
-	
-	@ManyToMany(mappedBy="nominado")
+
+	private Integer cantidadVotos;
+
+	@ManyToMany(mappedBy = "nominado")
 	private Collection<Participante> participantes;
-	
+
 	@ManyToOne
 	private Premio_Participante premio;
-	
-	@ManyToOne
-	
-	private Nominacion_Participante votacion;
-	
-	//================================================
-	
+
+	@ManyToMany
+	private Collection<Usuario> votacionesP;
+
+	// ================================================
 
 	public Nominacion_Participante() {
 		super();
+		this.cantidadVotos = 0;
+		this.votacionesP = new ArrayList<>();
 		this.participantes = new ArrayList<>();
 	}
-	
+
 	public Nominacion_Participante(String nombre) {
 		super();
 		this.nombre = nombre;
+		this.cantidadVotos = 0;
+		this.votacionesP = new ArrayList<>();
 		this.participantes = new ArrayList<>();
 	}
 
-	
-
-	
-	//===================================================================
+	// ===================================================================
 	public Long getId() {
 		return id;
 	}
 
-	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -67,7 +66,6 @@ public class Nominacion_Participante {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 
 	public Collection<Participante> getParticipantes() {
 		return participantes;
@@ -84,15 +82,21 @@ public class Nominacion_Participante {
 	public void setPremio(Premio_Participante premio) {
 		this.premio = premio;
 	}
-	
 
-	public Nominacion_Participante getVotacion() {
-		return votacion;
+	public Integer getCantidadVotos() {
+		return cantidadVotos;
 	}
 
-	public void setVotacion(Nominacion_Participante votacion) {
-		this.votacion = votacion;
+	public void setCantidadVotos(Integer cantidadVotos) {
+		this.cantidadVotos = cantidadVotos;
 	}
-	
-	
+
+	public Collection<Usuario> getVotacionesP() {
+		return votacionesP;
+	}
+
+	public void setVotacionesP(Collection<Usuario> votacionesP) {
+		this.votacionesP = votacionesP;
+	}
+
 }

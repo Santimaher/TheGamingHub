@@ -7,11 +7,14 @@
 		</tr>
 
 		<tr th:each="j:${juegos}">
-		<td th:text="${p.nombre}"></td>
+		<td th:text="${j.nombre}"></td>
 			<td class="row">
 			
-				<form action="/nominacion/nominarJuego" method="get">
+				<form action="/nominacion/nominarJuego" method="POST">
 					<input type="hidden" name="id" th:value="${j.id}" />
+					<select name="premio">
+						<option th:each="premio:${premioJ}" th:value="${premio.id}" th:text="${premio.nombrePremio}"></option>
+					</select>
 					<button onclick="submit()">
 						Nominar
 					</button>

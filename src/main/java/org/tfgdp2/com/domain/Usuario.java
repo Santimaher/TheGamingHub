@@ -1,6 +1,8 @@
 package org.tfgdp2.com.domain;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +14,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
@@ -29,6 +35,7 @@ public class Usuario {
 
 //	@ManyToMany(mappedBy="votacion")
 //    private Collection<Juego> votaciones;
+	
 	@OneToMany(mappedBy="escribe",fetch= FetchType.EAGER)
     private Collection<EntradaForo> entradas;
 //	@OneToMany(mappedBy="factura")
@@ -36,15 +43,18 @@ public class Usuario {
 //this.votaciones=new ArrayList<>;
 //this.entradas=new ArrayList<>;
 //this.facturas=new ArrayList<>;
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToMany(mappedBy = "votacionesP")
+	private Collection<Nominacion_Participante> votadosP;
 	
-	@ManyToOne
-	private Votacion_Participante votado;
-	
-	@ManyToOne
-	private Votacion_Juego juegovotado;
+	@ManyToMany(mappedBy = "votacionesJ")
+	private Collection<Nominacion_Juego> votadosJ;
 	
 	//===============================================
 	public Usuario() {
+		this.entradas=new HashSet<>();
+		this.votadosJ=new HashSet<>();
+		this.votadosP=new HashSet<>();
 		
 	}
 	
@@ -52,6 +62,9 @@ public class Usuario {
 	
 	public Usuario(String nombre, String loginname, String password, String rol) {
 		super();
+		this.entradas=new HashSet<>();
+		this.votadosJ=new HashSet<>();
+		this.votadosP=new HashSet<>();
 		this.nombre = nombre;
 		this.loginname = loginname;
 		this.password = password;
@@ -108,20 +121,54 @@ public class Usuario {
 		this.entradas = entradas;
 	}
 
-	public Votacion_Participante getVotado() {
-		return votado;
+
+
+	public Collection<Nominacion_Participante> getVotadosP() {
+		return votadosP;
 	}
 
-	public void setVotado(Votacion_Participante votado) {
-		this.votado = votado;
+
+
+	public void setVotadosP(Collection<Nominacion_Participante> votadosP) {
+		this.votadosP = votadosP;
 	}
 
-	public Votacion_Juego getJuegovotado() {
-		return juegovotado;
+
+
+	public Collection<Nominacion_Juego> getVotadosJ() {
+		return votadosJ;
 	}
 
-	public void setJuegovotado(Votacion_Juego juegovotado) {
-		this.juegovotado = juegovotado;
+
+
+	public void setVotadosJ(Collection<Nominacion_Juego> votadosJ) {
+		this.votadosJ = votadosJ;
 	}
+
+
+//
+//	public Collection<Votacion_Participante> getVotadosP() {
+//		return votadosP;
+//	}
+//
+//
+//
+//	public void setVotadosP(Collection<Votacion_Participante> votadosP) {
+//		this.votadosP = votadosP;
+//	}
+//
+//
+//
+//	public Collection<Votacion_Juego> getVotadosJ() {
+//		return votadosJ;
+//	}
+//
+//
+//
+//	public void setVotadosJ(Collection<Votacion_Juego> votadosJ) {
+//		this.votadosJ = votadosJ;
+//	}
+
+	
 
 }
