@@ -7,10 +7,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.tfgdp2.com.domain.Categoria_Juego;
 import org.tfgdp2.com.domain.Plataforma;
 import org.tfgdp2.com.exception.DangerException;
@@ -19,19 +21,26 @@ import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.Categoria_JuegoRepository;
 
-@Controller
+
+//@Controller
+@CrossOrigin(origins = "http://localhost:4200",maxAge = 3600)
+@RestController
 @RequestMapping(value = "/categoria")
 public class Categoria_JuegoController {
 
 	@Autowired
 	private Categoria_JuegoRepository repoCategoria_Juego;
+	
+	
 
 	@GetMapping("r")
-	public String read(ModelMap m) {
-		List<Categoria_Juego> categorias = repoCategoria_Juego.findAll();
-		m.put("categorias", categorias);
-		m.put("view", "/categoria/R");
-		return "/_t/frame";
+	public List<Categoria_Juego> read(ModelMap m) {
+//		List<Categoria_Juego> categorias = repoCategoria_Juego.findAll();
+//		m.put("categorias", categorias);
+//		m.put("view", "/categoria/R");
+//		return "/_t/frame";
+		
+		return repoCategoria_Juego.findAll();
 	}
 
 	@GetMapping("c")
