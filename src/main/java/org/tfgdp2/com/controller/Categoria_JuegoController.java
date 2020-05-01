@@ -22,9 +22,7 @@ import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.Categoria_JuegoRepository;
 
 
-//@Controller
-@CrossOrigin(origins = "http://localhost:4200",maxAge = 3600)
-@RestController
+@Controller
 @RequestMapping(value = "/categoria")
 public class Categoria_JuegoController {
 
@@ -34,13 +32,11 @@ public class Categoria_JuegoController {
 	
 
 	@GetMapping("r")
-	public List<Categoria_Juego> read(ModelMap m) {
-//		List<Categoria_Juego> categorias = repoCategoria_Juego.findAll();
-//		m.put("categorias", categorias);
-//		m.put("view", "/categoria/R");
-//		return "/_t/frame";
-		
-		return repoCategoria_Juego.findAll();
+	public String read(ModelMap m) {
+		List<Categoria_Juego> categorias = repoCategoria_Juego.findAll();
+		m.put("categorias", categorias);
+		m.put("view", "/categoria/R");
+		return "/_t/frame";
 	}
 
 	@GetMapping("c")

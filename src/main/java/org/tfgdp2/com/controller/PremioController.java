@@ -1,7 +1,6 @@
 package org.tfgdp2.com.controller;
 
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,11 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.tfgdp2.com.domain.Gala;
 import org.tfgdp2.com.domain.Nominacion_Juego;
 import org.tfgdp2.com.domain.Nominacion_Participante;
-import org.tfgdp2.com.domain.Participante;
 import org.tfgdp2.com.domain.Premio_Juego;
 import org.tfgdp2.com.domain.Premio_Participante;
 import org.tfgdp2.com.domain.Usuario;
-//import org.tfgdp2.com.domain.Votacion_Participante;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.PRG;
@@ -27,8 +24,6 @@ import org.tfgdp2.com.repository.NominacionParticipanteRepository;
 import org.tfgdp2.com.repository.ParticipanteRepository;
 import org.tfgdp2.com.repository.PremioJuegoRepository;
 import org.tfgdp2.com.repository.PremioParticipanteRepository;
-//import org.tfgdp2.com.repository.VotacionJuegoRepository;
-//import org.tfgdp2.com.repository.VotacionParticipanteRepository;
 
 @Controller
 @RequestMapping("/premio")
