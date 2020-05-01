@@ -1,5 +1,6 @@
 <div class="container">
 	<h1>Editar usuario</h1>
+	
 	<form method="post" action="/usuario/uUsuarioPost" class="form">
 	<input type="hidden" name="id" th:value="${usuario.id}">
 		Nombre
@@ -13,4 +14,5 @@
 		<br/>
 		<input type="submit" class="form-item" />
 	</form>
+	<a class="waves-effect waves-light btn hoverable" href="/cambioContrasenia"><h6>Cambiar Contraseña</h6></a>
 </div>
