@@ -20,7 +20,6 @@ public class Plataforma {
 	@Column(unique = true)
 	private String nombre;
 	
-	@Column(unique = true)
 	private String familia;
 	
 	private String img;
