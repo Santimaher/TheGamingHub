@@ -25,16 +25,20 @@
 	<fieldset>
 		<legend>Plataformas disponibles</legend>
 			<span th:each="plataforma:${plataformas}" >
-				<input type="checkbox" th:id="|pla-${plataforma.id}|" th:name="idPlataforma[]" th:value="${plataforma.id}"/>
-				<label th:for="|pla-${plataforma.id}|" th:text="${plataforma.nombre}"></label>
+				<label th:for="|pla-${plataforma.id}|">
+					<input type="checkbox" th:id="|pla-${plataforma.id}|" class="indeterminate-checkbox" th:name="idPlataforma[]" th:value="${plataforma.id}"/>
+					<span th:text="${plataforma.nombre}"></span>
+				</label>						
 			</span>
 	</fieldset>
 
 	<fieldset>
 		<legend>Categorias</legend>
-			<span th:each="categoria:${categorias}" >
-				<input type="checkbox" th:id="|cat-${categoria.id}|" th:name="idCat[]" th:value="${categoria.id}"/>
-				<label th:for="|cat-${categoria.id}|" th:text="${categoria.nombre}"></label>
+			<span th:each="categoria:${categorias}" >				
+				<label th:for="|cat-${categoria.id}|">
+					<input type="checkbox" th:id="|cat-${categoria.id}|" class="indeterminate-checkbox" th:name="idCat[]" th:value="${categoria.id}"/>
+					<span th:text="${categoria.nombre}"></span>
+				</label>
 			</span>
 	</fieldset>	
 	<input type="submit">

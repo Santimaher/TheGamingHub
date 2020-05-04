@@ -14,9 +14,11 @@
 		<input type="file" name="img" class="form-item">  <br>
 		<fieldset>
 		<legend>Categorias</legend>
-			<span th:each="categoria:${categorias}" >
-				<input type="checkbox" th:id="|cat-${categoria.id}|" th:name="idCat" th:value="${categoria.id}"/>
-				<label th:for="|cat-${categoria.id}|" th:text="${categoria.nombre}"></label>
+			<span th:each="categoria:${categorias}" >				
+				<label th:for="|cat-${categoria.id}|" >
+					<input type="checkbox" th:id="|cat-${categoria.id}|" class="indeterminate-checkbox" th:name="idCat" th:value="${categoria.id}"/>
+					<span th:text="${categoria.nombre}"></span>
+				</label>
 			</span>
 	</fieldset>	
 
