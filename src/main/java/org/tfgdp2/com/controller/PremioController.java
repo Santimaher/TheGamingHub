@@ -74,7 +74,6 @@ public class PremioController {
 			try {
 				Premio_Participante pp = new Premio_Participante(nombre);
 				Gala g = repoGala.findTopByOrderByEdicionDesc();
-				pp.setTiene(g);
 				g.getPremiosP().add(pp);
 				repoPremioPar.save(pp);
 			} catch (Exception e) {
@@ -85,7 +84,6 @@ public class PremioController {
 			try {
 				Premio_Juego pj = new Premio_Juego(nombre);
 				Gala g = repoGala.findTopByOrderByEdicionDesc();
-				pj.setTiene(g);
 				g.getPremiosJ().add(pj);
 				repoPremioJuego.save(pj);
 			} catch (Exception e) {

@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -30,10 +31,10 @@ public class Gala {
 	@Column(unique = true)
 	private LocalDate fin;
 	
-	@OneToMany(mappedBy = "tiene")
+	@ManyToMany(mappedBy = "tiene")
 	private Collection<Premio_Participante> premiosP;
 	
-	@OneToMany(mappedBy = "tiene")
+	@ManyToMany(mappedBy = "tiene")
 	private Collection<Premio_Juego> premiosJ;
 	
 	//------------CONSTRUCTOR----------------

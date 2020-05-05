@@ -16,17 +16,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.tfgdp2.com.domain.Foro;
 import org.tfgdp2.com.domain.Gala;
 import org.tfgdp2.com.domain.Plataforma;
+import org.tfgdp2.com.domain.Premio_Juego;
+import org.tfgdp2.com.domain.Premio_Participante;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.GalaRepository;
+import org.tfgdp2.com.repository.PremioJuegoRepository;
+import org.tfgdp2.com.repository.PremioParticipanteRepository;
 
 @Controller
 @RequestMapping(value="/gala")
 public class GalaController {
 
 	@Autowired GalaRepository repoGala;
+	@Autowired PremioJuegoRepository repoPremioJ;
+	@Autowired PremioParticipanteRepository repoPremioP;
 	
 	@GetMapping("r")
 	public String read(ModelMap m) {
@@ -51,11 +57,22 @@ public class GalaController {
 			HttpSession s) throws DangerException, InfoException {
 		
 		try {
+			List<Premio_Juego> premiosJ = repoPremioJ.findAll();
+			List<Premio_Participante> premiosP = repoPremioP.findAll();
 			Gala g = new Gala();
 			g.setEdicion(edicion);
 			g.setInicio(inicio);
 			g.setFin(fin);
 			g.setActivo(false);
+			for (Premio_Participante Premio_Participante : premiosP) {
+				g.getPremiosP().add(Premio_Participante);
+				Premio_Participante.getTiene().add(g);
+			}
+			
+			for (Premio_Juego Premio_Juego : premiosJ) {
+				g.getPremiosJ().add(Premio_Juego);
+				Premio_Juego.getTiene().add(g);
+			}
 			repoGala.save(g);
 			
 		} catch (Exception e) {
@@ -145,12 +162,13 @@ public class GalaController {
 	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {		
 		try {
 			H.isRolOK("admin", s);
-			repoGala.deleteGalaById(id);
+			repoGala.delete(repoGala.getOne(id));
+			
 		} catch (Exception e) {
 			PRG.error("Error al borrar la Gala", "/gala/r");
 		}
 
-		PRG.info("Gala borrada correctamente", "/juego/r");
+		PRG.info("Gala borrada correctamente", "/gala/r");
 
 	}
 }
