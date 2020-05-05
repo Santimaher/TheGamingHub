@@ -26,8 +26,11 @@ public class H {
 			if (rol != "anon") {
 				PRG.error("Rol inadecuado");
 			}
-		} else { // Auth o admin
-			if (!usuario.getRol().equals("admin") && rol.equals("admin")) { // anon
+		} else { // Auth o admin o jurado
+			if (!usuario.getRol().equals("admin") && rol.equals("admin")) { // admin
+				PRG.error("Rol inadecuado");
+			}
+			if (!usuario.getRol().equals("jurado") && rol.equals("jurado")) { // jurado
 				PRG.error("Rol inadecuado");
 			}
 		}

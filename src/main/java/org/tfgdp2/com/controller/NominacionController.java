@@ -1,5 +1,7 @@
 package org.tfgdp2.com.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,6 +17,7 @@ import org.tfgdp2.com.domain.Premio_Juego;
 import org.tfgdp2.com.domain.Premio_Participante;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
+import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.JuegoRepository;
 import org.tfgdp2.com.repository.NominacionJuegoRepository;
@@ -47,7 +50,8 @@ public class NominacionController {
 	
 	
 	@GetMapping("nominarParticipante")
-	public String nominarParticipante(ModelMap m) {
+	public String nominarParticipante(ModelMap m,HttpSession s) throws DangerException {
+		H.isRolOK("jurado", s);
 		m.put("participantes", repoParticipante.findAll());
 		m.put("premioP", repoPremioP.findAll());
 		m.put("view", "nominacion/nominarParticipante");
@@ -55,9 +59,10 @@ public class NominacionController {
 	}
 	
 	@PostMapping("nominarParticipante")
-	public void nominarPpost(@RequestParam("id") Long idParticipante,@RequestParam("premio") Long idPremio) throws InfoException, DangerException {
+	public void nominarPpost(HttpSession s,@RequestParam("id") Long idParticipante,@RequestParam("premio") Long idPremio) throws InfoException, DangerException {
 		Participante p = repoParticipante.getOne(idParticipante);
 		try {
+		H.isRolOK("jurado", s);
 		Premio_Participante pr = repoPremioP.getOne(idPremio);
 		p.setEstaNominado(true);
 		Nominacion_Participante np = new Nominacion_Participante();
