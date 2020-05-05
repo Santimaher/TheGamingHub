@@ -124,6 +124,7 @@
 			</div>
 			<div class="col-12" th:if="${session.usuario != null}">
 				<div class="chip">
+				<img th:src="|img/${session.usuario.img}|" alt="Contact Person">
 					<span th:text="${session.usuario.nombre}"></span>
 				</div>
 				<ul class="collapsible">

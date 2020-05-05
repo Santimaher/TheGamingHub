@@ -23,21 +23,22 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Entity
 public class Usuario {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
-	@Column(unique=true)
+	@Column(unique = true)
 	private String loginname;
-	@Column(unique=true)
+	@Column(unique = true)
 	private String email;
 	private String password;
 	private String rol;
+	private String img;
 
 //	@ManyToMany(mappedBy="votacion")
 //    private Collection<Juego> votaciones;
-	
-	@OneToMany(mappedBy="escribe",fetch= FetchType.EAGER)
-    private Collection<EntradaForo> entradas;
+
+	@OneToMany(mappedBy = "escribe", fetch = FetchType.EAGER)
+	private Collection<EntradaForo> entradas;
 //	@OneToMany(mappedBy="factura")
 //    private Collection<Factura> facturas;
 //this.votaciones=new ArrayList<>;
@@ -46,73 +47,79 @@ public class Usuario {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy = "votacionesP")
 	private Collection<Nominacion_Participante> votadosP;
-	
+
 	@ManyToMany(mappedBy = "votacionesJ")
 	private Collection<Nominacion_Juego> votadosJ;
-	
-	//===============================================
+
+	// ===============================================
 	public Usuario() {
-		this.entradas=new HashSet<>();
-		this.votadosJ=new HashSet<>();
-		this.votadosP=new HashSet<>();
-		
+		this.entradas = new HashSet<>();
+		this.votadosJ = new HashSet<>();
+		this.votadosP = new HashSet<>();
+
 	}
-	
-	
-	
+
 	public Usuario(String nombre, String loginname, String password, String rol) {
 		super();
-		this.entradas=new HashSet<>();
-		this.votadosJ=new HashSet<>();
-		this.votadosP=new HashSet<>();
+		this.entradas = new HashSet<>();
+		this.votadosJ = new HashSet<>();
+		this.votadosP = new HashSet<>();
 		this.nombre = nombre;
 		this.loginname = loginname;
 		this.password = password;
 		this.rol = rol;
 	}
 
+	// ===============================================
 
-
-	//===============================================
-	
-	
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getLoginname() {
 		return loginname;
 	}
+
 	public void setLoginname(String loginname) {
 		this.loginname = loginname;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = (new BCryptPasswordEncoder()).encode(password);
 	}
+
 	public String getRol() {
 		return rol;
 	}
+
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
-	
+
 	public Collection<EntradaForo> getEntradas() {
 		return entradas;
 	}
@@ -121,30 +128,29 @@ public class Usuario {
 		this.entradas = entradas;
 	}
 
-
-
 	public Collection<Nominacion_Participante> getVotadosP() {
 		return votadosP;
 	}
-
-
 
 	public void setVotadosP(Collection<Nominacion_Participante> votadosP) {
 		this.votadosP = votadosP;
 	}
 
-
-
 	public Collection<Nominacion_Juego> getVotadosJ() {
 		return votadosJ;
 	}
-
-
 
 	public void setVotadosJ(Collection<Nominacion_Juego> votadosJ) {
 		this.votadosJ = votadosJ;
 	}
 
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
 
 //
 //	public Collection<Votacion_Participante> getVotadosP() {
@@ -168,7 +174,5 @@ public class Usuario {
 //	public void setVotadosJ(Collection<Votacion_Juego> votadosJ) {
 //		this.votadosJ = votadosJ;
 //	}
-
-	
 
 }
