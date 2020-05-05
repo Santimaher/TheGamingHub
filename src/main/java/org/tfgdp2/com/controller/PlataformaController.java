@@ -82,8 +82,7 @@ public class PlataformaController {
 	}
 	
 	@PostMapping("d")
-	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {
-	
+	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {	
 		
 		try {
 			H.isRolOK("admin", s);
