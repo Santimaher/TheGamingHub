@@ -1,25 +1,26 @@
 <div class="container">
-<form action="http://localhost:8080/entradaForo/c" method="get">
-					<input type="hidden" name="id" th:value="${id}" />
-					<input type="hidden" name="idJuego" th:value="${idJuego}">
-					<button onclick="submit()">
-						Crear
-					</button>
-				</form>
-				<form action="http://localhost:8080/entradaForo/rPropio" method="get">
-					<input type="hidden" name="id" th:value="${id}" />
-					<input type="hidden" name="idJuego" th:value="${idJuego}">
-					<button onclick="submit()">
-						Mis comentarios en este foro
-					</button>
-				</form>
-				
-				<form action="/foro/r" method="get">
+<form action="/foro/r" method="get">
 					<input type="hidden" name="id" th:value="${idJuego}">
 					<button onclick="submit()">
 						Menu
 					</button>
 				</form>
+				
+<table class="table table-striped">
+		<tr>
+		    <th>Ranking</th>
+			<th>Comentario</th>
+			<th>Fecha de publicacion</th>
+			<th>Autor</th>
+		</tr>
+		 
+		<tr>
+		<td th:text="${MensajeFijado.ranking}"></td>
+		<td th:text="${MensajeFijado.comentario}"></td>
+		<td th:text="${MensajeFijado.fechaPublicacion}"></td>
+		<td th:text="${MensajeFijado.escribe.loginname}"></td>
+		</tr></table>
+		
 <table class="table table-striped">
 		<tr>
 		    <th>Ranking</th>
@@ -32,7 +33,7 @@
 		<td th:text="${entrada.ranking}"></td>
 		<td th:text="${entrada.comentario}"></td>
 		<td th:text="${entrada.fechaPublicacion}"></td>
-		<td th:text="${entrada.escribe.loginname}"></td>
+		<td th:text="${entrada?.escribe?.loginname}"></td>
 		<td class="row">
           <form action="/entradaForo/like" method="get">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
@@ -58,11 +59,24 @@
 				<form action="/entradaForo/verRespuestas" method="get">
 				<input type="hidden" name="idJuego" th:value="${idJuego}">
 					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
-					<input type="hidden" name="id" th:value="${entrada?.pertenece.id}" />
+					<input type="hidden" name="id" th:value="${entrada.pertenece.id}" />
 					<button th:text="|Ver respuestas(${entrada.respuestas.size()})|"onclick="submit()">
-						
+						Ver respuestas
 					</button>
 				</form>
-				</tr>
+				<!-- <form action="/entradaForo/u" method="get">
+					<input type="hidden" name="id" th:value="${entrada.id}" />
+					<button onclick="submit()">
+						<img src="/img/edit.png" height="20" width="20">
+					</button>
+				</form> -->
+				<!-- <form action="/entradaForo/d" method="get">
+					<input type="hidden" name="id" th:value="${entrada.id}" />
+					<button onclick="submit()">
+						<img src="/img/delete.png" height="20" width="20">
+					</button>
+				</form> -->
+			</td>
+		</tr>
 		</table>
 </div>

@@ -1,0 +1,18 @@
+<div class="container">
+	<h1>Nueva entrada al foro</h1>
+
+	<form method="post" action="/entradaForo/responder" class="form">
+
+		Comentario <br>
+		<textarea name="comentario" cols="30" rows="5" min="1"></textarea> <br>
+		<input type="hidden" name="idForo" th:value="${idForo}" />
+		<input type="hidden" name="idEntrada" th:value="${idEntrada}" />
+		
+		<input type="submit"><br>
+	</form>
+	
+		<a href="/">
+		<button>Cancelar</button>
+	</a>
+	
+</div>
