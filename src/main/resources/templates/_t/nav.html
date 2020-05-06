@@ -1,9 +1,9 @@
 <nav>
 	<nav>
 		<div class="nav-wrapper">
-			<a href="http://localhost:8080/" class="brand-logo"><img
-				src="https://storage.needpix.com/rsynced_images/house-308936_1280.png"
-				width="25px" height="25px"></img></a>
+			<button class="waves-effect waves-light pink accent-3">
+				<a href="http://localhost:8080/"> <i class="material-icons">home</i></a>
+			</button>
 			<ul class="right hide-on-med-and-down">
 				<li><a class="dropdown-trigger" href="#!" data-target="juego">Juego<i
 						class="material-icons right"></i></a></li>
@@ -36,6 +36,10 @@
 						class="material-icons right"></i></a></li>
 				<li><a class="dropdown-trigger" href="#!" data-target="init">Init<i
 						class="material-icons right"></i></a></li>
+				<li><button data-target="slide-out"
+						class="waves-effect waves-light btn sidenav-trigger pink accent-3">
+						<i class="material-icons">person </i>
+					</button></li>
 			</ul>
 		</div>
 	</nav>
@@ -95,7 +99,8 @@
 	</ul>
 
 	<ul id="nominarP" class="dropdown-content">
-		<li><a href="http://localhost:8080/nominacion/nominarParticipante">Nominar</a></li>
+		<li><a
+			href="http://localhost:8080/nominacion/nominarParticipante">Nominar</a></li>
 	</ul>
 
 	<ul id="nominarJ" class="dropdown-content">
@@ -125,22 +130,22 @@
 			</div>
 			<div class="col-12" th:if="${session.usuario != null}">
 				<div class="chip">
-				<img th:src="|img/${session.usuario.img}|" alt="Contact Person">
+					<img th:src="|img/${session.usuario.img}|" alt="Contact Person">
 					<span th:text="${session.usuario.nombre}"></span>
 				</div>
 				<ul class="collapsible">
 					<li>
-						<div class="collapsible-header"><i class="material-icons">brightness_7</i>  
-							Opciones
+						<div class="collapsible-header">
+							<i class="material-icons">brightness_7</i> Opciones
 						</div>
 						<div class="collapsible-body">
-						<ul>
-							<li><a class="waves-effect waves-light btn hoverable" href="/logout">Logout</a></li>
-							<li><a class="waves-effect waves-light btn hoverable" href="/usuario/uUsuario">Editar
-								perfil</a></li>
-								 
-						</ul>
-						</div>		
+							<ul>
+								<li><a class="waves-effect waves-light btn hoverable"
+									href="/logout">Logout</a></li>
+								<li><a class="waves-effect waves-light btn hoverable"
+									href="/usuario/uUsuario">Editar perfil</a></li>
+
+							</ul>
 						</div>
 			</div>
 		</div></li>
@@ -152,5 +157,3 @@
 	<li><a class="subheader">Subheader</a></li>
 	<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
 </ul>
-<a data-target="slide-out" class="waves-effect waves-light btn sidenav-trigger"><i
-	class="material-icons">menu</i></a>
