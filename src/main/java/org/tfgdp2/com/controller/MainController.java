@@ -55,7 +55,6 @@ public class MainController {
 	private PremioParticipanteRepository repoPremioP;
 	@Autowired
 	private UsuarioRepository usuarioRepo;
-	
 	@GetMapping("/")
 	public String principio(ModelMap m) {
 		m.put("view", "home.html");

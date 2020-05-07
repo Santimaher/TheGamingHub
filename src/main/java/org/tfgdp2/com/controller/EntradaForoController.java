@@ -28,13 +28,18 @@ public class EntradaForoController {
 	@Autowired
 	private ForoRepository repoForo;
 	@GetMapping("rPropio")
-	public String leerPropio(@RequestParam("id") Long id, ModelMap m,HttpSession s) {
+	public String leerPropio(@RequestParam("idforo") Long idforo,@RequestParam("id") Long id, ModelMap m,HttpSession s) throws DangerException {
 		m.put("view","/entradaForo/rPropio");
 		m.put("id",id);
 		m.put("idJuego", repoForo.getOne(id).getJuego().getId());
+		try {
 		Usuario u=(Usuario) s.getAttribute("usuario");
 		Long idUsuario=u.getId();
 		m.put("entradas",repoEntrada.findByPerteneceIdAndEscribeIdOrderByRankingDesc(id,idUsuario));
+		}catch(Exception e) {
+			PRG.error("Debes iniciar sesion ","/entradaForo/r",id);
+		}	
+
 		return "_t/frame";
 	}
 	@GetMapping("verRespuestas")
@@ -81,7 +86,7 @@ public class EntradaForoController {
 			repoEntrada.save(e);
 			
 		}catch(Exception e) {
-			PRG.error("Error al crear la entrada  ("+e.getMessage()+")", "/entradaForo/c");
+			PRG.error("Error al crear la entrada","/entradaForo/c");
 		}	
 
 		PRG.info("Entrada del foro creada correctamente", "/entradaForo/r",idForo);
@@ -108,7 +113,7 @@ public class EntradaForoController {
 			entrada.setEscribe(u);
 			repoEntrada.save(entrada);
 		}catch(Exception e) {
-			PRG.error("Error al crear la entrada  "+e.getMessage(), "/entradaForo/c");
+			PRG.error("Error al crear la entrada  ", "/entradaForo/c");
 		}	
 
 		PRG.info("Entrada del foro creada correctamente", "/entradaForo/r",id);

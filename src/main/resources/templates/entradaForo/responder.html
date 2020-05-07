@@ -1,9 +1,9 @@
 <div class="container">
-	<h1>Nueva entrada al foro</h1>
+	<h1>Responder</h1>
 
 	<form method="post" action="/entradaForo/responder" class="form">
 
-		Comentario <br>
+		Comentario <i class="material-icons prefix">mode_edit</i> <br>
 		<textarea name="comentario" cols="30" rows="5" min="1"></textarea> <br>
 		<input type="hidden" name="idForo" th:value="${idForo}" />
 		<input type="hidden" name="idEntrada" th:value="${idEntrada}" />
