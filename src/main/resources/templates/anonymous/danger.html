@@ -1,0 +1,24 @@
+<div class="container">
+	
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>NOMBRE</th>
+			<th>FECHA</th>
+			<th>DESARROLLADORA</th>
+			<th>IMAGEN</th>
+		</tr>
+		<tr th:each="juego:${juegos}">
+			<td th:text="${juego.id}"></td>
+			<td th:text="${juego.fechaLanzamiento}"></td>
+			<td th:text="${juego.nombre}"></td>
+			<td>
+				<img th:src="|/img/cover/${juego.img}|" alt="asd" height="300" width="300"/>
+			</td>
+		</tr>
+	
+	</table>
+
+
+
+</div>

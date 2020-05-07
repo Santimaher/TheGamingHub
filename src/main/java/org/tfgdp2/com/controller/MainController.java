@@ -55,11 +55,19 @@ public class MainController {
 	private PremioParticipanteRepository repoPremioP;
 	@Autowired
 	private UsuarioRepository usuarioRepo;
+	
 	@GetMapping("/")
 	public String principio(ModelMap m) {
 		m.put("view", "home.html");
 		return "/_t/frame";
 	}
+	@GetMapping("/danger")
+	public String danger(ModelMap m) {
+		m.put("view", "/anonymous/danger.html");
+		m.put("juegos", repoJuego.findAll());
+		return "/_t/frame";
+	}
+	
 	
 	@GetMapping("/info")
 	public String info(HttpSession s, ModelMap m) {
