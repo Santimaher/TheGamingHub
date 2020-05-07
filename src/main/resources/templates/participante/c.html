@@ -1,48 +1,73 @@
 <div class="container">
-<div class="row">
-<div class="col m12">
-	<h3>Nuevo Participante</h3>
+	
+		<div class="col m12">
+			<h3>Nuevo Participante</h3>
+		</div>
+		
 	</div>
-</div>
-	<form method="post" enctype="multipart/form-data" action="/participante/c" class="form">
- 		
- 		<div class="col m6">
-		<label for ="nombre">Nombre</label>
-		<input type="text" name="nombre" class="form-item"> <br>
-		</div>
-		
-		 <div class="col m6">
-		<label for="apellido">Apellido</label>
-		<input type="text" name="apellido" class="form-item"> <br>
-		</div>
-		
-		<label for="bio">Biografía</label>
-		<input type="text" name="bio" class="form-item"> <br>
-		<label for="teaser">Teaser</label>
-		<input type="text" name="teaser" class="form-item"><br>
-		<label for="img">Imagen</label>
-		<input type="file" name="img" class="form-item">  <br>
-		<fieldset>
-		<legend>Categorias</legend>
-			<span th:each="categoria:${categorias}" >				
-				<label th:for="|cat-${categoria.id}|" >
-					<input type="checkbox" th:id="|cat-${categoria.id}|" class="indeterminate-checkbox" th:name="idCat" th:value="${categoria.id}"/>
-					<span th:text="${categoria.nombre}"></span>
-				</label>
-			</span>
-	</fieldset>	
+	<br>
+		<br>
+	<div class="row">
+		<form method="post" enctype="multipart/form-data" action="/participante/c" class="col s12">
+			<div class="row">
+				<div class="input-field col s6">
+					<input name="nombre" type="text" class="validate"> 
+					<label for="nombre">Nombre</label>
+				</div>
 
-		<br/>
-		
-		  <button class="btn waves-effect waves-light" type="submit" onclick="submit()"name="action">Crear
-    <i class="material-icons right">send</i>
-  </button>
-		
+
+				<div class="input-field col s6">
+					<input type="text" name="apellido" class="validate"> 
+					<label for="apellido">Apellidos</label>
+				</div>
+			</div>
+
+			<div class="input-field col s12">
+			<label for="bio">Biografía</label>
+				<input type="text" name="bio" class="validate">
+				 
+			</div>
+
+			<div class="input-field col s12">
+			<label for="teaser">Teaser</label>
+				<input type="text" name="teaser" class="">
+				
+			</div>
+
+			<div class="file-field input-field col s12">
+				<div class="btn waves-effect waves-dark">
+					<span>Imagen</span> <input type="file" name="img" class="">
+					</div>
+				</div>
+			<br>
+			<br>
+
+
+			<div class="col s12">
+				<fieldset>
+					<legend>Categorias</legend>
+					<span th:each="categoria:${categorias}"> <label
+						th:for="|cat-${categoria.id}|" style="font-size: 20px"> <input
+							type="checkbox" th:id="|cat-${categoria.id}|"
+							class="indeterminate-checkbox" th:name="idCat"
+							th:value="${categoria.id}" /> <span th:text="${categoria.nombre}"
+							style="font-size: 15px"></span>
+					</label>
+					</span>
+				</fieldset>
+			</div>
+		<br>
+	
+		<br>
+		<br>
+		<br>
+		<button class="btn waves-effect waves-light" type="submit" onclick="submit()" name="action">
+			Crear <i class="material-icons right">send</i>
+		</button>
 	</form>
-	<br><br>
-	
+			<br>
+		<br>	
 			<a href="/">
-		<button class="btn waves-effect waves-light">Cancelar</button>
-	</a>
-	
-</div>
+				<button class="btn waves-effect waves-light">Cancelar</button>
+			</a>
+	</div>

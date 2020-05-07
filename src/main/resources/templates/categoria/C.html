@@ -1,9 +1,19 @@
 <div class="container">
-<h1>Nueva Categoria</h1>
+<div class="row">
+<div class="col s6">
+<h2>Nueva Categoria</h2>
+</div>
+</div>
 	<form method="post" action="/categoria/c">
-	<label for="nombreCat">Nombre de la Categoria</label>
+	<div class="row">
+	<div class="col s6">
+	<label for="nombreCat" style="font-size:20px">Nombre de la Categoria</label>
+	</div>
 	<input type="text" id="nombreCat" name="nombre">
+	</div>
 	<br>	
-	<input type="submit">
+	<button class="btn waves-effect waves-light" type="submit" onclick="submit()"name="action">Crear
+    <i class="material-icons right">send</i>
+  </button>
 	</form>
 </div>
