@@ -1,44 +1,14 @@
 <div class="container">
-	
-	<table>
-		<tr>
-			<th>ID</th>
-			<th>NOMBRE</th>
-			<th>FECHA</th>
-			<th>DESARROLLADORA</th>
-			<th>IMAGEN</th>
-		</tr>
-		<tr th:each="juego:${juegos}">
-			<td th:text="${juego.id}"></td>
-			<td th:text="${juego.nombre}"></td>
-			<td th:text="${juego.fechaLanzamiento}"></td>
-			<td th:text="${juego.desarrolladora}"></td>
-			<td>
-				<img th:src="|/img/cover/${juego.img}|" alt="asd" height="300" width="300"/>
-			</td>
-		</tr>
-	
-	</table>
-	
-	<table>
-		<tr>
-			<th>ID</th>
-			<th>NOMBRE</th>
-			<th>IMAGEN</th>
-			
-			
-		</tr>
-		<tr th:each="plataforma:${plataformas}">
-			<td th:text="${plataforma.id}"></td>
-			<td th:text="${plataforma.familia}"></td>
-			<td th:text="${plataforma.nombre}"></td>
-			
-			<td>
-				<img th:src="|/img/${plataforma.img}|" alt="asd" height="300" width="300"/>
-			</td>
-		</tr>
-	
-	</table>
+	<select onchange="refrescar(this.value)">
+		<option value="">Elegir</option>
+		<option value="Sony">Sony</option>
+		<option value="Microsoft">Microsoft</option>
+		<option value="Nintendo">Nintendo</option>
+		<option value="PC">PC</option>
+		<option value="Sega">Sega</option>
+		<option value="SNK">SNK</option>
+		<option value="Atari">Atari</option>
+	</select>
 
 
 
