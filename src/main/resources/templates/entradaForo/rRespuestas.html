@@ -1,14 +1,14 @@
 <div class="container">
 <form action="/foro/r" method="get">
 					<input type="hidden" name="id" th:value="${idJuego}">
-					<button onclick="submit()">
+					<button onclick="submit()" class="waves-effect waves-light btn separacion">
 						Menu
 					</button>
 				</form>
 				<form action="/entradaForo/responder" method="get">
 					<input type="hidden" name="idEntrada" th:value="${MensajeFijado.id}" />
 					<input type="hidden" name="idForo" th:value="${MensajeFijado.pertenece.id}" />
-					<button onclick="submit()">
+					<button onclick="submit()" class="waves-effect waves-light btn separacion">
 						Responder
 					</button>
 				</form>
@@ -43,21 +43,21 @@
           <form action="/entradaForo/like" method="get">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
-					<button onclick="submit()">
-						<img src="/img/like.png" height="20" width="20">
+					<button onclick="submit()" class="waves-effect waves-light btn separacion">
+						<img src="/img/like.svg" height="20" width="20">
 					</button>
 				</form>
           <form action="/entradaForo/dislike" method="get">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
-					<button onclick="submit()">
+					<button onclick="submit()" class="waves-effect waves-light btn separacion">
 						<img src="/img/dislike.png" height="20" width="20">
 					</button>
 				</form>
 				<form action="/entradaForo/responder" method="get">
 					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
-					<button onclick="submit()">
+					<button onclick="submit()" class="waves-effect waves-light btn separacion">
 						Responder
 					</button>
 				</form>
@@ -65,7 +65,7 @@
 				<input type="hidden" name="idJuego" th:value="${idJuego}">
 					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
 					<input type="hidden" name="id" th:value="${entrada?.pertenece.id}" />
-					<button th:text="|Ver respuestas(${entrada.respuestas.size()})|"onclick="submit()">
+					<button th:text="|Ver respuestas(${entrada.respuestas.size()})|"onclick="submit()" class="waves-effect waves-light btn separacion">
 						
 					</button>
 				</form>

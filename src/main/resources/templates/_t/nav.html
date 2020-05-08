@@ -117,7 +117,7 @@
 
 
 <ul id="slide-out" class="sidenav">
-	<li><div class="user-view">
+	<li><div class="user-view ">
 			<!-- 			<div class="background"> -->
 			<!-- 				<img src="images/office.jpg"> -->
 			<!-- 			</div> -->
@@ -130,12 +130,12 @@
 			</div>
 			<div class="col-12" th:if="${session.usuario != null}">
 				<div class="chip">
-					<img th:src="|img/${session.usuario.img}|" alt="Contact Person">
+					<img th:src="|/img/${session.usuario.img}|" alt="Contact Person">
 					<span th:text="${session.usuario.nombre}"></span>
 				</div>
 				<ul class="collapsible">
 					<li>
-						<div class="collapsible-header">
+						<div class="collapsible-header texto-negro">
 							<i class="material-icons">brightness_7</i> Opciones
 						</div>
 						<div class="collapsible-body">
