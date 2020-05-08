@@ -2,7 +2,7 @@
 	<h1 th:text="|Foro del juego ${juego.nombre}|"></h1>
 	<div th:each="foro:${foros}">
 	<form action="http://localhost:8080/entradaForo/r">
-	<input type="submit" th:value="${foro.tipo}">
+	<button  onclick="submit()" class="waves-effect waves-light btn separacion" th:text="${foro.tipo}"></button>
 	<input  name="id" type="hidden" th:value="${foro.id}">
 	</form>
 	</div>

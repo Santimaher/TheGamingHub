@@ -1,57 +1,48 @@
 <div class="container">
-	<table class="table table-striped">
-		<tr>
-			<th>Nombre</th>
-			<th>Precio</th>
-			<th>Stock</th>
-			<th>Desarrolladora</th>
-			<th>Plataformas</th>
-			<th>URL al Foro</th>
-			<th>Teaser</th>
-			<th>IMG</th>
-			<th>Categoria</th>
-			<th>Acciones</th>
-		</tr>
-		<tr th:each="juego:${juegos}">
-			<td th:text="${juego.nombre}"></td>
-			<td th:text="|${juego.precio} €|"></td>
-			<td th:text="|${juego.stock} .ud|"></td>
-			<td th:text="${juego.desarrolladora}"></td>
-			<td>
-				<ul th:each="plataforma:${juego.plataformas}">
-					<li th:text="${plataforma.nombre}"></li>
-				</ul>
-			</td>
-			<td>
-				<form action="/foro/r" method="get">
+<div class="row">
+<div class="col s6" th:each="juego:${juegos}">
+	<div class="card grey darken-3 white-text">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" th:src="|/img/cover/${juego.img}|" width="150px" height="500px">
+    </div>
+    <div class="card-content grey darken-3 white-text ">
+      <span class="card-title activator white-text text-darken-4" th:text="${juego.nombre}"><i class="material-icons right">more_vert</i></span>
+      <p>
+      <form action="/foro/r" method="get">
 					<input type="hidden" name="id" th:value="${juego.id}" />
-					<button onclick="submit()">
+					<button onclick="submit()" class="waves-effect waves-light btn separacion">
 						Foro
 					</button>
 				</form>
-
-			</td>
-			<td th:text="${juego.teaser}"></td>
-			<td th:text="${juego.img}"></td>
-			<td>
-				<ul th:each="categoria:${juego.pertenece}">
+		</p>
+		<p><form action="/juego/u" method="get">
+					<input type="hidden" name="id" th:value="${juego.id}" />
+					<button onclick="submit()"class="waves-effect waves-light btn separacion">
+						<i class="material-icons left">edit</i>
+					</button>
+				</form></p>
+		<p><form action="/juego/d" method="post">
+					<input type="hidden" name="id" th:value="${juego.id}" />
+					<button onclick="submit()" class="waves-effect waves-light btn">
+						<i class="material-icons left">delete</i>
+					</button>
+				</form></p>
+    </div>
+    <div class="card-reveal grey darken-3 white-text letra-grande">
+      <span class="card-title white-text flow-text " th:text="${juego.nombre}"><i class="material-icons right">close</i></span>
+      <p th:text="|Precio: ${juego.precio} €|"></p>
+      <p th:text="|Stock: ${juego.stock} .ud|"></p>
+      <p th:text="|Desarrolladora: ${juego.desarrolladora}|"></p>
+      <p><ul th:each="plataforma:${juego.plataformas}">
+					<li th:text="${plataforma.nombre}"></li>
+				</ul>
+	  </p>
+	  <p><ul th:each="categoria:${juego.pertenece}">
 					<li th:text="${categoria.nombre}"></li>
 				</ul>
-			</td>
-			<td class="row">
-				<form action="/juego/u" method="get">
-					<input type="hidden" name="id" th:value="${juego.id}" />
-					<button onclick="submit()">
-						<img src="/img/edit.png" height="20" width="20">
-					</button>
-				</form>
-				<form action="/juego/d" method="post">
-					<input type="hidden" name="id" th:value="${juego.id}" />
-					<button onclick="submit()">
-						<img src="/img/delete.png" height="20" width="20">
-					</button>
-				</form>
-			</td>
-		</tr>
-	</table>
+	  </p>
+    </div>
+  </div>
+  </div>
+  </div>
 </div>
