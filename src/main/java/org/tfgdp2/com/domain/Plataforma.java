@@ -66,6 +66,14 @@ public class Plataforma {
 		this.juegos = juego;
 	}
 
+	public String getFamilia() {
+		return familia;
+	}
+
+	public void setFamilia(String familia) {
+		this.familia = familia;
+	}
+
 	
 	
 	

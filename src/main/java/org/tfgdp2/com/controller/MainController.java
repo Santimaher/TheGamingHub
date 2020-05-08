@@ -65,6 +65,7 @@ public class MainController {
 	public String danger(ModelMap m) {
 		m.put("view", "/anonymous/danger.html");
 		m.put("juegos", repoJuego.findAll());
+		m.put("plataformas", repoPlataforma.findAll());
 		return "/_t/frame";
 	}
 	
