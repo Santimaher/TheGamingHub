@@ -22,7 +22,7 @@ public class Premio_Participante {
 	@Column(unique = true)
 	private String nombrePremio;
 
-	@OneToMany(mappedBy = "premio")
+	@ManyToMany(mappedBy = "premio")
 	private Collection<Nominacion_Participante> premiados;
 
 	@ManyToMany

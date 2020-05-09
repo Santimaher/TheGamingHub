@@ -44,10 +44,12 @@ public class Usuario {
 //this.votaciones=new ArrayList<>;
 //this.entradas=new ArrayList<>;
 //this.facturas=new ArrayList<>;
+	
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy = "votacionesP")
 	private Collection<Nominacion_Participante> votadosP;
-
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy = "votacionesJ")
 	private Collection<Nominacion_Juego> votadosJ;
 

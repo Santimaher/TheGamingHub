@@ -144,15 +144,14 @@ public class PremioController {
 //		Votacion_Participante vp = new Votacion_Participante(np, u);
 		try {
 			np.setCantidadVotos(np.getCantidadVotos() + 1);
-
 			u.getVotadosP().add(np);
 			np.getVotacionesP().add(u);
 			repoNP.save(np);
 		} catch (Exception e) {
-			PRG.info(e.getMessage());
+			PRG.info("Fallo al guardar su boto","/premio/r");
 		}
 
-		PRG.info("ok");
+		PRG.info("Su voto ha sido guardado","/premio/r");
 	}
 
 	@GetMapping("addVotoJ")
@@ -164,16 +163,18 @@ public class PremioController {
 	}
 
 	@PostMapping("addVotoJ")
-	public void addVotoJPost(@RequestParam("id") Long idNominado) throws DangerException, InfoException {
-
-		try {
-			Nominacion_Juego nj = repoNJ.getOne(idNominado);
+	public void addVotoJPost(@RequestParam("id") Long idNominado, HttpSession s) throws DangerException, InfoException {
+		Usuario u = (Usuario) s.getAttribute("usuario");
+		Nominacion_Juego nj = repoNJ.getOne(idNominado);
+		try {			
 			nj.setCantidadVotos(nj.getCantidadVotos() + 1);
+			u.getVotadosJ().add(nj);
+			nj.getVotacionesJ().add(u);
 			repoNJ.save(nj);
 		} catch (Exception e) {
-			PRG.info("Not ok");
+			PRG.info("Fallo al guardar su boto","/premio/r");
 		}
 
-		PRG.info("ok");
+		PRG.info("Su voto ha sido guardado","/premio/r");
 	}
 }
