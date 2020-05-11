@@ -1,4 +1,4 @@
-INSERT INTO usuario (id,loginname,nombre,password,rol,img) VALUES(1,'admin','admin','$2a$10$oyQsB0p2342oiBU9KAlAfOW/1vuZ2zjL4I8//gsC/eq1qhHBGtfWW','admin','gandalf.gif');
+INSERT INTO usuario (id,loginname,nombre,password,rol,img) VALUES(1,'admin','admin','$2a$10$oyQsB0p2342oiBU9KAlAfOW/1vuZ2zjL4I8//gsC/eq1qhHBGtfWW','admin','gandalf.gif'),(2,'jurado','jurado','$2a$10$FzEzB9ZhViE9/Y9mxdE6j.FbpZMQ.dDqaawmka2r7ED2/PYtjlP9e','admin','gandalf.gif');
 
 INSERT INTO premio_juego (id,nombre_premio) VALUES (1,'Juego del Año'),(2,'Mejor Narrativa'),(3,'Mejor Banda Sonora'),(4,'Mejor Juego de Accion'),(5,'Mejor juego de Aventura'),(6,'Mejor juego de rol'),(7,'Mejor Juego de Lucha'),(8,'Mejor Juego Familiar'),(9,'Mejor Juego de Estrategia'),(10,'Mejor Juego de Deportes/Carreras'),(11,'Mejor Juego Multijugador'),(12,'Mejor Juego como Servicio'),(13,'Mejor juego de eSports'),(14,'Mejor Evento de eSports'),(15,'Mejor Soporte a la Comunidad'),(16,'Juego de Mayor Impacto'),(17,'Mejor Juego Indie'),(18,'Mejor Juego para Moviles'),(19,'Mejor Juego VR');
 
