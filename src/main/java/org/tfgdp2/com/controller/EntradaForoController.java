@@ -209,9 +209,10 @@ public class EntradaForoController {
 			e.getVotos().add(vota);
 			u.getVotos().add(vota);
 			repoVotacion.save(vota);
-			repoEntrada.save(e);
+			
 			e.setRanking(e.getRanking()-1);
-			PRG.info("Entrada del foro votada correctamente", "/entradaForo/r",id);
+			repoEntrada.save(e);
+			PRG.info("Dislike añadido", "/entradaForo/r",id);
 		}
 	}
 	
