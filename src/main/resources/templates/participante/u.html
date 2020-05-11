@@ -1,26 +1,55 @@
 <div class="container">
-	<h1>Editar participante</h1>
+
+	<div class="col m12">
+			<h3>Editar Participante</h3>
+		</div>
+		<div class="row">
 	<form method="post" enctype="multipart/form-data" action="/participante/u" class="form">
-		Nombre<br>
-		<input type="text" name="nombre" th:value="${participante.nombre}" autofocus="autofocus"><br>
-		Apellidos<br>
-		<input type="text" name="apellido" th:value="${participante.apellido}" autofocus="autofocus"><br>
-		Biografía<br>
-		<input type="text" name="bio" th:value="${participante.bio}" autofocus="autofocus"><br>
+		<div class="input-field col s6">
+				<label for="nombre">Nombre</label>
+					<input name="nombre" type="text" class="validate"  th:value="${participante.nombre}"> 
+					
+				</div>
+		<div class="input-field col s6">
+				<label for="apellido">Apellidos</label>
+					<input type="text" name="apellido" class="validate" th:value="${participante.apellido}"> 
+					
+				</div>
+			<div class="input-field col s12">
+			<label for="bio">Biografía</label>
+				<input type="text" name="bio" class="validate"  th:value="${participante.bio}">
+				 
+			</div>
+
+		<div class="input-field col s12">
+			<label for="teaser">Teaser</label>
+				<input type="text" name="teaser" class=""  th:value="${participante.teaser}">
+				
+			</div>
+			
+			<div class="file-field input-field col s12">
+				<div class="btn waves-effect waves-dark">
+					<img th:src="${participante.img}" height="40" width="40"/><br>
+					<input type="file" name="img" class="">
+					</div>
+				</div>
 		
-		Teaser<br>
-		<input type="text" name="teaser" th:value="${participante.teaser}" autofocus="autofocus"><br>
+		<div class="file-field input-field col s12">
 		
-		Imagen <br>
-		<img th:src="${participante.img}" height="40" width="40"/><br>
-		<input type="file" name="img" class="form-item">  <br>
-		Nominación
+		<label for="idNominacion[]" >Nominación</label>
 		<select name="idNominacion[]">
 			<option th:each="nominacion:${nominaciones}" th:text="${nominacion.nombre}" th:value="${nominacion.id}" th:selected="${participante.nominado.id==nominacion.id}"></option>
 		</select>
 		<br>
 		<input type="hidden" name="id" th:value="${participante.id}"/>
 		
-		<input type="submit" class="form-item" /><br>
+		</div>
+		
+		
+		<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
+			Crear <i class="material-icons left">send</i>
+		</button>
+		<br>
 	</form>
+	</div>
 </div>

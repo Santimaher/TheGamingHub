@@ -1,19 +1,20 @@
 <div class="container">
-<div class="row">
-<div class="col s6">
-<h2>Nueva Categoria</h2>
-</div>
-</div>
-	<form method="post" action="/categoria/c">
 	<div class="row">
-	<div class="col s6">
-	<label for="nombreCat" style="font-size:20px">Nombre de la Categoria</label>
+		<div class="col s6">
+			<h2>Nueva Categoria</h2>
+		</div>
 	</div>
-	<input type="text" id="nombreCat" name="nombre">
-	</div>
-	<br>	
-	<button class="btn waves-effect waves-light" type="submit" onclick="submit()"name="action">Crear
-    <i class="material-icons right">send</i>
-  </button>
+	<form method="post" action="/categoria/c">
+		<div class="row">
+			<div class="input-field col s6">
+				<label for="nombreCat" style="font-size: 20px">Nombre de la
+					Categoria</label> <input type="text" id="nombreCat" name="nombre">
+			</div>
+		</div>
+		<br>
+		<button class="btn waves-effect waves-light purple" type="submit"
+			onclick="submit()" name="action">
+			Crear <i class="material-icons left">send</i>
+		</button>
 	</form>
 </div>
