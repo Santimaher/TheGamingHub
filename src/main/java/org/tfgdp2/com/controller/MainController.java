@@ -61,12 +61,11 @@ public class MainController {
 		m.put("view", "home.html");
 		return "/_t/frame";
 	}
-//	@GetMapping("/danger")
-//	public String danger(ModelMap m) {
-//		m.put("usuarios", usuarioRepo.fin)
-//		m.put("view", "/anonymous/danger.html");
-//		return "/_t/frame";
-//	}
+	@GetMapping("/danger")
+	public String danger(ModelMap m) {
+		m.put("view", "/anonymous/danger.html");
+		return "/_t/frame";
+	}
 	
 	
 	@GetMapping("/info")

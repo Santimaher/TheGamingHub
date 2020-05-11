@@ -1,14 +1,25 @@
 <div class="container">
-	<select onchange="refrescar(this.value)">
-		<option value="">Elegir</option>
-		<option value="Sony">Sony</option>
-		<option value="Microsoft">Microsoft</option>
-		<option value="Nintendo">Nintendo</option>
-		<option value="PC">PC</option>
-		<option value="Sega">Sega</option>
-		<option value="SNK">SNK</option>
-		<option value="Atari">Atari</option>
-	</select>
+	<div  name="seleccionadas">
+        <fieldset>Plataformas seleccionadas</fieldset>
+        </div>
+        <div style="border: solid black 3px;">
+        <fieldset>Plataformas disponibles</fieldset>
+        <div>
+            <select onchange="buscar()" name="selector">
+                <option value="">Elegir</option>
+                <option value="Sony">Sony</option>
+                <option value="Microsoft">Microsoft</option>
+                <option value="Nintendo">Nintendo</option>
+                <option value="PC">PC</option>
+                <option value="Sega">Sega</option>
+                <option value="SNK">SNK</option>
+                <option value="Atari">Atari</option>
+            </select>
+        </div>
+        <div name="expositor">
+
+        </div>
+        </div>
 
 
 

@@ -1,0 +1,160 @@
+{
+  "plataformas": [
+    {
+      "id": "1",
+      "familia": "Sony",
+      "img": "logo/ps1.jpg",
+      "nombre": "Playstation 1"
+    },
+    {
+      "id": "2",
+      "familia": "Sony",
+      "img": "logo/ps2.jpg",
+      "nombre": "Playstation 2"
+    },
+    {
+      "id": "3",
+      "familia": "Sony",
+      "img": "logo/ps3.jpg",
+      "nombre": "Playstation 3"
+    },
+    {
+      "id": "4",
+      "familia": "Sony",
+      "img": "logo/ps4.jpg",
+      "nombre": "Playstation 4"
+    },
+    {
+      "id": "5",
+      "familia": "Sony",
+      "img": "logo/psp.jpg",
+      "nombre": "Playstation Portable"
+    },
+    {
+      "id": "6",
+      "familia": "Sony",
+      "img": "logo/psvita.jpg",
+      "nombre": "Playstation Vita"
+    },
+    {
+      "id": "7",
+      "familia": "Microsoft",
+      "img": "logo/xbox.jpg",
+      "nombre": "Xbox"
+    },
+    {
+      "id": "8",
+      "familia": "Microsoft",
+      "img": "logo/xbox360.jpg",
+      "nombre": " Xbox 360"
+    },
+    {
+      "id": "9",
+      "familia": "Microsoft",
+      "img": "logo/xbox_one.jpg",
+      "nombre": "Xbox One"
+    },
+    {
+      "id": "10",
+      "familia": "Nintendo",
+      "img": "logo/nes.jpg",
+      "nombre": "Nintendo Entertainement System"
+    },
+    {
+      "id": "11",
+      "familia": "Nintendo",
+      "img": "logo/snes.jpg",
+      "nombre": "Super Nintendo Entertainement System"
+    },
+    {
+      "id": "12",
+      "familia": "Nintendo",
+      "img": "logo/n64.jpg",
+      "nombre": "Nintendo 64"
+    },
+    {
+      "id": "13",
+      "familia": "Nintendo",
+      "img": "logo/gameboy.jpg",
+      "nombre": "Nintendo Gameboy"
+    },
+    {
+      "id": "14",
+      "familia": "Nintendo",
+      "img": "logo/gba.jpg",
+      "nombre": "Nintendo Gmaboy Advance"
+    },
+    {
+      "id": "15",
+      "familia": "Nintendo",
+      "img": "logo/nds.jpg",
+      "nombre": "Nindento DS"
+    },
+    {
+      "id": "16",
+      "familia": "Nintendo",
+      "img": "logo/3ds.jpg",
+      "nombre": "Nintendo 3DS"
+    },
+    {
+      "id": "17",
+      "familia": "Nintendo",
+      "img": "logo/switch.jpg",
+      "nombre": "Nintendo Switch"
+    },
+    {
+      "id": "18",
+      "familia": "PC",
+      "img": "logo/pc.jpg",
+      "nombre": "PC"
+    },
+    {
+      "id": "19",
+      "familia": "Sega",
+      "img": "logo/saturn.jpg",
+      "nombre": "Sega Saturn"
+    },
+    {
+      "id": "20",
+      "familia": "Sega",
+      "img": "logo/dreamcast.jpg",
+      "nombre": "Sega Dreamcast"
+    },
+    {
+      "id": "21",
+      "familia": "Sega",
+      "img": "logo/megadrive.jpg",
+      "nombre": "Sega Megadrive"
+    },
+    {
+      "id": "22",
+      "familia": "Sega",
+      "img": "logo/msys.jpg",
+      "nombre": "Sega Master System"
+    },
+    {
+      "id": "23",
+      "familia": "SNK",
+      "img": "logo/neogeo.jpg",
+      "nombre": "NEO-GEO"
+    },
+    {
+      "id": "24",
+      "familia": "Atari",
+      "img": "logo/at2600.jpg",
+      "nombre": "Atari 2600"
+    },
+    {
+      "id": "25",
+      "familia": "Atari",
+      "img": "logo/atxegs.jpg",
+      "nombre": "Atari XEGS"
+    },
+    {
+      "id": "26",
+      "familia": "Nintendo",
+      "img": "logo/gamecube.jpg",
+      "nombre": "Nintendo Gamecube"
+    }
+  ]
+}
