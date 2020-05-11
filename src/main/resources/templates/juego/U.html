@@ -2,43 +2,74 @@
 <h1>Editar Juego</h1>
 	<form method="post" action="/juego/u">
 	<input type="hidden" th:value="${juego.id}" name="id">
-	<label for="nombreJ">Nombre del Juego</label>
-	<input type="text" id="nombreJ" name="nombre" th:value="${juego.nombre}">
-	<br>
-	<label for="precioJ">Precio del Juego(�)</label>
-	<input type="text" id="nombreJ" name="precio" th:value="${juego.precio}">
-	<br>
+	
+	<div class="input-field col s12">
+	<label for="nombreJ">Nombre</label>
+	<input type="text" id="nombreJ" name="nombre"  th:value="${juego.nombre}">
+	</div>
+	
+	<div class="input-field col s12">
+	<label for="precio">Precio</label>
+	<input type="text" id="precio" name="precio"  th:value="${juego.precio}">
+	</div>
+	 
+	 <div class="input-field col s12">
 	<label for="stockJ">Stock del Juego</label>
 	<input type="number" id="stockJ" name="stock" min="0" max="500" step="10" th:value="${juego.stock}">
-	<br>
+	</div>
+	
+	<div class="input-field col s12">
 	<label for="desaJ">Desarrolladora del Juego</label>
 	<input type="text" id="desaJ" name="desarrolladora" th:value="${juego.desarrolladora}">
-	<br>
-	<label for="imgJ">Imagen del Juego</label>
-	<input type="text" id="imgJ" name="img" th:value="${juego.img}">
-	<br>
-	<label for="flan"></label>Fecha de lanzamiento
-	<input type="date" id="flan" name="flan" required="required" th:value="${juego.fechaLanzamiento}">
-	<br/>
+	</div>
+	
+	<div class="file-field input-field col s12">
+				<div class="btn waves-effect waves-dark purple">
+					<span>Imagen</span> <input type="file"  id="imgJ" name="imgJ" class="">
+					</div>
+				</div>
+				
+				<br><br>
+				
+					<div class="col s12">	
+	<label for="flan">Fecha de lanzamiento</label>
+	<input type="text" id="flan" name="flan" class="datepicker" style="color:'black'" th:value="${juego.fechaLanzamiento}">
+	</div>
+	
+	
+	<div class="input-field col s12">	
 	<label for="teaserJ">Teaser del Juego</label>
 	<input type="text" id="teaserJ" name="teaser" th:value="${juego.teaser}">
-	<br>
+	</div>
 	
 	<fieldset>
 		<legend>Plataformas disponibles</legend>
 			<span th:each="plataforma:${plataformas}" >
-				<input type="checkbox" th:id="|pla-${plataforma.id}|" th:name="idPlataforma[]" th:value="${plataforma.id}" th:checked="${juego.plataformas.contains(plataforma)}"/>
-				<label th:for="|pla-${plataforma.id}|" th:text="${plataforma.nombre}"></label>
+				<label th:for="|pla-${plataforma.id}|">
+					<input type="checkbox" th:id="|pla-${plataforma.id}|" class="indeterminate-checkbox" th:name="idPlataforma[]" th:value="${plataforma.id}" th:checked="${juego.plataformas.contains(plataforma)}"/>
+					<span th:text="${plataforma.nombre}"></span>
+				</label>						
 			</span>
 	</fieldset>
+	
 
-	<fieldset>
+<fieldset>
 		<legend>Categorias</legend>
-			<span th:each="categoria:${categorias}" >
-				<input type="checkbox" th:id="|cat-${categoria.id}|" th:name="idCat[]" th:value="${categoria.id}" th:checked="${juego.pertenece.contains(categoria)}"/>
-				<label th:for="|cat-${categoria.id}|" th:text="${categoria.nombre}"></label>
+			<span th:each="categoria:${categorias}" >				
+				<label th:for="|cat-${categoria.id}|">
+					<input type="checkbox" th:id="|cat-${categoria.id}|" class="indeterminate-checkbox" th:name="idCat[]" th:value="${categoria.id}" th:checked="${juego.pertenece.contains(categoria)}"/>
+					<span th:text="${categoria.nombre}"></span>
+				</label>
 			</span>
 	</fieldset>	
-	<input type="submit">
+		
+	<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
+			Crear <i class="material-icons left">send</i>
+			</button>
+			<a href="/">
+				<button class="btn waves-effect waves-light purple">
+				Home <i class="material-icons left">home</i>
+				</button>
+			</a>
 	</form>
 </div>
