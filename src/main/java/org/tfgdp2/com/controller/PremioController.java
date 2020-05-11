@@ -1,5 +1,7 @@
 package org.tfgdp2.com.controller;
 
+import java.util.Collection;
+
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -130,11 +132,20 @@ public class PremioController {
 	}
 
 	@GetMapping("addVotoP")
-	public String addVotoP(ModelMap m, @RequestParam("id") Long id) {
-		m.put("premio", repoPremioPar.getOne(id));
-		m.put("nominados", repoNP.findByPremioId(id));
-		m.put("view", "premio/addVotoP");
-		return "_t/frame";
+	public String addVotoP(ModelMap m, @RequestParam("id") Long id,HttpSession s) throws DangerException {
+		String vista = null;
+		if (haVotado(s, id, false)) {
+			PRG.error("Ya ha votado en este premio", "/premio/r");
+			
+		} else {
+			m.put("premio", repoPremioPar.getOne(id));
+			m.put("nominados", repoNP.findByPremioId(id));
+			m.put("view", "premio/addVotoP");
+			vista =  "_t/frame";
+		}
+		
+		return vista;
+		
 	}
 
 	@PostMapping("addVotoP")
@@ -148,18 +159,24 @@ public class PremioController {
 			np.getVotacionesP().add(u);
 			repoNP.save(np);
 		} catch (Exception e) {
-			PRG.info("Fallo al guardar su boto","/premio/r");
+			PRG.info("Fallo al guardar su voto"+e.getMessage(),"/premio/r");
 		}
 
 		PRG.info("Su voto ha sido guardado","/premio/r");
 	}
 
 	@GetMapping("addVotoJ")
-	public String addVotoJ(ModelMap m, @RequestParam("id") Long id) {
-		m.put("premio", repoPremioJuego.getOne(id));
-		m.put("nominados", repoNJ.findByPremioId(id));
-		m.put("view", "premio/addVotoJ");
-		return "_t/frame";
+	public String addVotoJ(ModelMap m, @RequestParam("id") Long id,HttpSession s) throws DangerException {
+		String vista = null;
+		if (haVotado(s, id, true)) {
+			PRG.error("Ya ha votado en este premio", "/premio/r");
+		} else {
+			m.put("premio", repoPremioJuego.getOne(id));
+			m.put("nominados", repoNJ.findByPremioId(id));
+			m.put("view", "premio/addVotoJ");
+			vista= "_t/frame";
+		}
+		return vista;
 	}
 
 	@PostMapping("addVotoJ")
@@ -172,9 +189,52 @@ public class PremioController {
 			nj.getVotacionesJ().add(u);
 			repoNJ.save(nj);
 		} catch (Exception e) {
-			PRG.info("Fallo al guardar su boto","/premio/r");
+			PRG.info("Fallo al guardar su voto"+e.getMessage(),"/premio/r");
 		}
 
 		PRG.info("Su voto ha sido guardado","/premio/r");
+	}
+	
+	public boolean haVotado(HttpSession s, Long idPremio, boolean isJuego) {
+		Usuario usu = (Usuario) s.getAttribute("usuario");
+		boolean check = false;
+		if (isJuego) {
+			Collection<Nominacion_Juego>votados=usu.getVotadosJ();
+			if (votados.isEmpty()) {
+				check=false;
+			}
+			else {			
+			Collection<Nominacion_Juego> nominaciones = repoNomJuego.findByPremioId(idPremio);
+			for (Nominacion_Juego nominado : nominaciones) {
+				for (Nominacion_Juego votado : votados) {
+					if(votado.getId().equals(nominado.getId())) {
+						check = true;
+					}
+					else {
+						check = false;
+					}
+				}
+			}
+			}
+		} else {
+			Collection<Nominacion_Participante>votados=usu.getVotadosP();
+			if (votados.isEmpty()) {
+				check=false;
+			}
+			else {
+			Collection<Nominacion_Participante> nominaciones = repoNomPar.findByPremioId(idPremio);
+			for (Nominacion_Participante nominado : nominaciones) {
+				for (Nominacion_Participante votado : votados) {
+					if(votado.getId().equals(nominado.getId())) {
+						check = true;
+					}
+					else {
+						check = false;
+					}
+				}
+			}
+		}
+		}	
+		return check;
 	}
 }

@@ -1,6 +1,6 @@
 <div class="container">
 	<h1>Listado de participantes</h1>
-	<table class="table-striped">
+	<table class="highlight">
 		<tr>
 			<th>Nombre</th>
 			<th>Apellido</th>
@@ -21,14 +21,14 @@
 			<td class="row">
 				<form action="/participante/u" method="get">
 					<input type="hidden" name="id" th:value="${p.id}" />
-					<button onclick="submit()">
-						<img src="/img/edit.png" height="20" width="20">
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
+						<i class="material-icons left">edit</i>
 					</button>
 				</form>
 				<form action="/participante/d" method="post">
 					<input type="hidden" name="id" th:value="${p.id}" />
-					<button onclick="submit()">
-						<img src="/img/delete.png" height="20" width="20">
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
+						<i class="material-icons left">delete</i>
 					</button>
 				</form>
 			</td>
@@ -37,11 +37,11 @@
 	</table>
 	
 	<a href="/participante/c">
-		<button class="btn waves-effect waves-light">
+		<button class="btn waves-effect waves-light purple">
 			Crear <i class="material-icons left">create</i>
 		</button>
 	</a> <a href="/">
-		<button class="btn waves-effect waves-light">
+		<button class="btn waves-effect waves-light purple">
 			Home <i class="material-icons left">home</i>
 		</button>
 	</a>
