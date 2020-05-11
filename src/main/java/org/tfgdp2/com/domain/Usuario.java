@@ -39,12 +39,17 @@ public class Usuario {
 
 	@OneToMany(mappedBy = "escribe", fetch = FetchType.EAGER)
 	private Collection<EntradaForo> entradas;
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "votado")
+	private Collection<Votacion_Foro> votos;
 //	@OneToMany(mappedBy="factura")
 //    private Collection<Factura> facturas;
 //this.votaciones=new ArrayList<>;
 //this.entradas=new ArrayList<>;
 //this.facturas=new ArrayList<>;
 	
+	
+
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy = "votacionesP")
 	private Collection<Nominacion_Participante> votadosP;
@@ -66,6 +71,7 @@ public class Usuario {
 		this.entradas = new HashSet<>();
 		this.votadosJ = new HashSet<>();
 		this.votadosP = new HashSet<>();
+		this.votos = new HashSet<>();
 		this.nombre = nombre;
 		this.loginname = loginname;
 		this.password = password;
@@ -152,6 +158,13 @@ public class Usuario {
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+	public Collection<Votacion_Foro> getVotos() {
+		return votos;
+	}
+
+	public void setVotos(Collection<Votacion_Foro> votos) {
+		this.votos = votos;
 	}
 
 //

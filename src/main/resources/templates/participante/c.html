@@ -46,7 +46,7 @@
 
 
 			<div class="col s12">
-				<fieldset>
+				<fieldset class="separacion">
 					<legend>Categorias</legend>
 					<span th:each="categoria:${categorias}"> <label
 						th:for="|cat-${categoria.id}|" style="font-size: 20px"> <input
@@ -63,13 +63,12 @@
 		<br>
 		<br>
 		<br>
-		<button class="btn waves-effect waves-light" type="submit" onclick="submit()" name="action">
+		<button class="btn waves-effect waves-light separacion" type="submit" onclick="submit()" name="action">
 			Crear <i class="material-icons right">send</i>
 		</button>
 	</form>
-			<br>
-		<br>	
+			<br>	
 			<a href="/">
-				<button class="btn waves-effect waves-light">Cancelar</button>
+				<button class="btn waves-effect waves-light ">Cancelar</button>
 			</a>
 	</div>

@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.tfgdp2.com.domain.EntradaForo;
 import org.tfgdp2.com.domain.Foro;
 import org.tfgdp2.com.domain.Usuario;
+import org.tfgdp2.com.domain.Votacion_Foro;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.EntradaForoRepository;
 import org.tfgdp2.com.repository.ForoRepository;
+import org.tfgdp2.com.repository.Votacion_ForoRepository;
 
 @Controller
 @RequestMapping(value= "/entradaForo")
@@ -25,16 +27,23 @@ public class EntradaForoController {
 	
 	@Autowired
 	private EntradaForoRepository repoEntrada;
+	
 	@Autowired
 	private ForoRepository repoForo;
+	
+	@Autowired
+	private  Votacion_ForoRepository repoVotacion;
+	
 	@GetMapping("rPropio")
 	public String leerPropio(@RequestParam("idforo") Long idforo,@RequestParam("id") Long id, ModelMap m,HttpSession s) throws DangerException {
 		m.put("view","/entradaForo/rPropio");
 		m.put("id",id);
 		m.put("idJuego", repoForo.getOne(id).getJuego().getId());
 		try {
+			
 		Usuario u=(Usuario) s.getAttribute("usuario");
 		Long idUsuario=u.getId();
+		
 		m.put("entradas",repoEntrada.findByPerteneceIdAndEscribeIdOrderByRankingDesc(id,idUsuario));
 		}catch(Exception e) {
 			PRG.error("Debes iniciar sesion ","/entradaForo/r",id);
@@ -128,18 +137,82 @@ public class EntradaForoController {
 	@GetMapping("like")
 	public void darLike(ModelMap m, @RequestParam("id") Long idEntrada,@RequestParam("idForo") Long id,HttpSession s) throws DangerException, InfoException {
 		H.isRolOK("auth", s);
+		Usuario u=(Usuario) s.getAttribute("usuario");
+		Long idUsuario=u.getId();
 		EntradaForo e=repoEntrada.getOne(idEntrada);
-		e.setRanking(e.getRanking()+1);
-		repoEntrada.save(e);
-		PRG.info("Entrada del foro editada correctamente", "/entradaForo/r",id);
+		Votacion_Foro votacion=repoVotacion.getByVotanteIdAndVotadoId(idUsuario, idEntrada);
+		if(votacion!=null) 
+		{
+			if(votacion.getVoto().equals("dislike")) 
+			{
+				e.setRanking(e.getRanking()+2);
+				votacion.setVoto("like");
+				repoVotacion.save(votacion);
+				repoEntrada.save(e);
+				 PRG.info("Like añadido", "/entradaForo/r",id);
+			}
+			else 
+			{
+				e.setRanking(e.getRanking()-1);
+				repoVotacion.delete(votacion);
+				repoEntrada.save(e);
+				 PRG.info("Like quitado", "/entradaForo/r",id);
+			}
+			
+		}
+		else 
+		{
+			Votacion_Foro vota=new Votacion_Foro();
+			vota.setVotado(e);
+			vota.setVotante(u);
+			vota.setVoto("like");
+			e.getVotos().add(vota);
+			u.getVotos().add(vota);
+			repoVotacion.save(vota);
+			e.setRanking(e.getRanking()+1);
+			repoEntrada.save(e);
+			PRG.info("Like añadido", "/entradaForo/r",id);
+		}
 	}
 	@GetMapping("dislike")
 	public void quitarLike(ModelMap m, @RequestParam("id") Long idEntrada,@RequestParam("idForo") Long id,HttpSession s) throws DangerException, InfoException {
 		H.isRolOK("auth", s);
+		Usuario u=(Usuario) s.getAttribute("usuario");
+		Long idUsuario=u.getId();
 		EntradaForo e=repoEntrada.getOne(idEntrada);
-		e.setRanking(e.getRanking()-1);
-		repoEntrada.save(e);
-		PRG.info("Entrada del foro editada correctamente", "/entradaForo/r",id);
+		Votacion_Foro votacion=repoVotacion.getByVotanteIdAndVotadoId(idUsuario, idEntrada);
+		if(votacion!=null) 
+		{
+			if(votacion.getVoto().equals("like")) 
+			{
+				e.setRanking(e.getRanking()-2);
+				votacion.setVoto("dislike");
+				repoVotacion.save(votacion);
+				repoEntrada.save(e);
+				PRG.info("Dislike añadido", "/entradaForo/r",id);
+			}
+			else 
+			{
+				e.setRanking(e.getRanking()+1);
+				repoVotacion.delete(votacion);
+				repoEntrada.save(e);
+				PRG.info("Dislike quitado", "/entradaForo/r",id);
+			}
+			
+		}
+		else 
+		{
+			Votacion_Foro vota=new Votacion_Foro();
+			vota.setVotado(e);
+			vota.setVotante(u);
+			vota.setVoto("dislike");
+			e.getVotos().add(vota);
+			u.getVotos().add(vota);
+			repoVotacion.save(vota);
+			repoEntrada.save(e);
+			e.setRanking(e.getRanking()-1);
+			PRG.info("Entrada del foro votada correctamente", "/entradaForo/r",id);
+		}
 	}
 	
 	@PostMapping("u")

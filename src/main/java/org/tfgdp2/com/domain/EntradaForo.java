@@ -1,7 +1,9 @@
 package org.tfgdp2.com.domain;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -27,6 +29,8 @@ public class EntradaForo {
     private Foro pertenece;
     @OneToMany (mappedBy = "mensajePadre")
     private List<EntradaForo> respuestas;
+	@OneToMany(mappedBy = "votante")
+	private Collection<Votacion_Foro> votos;
 	@ManyToOne 
 	private EntradaForo mensajePadre;
     
@@ -35,12 +39,19 @@ public class EntradaForo {
 		this.ranking=0;
 		this.comentario=comentar;
 		this.fechaPublicacion=new Date();
+		this.votos=new HashSet<>();
 	}
 	public EntradaForo() {
 		this.ranking=0;
 		this.fechaPublicacion=new Date();
 	}
 
+	public Collection<Votacion_Foro> getVotos() {
+		return votos;
+	}
+	public void setVotos(Collection<Votacion_Foro> votos) {
+		this.votos = votos;
+	}
 	public Long getId() {
 		return id;
 	}
