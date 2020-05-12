@@ -1,11 +1,26 @@
 <div class="container">
-<h1>Editar premio</h1>
+	<div class="col m12">
+	<h1>Editar premio</h1>
+	</div>
+
+	<div class="row">
 	<form method="post" action="/premio/u">
-	<input type="hidden" th:value="${nominacion.id}" name="id">
-	<label for="nombreN">Nombre de la Nominación</label><br>
-	<input th:value="${nominacion.nombre}" type="text" id="nombreN" name="nombre">
-	<br>
-	<input type="submit">
+		
+		<input type="hidden" th:value="${nominacion.id}" name="id">
+
+		<div class="input-field col s12">
+			<label for="nombreN">Nombre de la Nominación</label>
+			<input th:value="${nominacion.nombre}" type="text" id="nombreN" name="nombre">
+		</div>
+	<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
+			Crear <i class="material-icons left">send</i>
+		</button>
+			<a href="/">
+		<button class="btn waves-effect waves-light purple">
+			Cancelar
+		</button>
+		</a>
 	</form>
+	</div>
 
 </div>

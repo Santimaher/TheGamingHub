@@ -1,6 +1,8 @@
 <div class="container">
-<h1>Listado de premios</h1>
-	<table class="table table-striped">
+<div class="col m12">
+			<h1>Premios</h1>
+		</div>
+	<table class="highlight">
 	<tr>
 		<th>Premios para participantes</th>
 	
@@ -10,18 +12,20 @@
 		<td class="row">
 				<form action="/premio/addVotoP" method="get">
 					<input type="hidden" name="id" th:value="${pParticipante.id}" />
-					<button onclick="submit()">
-						Añadir Voto
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
+					Vote
 					</button>
 				</form>
 				<form action="/premio/dP" method="post">
 					<input type="hidden" name="id" th:value="${pParticipante.id}" />
-					<button onclick="submit()">
-						<img src="/img/delete.png" height="20" width="20">
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
+						<i class="material-icons left">delete</i>
 					</button>
 				</form>
 		</td>
 	</tr>
+	</table>
+	<table class="highlight">
 	<tr>
 		<th>Premios para juegos</th>
 	
@@ -32,20 +36,23 @@
 		<td class="row">
 				<form action="/premio/addVotoJ" method="get">
 					<input type="hidden" name="id" th:value="${pJuego.id}" />
-					<button onclick="submit()">
-						Añadir Voto
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
+						Vote
 					</button>
 				</form>
 				<form action="/premio/dJ" method="post">
 					<input type="hidden" name="id" th:value="${pJuego.id}" />
-					<button onclick="submit()">
-						<img src="/img/delete.png" height="20" width="20">
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
+						<i class="material-icons left">delete</i>
 					</button>
 				</form>
 		</td>
 	</tr>
 	</table>
-	<a href="/premio/c">
-		<button>Crear</button>
+	
+	<a href="/">
+		<button class="btn waves-effect waves-light purple">
+			Home <i class="material-icons left">home</i>
+		</button>
 	</a>
 </div>

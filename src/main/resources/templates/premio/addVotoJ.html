@@ -1,9 +1,10 @@
 <div class="container">
-	<!-- <h1>Listado de participantes a nominar</h1> -->
+	<div class="col m12">
 	<span th:text="|Listado de participantes para: ${premio.nombrePremio} |"></span>
+		</div>
 	<table class="table table-striped">
 		<tr>
-			<th>Nombre de Nominados</th>
+			<th>Nominados</th>
 		</tr>
 
 		<tr th:each="n:${nominados}">
@@ -13,8 +14,8 @@
 				<form action="/premio/addVotoJ" method="post">
 					<input type="hidden" name="id" th:value="${n.id}" />
 					<input type="hidden" name="idPremio" th:value="${premio.id}">
-					<button onclick="submit()">
-						<img src="/img/add.png" height="20" width="20">
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
+						<i class="material-icons left">add</i>
 					</button>
 				</form>
 			</td>
@@ -22,7 +23,9 @@
 
 	</table>
 	
- <a href="/">
-		<button>Cancelar</button>
+  <a href="/">
+		<button class="btn waves-effect waves-light purple">
+			Home <i class="material-icons left">home</i>
+		</button>
 	</a>
 </div>
