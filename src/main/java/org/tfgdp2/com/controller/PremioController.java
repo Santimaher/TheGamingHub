@@ -1,6 +1,7 @@
 package org.tfgdp2.com.controller;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ import org.tfgdp2.com.repository.NominacionParticipanteRepository;
 import org.tfgdp2.com.repository.ParticipanteRepository;
 import org.tfgdp2.com.repository.PremioJuegoRepository;
 import org.tfgdp2.com.repository.PremioParticipanteRepository;
+import org.tfgdp2.com.repository.UsuarioRepository;
 
 @Controller
 @RequestMapping("/premio")
@@ -57,6 +59,9 @@ public class PremioController {
 
 	@Autowired
 	private NominacionJuegoRepository repoNJ;
+	
+	@Autowired
+	private UsuarioRepository repoUsu;
 
 	@GetMapping("c")
 	public String cGet(ModelMap m) {
@@ -134,7 +139,10 @@ public class PremioController {
 	@GetMapping("addVotoP")
 	public String addVotoP(ModelMap m, @RequestParam("id") Long id,HttpSession s) throws DangerException {
 		String vista = null;
-		if (haVotado(s, id, false)) {
+		
+		try {
+			Usuario usu = (Usuario) s.getAttribute("usuario");	
+		if (haVotado(usu.getId(), id, false)) {
 			PRG.error("Ya ha votado en este premio", "/premio/r");
 			
 		} else {
@@ -143,23 +151,25 @@ public class PremioController {
 			m.put("view", "premio/addVotoP");
 			vista =  "_t/frame";
 		}
+		} catch (NullPointerException e) {
+			PRG.error("Inicie sesion para votar", "/login");
+		}
 		
 		return vista;
 		
-	}
+	}	
 
 	@PostMapping("addVotoP")
 	public void addVotoPost(@RequestParam("id") Long idNominado, HttpSession s) throws DangerException, InfoException {
 		Usuario u = (Usuario) s.getAttribute("usuario");
 		Nominacion_Participante np = repoNP.getOne(idNominado);
-//		Votacion_Participante vp = new Votacion_Participante(np, u);
 		try {
 			np.setCantidadVotos(np.getCantidadVotos() + 1);
 			u.getVotadosP().add(np);
 			np.getVotacionesP().add(u);
 			repoNP.save(np);
 		} catch (Exception e) {
-			PRG.info("Fallo al guardar su voto"+e.getMessage(),"/premio/r");
+			PRG.info("Fallo al guardar su voto","/premio/r");
 		}
 
 		PRG.info("Su voto ha sido guardado","/premio/r");
@@ -168,13 +178,18 @@ public class PremioController {
 	@GetMapping("addVotoJ")
 	public String addVotoJ(ModelMap m, @RequestParam("id") Long id,HttpSession s) throws DangerException {
 		String vista = null;
-		if (haVotado(s, id, true)) {
+		try {
+			Usuario usu = (Usuario) s.getAttribute("usuario");
+		if (haVotado(usu.getId(), id, true)) {
 			PRG.error("Ya ha votado en este premio", "/premio/r");
 		} else {
 			m.put("premio", repoPremioJuego.getOne(id));
 			m.put("nominados", repoNJ.findByPremioId(id));
 			m.put("view", "premio/addVotoJ");
 			vista= "_t/frame";
+		}
+		} catch (NullPointerException e) {
+			PRG.error("Inicie sesion para votar", "/login");
 		}
 		return vista;
 	}
@@ -189,52 +204,42 @@ public class PremioController {
 			nj.getVotacionesJ().add(u);
 			repoNJ.save(nj);
 		} catch (Exception e) {
-			PRG.info("Fallo al guardar su voto"+e.getMessage(),"/premio/r");
+			PRG.info("Fallo al guardar su voto","/premio/r");
 		}
 
 		PRG.info("Su voto ha sido guardado","/premio/r");
 	}
 	
-	public boolean haVotado(HttpSession s, Long idPremio, boolean isJuego) {
-		Usuario usu = (Usuario) s.getAttribute("usuario");
+	public boolean haVotado(Long idUsu, Long idPremio, boolean isJuego) {
+		Usuario usu =repoUsu.getOne(idUsu);
 		boolean check = false;
 		if (isJuego) {
 			Collection<Nominacion_Juego>votados=usu.getVotadosJ();
 			if (votados.isEmpty()) {
 				check=false;
 			}
-			else {			
-			Collection<Nominacion_Juego> nominaciones = repoNomJuego.findByPremioId(idPremio);
-			for (Nominacion_Juego nominado : nominaciones) {
+			else {
+				HashSet<Long> listadoVotados = new HashSet<>();
 				for (Nominacion_Juego votado : votados) {
-					if(votado.getId().equals(nominado.getId())) {
-						check = true;
-					}
-					else {
-						check = false;
-					}
+					listadoVotados.add(votado.getPremio().getId());
 				}
+				check = listadoVotados.contains(idPremio);
 			}
-			}
+			
 		} else {
 			Collection<Nominacion_Participante>votados=usu.getVotadosP();
 			if (votados.isEmpty()) {
 				check=false;
 			}
 			else {
-			Collection<Nominacion_Participante> nominaciones = repoNomPar.findByPremioId(idPremio);
-			for (Nominacion_Participante nominado : nominaciones) {
+				HashSet<Long> listadoVotados = new HashSet<>();
 				for (Nominacion_Participante votado : votados) {
-					if(votado.getId().equals(nominado.getId())) {
-						check = true;
-					}
-					else {
-						check = false;
-					}
+					listadoVotados.add(votado.getPremio().getId());
 				}
+				check = listadoVotados.contains(idPremio);
 			}
 		}
-		}	
+			
 		return check;
 	}
 }
