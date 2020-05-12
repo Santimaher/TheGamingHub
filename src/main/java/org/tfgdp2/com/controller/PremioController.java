@@ -165,22 +165,6 @@ public class PremioController {
 		
 	}	
 
-	@PostMapping("addVotoP")
-	public void addVotoPost(@RequestParam("id") Long idNominado, HttpSession s) throws DangerException, InfoException {
-		Usuario u = (Usuario) s.getAttribute("usuario");
-		Nominacion_Participante np = repoNP.getOne(idNominado);
-		try {
-			np.setCantidadVotos(np.getCantidadVotos() + 1);
-			u.getVotadosP().add(np);
-			np.getVotacionesP().add(u);
-			repoNP.save(np);
-		} catch (Exception e) {
-			PRG.info("Fallo al guardar su voto","/premio/r");
-		}
-
-		PRG.info("Su voto ha sido guardado","/premio/r");
-	}
-
 	@GetMapping("addVotoJ")
 	public String addVotoJ(ModelMap m, @RequestParam("id") Long id,HttpSession s) throws DangerException {
 		String vista = null;
@@ -209,6 +193,22 @@ public class PremioController {
 			u.getVotadosJ().add(nj);
 			nj.getVotacionesJ().add(u);
 			repoNJ.save(nj);
+		} catch (Exception e) {
+			PRG.info("Fallo al guardar su voto","/premio/r");
+		}
+
+		PRG.info("Su voto ha sido guardado","/premio/r");
+	}
+	
+	@PostMapping("addVotoP")
+	public void addVotoPost(@RequestParam("id") Long idNominado, HttpSession s) throws DangerException, InfoException {
+		Usuario u = (Usuario) s.getAttribute("usuario");
+		Nominacion_Participante np = repoNP.getOne(idNominado);
+		try {
+			np.setCantidadVotos(np.getCantidadVotos() + 1);
+			u.getVotadosP().add(np);
+			np.getVotacionesP().add(u);
+			repoNP.save(np);
 		} catch (Exception e) {
 			PRG.info("Fallo al guardar su voto","/premio/r");
 		}
