@@ -96,4 +96,8 @@ textarea
 }
 .botones{
 	background-color:#7c79ad !important;
+	background-image: url("/img/leather.png");
+}
+nav{
+	background-image: url("/img/leather.png");
 }
