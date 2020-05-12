@@ -1,8 +1,20 @@
 <div class="container">
-	<h1 th:text="|Observaciones de la gala ${gala.edicion}|"></h1>
+<div class="col m12">
+			<h1 th:text="|Observaciones de la gala ${gala.edicion}|"></h1>
+		</div>
+	
+			<div class="row">
 	<form action="observacion" method="post">
-	<input type="hidden" name="id" th:value="${gala.id}">
-	<textarea rows="10" cols="50" th:text="${gala.observaciones}" name="observacion"></textarea>
-	<input type="submit">
+		<input type="hidden" name="id" th:value="${gala.id}">
+		<div class="input-field col s12">
+		 
+		<textarea rows="10" cols="50" class="materialize-textarea" th:text="${gala.observaciones}" name="observacion"></textarea>
+		</div>
+		
+		<button class="btn waves-effect waves-light purple"  onclick="submit()" name="action">
+			Añadir Observación
+			</button>
+	
 	</form>
+		</div>
 </div>

@@ -1,14 +1,31 @@
 <div class="container">
-<h1>Editar Plataforma</h1>
+<div class="row">
+		<div class="col s6">
+			<h1>Actualizar Plataforma</h1>
+		</div>
+		
+		<div class="row">
 	<form method="post" action="/plataforma/u">
-	<input type="hidden" th:value="${plataforma.id}" name="id">
-	<label for="nombrePl">Nombre de la Plataforma</label>
-	<input th:value="${plataforma.nombre}" type="text" id="nombreEq" name="nombre">
-	<br>
-	<label for="imgPl">Imagen de la Plataforma</label>
-	<input th:value="${plataforma.img}" type="text" id="imgPl" name="imagen">
-	<br>
-	<input type="submit">
+		<div class="input-field col s12">
+			<input type="hidden" th:value="${plataforma.id}" name="id">
+			<label for="nombrePl">Nombre de la Plataforma</label>
+			<input th:value="${plataforma.nombre}" type="text" id="nombreEq" name="nombre">
+		</div>
+	
+	<div class="input-field col s12">
+		<label for="imgPl">Imagen de la Plataforma</label>
+		<input th:value="${plataforma.img}" type="text" id="imgPl" name="imagen">
+	</div>
+	<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
+			Crear <i class="material-icons left">send</i>
+		</button>
+		
+		<a href="/">
+		<button class="btn waves-effect waves-light purple">
+			Cancelar
+		</button>
+		</a>
 	</form>
+	</div>
 
 </div>

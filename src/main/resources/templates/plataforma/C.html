@@ -1,13 +1,29 @@
 <div class="container">
-<h1>Nueva Plataforma</h1>
-	<form method="post" action="/plataforma/c">
-	<label for="nombrePl">Nombre de la Plataforma</label>
-	<input type="text" id="nombreEq" name="nombre">
-	<br>
-	<label for="imgPl">Imagen de la Plataforma</label>
-	<input type="text" id="imgPl" name="imagen">
-	<br>
-	<input type="submit">
+<div class="col m12">
+			<h3>Nueva Plataforma</h3>
+		</div>
+		
+		<div class="row">
+			<form method="post" action="/plataforma/c">
+			  <div class="input-field col s12">
+				<label for="nombrePl">Nombre de la Plataforma</label>
+				<input type="text" id="nombreEq" name="nombre">
+			  </div>	
+			  <div class="input-field col s12"> 
+				<label for="imgPl">Imagen de la Plataforma</label>
+				<input type="text" id="imgPl" name="imagen">
+			</div>
+	
+	<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
+			Crear <i class="material-icons left">send</i>
+			</button>
+			
+			<a href="/">
+				<button class="btn waves-effect waves-light purple">
+				Home <i class="material-icons left">home</i>
+				</button>
+			</a>
 	</form>
+	</div>
 
 </div>
