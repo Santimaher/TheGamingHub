@@ -1,18 +1,41 @@
 <div class="container">
-	<h1>Registrar</h1>
+	<div class="col m12">
+			<h1>Nuevo usuario</h1>
+		</div>
+		<div class="row">
 	<form method="post" action="/usuario/c" class="form">
-		Nombre
-		<input type="text" name="nombre">
-		<br/>
-		Nombre de Usuario
-		<input type="text" name="loginname">
-		<br/>
-		Email
-		<input type="text" name="email">
-		<br/>
-		Contraseña
-		<input type="password" name="pass">
-		<br/>
-		<input type="submit" class="form-item" />
-	</form>
+	
+		<div class="input-field col s12">
+			<label for="nombre">Nombre</label>
+			<input type="text" id="nombre" name="nombre">
+		</div>
+		
+		<div class="input-field col s12">
+			<label for="loginname">Nombre de Usuario</label>
+			<input type="text" id="loginname" name="loginname">
+	</div>
+		
+		<div class="input-field col s12">
+			<label for="email">E-mail</label>
+			<input type="text" id="email" name="email">
+	</div>
+		
+		<div class="input-field col s12">
+			<label for="passs">ContraseÃ±a</label>
+			<input type="password" id="pass" name="pass">
+	</div>
+		
+		
+		<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
+			Crear <i class="material-icons left">send</i>
+			</button>
+			
+			<a href="/">
+				<button class="btn waves-effect waves-light purple">
+				Home <i class="material-icons left">home</i>
+				</button>
+			</a>
+	
+		</form>
+	</div>
 </div>

@@ -1,13 +1,33 @@
 <div class="container">
-	<h1>Editar Contraseña</h1>
+	<div class="col m12">
+			<h1>Cambiar contraseña</h1>
+		</div>
+		<div class="row">
 	<form method="post" action="/cambioContrasenia" class="form">
-	<input type="hidden" name="id" th:value="${usuario.id}">
-	     Actual Contraseña
-		<input type="password" name="passwordAc" class="form-item"/>
-		<br/>
-		 Nueva Contraseña
-		<input type="password" name="passwordNu" class="form-item"/>
-		<br/>
+		<input type="hidden" name="id" th:value="${usuario.id}">
+	     
+	     <div class="input-field col s12">
+			<label for="passwordAc">Contraseña Actual</label>
+			<input type="password"  name="passwordAc">
+		</div>
+	     
+	      <div class="input-field col s12">
+			<label for="passwordNu">Nueva Contraseña</label>
+			<input type="password"  name="passwordNu">
+		</div>
+		
+		
+		<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
+			Crear <i class="material-icons left">send</i>
+			</button>
+			
+			<a href="/">
+				<button class="btn waves-effect waves-light purple">
+				Home <i class="material-icons left">home</i>
+				</button>
+			</a>
+		
 		<input type="submit" class="form-item" />
 	</form>
+	</div>
 </div>

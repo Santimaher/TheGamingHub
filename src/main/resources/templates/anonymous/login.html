@@ -2,15 +2,26 @@
 	<h1>Introducir credenciales</h1>
 	<form class="form" method="post">
 	
-		Nombre de usuario o correo electronico
-		<input type="text" name="loginname" class="form-item"/>
-		<br/>
+	<div class="input-field col s12">
+			<label for="loginname">Nombre de usuario / correo electrónico</label>
+			<input type="text" name="loginname">
+		</div>
 		
-		Contraseña
-		<input type="password" name="password" class="form-item"/>
-		<br/>
-		
-		<button class="btn waves-effect waves-light purple" onclick="submit()">Iniciar sesion<i class="material-icons left">send</i></button>
+		<div class="input-field col s12">
+			<label for="password">Contraseña</label>
+			<input type="password" name="password">
+		</div>
+				
+		<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
+			Iniciar sesión <i class="material-icons left">chevron_right</i>
+			</button>
+			
+			<a href="/">
+				<button class="btn waves-effect waves-light purple">
+				Home <i class="material-icons left">home</i>
+				</button>
+			</a>
+	
 	<br/>
 	</form>
 </div>

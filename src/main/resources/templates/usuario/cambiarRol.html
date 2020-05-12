@@ -1,12 +1,19 @@
 <div class="container">
-	<h1>Editar Rol</h1>
+	<div class="col m12">
+			<h1>Editar rol</h1>
+		</div>
+		
 	<form method="post" action="/usuario/cambiarRolPost" class="form">
-	<input type="hidden" name="id" th:value="${usuario.id}">
-	<select name="rol">
-	<option value="admin">Admin</option>
-	<option value="auth">Normal</option>
-	<option value="jurado">Jurado</option>
-	</select>
-		<input type="submit" class="form-item" />
+		<input type="hidden" name="id" th:value="${usuario.id}">
+			<div class="input-field col s12">
+				<select name="rol">
+				<option value="admin">Admin</option>
+				<option value="auth">Normal</option>
+				<option value="jurado">Jurado</option>
+				</select>
+			</div>	
+		<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
+			Cambiar rol <i class="material-icons left">send</i>
+			</button>
 	</form>
 </div>

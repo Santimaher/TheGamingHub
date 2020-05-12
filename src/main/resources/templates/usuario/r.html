@@ -1,10 +1,9 @@
 <div class="container">
-	<h1>Lista de usuarios</h1>
+	<div class="col m12">
+			<h1>Lista de usuarios</h1>
+		</div>
 
-	<a href="/usuario/c">
-		<button>Registrarse</button>
-	</a>
-    
+	
 	<table class="table table-striped">
 		<tr>
 			<th>Nombre</th>
@@ -46,4 +45,11 @@
 		</tr>
 
 	</table>
+	
+	<a th:if="${session.usuario.rol == admin}" href="/usuario/c">
+		<button class="btn waves-effect waves-light purple">
+				Registrarse <i class="material-icons left">home</i>
+				</button>
+	</a>
+    
 </div>
