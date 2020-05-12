@@ -8,7 +8,7 @@ var x;
 
 function buscar(){
     var conte = document.getElementsByName('expositor')[0].innerHTML="";
-      x.open("GET","src/main/resources/static/js/custom/plataformas.txt",true);
+      x.open("GET","plataformas.txt",true);
       x.send();
       x.onreadystatechange=tratar;
 
