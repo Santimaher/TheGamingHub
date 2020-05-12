@@ -18,6 +18,7 @@ import org.tfgdp2.com.domain.Premio_Participante;
 import org.tfgdp2.com.domain.Usuario;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
+import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.GalaRepository;
 import org.tfgdp2.com.repository.JuegoRepository;
@@ -59,8 +60,9 @@ public class PremioController {
 	private NominacionJuegoRepository repoNJ;
 
 	@GetMapping("c")
-	public String cGet(ModelMap m) {
+	public String cGet(ModelMap m,HttpSession s) throws DangerException{
 		try {
+			H.isRolOK("admin", s);
 			m.put("view", "premio/c");
 		} catch (Exception e) {
 			m.put("view", "home");
@@ -69,11 +71,13 @@ public class PremioController {
 	}
 
 	@PostMapping("c")
-	public void cPost(@RequestParam("nombre") String nombre, @RequestParam("tipo") String tipo)
-			throws DangerException, InfoException {
+	public void cPost(@RequestParam("nombre") String nombre,
+			@RequestParam("tipo") String tipo,
+			HttpSession s) throws DangerException, InfoException {
 
 		if (tipo.equals("participante")) {
 			try {
+				H.isRolOK("admin", s);
 				Premio_Participante pp = new Premio_Participante(nombre);
 				Gala g = repoGala.findTopByOrderByEdicionDesc();
 				g.getPremiosP().add(pp);
@@ -84,6 +88,7 @@ public class PremioController {
 		}
 		if (tipo.equals("juego")) {
 			try {
+				H.isRolOK("admin", s);
 				Premio_Juego pj = new Premio_Juego(nombre);
 				Gala g = repoGala.findTopByOrderByEdicionDesc();
 				g.getPremiosJ().add(pj);
@@ -107,9 +112,9 @@ public class PremioController {
 	}
 
 	@PostMapping("dP")
-	public String deleteP(@RequestParam("id") Long id) throws DangerException {
+	public String deleteP(@RequestParam("id") Long id,HttpSession s) throws DangerException {
 		try {
-
+			H.isRolOK("admin", s);
 			Premio_Participante n = repoPremioPar.getOne(id);
 			repoPremioPar.delete(n);
 
@@ -120,8 +125,9 @@ public class PremioController {
 	}
 
 	@PostMapping("dJ")
-	public String deleteJ(@RequestParam("id") Long id) throws DangerException {
+	public String deleteJ(@RequestParam("id") Long id,HttpSession s) throws DangerException {
 		try {
+			H.isRolOK("admin", s);
 			Premio_Juego njuego = repoPremioJuego.getOne(id);
 			repoPremioJuego.delete(njuego);
 
