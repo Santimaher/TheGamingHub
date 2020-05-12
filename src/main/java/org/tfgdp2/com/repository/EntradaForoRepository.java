@@ -12,4 +12,6 @@ public interface EntradaForoRepository extends JpaRepository<EntradaForo, Long>{
 	public List <EntradaForo> findByPerteneceIdAndEscribeIdOrderByRankingDesc(Long idForo,Long idUsuario);
 	public List <EntradaForo> findByMensajePadreIdOrderByRankingDesc(Long idMensaje);
 	public List <EntradaForo> findByPerteneceIdAndMensajePadreIdOrderByRankingDesc(Long id,Long idPadre);
+	public List <EntradaForo> findByPerteneceIdAndMensajePadreIdAndComentarioIgnoreCaseContainingOrderByRankingDesc(Long id,Long idPadre,String filtro);
+	public List <EntradaForo> findByPerteneceIdAndMensajePadreIdAndEscribeLoginnameStartsWithIgnoreCaseOrderByRankingDesc(Long id,Long idPadre,String filtro);
 }

@@ -42,9 +42,15 @@ public class JuegoController {
 	private Categoria_JuegoRepository repoCategoriaJ;
 	
 	@GetMapping("r")
-	public String read(ModelMap m) {
-		List<Juego> juegos = repoJuego.findAll();
-		m.put("juegos", juegos);
+	public String read(ModelMap m,@RequestParam(value = "filtro", required = false) String filtro,@RequestParam(value = "tipo", required = false) String tipo) {
+		filtro = (filtro == null) ? "" : filtro;
+		tipo = (tipo == null) ? "normal" : tipo;
+		switch(tipo) 
+		{
+		case "Nombre": m.put("juegos", repoJuego.findByNombreStartsWithIgnoreCase(filtro)); break;
+		case "Plataforma": m.put("juegos", repoJuego.findByPlataformasNombreStartsWithIgnoreCase(filtro)); break;
+		case "normal": m.put("juegos",repoJuego.findAll()); break;
+		}
 		m.put("view", "/juego/R");
 		return "/_t/frame";
 	}

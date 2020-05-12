@@ -61,11 +61,28 @@ public class EntradaForoController {
 		return "_t/frame";
 	}
 	@GetMapping("r")
-	public String leer(@RequestParam("id") Long id, ModelMap m) {
+	public String leer(@RequestParam("id") Long id, ModelMap m,@RequestParam(value = "filtro", required = false) String filtro,@RequestParam(value = "tipo", required = false) String tipo) {
+		filtro = (filtro == null) ? "" : filtro;
+		tipo = (tipo == null) ? "normal" : tipo;
 		m.put("view","/entradaForo/r");
 		m.put("id",id);
 		m.put("idJuego", repoForo.getOne(id).getJuego().getId());
-		m.put("entradas",repoEntrada.findByPerteneceIdAndMensajePadreIdOrderByRankingDesc(id,null));
+		switch(tipo) 
+		{
+		case "LoginName":
+		{
+			m.put("entradas",repoEntrada.findByPerteneceIdAndMensajePadreIdAndEscribeLoginnameStartsWithIgnoreCaseOrderByRankingDesc(id, null, filtro));
+		}break;
+		case "Comentario":
+		{
+			m.put("entradas",repoEntrada.findByPerteneceIdAndMensajePadreIdAndComentarioIgnoreCaseContainingOrderByRankingDesc(id, null, filtro));
+		}break;
+		case "normal":
+		{
+			m.put("entradas",repoEntrada.findByPerteneceIdAndMensajePadreIdOrderByRankingDesc(id, null));
+		}break;
+		}
+		
 		return "_t/frame";
 	}
 	@GetMapping("responder")

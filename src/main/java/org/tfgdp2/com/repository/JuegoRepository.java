@@ -12,6 +12,7 @@ public interface JuegoRepository extends JpaRepository<Juego, Long> {
 	
 	public Long deleteJuegoById (Long id);
 	public List<Juego> findByEstaNominadoTrue();
-
+    public List<Juego>findByNombreStartsWithIgnoreCase(String filtro);
+    public List<Juego>findByPlataformasNombreStartsWithIgnoreCase(String filtro);
 	
 }

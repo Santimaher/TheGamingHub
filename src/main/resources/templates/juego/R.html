@@ -1,4 +1,16 @@
 <div class="container">
+<form method="get">
+					<input type="text" name="filtro"/>
+					<select name="tipo">
+					<optgroup label="Campo de busqueda">
+					<option>Nombre</option>
+					<option>Plataforma</option>
+					</optgroup>
+					</select>
+					<button onclick="submit()" class="waves-effect waves-light btn separacion">
+						Buscar
+					</button>
+				</form>
 <div class="row">
 <div class="col s6" th:each="juego:${juegos}">
 	<div class="card grey darken-3 white-text">
