@@ -1,18 +1,34 @@
 <div class="container">
-	<h1>Editar usuario</h1>
+		<div class="col m12">
+			<h1>Editar usuario</h1>
+		</div>
 	
 	<form method="post" action="/usuario/uUsuarioPost" class="form">
 	<input type="hidden" name="id" th:value="${usuario.id}">
-		Nombre
-		<input type="text" name="nombre" th:value="${usuario.nombre}">
-		<br/>
-		LoginName
-		<input type="text" name="loginname" th:value="${usuario.loginname}">
-		<br/>
-		Email
-		<input type="text" name="email" th:value="${usuario.email}">
-		<br/>
-		<input type="submit" class="form-item" />
+	
+	<div class="input-field col s12">
+			<label for="nombre">Nombre</label>
+			<input type="text"  name="nombre"  th:value="${usuario.nombre}">
+		</div>
+		<div class="input-field col s12">
+			<label for="loginname">LoginName</label>
+			<input type="text" name="loginname" th:value="${usuario.loginname}">
+		</div>
+		
+		<div class="input-field col s12">
+			<label for="email">Email</label>
+			<input type="text" name="email" th:value="${usuario.email}">
+		</div>
+	
+		<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
+			Actualizar <i class="material-icons left">send</i>
+		</button>
+		
+		<a href="/cambioContrasenia" class="waves-effect waves-light btn hoverable">
+				<button class="btn waves-effect waves-light purple">
+				Cambiar Contraseña <i class="material-icons left">chevron_right</i>
+				</button>
+			</a>
+		
 	</form>
-	<a class="waves-effect waves-light btn hoverable" href="/cambioContrasenia"><h6>Cambiar Contraseña</h6></a>
 </div>

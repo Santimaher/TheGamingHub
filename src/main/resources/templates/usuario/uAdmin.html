@@ -1,16 +1,36 @@
 <div class="container">
-	<h1>Editar usuario</h1>
-	<form method="post" action="/usuario/uAdminPost" class="form">
-	<input type="hidden" name="id" th:value="${usuario.id}">
-		Nombre
-		<input type="text" name="nombre" th:value="${usuario.nombre}">
-		<br/>
-		LoginName
-		<input type="text" name="loginname" th:value="${usuario.loginname}">
-		<br/>
-		Email
-		<input type="text" name="email" th:value="${usuario.email}">
-		<br/>
-		<input type="submit" class="form-item" />
+	<div class="col m12">
+			<h1>Editar usuario</h1>
+		</div>
+		<div class="row">
+		<form method="post" action="/usuario/uAdminPost" class="form">
+		<input type="hidden" name="id" th:value="${usuario.id}">
+		
+		<div class="input-field col s12">
+			<label for="nombre">Nombre</label>
+			<input type="text"  name="nombre"  th:value="${usuario.nombre}">
+		</div>
+		
+		<div class="input-field col s12">
+			<label for="loginname">LoginName</label>
+			<input type="text" name="loginname" th:value="${usuario.loginname}">
+		</div>
+		
+		<div class="input-field col s12">
+			<label for="email">Email</label>
+			<input type="text" name="email" th:value="${usuario.email}">
+		</div>
+		
+	
+		<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
+			Actualizar <i class="material-icons left">send</i>
+		</button>
+			
+			<a href="/">
+				<button class="btn waves-effect waves-light purple">
+				Home <i class="material-icons left">home</i>
+				</button>
+			</a>
 	</form>
+	</div>
 </div>
