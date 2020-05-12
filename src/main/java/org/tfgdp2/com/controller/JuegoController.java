@@ -52,6 +52,8 @@ public class JuegoController {
 		case "normal": m.put("juegos",repoJuego.findAll()); break;
 		}
 		m.put("view", "/juego/R");
+		m.put("filtro", filtro);
+		m.put("tipo", tipo);
 		return "/_t/frame";
 	}
 

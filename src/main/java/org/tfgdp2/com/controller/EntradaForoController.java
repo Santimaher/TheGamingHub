@@ -67,6 +67,8 @@ public class EntradaForoController {
 		m.put("view","/entradaForo/r");
 		m.put("id",id);
 		m.put("idJuego", repoForo.getOne(id).getJuego().getId());
+		m.put("filtro", filtro);
+		m.put("tipo", tipo);
 		switch(tipo) 
 		{
 		case "LoginName":

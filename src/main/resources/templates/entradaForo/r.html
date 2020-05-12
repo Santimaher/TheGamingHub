@@ -1,11 +1,11 @@
 <div class="container">
 <form method="get">
-					<input type="text" name="filtro"/>
+					<input type="text" name="filtro" th:value="${filtro}"/>
 					<input type="hidden" name="id" th:value="${id}" />
 					<select name="tipo">
 					<optgroup label="Campo de busqueda">
-					<option>Comentario</option>
-					<option>LoginName</option>
+					<option th:selected="${tipo=='Comentario'}">Comentario</option>
+					<option th:selected="${tipo=='LoginName'}">LoginName</option>
 					</optgroup>
 					</select>
 					<button onclick="submit()" class="waves-effect waves-light btn separacion">
