@@ -1,0 +1,67 @@
+<nav style="opacity: 1" class="pink">
+		<div class="nav-wrapper">
+			<div class="valign-wrapper" style="float: left; margin-top:5px">			
+				<button
+					class="waves-effect waves-light btn-floating btn-large botones"
+					onclick="location.href = 'http://localhost:8080/';">
+					<i class="material-icons">home</i>
+				</button>
+				<button data-target="slide-out"
+					class="waves-effect waves-light btn-floating btn-large sidenav-trigger botones">
+					<i class="material-icons">person </i>
+				</button>
+				
+			</div>
+			<ul class="right hide-on-med-and-down">
+
+				<li><a class="waves-effect waves-light btn-floating btn-large botones" href="/juego/r" data-target="juego"><img
+						src="/img/mando.png" height="50" width="50" alt="juegos"></img></a></li>
+				
+				<li><a class="waves-effect waves-light btn-floating btn-large botones" href="/gala/r" data-target="galas"><img style="margin-top:5px"
+						src="/img/copa.png" height="45" width="45" alt="galas"></img></a></li>
+			</ul>
+		</div>
+	</nav>
+<ul id="slide-out" class="sidenav">
+	<li><div class="user-view ">
+			<!-- 			<div class="background"> -->
+			<!-- 				<img src="images/office.jpg"> -->
+			<!-- 			</div> -->
+			<!--       <a href="#user"><img class="circle" src="images/yuna.jpg"></a> -->
+			<!--       <a href="#name"><span class="white-text name">John Doe</span></a> -->
+			<!--       <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a> -->
+			<div class="col-12" th:if="${session.usuario == null}">
+				<a class="waves-effect waves-light btn hoverable purple"
+					href="/registro">Registro</a> <a
+					class="waves-effect waves-light btn hoverable purple" href="/login">Login</a>
+			</div>
+			<div class="col-12" th:if="${session.usuario != null}">
+				<div class="chip">
+					<img th:src="|/img/${session.usuario.img}|" alt="Contact Person">
+					<span th:text="${session.usuario.nombre}"></span>
+				</div>
+				<ul class="collapsible">
+					<li>
+						<div class="collapsible-header texto-negro">
+							<i class="material-icons">brightness_7</i> Opciones
+						</div>
+						<div class="collapsible-body">
+							<ul>
+								<li><a class="waves-effect waves-light btn hoverable"
+									href="/logout">Logout</a></li>
+								<li><a class="waves-effect waves-light btn hoverable"
+									href="/usuario/uUsuario">Editar perfil</a></li>
+
+							</ul>
+						</div>
+				</ul>
+			</div>
+		</div></li>
+	<li><div class="divider"></div></li>
+	<li><a href="#!"><i class="material-icons">cloud</i>First Link
+			With Icon</a></li>
+	<li><a href="#!">Second Link</a></li>
+	<li><div class="divider"></div></li>
+	<li><a class="subheader">Subheader</a></li>
+	<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+</ul>
