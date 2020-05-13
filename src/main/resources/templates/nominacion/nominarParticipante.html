@@ -1,6 +1,9 @@
 <div class="container">
-	<h1>Nominar Participantes</h1>
-	<table class="table table-striped">
+<div class="col s6">
+			<h1>Nominar Participantes</h1>
+		</div>
+	
+	<table class="highlight">
 		<tr>
 			<th>Nombre</th>
 			
@@ -11,17 +14,19 @@
 			<td class="row">
 				<form action="/nominacion/nominarParticipante" method="post">
 					<input type="hidden" name="id" th:value="${p.id}" />
+					
 					<select name="premio">
 						<option th:each="premio:${premioP}" th:value="${premio.id}" th:text="${premio.nombrePremio}"></option>
 					</select>
-					<button onclick="submit()">
+					
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
 						Nominar
 					</button>
 				</form>
 				<form action="/participante/d" method="post">
 					<input type="hidden" name="id" th:value="${p.id}" />
-					<button onclick="submit()">
-						<img src="/img/delete.png" height="20" width="20">
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
+						<i class="material-icons left">delete</i>
 					</button>
 				</form>
 			</td>
@@ -29,9 +34,9 @@
 
 	</table>
 	
-	<a href="/participante/c">
-		<button>Crear</button>
-	</a> <a href="/">
-		<button>Cancelar</button>
+	<a href="/">
+		<button class="btn waves-effect waves-light purple">
+		Cancelar<i class="material-icons left">home</i>
+		</button>
 	</a>
 </div>
