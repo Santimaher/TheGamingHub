@@ -74,6 +74,10 @@ fieldset{
 {
 	font-size: 20px !important;
 }
+.letra-pequeña
+{
+	font-size: 15px !important;
+}
 .container-medio
 {
 	width:300px !important;
@@ -100,4 +104,8 @@ textarea
 }
 nav{
 	background-image: url("/img/leather.png");
+}
+.fondo-carta
+{
+	background-image:url('/img/cartographer.png');
 }

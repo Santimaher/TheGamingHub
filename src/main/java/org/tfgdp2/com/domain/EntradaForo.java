@@ -22,6 +22,7 @@ public class EntradaForo {
 	private Long id;
 	private int ranking;
 	private String comentario;
+	private String img;
 	private Date fechaPublicacion;
 	@ManyToOne
 	private Usuario escribe;
@@ -114,6 +115,12 @@ public class EntradaForo {
 
 	public void setMensajePadre(EntradaForo mensajePadre) {
 		this.mensajePadre = mensajePadre;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	

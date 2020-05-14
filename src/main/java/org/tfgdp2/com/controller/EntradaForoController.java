@@ -96,11 +96,13 @@ public class EntradaForoController {
 		return "_t/frame";
 	}
 	@PostMapping("responder")
-	public void responderPost(@RequestParam("idForo") Long idForo,@RequestParam("idEntrada") Long idEntrada,@RequestParam("comentario") String comentario,ModelMap m,HttpSession s) throws DangerException, InfoException{
+	public void responderPost(@RequestParam("imagen") String img,@RequestParam("idForo") Long idForo,@RequestParam("idEntrada") Long idEntrada,@RequestParam("comentario") String comentario,ModelMap m,HttpSession s) throws DangerException, InfoException{
 		try {
 			H.isRolOK("auth", s);
 			EntradaForo entrada = new EntradaForo();
 			entrada.setComentario(comentario);
+			img=img.length()>0?img:null;
+			entrada.setImg(img);
 			Foro f=repoForo.getOne(idForo);
 			entrada.setPertenece(f);
 			f.getPertenecen().add(entrada);
@@ -127,12 +129,14 @@ public class EntradaForoController {
 		return "_t/frame";
 	}
 	@PostMapping("c")
-	public void cPost(@RequestParam("id") Long id,@RequestParam("comentario") String comentario,ModelMap m,HttpSession s) throws DangerException, InfoException{
+	public void cPost(@RequestParam("imagen") String img,@RequestParam("id") Long id,@RequestParam("comentario") String comentario,ModelMap m,HttpSession s) throws DangerException, InfoException{
 		try {
 			H.isRolOK("auth", s);
 			EntradaForo entrada = new EntradaForo();
 			entrada.setComentario(comentario);
 			entrada.setMensajePadre(null);
+			img=img.length()>0?img:null;
+			entrada.setImg(img);
 			Foro f=repoForo.getOne(id);
 			entrada.setPertenece(f);
 			f.getPertenecen().add(entrada);
@@ -141,7 +145,7 @@ public class EntradaForoController {
 			entrada.setEscribe(u);
 			repoEntrada.save(entrada);
 		}catch(Exception e) {
-			PRG.error("Error al crear la entrada  ", "/entradaForo/c");
+			PRG.error("Error al crear la entrada  "+e.getMessage(), "/entradaForo/c");
 		}	
 
 		PRG.info("Entrada del foro creada correctamente", "/entradaForo/r",id);

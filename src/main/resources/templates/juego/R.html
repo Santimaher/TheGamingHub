@@ -12,35 +12,37 @@
 					</button>
 				</form>
 <div class="row">
-<div class="col s6" th:each="juego:${juegos}">
+<div   class="col s4" th:each="juego:${juegos}">
 	<div class="card grey darken-3 white-text">
     <div class="card-image waves-effect waves-block waves-light">
       <img class="activator" th:src="|/img/cover/${juego.img}|" width="150px" height="500px">
     </div>
-    <div class="card-content grey darken-3 white-text ">
-      <span class="card-title activator white-text text-darken-4" th:text="${juego.nombre}"><i class="material-icons right">more_vert</i></span>
-      <p>
+    <div class="fondo-carta card-content deep-purple darken-4  white-text ">
+      <span  class=" letra-pequeña card-title activator  white-text text-darken-4" th:text="${juego.nombre}"><i class="material-icons right">more_vert</i></span>
+      <div class="row">
+      <div class="col s4">
       <form action="/foro/r" method="get">
 					<input type="hidden" name="id" th:value="${juego.id}" />
-					<button onclick="submit()" class="waves-effect waves-light btn separacion">
+					<button onclick="submit()" class=" btn-floating waves-effect waves-light btn separacion purple btn-large">
 						Foro
 					</button>
 				</form>
-		</p>
-		<p><form action="/juego/u" method="get">
+		</div>
+		<div class="col s4"  th:if="${session.usuario?.rol=='admin'}"><form action="/juego/u" method="get">
 					<input type="hidden" name="id" th:value="${juego.id}" />
-					<button onclick="submit()"class="waves-effect waves-light btn separacion">
+					<button onclick="submit()"class="btn-floating waves-effect waves-light btn separacion purple btn-large">
 						<i class="material-icons left">edit</i>
 					</button>
-				</form></p>
-		<p><form action="/juego/d" method="post">
+				</form></div>
+		<div class="col s4" th:if="${session.usuario?.rol=='admin'}"><form action="/juego/d" method="post">
 					<input type="hidden" name="id" th:value="${juego.id}" />
-					<button onclick="submit()" class="waves-effect waves-light btn">
+					<button onclick="submit()" class=" btn-floating waves-effect waves-light btn purple btn-large">
 						<i class="material-icons left">delete</i>
 					</button>
-				</form></p>
+				</form></div>
     </div>
-    <div class="card-reveal grey darken-3 white-text letra-grande">
+    </div>
+    <div class="fondo-carta card-reveal purple darken-4 white-text letra-grande">
       <span class="card-title white-text flow-text " th:text="${juego.nombre}"><i class="material-icons right">close</i></span>
       <p th:text="|Precio: ${juego.precio} â‚¬|"></p>
       <p th:text="|Stock: ${juego.stock} .ud|"></p>

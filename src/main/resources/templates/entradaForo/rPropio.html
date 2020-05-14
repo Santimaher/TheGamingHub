@@ -12,6 +12,7 @@
         <div class="card-content white-text">
           <span class="card-title" th:text="${entrada.escribe.loginname}"></span><i th:if="${entrada.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
           <p th:text="|${entrada.comentario}|"></p>
+          <span th:if="${entrada.img!=null}"><img th:src="${entrada.img}" width="400px" height="350px"></span>
           <p th:text="${entrada.fechaPublicacion}"></p>
           <span th:text="|${entrada.ranking}|"></span><img src="/img/like.svg" width="25px" height="25px">
         </div>
