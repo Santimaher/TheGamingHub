@@ -1,5 +1,5 @@
 function busca() {
-	document.getElementById('qwe').innerHTMl = " ";
+	clear();
 	var aguja = document.getElementById('busca').value;
 	var res = getJSON();
 	var arr = res[0].plataformas
@@ -10,7 +10,9 @@ function busca() {
 		
 	}
 	}
-		
+function clear(){
+	document.getElementById('qwe').innerHTML = "";
+}		
 	
 
 
