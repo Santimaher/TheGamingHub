@@ -1,12 +1,12 @@
 <div class="container">
-<script src="/js/custom/PlataformasAJAX.js"></script>
+
 	<div  name="seleccionadas">
         <fieldset>Plataformas seleccionadas</fieldset>
         </div>
         <div style="border: solid black 3px;">
         <fieldset>Plataformas disponibles</fieldset>
         <div>
-            <select name="selector" id="busca">
+            <select onchange="busca()" name="selector" id="busca">
                 <option value="">Elegir</option>
                 <option value="Sony">Sony</option>
                 <option value="Microsoft">Microsoft</option>
@@ -17,7 +17,7 @@
                 <option value="Atari">Atari</option>
             </select>
         </div>
-        <div name="expositor" id="expositor">
+        <div name="expositor" id="qwe">
 
         </div>
         </div>
