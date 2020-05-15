@@ -12,7 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     var elems = document.querySelectorAll('.collapsible');
     var instances = M.Collapsible.init(elems);
+    
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems);
+    
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
   });
+
 function fitElementToParent(el, padding) {
 	  var timeout = null;
 	  function resize() {
