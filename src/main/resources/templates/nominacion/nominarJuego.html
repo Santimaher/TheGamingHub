@@ -10,7 +10,7 @@
 		</tr>
 
 		<tr th:each="j:${juegos}">
-		<td th:text="${j.nombre}"></td>
+		<td th:text="${j.nombre}" ></td>
 			<td class="row">
 			
 				<form action="/nominacion/nominarJuego" method="POST">
