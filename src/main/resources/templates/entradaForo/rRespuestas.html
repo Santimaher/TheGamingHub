@@ -46,7 +46,7 @@
         <div class="card-action grey darken-4">
         <div class="row">
         <div class="col s2">
-          <form action="/entradaForo/like" method="get">
+          <form action="/entradaForo/likeR" method="get">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
@@ -55,7 +55,7 @@
 				</form>
 				</div>
 		<div class="col s2">
-          <form action="/entradaForo/dislike" method="get">
+          <form action="/entradaForo/dislikeR" method="get">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">

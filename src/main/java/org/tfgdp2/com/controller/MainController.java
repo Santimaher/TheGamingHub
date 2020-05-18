@@ -75,17 +75,21 @@ public class MainController {
 				: "Pulsa para volver a home";
 		String severity = s.getAttribute("_severity") != null ? (String) s.getAttribute("_severity") : "info";
 		String link = s.getAttribute("_link") != null ? (String) s.getAttribute("_link") : "/";
-		String id = s.getAttribute("_id") != null ? (String) s.getAttribute("_id") : "";
+		String idForo = s.getAttribute("_idForo") != null ? (String) s.getAttribute("_idForo") : "";
+		String idEntrada = s.getAttribute("_idEntrada") != null ? (String) s.getAttribute("_idEntrada") : "";
+		
 		
 		s.removeAttribute("_mensaje");
 		s.removeAttribute("_severity");
 		s.removeAttribute("_link");
-		s.removeAttribute("_id");
+		s.removeAttribute("_idForo");
+		s.removeAttribute("_idEntrada");
 
 		m.put("mensaje", mensaje);
 		m.put("severity", severity);
 		m.put("link",link);
-		m.put("id",id);
+		m.put("idForo",idForo);
+		m.put("idEntrada", idEntrada);
 
 
 		m.put("view", "/_t/info");

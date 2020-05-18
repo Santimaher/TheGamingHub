@@ -30,8 +30,6 @@
 				<div class="col s2">
 				<form action="http://localhost:8080/entradaForo/rPropio" method="get">
 					<input type="hidden" name="id" th:value="${id}" />
-					<input type="hidden" name="idJuego" th:value="${idJuego}">
-					<input type="hidden" name="idforo" th:value="${idforo}">
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
 						Mis comentarios en este foro
 					</button>
@@ -92,7 +90,7 @@
 				<form action="/entradaForo/verRespuestas" method="get">
 				<input type="hidden" name="idJuego" th:value="${idJuego}">
 					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
-					<input type="hidden" name="id" th:value="${entrada?.pertenece.id}" />
+					<input type="hidden" name="idForo" th:value="${entrada?.pertenece.id}" />
 					<button th:text="|Ver respuestas(${entrada.respuestas.size()})|"onclick="submit()" class="waves-effect waves-light btn separacion purple">
 						
 					</button>

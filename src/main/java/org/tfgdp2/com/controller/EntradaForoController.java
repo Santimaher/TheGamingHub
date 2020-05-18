@@ -1,6 +1,10 @@
 package org.tfgdp2.com.controller;
 
+import java.net.HttpURLConnection;
+import java.util.Set;
+
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.spi.http.HttpContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +28,6 @@ import org.tfgdp2.com.repository.Votacion_ForoRepository;
 @Controller
 @RequestMapping(value= "/entradaForo")
 public class EntradaForoController {
-	
 	@Autowired
 	private EntradaForoRepository repoEntrada;
 	
@@ -35,7 +38,7 @@ public class EntradaForoController {
 	private  Votacion_ForoRepository repoVotacion;
 	
 	@GetMapping("rPropio")
-	public String leerPropio(@RequestParam("idforo") Long idforo,@RequestParam("id") Long id, ModelMap m,HttpSession s) throws DangerException {
+	public String leerPropio(@RequestParam("id") Long id, ModelMap m,HttpSession s) throws DangerException {
 		m.put("view","/entradaForo/rPropio");
 		m.put("id",id);
 		m.put("idJuego", repoForo.getOne(id).getJuego().getId());
@@ -52,7 +55,7 @@ public class EntradaForoController {
 		return "_t/frame";
 	}
 	@GetMapping("verRespuestas")
-	public String leerResp(@RequestParam("id") Long id,@RequestParam("idEntrada") Long idEntrada, ModelMap m,HttpSession s) {
+	public String leerResp(@RequestParam("idForo") Long id,@RequestParam("idEntrada") Long idEntrada, ModelMap m,HttpSession s) {
 		m.put("view","/entradaForo/rRespuestas");
 		m.put("id",id);
 		m.put("idJuego", repoForo.getOne(id).getJuego().getId());
@@ -61,7 +64,7 @@ public class EntradaForoController {
 		return "_t/frame";
 	}
 	@GetMapping("r")
-	public String leer(@RequestParam("id") Long id, ModelMap m,@RequestParam(value = "filtro", required = false) String filtro,@RequestParam(value = "tipo", required = false) String tipo) {
+	public String leer(@RequestParam("idForo") Long id, ModelMap m,@RequestParam(value = "filtro", required = false) String filtro,@RequestParam(value = "tipo", required = false) String tipo) {
 		filtro = (filtro == null) ? "" : filtro;
 		tipo = (tipo == null) ? "normal" : tipo;
 		m.put("view","/entradaForo/r");
@@ -172,14 +175,15 @@ public class EntradaForoController {
 				votacion.setVoto("like");
 				repoVotacion.save(votacion);
 				repoEntrada.save(e);
-				 PRG.info("Like añadido", "/entradaForo/r",id);
+				
+				 PRG.info("Like añadido", "/entradaForo/r",id,idEntrada);
 			}
 			else 
 			{
 				e.setRanking(e.getRanking()-1);
 				repoVotacion.delete(votacion);
 				repoEntrada.save(e);
-				 PRG.info("Like quitado", "/entradaForo/r",id);
+				 PRG.info("Like quitado", "/entradaForo/r",id,idEntrada);
 			}
 			
 		}
@@ -194,7 +198,7 @@ public class EntradaForoController {
 			repoVotacion.save(vota);
 			e.setRanking(e.getRanking()+1);
 			repoEntrada.save(e);
-			PRG.info("Like añadido", "/entradaForo/r",id);
+			PRG.info("Like añadido", "/entradaForo/r",id,idEntrada);
 		}
 	}
 	@GetMapping("dislike")
@@ -212,14 +216,14 @@ public class EntradaForoController {
 				votacion.setVoto("dislike");
 				repoVotacion.save(votacion);
 				repoEntrada.save(e);
-				PRG.info("Dislike añadido", "/entradaForo/r",id);
+				PRG.info("Dislike añadido", "/entradaForo/r",id,idEntrada);
 			}
 			else 
 			{
 				e.setRanking(e.getRanking()+1);
 				repoVotacion.delete(votacion);
 				repoEntrada.save(e);
-				PRG.info("Dislike quitado", "/entradaForo/r",id);
+				PRG.info("Dislike quitado", "/entradaForo/r",id,idEntrada);
 			}
 			
 		}
@@ -235,7 +239,91 @@ public class EntradaForoController {
 			
 			e.setRanking(e.getRanking()-1);
 			repoEntrada.save(e);
-			PRG.info("Dislike añadido", "/entradaForo/r",id);
+			PRG.info("Dislike añadido", "/entradaForo/r",id,idEntrada);
+		}
+	}
+	@GetMapping("likeR")
+	public void darLikeRespuesta(ModelMap m, @RequestParam("id") Long idEntrada,@RequestParam("idForo") Long id,HttpSession s) throws DangerException, InfoException {
+		H.isRolOK("auth", s);
+		Usuario u=(Usuario) s.getAttribute("usuario");
+		Long idUsuario=u.getId();
+		EntradaForo e=repoEntrada.getOne(idEntrada);
+		Long idPadre=e.getMensajePadre().getId();
+		Votacion_Foro votacion=repoVotacion.getByVotanteIdAndVotadoId(idUsuario, idEntrada);
+		if(votacion!=null) 
+		{
+			if(votacion.getVoto().equals("dislike")) 
+			{
+				e.setRanking(e.getRanking()+2);
+				votacion.setVoto("like");
+				repoVotacion.save(votacion);
+				repoEntrada.save(e);
+				
+				 PRG.info("Like añadido", "/entradaForo/verRespuestas",id,idPadre);
+			}
+			else 
+			{
+				e.setRanking(e.getRanking()-1);
+				repoVotacion.delete(votacion);
+				repoEntrada.save(e);
+				 PRG.info("Like quitado", "/entradaForo/verRespuestas",id,idPadre);
+			}
+			
+		}
+		else 
+		{
+			Votacion_Foro vota=new Votacion_Foro();
+			vota.setVotado(e);
+			vota.setVotante(u);
+			vota.setVoto("like");
+			e.getVotos().add(vota);
+			u.getVotos().add(vota);
+			repoVotacion.save(vota);
+			e.setRanking(e.getRanking()+1);
+			repoEntrada.save(e);
+			PRG.info("Like añadido", "/entradaForo/verRespuestas",id,idPadre);
+		}
+	}
+	@GetMapping("dislikeR")
+	public void quitarLikeRespuesta(ModelMap m, @RequestParam("id") Long idEntrada,@RequestParam("idForo") Long id,HttpSession s) throws DangerException, InfoException {
+		H.isRolOK("auth", s);
+		Usuario u=(Usuario) s.getAttribute("usuario");
+		Long idUsuario=u.getId();
+		EntradaForo e=repoEntrada.getOne(idEntrada);
+		Long idPadre=e.getMensajePadre().getId();
+		Votacion_Foro votacion=repoVotacion.getByVotanteIdAndVotadoId(idUsuario, idEntrada);
+		if(votacion!=null) 
+		{
+			if(votacion.getVoto().equals("like")) 
+			{
+				e.setRanking(e.getRanking()-2);
+				votacion.setVoto("dislike");
+				repoVotacion.save(votacion);
+				repoEntrada.save(e);
+				PRG.info("Dislike añadido", "/entradaForo/verRespuestas",id,idPadre);
+			}
+			else 
+			{
+				e.setRanking(e.getRanking()+1);
+				repoVotacion.delete(votacion);
+				repoEntrada.save(e);
+				PRG.info("Dislike quitado", "/entradaForo/verRespuestas",id,idPadre);
+			}
+			
+		}
+		else 
+		{
+			Votacion_Foro vota=new Votacion_Foro();
+			vota.setVotado(e);
+			vota.setVotante(u);
+			vota.setVoto("dislike");
+			e.getVotos().add(vota);
+			u.getVotos().add(vota);
+			repoVotacion.save(vota);
+			
+			e.setRanking(e.getRanking()-1);
+			repoEntrada.save(e);
+			PRG.info("Dislike añadido", "/entradaForo/verRespuestas",id,idPadre);
 		}
 	}
 	

@@ -20,11 +20,17 @@ public class PRG {
 	public static void error(String mensaje) throws DangerException {
 		throw new DangerException(mensaje+"@"+"/");
 	}
-	public static void info(String mensaje, String link,Long id) throws InfoException {
-		throw new InfoException(mensaje+"@"+link+"@"+id);
+	public static void info(String mensaje, String link,Long idForo) throws InfoException {
+		throw new InfoException(mensaje+"@"+link+"@"+idForo);
 	}
-	public static void error(String mensaje, String link,Long id) throws DangerException {
-		throw new DangerException(mensaje+"@"+link+"@"+id);
+	public static void error(String mensaje, String link,Long idForo) throws DangerException {
+		throw new DangerException(mensaje+"@"+link+"@"+idForo);
+	}
+	public static void info(String mensaje, String link,Long idForo,Long idEntrada) throws InfoException {
+		throw new InfoException(mensaje+"@"+link+"@"+idForo+"@"+idEntrada);
+	}
+	public static void error(String mensaje, String link,Long idForo,Long idEntrada) throws DangerException {
+		throw new DangerException(mensaje+"@"+link+"@"+idForo+"@"+idEntrada);
 	}
 
 }

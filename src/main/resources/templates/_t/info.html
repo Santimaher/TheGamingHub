@@ -7,8 +7,11 @@
 		<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
 			<i class="material-icons left">home</i>
 		</button>
-		<div th:if="${!id.empty}">
-		<input type="hidden" name="id" th:value="${id}">
+		<div th:if="${!idForo.empty}">
+		<input type="hidden" name="idForo" th:value="${idForo}">
+		</div>
+		<div th:if="${!idEntrada.empty}">
+		<input type="hidden" name="idEntrada" th:value="${idEntrada}">
 		</div>
 	</form>
 </div>
