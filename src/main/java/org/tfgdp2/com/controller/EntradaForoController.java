@@ -4,7 +4,6 @@ import java.net.HttpURLConnection;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.spi.http.HttpContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

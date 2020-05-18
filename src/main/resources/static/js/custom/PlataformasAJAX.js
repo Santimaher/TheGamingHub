@@ -68,7 +68,6 @@ function anadir(nombre,id){
 	
 }
 function esta(nombre){
-	//document.getElementsByName("consolas")[0].innerText
 	var check = false;
 	var seleccionados = document.getElementsByName("consolas");
 	for (let unidad of seleccionados) {
