@@ -5,15 +5,13 @@ function busca() {
 	var arr = res[0].plataformas;
 	for (let consola of arr) {
 		if(aguja == consola.familia){
-			// document.getElementById('qwe').innerHTML += '<button
-			// onclick="alert(this.value+"/"+this.id)" id="'+consola.id+'">' +
-			// consola.nombre+ "</button>";
 			var boton = document.createElement("button");
-			boton.id = consola.id;
+			boton.id = "btn-"+consola.id;
 			var texto=document.createTextNode(consola.nombre);
 			boton.append(texto);
-			boton.setAttribute("onclick",'anadir("'+consola.nombre+'",this.id)');
+			boton.setAttribute("onclick",'anadir("'+consola.nombre+'",'+consola.id+')');
 			document.getElementById('qwe').append(boton);
+			
 			}		
 	}
 	}
@@ -42,23 +40,41 @@ function getJSON() {
 }
 
 function anadir(nombre,id){
-	// document.getElementById('123').innerHTML = '<div class="chip"
-	// name="idPlataforma[]" value="'+id+'">'nombre'<i class="close
-	// material-icons">close</i></div>'
-	var divo = document.createElement("div");	
-	divo.classList.add("chip");
-	var texto2 = document.createTextNode(nombre);
-	divo.append(texto2);
-	var oculto = document.createElement("input");
-	oculto.type="hidden";
-	oculto.name="idPlataforma[]";
-	oculto.value=id;
-	divo.append(oculto);
-	var cerrar = document.createElement("i");
-	cerrar.classList.add("close");
-	cerrar.classList.add("material-icons");	 
-	var texto3 = document.createTextNode("close");
-	cerrar.append(texto3);
-	divo.append(cerrar);
-	document.getElementById('123').append(divo);
+	if(esta(nombre)){
+		alert("La consola: "+nombre+", ya esta seleccionada");
+	}
+	
+	else{
+		var divo = document.createElement("div");	
+		divo.classList.add("chip");
+		var contTexto = document.createElement("span");
+		contTexto.setAttribute("name","consolas");
+		var texto2 = document.createTextNode(nombre);
+		contTexto.append(texto2);
+		divo.append(contTexto);
+		var oculto = document.createElement("input");
+		oculto.type="hidden";
+		oculto.name="idPlataforma[]";
+		oculto.value=id;
+		divo.append(oculto);
+		var cerrar = document.createElement("i");
+		cerrar.classList.add("close");
+		cerrar.classList.add("material-icons");	 
+		var texto3 = document.createTextNode("close");
+		cerrar.append(texto3);
+		divo.append(cerrar);
+		document.getElementById('123').append(divo);
+	}
+	
+}
+function esta(nombre){
+	//document.getElementsByName("consolas")[0].innerText
+	var check = false;
+	var seleccionados = document.getElementsByName("consolas");
+	for (let unidad of seleccionados) {
+		if (unidad.innerText == nombre) {
+			check=true;
+		}
+	}
+	return check
 }
