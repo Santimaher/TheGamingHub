@@ -4,7 +4,7 @@
 				<div class="col s4">
 				<form method="get">
 					<input type="text" name="filtro" th:value="${filtro}" placeholder="Buscar entrada en el foro"/>
-					<input type="hidden" name="id" th:value="${id}" />
+					<input type="hidden" name="idForo" th:value="${id}" />
 					<select name="tipo">
 					<optgroup label="Campo de busqueda">
 					<option th:selected="${tipo=='Comentario'}">Comentario</option>
