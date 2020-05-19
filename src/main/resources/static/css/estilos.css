@@ -107,3 +107,15 @@ textarea
 {
 	background-image:url('/img/cartographer.png');
 }
+.fondo-geometrico
+{
+	background-image:url('/img/inspiration-geometry.png');
+}
+.main-color
+{
+	color: #651fff;
+}
+.color-trans
+{
+	background-color:transparent !important;
+}

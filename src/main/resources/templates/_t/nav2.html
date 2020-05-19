@@ -22,7 +22,7 @@
 			</ul>
 		</div>
 	</nav>
-<ul id="slide-out" class="sidenav">
+<ul id="slide-out" class="sidenav fondo-geometrico black">
 	<li><div class="user-view ">
 			<!-- 			<div class="background"> -->
 			<!-- 				<img src="images/office.jpg"> -->
@@ -31,25 +31,25 @@
 			<!--       <a href="#name"><span class="white-text name">John Doe</span></a> -->
 			<!--       <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a> -->
 			<div class="col-12" th:if="${session.usuario == null}">
-				<a class="waves-effect waves-light btn hoverable purple"
+				<a class="waves-effect waves-light btn hoverable purple white-text"
 					href="/registro">Registro</a> <a
-					class="waves-effect waves-light btn hoverable purple" href="/login">Login</a>
+					class="waves-effect waves-light btn hoverable purple white-text" href="/login">Login</a>
 			</div>
 			<div class="col-12" th:if="${session.usuario != null}">
-				<div class="chip">
+				<div class="chip purple white-text ">
 					<img th:src="|/img/${session.usuario.img}|" alt="Contact Person">
 					<span th:text="${session.usuario.nombre}"></span> <i th:if="${session.usuario.rol=='admin'}" class="material-icons"> verified_user</i>    
 				</div>
 				<ul class="collapsible">
 					<li>
-						<div class="collapsible-header texto-negro">
+						<div class="collapsible-header main-color">
 							<i class="material-icons">brightness_7</i> Opciones
 						</div>
-						<div class="collapsible-body">
+						<div class="collapsible-body fondo-geometrico color-trans">
 							<ul>
-								<li><a class="waves-effect waves-light btn hoverable"
+								<li><a class="waves-effect waves-light btn hoverable purple white-text"
 									href="/logout">Logout</a></li>
-								<li><a class="waves-effect waves-light btn hoverable"
+								<li><a class="waves-effect waves-light btn hoverable purple white-text"
 									href="/usuario/uUsuario">Editar perfil</a></li>
 
 							</ul>
@@ -58,10 +58,10 @@
 			</div>
 		</div></li>
 	<li><div class="divider"></div></li>
-	<li><a href="#!"><i class="material-icons">cloud</i>First Link
+	<li ><a href="#!">First Link
 			With Icon</a></li>
-	<li><a href="/premio/r">Premios</a></li>
+	<li class="white-text"><a href="/premio/r">Premios</a></li>
 	<li><div class="divider"></div></li>
-	<li><a class="subheader">Subheader</a></li>
-	<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+	<li><a class="subheader ">Subheader</a></li>
+	<li><a class="waves-effect " href="#!">Third Link With Waves</a></li>
 </ul>
