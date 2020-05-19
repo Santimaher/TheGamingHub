@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.tfgdp2.com.domain.Categoria_Juego;
 import org.tfgdp2.com.domain.Foro;
 import org.tfgdp2.com.domain.Juego;
@@ -60,8 +61,6 @@ public class JuegoController {
 	@GetMapping("c")
 	public String cGet(ModelMap m,HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
-		List<Plataforma> plataformas = repoPlat.findAll();
-		m.put("plataformas", plataformas);
 		m.put("categorias", repoCategoriaJ.findAll());
 		m.put("view", "/juego/c");
 		return "/_t/frame";
@@ -70,20 +69,21 @@ public class JuegoController {
 	@PostMapping("c")
 	public void cPost(@RequestParam("nombre") String nombre, @RequestParam("precio") Double precio,
 			@RequestParam("stock") Integer stock, @RequestParam("desarrolladora") String desarrolladora,
-			@RequestParam("img") String img, @RequestParam("teaser") String teaser,
+			@RequestParam("imgJ") MultipartFile img, @RequestParam("teaser") String teaser,
 			@RequestParam(value = "idPlataforma[]") List<Long> idsPlataforma,
 			@RequestParam(value = "idCat[]") List<Long> idsCat,
 			@RequestParam("flan") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate flan, HttpSession s)
 			throws DangerException, InfoException {
 		
 		try {
+			String img2 = img + "qwe";
 			H.isRolOK("admin", s);
 			Juego j = new Juego();
 			j.setNombre(nombre);
 			j.setPrecio(precio);
 			j.setStock(stock);
 			j.setDesarrolladora(desarrolladora);
-			j.setImg(img);
+			j.setImg(img2);
 			j.setTeaser(teaser);
 			j.setFechaLanzamiento(flan);
 
@@ -109,7 +109,7 @@ public class JuegoController {
 			}
 						
 		} catch (Exception e) {
-			PRG.error("Juego " + nombre + " duplicado", "/juego/c");
+			PRG.error("Juego " + nombre + " duplicado::::"+e.getMessage(), "/juego/c");
 		
 		}
 		PRG.info("Juego " + nombre + " creado correctamente", "/juego/r");

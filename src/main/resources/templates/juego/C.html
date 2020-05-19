@@ -45,16 +45,6 @@
 	</div>
 	
 	<fieldset>
-		<legend>Plataformas disponibles</legend>
-			<span th:each="plataforma:${plataformas}" >
-				<label th:for="|pla-${plataforma.id}|">
-					<input type="checkbox" th:id="|pla-${plataforma.id}|" class="indeterminate-checkbox" th:name="idPlataforma[]" th:value="${plataforma.id}"/>
-					<span th:text="${plataforma.nombre}"></span>
-				</label>						
-			</span>
-	</fieldset>
-
-	<fieldset>
 		<legend>Categorias</legend>
 			<span th:each="categoria:${categorias}" >				
 				<label th:for="|cat-${categoria.id}|">
@@ -63,6 +53,28 @@
 				</label>
 			</span>
 	</fieldset>	
+	
+	<fieldset>
+		<legend>Plataformas disponibles</legend>
+			<div  name="seleccionadas" id="selec"><fieldset>Plataformas seleccionadas</fieldset></div>
+			<div>
+            <select onchange="buscar()" name="selector" id="busca">
+                <option value="">Elegir</option>
+                <option value="Sony">Sony</option>
+                <option value="Microsoft">Microsoft</option>
+                <option value="Nintendo">Nintendo</option>
+                <option value="PC">PC</option>
+                <option value="Sega">Sega</option>
+                <option value="SNK">SNK</option>
+                <option value="Atari">Atari</option>
+            </select>
+			</div>
+			<div>
+				<span name="expositor" id="exp"></span>
+			</div>
+	</fieldset>
+	
+	
 	<button class="btn waves-effect waves-light purple"  onclick="submit()" name="action">
 			Crear <i class="material-icons left">send</i>
 			</button>

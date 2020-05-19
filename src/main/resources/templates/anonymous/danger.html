@@ -1,16 +1,15 @@
 <div class="container">
 	<form action="test" method="post">
-	<div  name="seleccionadas" id="123">
+	<span  name="seleccionadas" id="123">
 	
         <fieldset>Plataformas seleccionadas</fieldset>
         
-        </div>
-        <input type="submit" value="Enviar"/>
-        </form>
-        <div style="border: solid black 3px;">
+        </span>
+        
+        <span style="border: solid black 3px;">
         <fieldset>Plataformas disponibles</fieldset>
-        <div>
-            <select onchange="busca()" name="selector" id="busca">
+        <span>
+            <select onchange="buscar()" name="selector" id="busca">
                 <option value="">Elegir</option>
                 <option value="Sony">Sony</option>
                 <option value="Microsoft">Microsoft</option>
@@ -20,11 +19,13 @@
                 <option value="SNK">SNK</option>
                 <option value="Atari">Atari</option>
             </select>
-        </div>
-        <div name="expositor" id="qwe">
+        </span>
+        
+        <span name="expositor" id="exp">
 
-        </div>
-        </div>
+        </span>
+        </span>
 
-
+        </form>
+<input type="submit"/>
 </div>

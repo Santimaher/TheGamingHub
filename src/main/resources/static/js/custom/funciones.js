@@ -1,4 +1,4 @@
-function busca() {
+function buscar() {
 	clear();
 	var aguja = document.getElementById('busca').value;
 	var res = getJSON();
@@ -9,14 +9,15 @@ function busca() {
 			boton.id = "btn-"+consola.id;
 			var texto=document.createTextNode(consola.nombre);
 			boton.append(texto);
+			boton.type="button";
 			boton.setAttribute("onclick",'anadir("'+consola.nombre+'",'+consola.id+')');
-			document.getElementById('qwe').append(boton);
+			document.getElementById('exp').append(boton);
 			
 			}		
 	}
 	}
 function clear(){
-	document.getElementById('qwe').innerHTML = "";
+	document.getElementById('exp').innerHTML = "";
 }		
 	
 
@@ -63,7 +64,7 @@ function anadir(nombre,id){
 		var texto3 = document.createTextNode("close");
 		cerrar.append(texto3);
 		divo.append(cerrar);
-		document.getElementById('123').append(divo);
+		document.getElementById('selec').append(divo);
 	}
 	
 }
@@ -76,4 +77,8 @@ function esta(nombre){
 		}
 	}
 	return check
+}
+function validarJC(){
+	
+	
 }
