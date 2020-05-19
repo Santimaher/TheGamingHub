@@ -85,6 +85,10 @@ public class EntradaForoController {
 		{
 			m.put("entradas",repoEntrada.findByPerteneceIdAndMensajePadreIdOrderByRankingDesc(id, null));
 		}break;
+		case "nuevo":
+		{
+			m.put("entradas",repoEntrada.findByPerteneceIdAndMensajePadreIdOrderByIdDesc(id, null));
+		}break;
 		}
 		
 		return "_t/frame";
