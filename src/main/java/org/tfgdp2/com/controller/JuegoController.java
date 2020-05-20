@@ -3,7 +3,9 @@ package org.tfgdp2.com.controller;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -119,8 +121,14 @@ public class JuegoController {
 	@GetMapping("u")
 	public String ueGet(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
-		m.put("juego", repoJuego.getOne(id));
-		m.put("plataformas", repoPlat.findAll());
+		Juego juego = repoJuego.getOne(id);
+		HashSet<Plataforma> consolas =  new HashSet<>();
+		Collection<Plataforma> colCon = juego.getPlataformas();
+		for (Plataforma plataforma : colCon) {
+			consolas.add(plataforma);
+		}
+		m.put("juego", juego);
+		m.put("plataformas", consolas);
 		m.put("categorias", repoCategoriaJ.findAll());
 		m.put("view", "/juego/U");
 		return "/_t/frame";
