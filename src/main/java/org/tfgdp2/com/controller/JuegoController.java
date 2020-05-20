@@ -111,7 +111,7 @@ public class JuegoController {
 			}
 						
 		} catch (Exception e) {
-			PRG.error("Juego " + nombre + " duplicado::::"+e.getMessage(), "/juego/c");
+			PRG.error("Juego " + nombre + " duplicado", "/juego/c");
 		
 		}
 		PRG.info("Juego " + nombre + " creado correctamente", "/juego/r");
@@ -138,7 +138,7 @@ public class JuegoController {
 	public void uPost(@RequestParam("id") Long id, @RequestParam("nombre") String nombre,
 			@RequestParam("precio") Double precio, @RequestParam("stock") Integer stock,
 			@RequestParam("desarrolladora") String desarrolladora,
-			@RequestParam("img") String img, @RequestParam("teaser") String teaser,
+			@RequestParam("imgJ") String img, @RequestParam("teaser") String teaser,
 			@RequestParam(value = "idPlataforma[]") List<Long> idsPlataforma,
 			@RequestParam(value = "idCat[]") List<Long> idsCat,
 			@RequestParam("flan") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate flan, HttpSession s)
