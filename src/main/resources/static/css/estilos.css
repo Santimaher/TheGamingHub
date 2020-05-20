@@ -119,3 +119,32 @@ textarea
 {
 	background-color:transparent !important;
 }
+.datepicker-date-display {
+    background-color: #607d8b;
+    color: black !important;
+}
+
+.datepicker-day-button:focus {
+    color: black !important;
+    background-color: #a2b0b6
+}
+
+.datepicker-done,
+.datepicker-cancel,
+.select-dropdown li>span,
+.is-today {
+    color: #607d8b !important
+}
+
+td.is-selected,
+.month-prev:active,
+.month-prev:focus,
+.month-next:active,
+.month-next:focus {
+    background-color: #607d8b !important
+}
+
+td.is-selected.is-today {
+    color: black !important
+}
+
