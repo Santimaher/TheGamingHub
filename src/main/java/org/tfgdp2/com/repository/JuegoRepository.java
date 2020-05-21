@@ -17,6 +17,6 @@ public interface JuegoRepository extends JpaRepository<Juego, Long> {
     public List<Juego>findByNombreStartsWithIgnoreCase(String filtro);
     public List<Juego>findByPlataformasNombreStartsWithIgnoreCase(String filtro);
     
-    @Query("select * from juego j where j.id > ?1 and j.id < ?2")
+    @Query(value="select * from juego j where j.id > ?1 and j.id < ?2")
     public List<Juego> findByIdBetweenQuery(int start, int end);
 }
