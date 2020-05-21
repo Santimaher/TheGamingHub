@@ -33,7 +33,7 @@ public class UsuarioController {
 	}
 
 	@PostMapping("c")
-	public String crearPost(@RequestParam("nombre") String nombreusuario, @RequestParam("loginname") String log,
+	public String crearPost(@RequestParam("img") String imgusuario,@RequestParam("nombre") String nombreusuario, @RequestParam("loginname") String log,
 			@RequestParam("pass") String pass, @RequestParam("email") String email, HttpSession s)
 			throws DangerException {
 
@@ -41,6 +41,7 @@ public class UsuarioController {
 
 			Usuario usuario = new Usuario();
 			usuario.setNombre(nombreusuario);
+			usuario.setImg(imgusuario);
 			usuario.setLoginname(log);
 			usuario.setPassword(pass);
 			usuario.setEmail(email);
