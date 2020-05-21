@@ -11,10 +11,14 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,15 +48,36 @@ public class JuegoController {
 	@Autowired
 	private Categoria_JuegoRepository repoCategoriaJ;
 	
-	@GetMapping("r")
-	public String read(ModelMap m,@RequestParam(value = "filtro", required = false) String filtro,@RequestParam(value = "tipo", required = false) String tipo) {
+	
+	@GetMapping(value="r/{pageid}")
+	public String read(ModelMap m,@PathVariable int pageid,@RequestParam(value = "filtro", required = false) String filtro,@RequestParam(value = "tipo", required = false) String tipo) {
 		filtro = (filtro == null) ? "" : filtro;
 		tipo = (tipo == null) ? "normal" : tipo;
+		int principio = 0;
+		int fin = 0;
+		if(pageid == 1) {
+			principio=1;
+			fin=10;
+		}
+		else {
+			principio = (pageid*10)+1;
+			fin = principio+9;
+		}
+		Page<Juego> juegos = repoJuego.findAll(new PageRequest(principio, fin, Sort.by("id")) {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			
+			
+		});
 		switch(tipo) 
 		{
 		case "Nombre": m.put("juegos", repoJuego.findByNombreStartsWithIgnoreCase(filtro)); break;
 		case "Plataforma": m.put("juegos", repoJuego.findByPlataformasNombreStartsWithIgnoreCase(filtro)); break;
-		case "normal": m.put("juegos",repoJuego.findAll()); break;
+		case "normal": m.put("juegos",juegos); break;
 		}
 		m.put("view", "juego/R");
 		m.put("filtro", filtro);

@@ -1,73 +1,120 @@
 <div class="container">
-<form method="get">
-					<input type="text" name="filtro" th:value="${filtro}" placeholder="Buscar juego"/>
-					<select name="tipo">
-					<optgroup label="Campo de busqueda">
-					<option th:selected="${tipo=='Nombre'}">Nombre</option>
-					<option th:selected="${tipo=='Plataforma'}">Plataforma</option>
-					</optgroup>
-					</select>
-					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
-						Buscar
-					</button>
-				</form>
-<div class="row">
-<div   class="col s4" th:each="juego:${juegos}">
-<div th:id="|modal${juego.id}|" class="modal">
-    <div class="modal-content fondo-carta black">
-      <h4 th:text="|Trailer del juego:${juego.nombre}|"class="purple-text"></h4>
-     <div th:utext="${juego.teaser}"></div>
-    </div>
-    <div class="modal-footer fondo-carta black">
-      <a href="#!" class="modal-close waves-effect waves-green btn purple">Cerrar</a>
-    </div>
-  </div>
-	<div class="card grey darken-3 white-text">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" th:src="|/img/cover/${juego.img}|" width="150px" height="500px">
-    </div>
-    <div class="fondo-carta card-content black  white-text ">
-      <span  class=" letra-pequena card-title activator  white-text text-darken-4" th:text="${juego.nombre}"><i class="material-icons right">more_vert</i></span>
-      <div class="row">
-      <div class="col s4">
-      <form action="https://thegaminghub.herokuapp.com/foro/r" method="get">
-					<input type="hidden" name="id" th:value="${juego.id}" />
-					<button onclick="submit()" class=" btn-floating waves-effect waves-light btn separacion purple btn-large">
-						Foro
-					</button>
-				</form>
+	<form method="get">
+		<input type="text" name="filtro" th:value="${filtro}"
+			placeholder="Buscar juego" /> <select name="tipo">
+			<optgroup label="Campo de busqueda">
+				<option th:selected="${tipo=='Nombre'}">Nombre</option>
+				<option th:selected="${tipo=='Plataforma'}">Plataforma</option>
+			</optgroup>
+		</select>
+		<button onclick="submit()"
+			class="waves-effect waves-light btn separacion purple">
+			Buscar</button>
+	</form>
+	<div class="row">
+		<div class="col s4" th:each="juego:${juegos}">
+			<div th:id="|modal${juego.id}|" class="modal">
+				<div class="modal-content fondo-carta black">
+					<h4 th:text="|Trailer del juego:${juego.nombre}|"
+						class="purple-text"></h4>
+					<div th:utext="${juego.teaser}"></div>
+				</div>
+				<div class="modal-footer fondo-carta black">
+					<a href="#!"
+						class="modal-close waves-effect waves-green btn purple">Cerrar</a>
+				</div>
+			</div>
+			<div class="card grey darken-3 white-text">
+				<div class="card-image waves-effect waves-block waves-light">
+					<img class="activator" th:src="|/img/cover/${juego.img}|"
+						width="150px" height="500px">
+				</div>
+				<div class="fondo-carta card-content black  white-text ">
+					<span
+						class=" letra-pequena card-title activator  white-text text-darken-4"
+						th:text="${juego.nombre}"><i class="material-icons right">more_vert</i></span>
+					<div class="row">
+						<div class="col s4">
+							<form action="https://thegaminghub.herokuapp.com/foro/r"
+								method="get">
+								<input type="hidden" name="id" th:value="${juego.id}" />
+								<button onclick="submit()"
+									class=" btn-floating waves-effect waves-light btn separacion purple btn-large">
+									Foro</button>
+							</form>
+						</div>
+						<div class="col s4" th:if="${session.usuario?.rol=='admin'}">
+							<form action="https://thegaminghub.herokuapp.com/juego/u"
+								method="get">
+								<input type="hidden" name="id" th:value="${juego.id}" />
+								<button onclick="submit()"
+									class="btn-floating waves-effect waves-light btn separacion purple btn-large">
+									<i class="material-icons left">edit</i>
+								</button>
+							</form>
+						</div>
+						<div class="col s4" th:if="${session.usuario?.rol=='admin'}">
+							<form action="https://thegaminghub.herokuapp.com/juego/d"
+								method="post">
+								<input type="hidden" name="id" th:value="${juego.id}" />
+								<button onclick="submit()"
+									class=" btn-floating waves-effect waves-light btn purple btn-large">
+									<i class="material-icons left">delete</i>
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="fondo-carta card-reveal black white-text letra-grande">
+					<span class="card-title white-text flow-text "
+						th:text="${juego.nombre}"><i class="material-icons right">close</i></span>
+					<p th:text="|Precio: ${juego.precio} €|"></p>
+					<p th:text="|Stock: ${juego.stock} .ud|"></p>
+					<p th:text="|Desarrolladora: ${juego.desarrolladora}|"></p>
+					<p>
+					<ul th:each="plataforma:${juego.plataformas}">
+						<li th:text="${plataforma.nombre}"></li>
+					</ul>
+					</p>
+					<p>
+					<ul th:each="categoria:${juego.pertenece}">
+						<li th:text="${categoria.nombre}"></li>
+					</ul>
+					</p>
+					<button th:data-target="|modal${juego.id}|"
+						class="btn modal-trigger purple">Trailer</button>
+
+				</div>
+			</div>
 		</div>
-		<div class="col s4"  th:if="${session.usuario?.rol=='admin'}"><form action="https://thegaminghub.herokuapp.com/juego/u" method="get">
-					<input type="hidden" name="id" th:value="${juego.id}" />
-					<button onclick="submit()"class="btn-floating waves-effect waves-light btn separacion purple btn-large">
-						<i class="material-icons left">edit</i>
-					</button>
-				</form></div>
-		<div class="col s4" th:if="${session.usuario?.rol=='admin'}"><form action="https://thegaminghub.herokuapp.com/juego/d" method="post">
-					<input type="hidden" name="id" th:value="${juego.id}" />
-					<button onclick="submit()" class=" btn-floating waves-effect waves-light btn purple btn-large">
-						<i class="material-icons left">delete</i>
-					</button>
-				</form></div>
-    </div>
-    </div>
-    <div class="fondo-carta card-reveal black white-text letra-grande">
-      <span class="card-title white-text flow-text " th:text="${juego.nombre}"><i class="material-icons right">close</i></span>
-      <p th:text="|Precio: ${juego.precio} €|"></p>
-      <p th:text="|Stock: ${juego.stock} .ud|"></p>
-      <p th:text="|Desarrolladora: ${juego.desarrolladora}|"></p>
-      <p><ul th:each="plataforma:${juego.plataformas}">
-					<li th:text="${plataforma.nombre}"></li>
-				</ul>
-	  </p>
-	  <p><ul th:each="categoria:${juego.pertenece}">
-					<li th:text="${categoria.nombre}"></li>
-				</ul>
-	  </p>
-	  <button th:data-target="|modal${juego.id}|" class="btn modal-trigger purple">Trailer</button>
-	 
-    </div>
-  </div>
-  </div>
-   </div>
+	</div>
+	
+	<ul class="pagination">    
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/1">1</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/2">2</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/3">3</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/4">4</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/5">5</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/6">6</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/7">7</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/8">8</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/9">9</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/10">10</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/11">11</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/12">12</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/13">13</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/14">14</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/15">15</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/16">16</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/17">17</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/18">18</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/19">19</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/20">20</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/21">21</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/22">22</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/23">23</a></li>
+    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/24">24</a></li>
+  </ul>
+  
+  
 </div>
