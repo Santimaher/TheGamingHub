@@ -104,4 +104,18 @@ public class NominacionController {
 		}
 		PRG.info("Juego nominado correctamente.");
 	}
+	
+	@GetMapping("npr")
+	public String nominacionParticipanteR(ModelMap m){
+		m.put("participantes",repoNP.findAll());
+		m.put("view", "nominacion/nPr");
+		return "_t/frame";
+	}
+	
+	@GetMapping("njr")
+	public String nominacionJuegoR(ModelMap m) {
+		m.put("juegos", repoNJ.findAll());
+		m.put("view", "nominacion/nJr");
+		return "_t/frame";
+	}
 }
