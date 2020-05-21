@@ -65,7 +65,7 @@ public class MainController {
 	public String danger(ModelMap m) {
 		m.put("view", "/anonymous/danger.html");
 		m.put("script", "PlataformasAJAX");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 	
 	
@@ -94,13 +94,13 @@ public class MainController {
 
 
 		m.put("view", "/_t/info");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 	@GetMapping("/login")
 	public String login(ModelMap m,HttpSession s) throws DangerException {
 		
 		m.put("view", "/anonymous/login");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 	@PostMapping("/login")
 	public String login(@RequestParam("loginname") String loginname, @RequestParam("password") String password,
@@ -127,7 +127,7 @@ public class MainController {
 	@GetMapping("/registro")
 	public String registro() 
 	{
-		return "redirect:/usuario/c";
+		return "redirect:usuario/c";
 		
 	}
 
@@ -136,7 +136,7 @@ public class MainController {
 	{
 		m.put("usuario",s.getAttribute("usuario"));
 		m.put("view", "/usuario/cambiarContrasenia");
-		return "/_t/frame";
+		return "_t/frame";
 		
 	}
 	@PostMapping("/cambioContrasenia")
@@ -154,9 +154,9 @@ public class MainController {
 			usuarioRepo.save(usu);
 
 		} catch (Exception e) {
-			PRG.error("Error al editar la contraseña de " + usu.getNombre() , "/usuario/r");
+			PRG.error("Error al editar la contraseña de " + usu.getNombre() , "usuario/r");
 		}
-		return "redirect:/usuario/r";
+		return "redirect:usuario/r";
 	}
 		
 	

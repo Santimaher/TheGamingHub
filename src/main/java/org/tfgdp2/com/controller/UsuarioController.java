@@ -28,8 +28,8 @@ public class UsuarioController {
 
 	@GetMapping("c")
 	public String crearGet(ModelMap m, HttpSession s) {
-		m.put("view", "/usuario/c");
-		return "/_t/frame";
+		m.put("view", "usuario/c");
+		return "_t/frame";
 	}
 
 	@PostMapping("c")
@@ -50,9 +50,9 @@ public class UsuarioController {
 			usuarioRepo.save(usuario);
 
 		} catch (Exception e) {
-			PRG.error("Error al crear " + nombreusuario, "/usuario/r");
+			PRG.error("Error al crear " + nombreusuario, "usuario/r");
 		}
-		return "redirect:/info";
+		return "redirect:info";
 	}
 
 	@GetMapping("r")
@@ -60,8 +60,8 @@ public class UsuarioController {
 		H.isRolOK("auth", s);
 		List<Usuario> usuarios = usuarioRepo.findAll();
 		m.put("usuarios", usuarios);
-		m.put("view", "/usuario/r");
-		return "/_t/frame";
+		m.put("view", "usuario/r");
+		return "_t/frame";
 	}
 
 	
@@ -70,8 +70,8 @@ public class UsuarioController {
 		H.isRolOK("auth", s);
 		Usuario usu=(Usuario) s.getAttribute("usuario");
 		m.put("usuario", usuarioRepo.getOne(usu.getId()));
-		m.put("view", "/usuario/uUsuario");
-		return "/_t/frame";
+		m.put("view", "usuario/uUsuario");
+		return "_t/frame";
 
 	}
 	@PostMapping("uUsuarioPost")
@@ -90,14 +90,14 @@ public class UsuarioController {
 		} catch (Exception e) {
 			PRG.error("Error al editar " + nombreusuario, "/usuario/r");
 		}
-		return "redirect:/usuario/r";
+		return "redirect:usuario/r";
 	}
 	@PostMapping("uAdmin")
 	public String uAdmin(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
 		m.put("usuario", usuarioRepo.getOne(id));
-		m.put("view", "/usuario/uAdmin");
-		return "/_t/frame";
+		m.put("view", "usuario/uAdmin");
+		return "_t/frame";
 
 	}
 	@PostMapping("uAdminPost")
@@ -116,7 +116,7 @@ public class UsuarioController {
 		} catch (Exception e) {
 			PRG.error("Error al editar " + nombreusuario, "/usuario/r");
 		}
-		return "redirect:/usuario/r";
+		return "redirect:usuario/r";
 	}
 
 	@PostMapping("d")
@@ -127,16 +127,16 @@ public class UsuarioController {
 			H.isRolOK("auth", s);
 			usuarioRepo.delete(u);
 		} catch (Exception e) {
-			PRG.error("Error al borrar " + u.getNombre(), "/usuario/r");
+			PRG.error("Error al borrar " + u.getNombre(), "usuario/r");
 		}
-		PRG.info("Usuario borrado correctamente", "/usuario/r");
+		PRG.info("Usuario borrado correctamente", "usuario/r");
 	}
 	@PostMapping("cambiarRol")
 	public String cambiarRol(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
 		 H.isRolOK("admin", s);
 		m.put("usuario", usuarioRepo.getOne(id));
-		m.put("view", "/usuario/cambiarRol");
-		return "/_t/frame";
+		m.put("view", "usuario/cambiarRol");
+		return "_t/frame";
 
 	}
 
@@ -153,8 +153,8 @@ public class UsuarioController {
 			usuarioRepo.save(usuario);
 
 		} catch (Exception e) {
-			PRG.error("Error al editar el rol de " + nombre, "/usuario/r");
+			PRG.error("Error al editar el rol de " + nombre, "usuario/r");
 		}
-		return "redirect:/usuario/r";
+		return "redirect:usuario/r";
 	}
 }
