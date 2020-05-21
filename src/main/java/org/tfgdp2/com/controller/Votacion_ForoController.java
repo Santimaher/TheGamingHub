@@ -10,7 +10,7 @@ import org.tfgdp2.com.repository.EntradaForoRepository;
 import org.tfgdp2.com.repository.Votacion_ForoRepository;
 
 @Controller
-@RequestMapping(value= "/votacion_Foro")
+@RequestMapping(value= "https://thegaminghub.herokuapp.com/votacion_Foro")
 public class Votacion_ForoController {
 	@Autowired
 	private  Votacion_ForoRepository repoVotacion;

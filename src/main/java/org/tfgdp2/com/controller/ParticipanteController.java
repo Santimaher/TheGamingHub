@@ -27,7 +27,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 
 @Controller
-@RequestMapping(value = "/participante")
+@RequestMapping(value = "https://thegaminghub.herokuapp.com/participante")
 public class ParticipanteController {
 	
 	@Autowired

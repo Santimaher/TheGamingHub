@@ -33,7 +33,7 @@ import org.tfgdp2.com.repository.JuegoRepository;
 import org.tfgdp2.com.repository.PlataformaRepository;
 
 @Controller
-@RequestMapping(value = "/juego")
+@RequestMapping(value = "https://thegaminghub.herokuapp.com/juego")
 public class JuegoController {
 	@Autowired
 	private JuegoRepository repoJuego;

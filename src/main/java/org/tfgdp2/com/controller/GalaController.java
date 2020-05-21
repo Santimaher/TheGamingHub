@@ -27,7 +27,7 @@ import org.tfgdp2.com.repository.PremioJuegoRepository;
 import org.tfgdp2.com.repository.PremioParticipanteRepository;
 
 @Controller
-@RequestMapping(value="/gala")
+@RequestMapping(value="https://thegaminghub.herokuapp.com/gala")
 public class GalaController {
 
 	@Autowired GalaRepository repoGala;
