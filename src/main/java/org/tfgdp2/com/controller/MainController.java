@@ -93,13 +93,13 @@ public class MainController {
 		m.put("idEntrada", idEntrada);
 
 
-		m.put("view", "/_t/info");
+		m.put("view", "_t/info");
 		return "_t/frame";
 	}
 	@GetMapping("/login")
 	public String login(ModelMap m,HttpSession s) throws DangerException {
 		
-		m.put("view", "/anonymous/login");
+		m.put("view", "anonymous/login");
 		return "_t/frame";
 	}
 	@PostMapping("/login")
@@ -135,7 +135,7 @@ public class MainController {
 	public String cambioContrasenia(ModelMap m,HttpSession s) 
 	{
 		m.put("usuario",s.getAttribute("usuario"));
-		m.put("view", "/usuario/cambiarContrasenia");
+		m.put("view", "usuario/cambiarContrasenia");
 		return "_t/frame";
 		
 	}
@@ -168,8 +168,8 @@ public class MainController {
 		if (usuarioRepo.getByLoginname("admin") != null) {
 			PRG.error("BD no vacía");
 		}
-		m.put("view", "/anonymous/init");
-		return "/_t/frame";
+		m.put("view", "anonymous/init");
+		return "_t/frame";
 	}
 	
 	@PostMapping("/init")
