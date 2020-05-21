@@ -133,7 +133,16 @@ textarea
 .datepicker-cancel,
 .select-dropdown li>span,
 .is-today {
-    color: #607d8b !important
+    color: black !important
+}
+
+.datepicker-digital-display{
+  background-color: #4a1e69 !important;
+  color: black !important
+}
+
+.datepicker-row{
+	  color: black !important
 }
 
 td.is-selected,
@@ -141,10 +150,9 @@ td.is-selected,
 .month-prev:focus,
 .month-next:active,
 .month-next:focus {
-    background-color: #607d8b !important
-}
-
-td.is-selected.is-today {
+    background-color: #607d8b !important;
     color: black !important
 }
+
+
 
