@@ -38,7 +38,7 @@ public class EntradaForoController {
 	
 	@GetMapping("rPropio")
 	public String leerPropio(@RequestParam("id") Long id, ModelMap m,HttpSession s) throws DangerException {
-		m.put("view","/entradaForo/rPropio");
+		m.put("view","entradaForo/rPropio");
 		m.put("id",id);
 		m.put("idJuego", repoForo.getOne(id).getJuego().getId());
 		try {
@@ -48,14 +48,14 @@ public class EntradaForoController {
 		
 		m.put("entradas",repoEntrada.findByPerteneceIdAndEscribeIdOrderByRankingDesc(id,idUsuario));
 		}catch(Exception e) {
-			PRG.error("Debes iniciar sesion ","/entradaForo/r",id);
+			PRG.error("Debes iniciar sesion ","entradaForo/r",id);
 		}	
 
 		return "_t/frame";
 	}
 	@GetMapping("verRespuestas")
 	public String leerResp(@RequestParam("idForo") Long id,@RequestParam("idEntrada") Long idEntrada, ModelMap m,HttpSession s) {
-		m.put("view","/entradaForo/rRespuestas");
+		m.put("view","entradaForo/rRespuestas");
 		m.put("id",id);
 		m.put("idJuego", repoForo.getOne(id).getJuego().getId());
 		m.put("MensajeFijado",repoEntrada.getOne(idEntrada));
@@ -66,7 +66,7 @@ public class EntradaForoController {
 	public String leer(@RequestParam("idForo") Long id, ModelMap m,@RequestParam(value = "filtro", required = false) String filtro,@RequestParam(value = "tipo", required = false) String tipo) {
 		filtro = (filtro == null) ? "" : filtro;
 		tipo = (tipo == null) ? "normal" : tipo;
-		m.put("view","/entradaForo/r");
+		m.put("view","entradaForo/r");
 		m.put("id",id);
 		m.put("idJuego", repoForo.getOne(id).getJuego().getId());
 		m.put("filtro", filtro);
@@ -96,7 +96,7 @@ public class EntradaForoController {
 	@GetMapping("responder")
 	public String responder(@RequestParam("idForo") Long idForo,ModelMap m,@RequestParam("idEntrada") Long idEntrada,HttpSession s) throws DangerException {
 		H.isRolOK("auth", s);
-		m.put("view", "/entradaForo/responder");
+		m.put("view", "entradaForo/responder");
 		m.put("idEntrada", idEntrada);
 		m.put("idForo", idForo);
 		return "_t/frame";
