@@ -86,7 +86,7 @@ public class JuegoController {
 	public String cGet(ModelMap m,HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
 		m.put("categorias", repoCategoriaJ.findAll());
-		m.put("view", "juego/c");
+		m.put("view", "juego/C");
 		return "_t/frame";
 	}
 
