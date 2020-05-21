@@ -35,14 +35,14 @@ public class Categoria_JuegoController {
 	public String read(ModelMap m) {
 		List<Categoria_Juego> categorias = repoCategoria_Juego.findAll();
 		m.put("categorias", categorias);
-		m.put("view", "/categoria/R");
+		m.put("view", "categoria/R");
 		return "_t/frame";
 	}
 
 	@GetMapping("c")
 	public String cGet(ModelMap m,HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
-		m.put("view", "/categoria/c");
+		m.put("view", "categoria/c");
 		return "_t/frame";
 	}
 
