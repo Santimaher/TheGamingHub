@@ -54,18 +54,18 @@ public class JuegoController {
 		case "Plataforma": m.put("juegos", repoJuego.findByPlataformasNombreStartsWithIgnoreCase(filtro)); break;
 		case "normal": m.put("juegos",repoJuego.findAll()); break;
 		}
-		m.put("view", "/juego/R");
+		m.put("view", "juego/R");
 		m.put("filtro", filtro);
 		m.put("tipo", tipo);
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("c")
 	public String cGet(ModelMap m,HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
 		m.put("categorias", repoCategoriaJ.findAll());
-		m.put("view", "/juego/c");
-		return "/_t/frame";
+		m.put("view", "juego/c");
+		return "_t/frame";
 	}
 
 	@PostMapping("c")
@@ -111,10 +111,10 @@ public class JuegoController {
 			}
 						
 		} catch (Exception e) {
-			PRG.error("Juego " + nombre + " duplicado", "/juego/c");
+			PRG.error("Juego " + nombre + " duplicado", "juego/c");
 		
 		}
-		PRG.info("Juego " + nombre + " creado correctamente", "/juego/r");
+		PRG.info("Juego " + nombre + " creado correctamente", "juego/r");
 
 	}
 
@@ -173,9 +173,9 @@ public class JuegoController {
 			
 			repoJuego.save(j);
 		} catch (Exception e) {
-			PRG.error("Error al actualizar " + nombre , "/juego/c");
+			PRG.error("Error al actualizar " + nombre , "juego/c");
 		}
-		PRG.info("Juego " + nombre + " actualizado correctamente", "/juego/r");
+		PRG.info("Juego " + nombre + " actualizado correctamente", "juego/r");
 
 	}
 	
@@ -189,10 +189,10 @@ public class JuegoController {
 			}
 			repoJuego.deleteById(id);
 		} catch (Exception e) {
-			PRG.error("Error al borrar el Juego"+e.getMessage(), "/juego/r");
+			PRG.error("Error al borrar el Juego"+e.getMessage(), "juego/r");
 		}
 
-		PRG.info("Juego borrado correctamente", "/juego/r");
+		PRG.info("Juego borrado correctamente", "juego/r");
 
 	}
 

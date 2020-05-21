@@ -36,14 +36,14 @@ public class Categoria_JuegoController {
 		List<Categoria_Juego> categorias = repoCategoria_Juego.findAll();
 		m.put("categorias", categorias);
 		m.put("view", "/categoria/R");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("c")
 	public String cGet(ModelMap m,HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
 		m.put("view", "/categoria/c");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@PostMapping("c")
@@ -55,17 +55,17 @@ public class Categoria_JuegoController {
 			cat.setNombre(nombre);
 			repoCategoria_Juego.save(cat);
 		} catch (Exception e) {
-			PRG.error("Categoria " + nombre + " duplicada", "/categoria/c");
+			PRG.error("Categoria " + nombre + " duplicada", "categoria/c");
 		}
-		PRG.info("Categoria " + nombre + " creada correctamente", "/categoria/r");
+		PRG.info("Categoria " + nombre + " creada correctamente", "categoria/r");
 	}
 
 	@GetMapping("u")
 	public String uGet(@RequestParam("id") Long idCategoria, ModelMap m, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
 		m.put("categoria", repoCategoria_Juego.getOne(idCategoria));
-		m.put("view", "/categoria/U");
-		return "/_t/frame";
+		m.put("view", "categoria/U");
+		return "_t/frame";
 	}
 
 	@PostMapping("u")
@@ -80,9 +80,9 @@ public class Categoria_JuegoController {
 			repoCategoria_Juego.save(cat);
 
 		} catch (Exception e) {
-			PRG.error("Categoria " + nombreCategoria + " duplicada", "/categoria/R");
+			PRG.error("Categoria " + nombreCategoria + " duplicada", "categoria/R");
 		}
-		PRG.info("Categoria " + nombreCategoria + " actualizada correctamente", "/categoria/R");
+		PRG.info("Categoria " + nombreCategoria + " actualizada correctamente", "categoria/R");
 	}
 
 	@PostMapping("d")
@@ -92,10 +92,10 @@ public class Categoria_JuegoController {
 			H.isRolOK("admin", s);
 			repoCategoria_Juego.delete(repoCategoria_Juego.getOne(id));
 		} catch (Exception e) {
-			PRG.error("Error al borrar la Categoria", "/categoria/R");
+			PRG.error("Error al borrar la Categoria", "categoria/R");
 		}
 
-		PRG.info("Categoria borrada correctamente", "/categoria/R");
+		PRG.info("Categoria borrada correctamente", "categoria/R");
 
 	}
 

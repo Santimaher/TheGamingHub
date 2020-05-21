@@ -26,7 +26,7 @@ public class Categoria_ParticipanteController {
 	@GetMapping("c")
 	public String cGet(ModelMap m, HttpSession s) throws DangerException{
 			H.isRolOK("admin", s);
-			m.put("view", "/categoriaParticipante/c");
+			m.put("view", "categoriaParticipante/c");
 			return "_t/frame";
  		
 	}
@@ -38,15 +38,15 @@ public class Categoria_ParticipanteController {
 			cat.setNombre(nombre);
 			repoCategoria_Participante.save(cat);
 		}catch(Exception e) {
-			PRG.error("Categoria "+nombre+" duplicada.", "/categoriaParticipante/c");
+			PRG.error("Categoria "+nombre+" duplicada.", "categoriaParticipante/c");
 		}
-		PRG.info("Categoría creada correctamente", "/categoriaParticipante/r");
+		PRG.info("Categoría creada correctamente", "categoriaParticipante/r");
 	}
 	
 	@GetMapping("r")
 	public String r(ModelMap m) {
 		m.put("categorias", repoCategoria_Participante.findAll());
-		m.put("view","/categoriaParticipante/r");
+		m.put("view","categoriaParticipante/r");
 		return "_t/frame";
 	}
 	
@@ -54,7 +54,7 @@ public class Categoria_ParticipanteController {
 	public String uGet(@RequestParam("id") Long idCategoria, ModelMap m, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
 		m.put("categoria", repoCategoria_Participante.getOne(idCategoria));
-		m.put("view", "/categoriaParticipante/u");
+		m.put("view", "categoriaParticipante/u");
 		return "/_t/frame";
 	}
 	
@@ -70,9 +70,9 @@ public class Categoria_ParticipanteController {
 			repoCategoria_Participante.save(cat);
 
 		} catch (Exception e) {
-			PRG.error("Categoria " + nombreCategoria + " duplicada", "/categoriaParticipante/r");
+			PRG.error("Categoria " + nombreCategoria + " duplicada", "categoriaParticipante/r");
 		}
-		PRG.info("Categoria " + nombreCategoria + " actualizada correctamente", "/categoriaParticipante/r");
+		PRG.info("Categoria " + nombreCategoria + " actualizada correctamente", "categoriaParticipante/r");
 	}
 
 	@PostMapping("d")
@@ -82,10 +82,10 @@ public class Categoria_ParticipanteController {
 			H.isRolOK("admin", s);
 			repoCategoria_Participante.delete(repoCategoria_Participante.getOne(id));
 		} catch (Exception e) {
-			PRG.error("Error al borrar la Categoria", "/categoriaParticipante/r");
+			PRG.error("Error al borrar la Categoria", "categoriaParticipante/r");
 		}
 
-		PRG.info("Categoria borrada correctamente", "/categoriaParticipante/r");
+		PRG.info("Categoria borrada correctamente", "categoriaParticipante/r");
 
 	}
 	

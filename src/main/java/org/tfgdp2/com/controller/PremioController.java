@@ -88,7 +88,7 @@ public class PremioController {
 				g.getPremiosP().add(pp);
 				repoPremioPar.save(pp);
 			} catch (Exception e) {
-				PRG.error("Error al crear el premio. " + e.getMessage() + "", "/premio/c");
+				PRG.error("Error al crear el premio. " + e.getMessage() + "", "premio/c");
 			}
 		}
 		if (tipo.equals("juego")) {
@@ -99,11 +99,11 @@ public class PremioController {
 				g.getPremiosJ().add(pj);
 				repoPremioJuego.save(pj);
 			} catch (Exception e) {
-				PRG.error("Error al crear el premio. " + e.getMessage() + "", "/premio/c");
+				PRG.error("Error al crear el premio. " + e.getMessage() + "", "premio/c");
 			}
 		}
 
-		PRG.info("Premio creado", "/premio/r");
+		PRG.info("Premio creado", "premio/r");
 	}
 
 	@GetMapping("r")
@@ -124,9 +124,9 @@ public class PremioController {
 			repoPremioPar.delete(n);
 
 		} catch (Exception e) {
-			PRG.error("Error al eliminar el premio", "/premio/r");
+			PRG.error("Error al eliminar el premio", "premio/r");
 		}
-		return "redirect:/premio/r";
+		return "redirect:premio/r";
 	}
 
 	@PostMapping("dJ")
@@ -137,9 +137,9 @@ public class PremioController {
 			repoPremioJuego.delete(njuego);
 
 		} catch (Exception e) {
-			PRG.error("Error al eliminar el premio", "/premio/r");
+			PRG.error("Error al eliminar el premio", "premio/r");
 		}
-		return "redirect:/premio/r";
+		return "redirect:premio/r";
 	}
 
 	@GetMapping("addVotoP")
@@ -171,7 +171,7 @@ public class PremioController {
 		try {
 			Usuario usu = (Usuario) s.getAttribute("usuario");
 		if (haVotado(usu.getId(), id, true)) {
-			PRG.error("Ya ha votado en este premio", "/premio/r");
+			PRG.error("Ya ha votado en este premio", "premio/r");
 		} else {
 			m.put("premio", repoPremioJuego.getOne(id));
 			m.put("nominados", repoNJ.findByPremioId(id));
@@ -179,7 +179,7 @@ public class PremioController {
 			vista= "_t/frame";
 		}
 		} catch (NullPointerException e) {
-			PRG.error("Inicie sesion para votar", "/login");
+			PRG.error("Inicie sesion para votar", "login");
 		}
 		return vista;
 	}
@@ -194,10 +194,10 @@ public class PremioController {
 			nj.getVotacionesJ().add(u);
 			repoNJ.save(nj);
 		} catch (Exception e) {
-			PRG.info("Fallo al guardar su voto","/premio/r");
+			PRG.info("Fallo al guardar su voto","premio/r");
 		}
 
-		PRG.info("Su voto ha sido guardado","/premio/r");
+		PRG.info("Su voto ha sido guardado","premio/r");
 	}
 	
 	@PostMapping("addVotoP")
@@ -210,10 +210,10 @@ public class PremioController {
 			np.getVotacionesP().add(u);
 			repoNP.save(np);
 		} catch (Exception e) {
-			PRG.info("Fallo al guardar su voto","/premio/r");
+			PRG.info("Fallo al guardar su voto","premio/r");
 		}
 
-		PRG.info("Su voto ha sido guardado","/premio/r");
+		PRG.info("Su voto ha sido guardado","premio/r");
 	}
 	
 	public boolean haVotado(Long idUsu, Long idPremio, boolean isJuego) {

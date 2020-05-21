@@ -29,15 +29,15 @@ public class PlataformaController {
 	public String read(ModelMap m) {
 		List<Plataforma> plataformas = repoPlataforma.findAll();
 		m.put("plataformas", plataformas);
-		m.put("view", "/plataforma/R");
-		return "/_t/frame";
+		m.put("view", "plataforma/R");
+		return "_t/frame";
 	}
 
 	@GetMapping("c")
 	public String cGet(ModelMap m,HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
-		m.put("view", "/plataforma/c");
-		return "/_t/frame";
+		m.put("view", "plataforma/c");
+		return "_t/frame";
 	}
 
 	@PostMapping("c")
@@ -51,17 +51,17 @@ public class PlataformaController {
 			plataforma.setImg(imagen);
 			repoPlataforma.save(plataforma);
 		} catch (Exception e) {
-			PRG.error("Plataforma " + nombre + " duplicado", "/plataforma/c");
+			PRG.error("Plataforma " + nombre + " duplicado", "plataforma/c");
 		}
-		PRG.info("Plataforma " + nombre + " creada correctamente", "/plataforma/r");
+		PRG.info("Plataforma " + nombre + " creada correctamente", "plataforma/r");
 	}
 	
 	@GetMapping("u")
 	public String uGet(@RequestParam("id") Long idPlataforma, ModelMap m, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
 		m.put("plataforma", repoPlataforma.getOne(idPlataforma));
-		m.put("view", "/plataforma/U");
-		return "/_t/frame";
+		m.put("view", "plataforma/U");
+		return "_t/frame";
 	}
 
 	@PostMapping("u")
@@ -76,9 +76,9 @@ public class PlataformaController {
 			repoPlataforma.save(p);
 			
 		} catch (Exception e) {
-			PRG.error("Plataforma " + nombrePlataforma + " duplicada", "/plataforma/r");
+			PRG.error("Plataforma " + nombrePlataforma + " duplicada", "plataforma/r");
 		}
-		PRG.info("Plataforma " + nombrePlataforma + " actualizada correctamente", "/plataforma/r");
+		PRG.info("Plataforma " + nombrePlataforma + " actualizada correctamente", "plataforma/r");
 	}
 	
 	@PostMapping("d")
@@ -88,10 +88,10 @@ public class PlataformaController {
 			H.isRolOK("admin", s);
 			repoPlataforma.delete(repoPlataforma.getOne(id));
 		} catch (Exception e) {
-			PRG.error("Error al borrar la Plataforma", "/plataforma/r");
+			PRG.error("Error al borrar la Plataforma", "plataforma/r");
 		}
 
-		PRG.info("Plataforma borrada correctamente", "/plataforma/r");
+		PRG.info("Plataforma borrada correctamente", "plataforma/r");
 
 	}
 

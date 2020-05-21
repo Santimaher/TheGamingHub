@@ -122,15 +122,15 @@ public class EntradaForoController {
 			repoEntrada.save(e);
 			
 		}catch(Exception e) {
-			PRG.error("Error al crear la entrada","/entradaForo/c");
+			PRG.error("Error al crear la entrada","entradaForo/c");
 		}	
 
-		PRG.info("Entrada del foro creada correctamente", "/entradaForo/r",idForo);
+		PRG.info("Entrada del foro creada correctamente", "entradaForo/r",idForo);
 	}
 	@GetMapping("c")
 	public String crear(ModelMap m,@RequestParam("id") Long id,HttpSession s) throws DangerException {
 		H.isRolOK("auth", s);
-		m.put("view", "/entradaForo/c");
+		m.put("view", "entradaForo/c");
 		m.put("id", id);
 		return "_t/frame";
 	}
@@ -151,16 +151,16 @@ public class EntradaForoController {
 			entrada.setEscribe(u);
 			repoEntrada.save(entrada);
 		}catch(Exception e) {
-			PRG.error("Error al crear la entrada  "+e.getMessage(), "/entradaForo/c");
+			PRG.error("Error al crear la entrada  "+e.getMessage(), "entradaForo/c");
 		}	
 
-		PRG.info("Entrada del foro creada correctamente", "/entradaForo/r",id);
+		PRG.info("Entrada del foro creada correctamente", "entradaForo/r",id);
 	}
 	@GetMapping("u")
 	public String update(ModelMap m, @RequestParam("id") Long idEntrada,HttpSession s) throws DangerException {
 		H.isRolOK("auth", s);
 		m.put("entrada", repoEntrada.getOne(idEntrada));
-		m.put("view", "/entradaForo/u");
+		m.put("view", "entradaForo/u");
 		return "_t/frame";
 	}
 	@GetMapping("like")
@@ -179,14 +179,14 @@ public class EntradaForoController {
 				repoVotacion.save(votacion);
 				repoEntrada.save(e);
 				
-				 PRG.info("Like añadido", "/entradaForo/r",id,idEntrada);
+				 PRG.info("Like añadido", "entradaForo/r",id,idEntrada);
 			}
 			else 
 			{
 				e.setRanking(e.getRanking()-1);
 				repoVotacion.delete(votacion);
 				repoEntrada.save(e);
-				 PRG.info("Like quitado", "/entradaForo/r",id,idEntrada);
+				 PRG.info("Like quitado", "entradaForo/r",id,idEntrada);
 			}
 			
 		}
@@ -201,7 +201,7 @@ public class EntradaForoController {
 			repoVotacion.save(vota);
 			e.setRanking(e.getRanking()+1);
 			repoEntrada.save(e);
-			PRG.info("Like añadido", "/entradaForo/r",id,idEntrada);
+			PRG.info("Like añadido", "entradaForo/r",id,idEntrada);
 		}
 	}
 	@GetMapping("dislike")
@@ -219,14 +219,14 @@ public class EntradaForoController {
 				votacion.setVoto("dislike");
 				repoVotacion.save(votacion);
 				repoEntrada.save(e);
-				PRG.info("Dislike añadido", "/entradaForo/r",id,idEntrada);
+				PRG.info("Dislike añadido", "entradaForo/r",id,idEntrada);
 			}
 			else 
 			{
 				e.setRanking(e.getRanking()+1);
 				repoVotacion.delete(votacion);
 				repoEntrada.save(e);
-				PRG.info("Dislike quitado", "/entradaForo/r",id,idEntrada);
+				PRG.info("Dislike quitado", "entradaForo/r",id,idEntrada);
 			}
 			
 		}
@@ -242,7 +242,7 @@ public class EntradaForoController {
 			
 			e.setRanking(e.getRanking()-1);
 			repoEntrada.save(e);
-			PRG.info("Dislike añadido", "/entradaForo/r",id,idEntrada);
+			PRG.info("Dislike añadido", "entradaForo/r",id,idEntrada);
 		}
 	}
 	@GetMapping("likeR")
@@ -262,14 +262,14 @@ public class EntradaForoController {
 				repoVotacion.save(votacion);
 				repoEntrada.save(e);
 				
-				 PRG.info("Like añadido", "/entradaForo/verRespuestas",id,idPadre);
+				 PRG.info("Like añadido", "entradaForo/verRespuestas",id,idPadre);
 			}
 			else 
 			{
 				e.setRanking(e.getRanking()-1);
 				repoVotacion.delete(votacion);
 				repoEntrada.save(e);
-				 PRG.info("Like quitado", "/entradaForo/verRespuestas",id,idPadre);
+				 PRG.info("Like quitado", "entradaForo/verRespuestas",id,idPadre);
 			}
 			
 		}
@@ -284,7 +284,7 @@ public class EntradaForoController {
 			repoVotacion.save(vota);
 			e.setRanking(e.getRanking()+1);
 			repoEntrada.save(e);
-			PRG.info("Like añadido", "/entradaForo/verRespuestas",id,idPadre);
+			PRG.info("Like añadido", "entradaForo/verRespuestas",id,idPadre);
 		}
 	}
 	@GetMapping("dislikeR")
@@ -303,14 +303,14 @@ public class EntradaForoController {
 				votacion.setVoto("dislike");
 				repoVotacion.save(votacion);
 				repoEntrada.save(e);
-				PRG.info("Dislike añadido", "/entradaForo/verRespuestas",id,idPadre);
+				PRG.info("Dislike añadido", "entradaForo/verRespuestas",id,idPadre);
 			}
 			else 
 			{
 				e.setRanking(e.getRanking()+1);
 				repoVotacion.delete(votacion);
 				repoEntrada.save(e);
-				PRG.info("Dislike quitado", "/entradaForo/verRespuestas",id,idPadre);
+				PRG.info("Dislike quitado", "entradaForo/verRespuestas",id,idPadre);
 			}
 			
 		}
@@ -326,23 +326,25 @@ public class EntradaForoController {
 			
 			e.setRanking(e.getRanking()-1);
 			repoEntrada.save(e);
-			PRG.info("Dislike añadido", "/entradaForo/verRespuestas",id,idPadre);
+			PRG.info("Dislike añadido", "entradaForo/verRespuestas",id,idPadre);
 		}
 	}
 	
 	@PostMapping("u")
 	public void uPost(@RequestParam("comentario") String comentario,@RequestParam("idEntrada") Long idEntrada,HttpSession s,ModelMap m) throws InfoException, DangerException {
 		EntradaForo entradaU=null;
+		Long id=null;
 		try {
 			H.isRolOK("auth", s);
 			entradaU = repoEntrada.getOne(idEntrada);
 			entradaU.setComentario(comentario);
 			repoEntrada.save(entradaU);
+			id=entradaU.getPertenece().getId();
 		}catch(Exception e) {
-			PRG.error("Error al actualizar la entrada", "/juego/r");
+			PRG.error("Error al actualizar la entrada", "entradaForo/r",id);
 		}
-		Long id=entradaU.getPertenece().getId();
-		PRG.info("Entrada del foro editada correctamente", "/entradaForo/r",id);
+		
+		PRG.info("Entrada del foro editada correctamente", "entradaForo/r",id);
 	}
 	
 	@PostMapping("d")
@@ -353,9 +355,9 @@ public class EntradaForoController {
 			H.isRolOK("auth", s);
 			repoEntrada.delete(repoEntrada.getOne(id));
 		}catch(Exception e) {
-			PRG.error(e.getMessage(), "/entradaForo/r",idforo);
+			PRG.error(e.getMessage(), "entradaForo/r",idforo);
 		}
-		PRG.info("Entrada del foro borrada correctamente", "/entradaForo/r",idforo);
+		PRG.info("Entrada del foro borrada correctamente", "entradaForo/r",idforo);
 	}
 
 }
