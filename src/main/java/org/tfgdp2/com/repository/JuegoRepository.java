@@ -18,5 +18,5 @@ public interface JuegoRepository extends JpaRepository<Juego, Long> {
     public List<Juego>findByPlataformasNombreStartsWithIgnoreCase(String filtro);
     
     
-    public List<Juego> findByIdBetween(int start, int end);
+    public List<Juego> findByIdBetween(Long principio, Long fin);
 }

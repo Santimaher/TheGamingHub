@@ -55,15 +55,21 @@ public class JuegoController {
 		tipo = (tipo == null) ? "normal" : tipo;
 		int principio = 0;
 		int fin = 0;
+		Long pl = 0L;
+		Long fl = 0L;
 		if(pageid == 1) {
 			principio=1;
 			fin=10;
+			pl=(long) principio;
+			fl = (long) fin;
 		}
 		else {
 			principio = (pageid*10)+1;
 			fin = principio+9;
+			pl=(long) principio;
+			fl = (long) fin;
 		}
-		List<Juego> juegos = repoJuego.findByIdBetween(principio, fin);
+		List<Juego> juegos = repoJuego.findByIdBetween(pl, fl);
 		switch(tipo) 
 		{
 		case "Nombre": m.put("juegos", repoJuego.findByNombreStartsWithIgnoreCase(filtro)); break;
