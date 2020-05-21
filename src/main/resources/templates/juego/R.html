@@ -37,13 +37,13 @@
 					</button>
 				</form>
 		</div>
-		<div class="col s4"  th:if="${session.usuario?.rol=='admin'}"><form action="/juego/u" method="get">
+		<div class="col s4"  th:if="${session.usuario?.rol=='admin'}"><form action="https://thegaminghub.herokuapp.com/juego/u" method="get">
 					<input type="hidden" name="id" th:value="${juego.id}" />
 					<button onclick="submit()"class="btn-floating waves-effect waves-light btn separacion purple btn-large">
 						<i class="material-icons left">edit</i>
 					</button>
 				</form></div>
-		<div class="col s4" th:if="${session.usuario?.rol=='admin'}"><form action="/juego/d" method="post">
+		<div class="col s4" th:if="${session.usuario?.rol=='admin'}"><form action="https://thegaminghub.herokuapp.com/juego/d" method="post">
 					<input type="hidden" name="id" th:value="${juego.id}" />
 					<button onclick="submit()" class=" btn-floating waves-effect waves-light btn purple btn-large">
 						<i class="material-icons left">delete</i>
