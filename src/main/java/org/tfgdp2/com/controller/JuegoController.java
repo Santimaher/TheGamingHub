@@ -63,7 +63,7 @@ public class JuegoController {
 			principio = (pageid*10)+1;
 			fin = principio+9;
 		}
-		List<Juego> juegos = repoJuego.findByIdBetweenQuery(principio, fin);
+		List<Juego> juegos = repoJuego.findByIdBetween(principio, fin);
 		switch(tipo) 
 		{
 		case "Nombre": m.put("juegos", repoJuego.findByNombreStartsWithIgnoreCase(filtro)); break;
