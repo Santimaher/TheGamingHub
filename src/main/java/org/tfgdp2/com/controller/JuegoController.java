@@ -64,7 +64,7 @@ public class JuegoController {
 			fl = (long) fin;
 		}
 		else {
-			principio = (pageid*10)+1;
+			principio = (pageid*10)-9;
 			fin = principio+9;
 			pl=(long) principio;
 			fl = (long) fin;
