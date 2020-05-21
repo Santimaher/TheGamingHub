@@ -23,7 +23,7 @@ import org.tfgdp2.com.repository.Categoria_JuegoRepository;
 
 
 @Controller
-@RequestMapping(value = "/categoria")
+@RequestMapping(value = "https://thegaminghub.herokuapp.com/categoria")
 public class Categoria_JuegoController {
 
 	@Autowired

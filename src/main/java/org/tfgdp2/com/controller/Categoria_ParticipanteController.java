@@ -17,7 +17,7 @@ import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.Categoria_ParticipanteRepository;
 
 @Controller
-@RequestMapping(value = "/categoriaParticipante")
+@RequestMapping(value = "https://thegaminghub.herokuapp.com/categoriaParticipante")
 public class Categoria_ParticipanteController {
 
 	@Autowired
