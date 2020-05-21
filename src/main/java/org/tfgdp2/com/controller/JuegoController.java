@@ -63,16 +63,7 @@ public class JuegoController {
 			principio = (pageid*10)+1;
 			fin = principio+9;
 		}
-		Page<Juego> juegos = repoJuego.findAll(new PageRequest(principio, fin, Sort.by("id")) {
-
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 0L;
-
-			
-			
-		});
+		List<Juego> juegos = repoJuego.findByIdBetweenQuery(principio, fin);
 		switch(tipo) 
 		{
 		case "Nombre": m.put("juegos", repoJuego.findByNombreStartsWithIgnoreCase(filtro)); break;
