@@ -28,7 +28,7 @@ function clear(){
 function getJSON() {
 	var resp = [];
 	$.ajax({
-		url : '/js/custom/plataformas.txt',
+		url : 'https://thegaminghub.herokuapp.com/js/custom/plataformas.txt',
 		type : 'GET',
 		dataType : 'json',
 		async : false,
