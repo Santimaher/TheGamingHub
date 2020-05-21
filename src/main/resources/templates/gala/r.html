@@ -18,28 +18,28 @@
 			<td th:text="${gala.observaciones}"></td>
 			<td th:text="${gala.activo} ? 'Activada':'Desactivada'"></td>
 			<td>
-				<form action="/gala/observacion" method="get">
+				<form action="https://thegaminghub.herokuapp.com/gala/observacion" method="get">
 					<input type="hidden" name="id" th:value="${gala.id}" />
 					<button onclick="submit()" class="btn waves-effect waves-light purple">
 					Añadir observacion
 					</button>
 				</form>
 				<br/>
-				<form action="/gala/activar" method="post">
+				<form action="https://thegaminghub.herokuapp.com/gala/activar" method="post">
 					<input type="hidden" name="id" th:value="${gala.id}" />
 					<button onclick="submit()" class="btn waves-effect waves-light purple">
 					Activar/Desactivar
 					</button>
 				</form>
 				<br/>
-				<form action="/gala/u" method="get">
+				<form action="https://thegaminghub.herokuapp.com/gala/u" method="get">
 					<input type="hidden" name="id" th:value="${gala.id}" />
 					<button onclick="submit()" class="btn waves-effect waves-light purple">
 						<i class="material-icons left">edit</i>
 					</button>
 				</form>
 				<br/>
-				<form action="/gala/d" method="post">
+				<form action="https://thegaminghub.herokuapp.com/gala/d" method="post">
 					<input type="hidden" name="id" th:value="${gala.id}" />
 					<button onclick="submit()" class="btn waves-effect waves-light purple">
 						<i class="material-icons left">delete</i>

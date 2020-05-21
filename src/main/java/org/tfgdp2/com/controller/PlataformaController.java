@@ -19,7 +19,7 @@ import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.PlataformaRepository;
 
 @Controller
-@RequestMapping(value = "https://thegaminghub.herokuapp.com/plataforma")
+@RequestMapping(value = "/plataforma")
 public class PlataformaController {
 
 	@Autowired

@@ -31,7 +31,7 @@ import org.tfgdp2.com.repository.PremioParticipanteRepository;
 import org.tfgdp2.com.repository.UsuarioRepository;
 
 @Controller
-@RequestMapping("https://thegaminghub.herokuapp.com/premio")
+@RequestMapping("/premio")
 public class PremioController {
 
 	@Autowired

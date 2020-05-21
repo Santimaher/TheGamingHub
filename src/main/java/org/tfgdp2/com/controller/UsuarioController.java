@@ -21,7 +21,7 @@ import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.UsuarioRepository;
 
 @Controller
-@RequestMapping(value = "https://thegaminghub.herokuapp.com/usuario")
+@RequestMapping(value = "/usuario")
 public class UsuarioController {
 	@Autowired
 	private UsuarioRepository usuarioRepo;

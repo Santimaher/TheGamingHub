@@ -12,7 +12,7 @@
 
 			<td th:text="${n.nombre}"></td>
 			<td class="row">
-				<form action="/premio/addVotoP" method="post">
+				<form action="https://thegaminghub.herokuapp.com/premio/addVotoP" method="post">
 					<input type="hidden" name="id" th:value="${n.id}" />
 					<input type="hidden" name="idPremio" th:value="${premio.id}">
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">

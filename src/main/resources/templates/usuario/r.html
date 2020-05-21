@@ -22,13 +22,13 @@
 			
 
 			<td class="row">
-				<form action="/usuario/uAdmin" method="post">
+				<form action="https://thegaminghub.herokuapp.com/usuario/uAdmin" method="post">
 					<input type="hidden" name="id" th:value="${usuario.id}" />
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
 						<i class="material-icons left">edit</i>
 					</button>
 				</form>
-				<form action="/usuario/d" method="post">
+				<form action="https://thegaminghub.herokuapp.com/usuario/d" method="post">
 					<input type="hidden" name="id" th:value="${usuario.id}" />
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
 						<i class="material-icons left">delete</i>
@@ -36,7 +36,7 @@
 				</form>
 			</td>
 			<td class="row">
-				<form action="/usuario/cambiarRol" method="post">
+				<form action="https://thegaminghub.herokuapp.com/usuario/cambiarRol" method="post">
 					<input type="hidden" name="id" th:value="${usuario.id}" />
 					<button class="btn waves-effect waves-light purple" onclick="submit()">
 						Cambiar Rol (Solo admin);
@@ -46,7 +46,7 @@
 
 	</table>
 	
-	<a href="/usuario/c">
+	<a href="https://thegaminghub.herokuapp.com/usuario/c">
 		<button class="btn waves-effect waves-light purple">
 				Registrarse <i class="material-icons left">send</i>
 				</button>

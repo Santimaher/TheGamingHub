@@ -14,7 +14,7 @@ import org.tfgdp2.com.repository.ForoRepository;
 import org.tfgdp2.com.repository.JuegoRepository;
 
 @Controller
-@RequestMapping(value="https://thegaminghub.herokuapp.com/foro")
+@RequestMapping(value="/foro")
 public class ForoController {
 
 	@Autowired

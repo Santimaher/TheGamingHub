@@ -10,13 +10,13 @@
 	<tr th:each="pParticipante:${premioPartipantes}">
 		<td th:text="${pParticipante.nombrePremio}"></td>
 		<td class="row">
-				<form action="/premio/addVotoP" method="get">
+				<form action="https://thegaminghub.herokuapp.com/premio/addVotoP" method="get">
 					<input type="hidden" name="id" th:value="${pParticipante.id}" />
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
 					Vote
 					</button>
 				</form>
-				<form action="/premio/dP" method="post">
+				<form action="https://thegaminghub.herokuapp.com/premio/dP" method="post">
 					<input type="hidden" name="id" th:value="${pParticipante.id}" />
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
 						<i class="material-icons left">delete</i>
@@ -34,13 +34,13 @@
 		<td th:text="${pJuego.nombrePremio}"></td>
 		
 		<td class="row">
-				<form action="/premio/addVotoJ" method="get">
+				<form action="https://thegaminghub.herokuapp.com/premio/addVotoJ" method="get">
 					<input type="hidden" name="id" th:value="${pJuego.id}" />
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
 						Vote
 					</button>
 				</form>
-				<form action="/premio/dJ" method="post">
+				<form action="https://thegaminghub.herokuapp.com/premio/dJ" method="post">
 					<input type="hidden" name="id" th:value="${pJuego.id}" />
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
 						<i class="material-icons left">delete</i>
