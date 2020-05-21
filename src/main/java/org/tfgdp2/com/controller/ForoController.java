@@ -31,7 +31,7 @@ public class ForoController {
 		m.put("juego", repoJuego.getOne(id));
 		m.put("foros", repoForo.findAllByJuego_id(id));
 		m.put("view", "foro/r");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 }

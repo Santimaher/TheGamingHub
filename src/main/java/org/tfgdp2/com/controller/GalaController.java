@@ -38,14 +38,14 @@ public class GalaController {
 	public String read(ModelMap m) {
 		m.put("galas", repoGala.findAll());
 		m.put("view", "gala/r");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 	
 	@GetMapping("c")
 	public String cGet(ModelMap m,HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);		
-		m.put("view", "/gala/c");
-		return "/_t/frame";
+		m.put("view", "gala/c");
+		return "_t/frame";
 	}
 	@PostMapping("c")
 	public void cPost(ModelMap m,
@@ -76,16 +76,16 @@ public class GalaController {
 			repoGala.save(g);
 			
 		} catch (Exception e) {
-			PRG.error("Gala " + edicion + " duplicada", "/gala/c");
+			PRG.error("Gala " + edicion + " duplicada", "gala/c");
 		}
-		PRG.info("Gala " + edicion + " creada correctamente", "/gala/r");
+		PRG.info("Gala " + edicion + " creada correctamente", "gala/r");
 	}
 	@GetMapping("observacion")
 	public String observacion(ModelMap m,@RequestParam("id") Long id, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
 		m.put("gala", repoGala.getOne(id));
-		m.put("view", "/gala/observacion");
-		return "/_t/frame";
+		m.put("view", "gala/observacion");
+		return "_t/frame";
 	}
 	
 	@PostMapping("observacion")
@@ -99,9 +99,9 @@ public class GalaController {
 			repoGala.save(g);
 			
 		} catch (Exception e) {
-			PRG.error("Fallo en añadir observacion", "/gala/r");
+			PRG.error("Fallo en añadir observacion", "gala/r");
 		}
-		PRG.info("Observacion añadida", "/gala/r");
+		PRG.info("Observacion añadida", "gala/r");
 	}
 	
 	@PostMapping("activar")
@@ -121,17 +121,17 @@ public class GalaController {
 			repoGala.save(g);
 			
 		} catch (Exception e) {
-			PRG.error("Fallo en activar/desactivar gala", "/gala/r");
+			PRG.error("Fallo en activar/desactivar gala", "gala/r");
 		}
-		PRG.info("Estado cambiado", "/gala/r");
+		PRG.info("Estado cambiado", "gala/r");
 	}
 	
 	@GetMapping("u")
 	public String uGet(@RequestParam("id") Long idGala, ModelMap m, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
 		m.put("gala", repoGala.getOne(idGala));
-		m.put("view", "/gala/U");
-		return "/_t/frame";
+		m.put("view", "gala/U");
+		return "_t/frame";
 	}
 	
 	@PostMapping("u")
@@ -153,9 +153,9 @@ public class GalaController {
 			repoGala.save(g);
 			
 		} catch (Exception e) {
-			PRG.error("Gala " + edicion + " duplicada", "/gala/r");
+			PRG.error("Gala " + edicion + " duplicada", "gala/r");
 		}
-		PRG.info("Gala " + edicion + " actualizada correctamente", "/gala/r");
+		PRG.info("Gala " + edicion + " actualizada correctamente", "gala/r");
 	}
 	
 	@PostMapping("d")
@@ -165,10 +165,10 @@ public class GalaController {
 			repoGala.delete(repoGala.getOne(id));
 			
 		} catch (Exception e) {
-			PRG.error("Error al borrar la Gala", "/gala/r");
+			PRG.error("Error al borrar la Gala", "gala/r");
 		}
 
-		PRG.info("Gala borrada correctamente", "/gala/r");
+		PRG.info("Gala borrada correctamente", "gala/r");
 
 	}
 }
