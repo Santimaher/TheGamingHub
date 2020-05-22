@@ -1,7 +1,7 @@
 <div class="container">
 <!-- s6 m4 l2 xl2 -->
 <div class="row">
-				<div class="col s6 m4 l2 xl2">
+				<div class="col s12 m4 l2 xl2">
 				<form method="get">
 					<input type="text" name="filtro" th:value="${filtro}" placeholder="Buscar entrada en el foro"/>
 					<input type="hidden" name="idForo" th:value="${id}" />
@@ -18,7 +18,7 @@
 				</div>
 				</div>
 				<div class="row">
-				<div class="col s6 m4 l2 xl2">
+				<div class="col s12 m4 l2 xl2">
 				<form method="get">
 					<input type="hidden" name="idForo" th:value="${id}" />
 					<input type="hidden" name="tipo" value="nuevo">
@@ -27,7 +27,7 @@
 					</button>
 				</form>
 				</div>
-				<div class="col s6 m4 l2 xl2">
+				<div class="col s12 m4 l2 xl2">
 				<form method="get">
 					<input type="hidden" name="idForo" th:value="${id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
@@ -35,7 +35,7 @@
 					</button>
 				</form>
 				</div>
-				<div class="col s6 m4 l2 xl2">
+				<div class="col s12 m4 l2 xl2">
 <form action="https://thegaminghub.herokuapp.com/entradaForo/c" method="get">
 					<input type="hidden" name="id" th:value="${id}" />
 					<input type="hidden" name="idJuego" th:value="${idJuego}">
@@ -44,7 +44,7 @@
 					</button>
 				</form>
 				</div>
-				<div class="col s6 m4 l2 xl2">
+				<div class="col s12 m4 l2 xl2">
 				<form action="https://thegaminghub.herokuapp.com/entradaForo/rPropio" method="get">
 					<input type="hidden" name="id" th:value="${id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
@@ -52,7 +52,7 @@
 					</button>
 				</form>
 				</div>
-				<div class="col s6 m4 l2 xl2">
+				<div class="col s12 m4 l2 xl2">
 				<form action="https://thegaminghub.herokuapp.com/foro/r" method="get">
 					<input type="hidden" name="id" th:value="${idJuego}">
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
