@@ -13,9 +13,12 @@
 			       (t==true) ? return true : return false;
 			      }
 						function valCategoria(c){
-						     
-					       (c==true) ? console.log("y") : console.log("nanai");
-					      }
+						     if(c!=null){
+						    	 console.log("y")
+						     }else{
+						    	 console.log("nanai")
+						     }  }
+					       
 	</script>
 		
 		<div class="col m12">
@@ -62,9 +65,9 @@
 			<br>
 			<br>
 		<select class="" name="idCat">
-			<option value="">1</option>
-			<option value="">2</option>
-			<option value="">3</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
 
 		</select>
 		<button onclick="valCategoria(document.partForm.idCat.value)">ValC</button>
