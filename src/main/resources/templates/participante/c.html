@@ -1,35 +1,65 @@
 <div class="container">
 	<script type="text/javascript">
-		function validarNombre(str)	{
+		function validarN_Partic()	{
+			var valido;
+			 var an=document.partForm.apellido.value;
 		    var patt = new RegExp("^[a-zA-ZáéíóúñÑçÇ ]{2,30}$");
-		    var t=patt.test(str);
-		    (t==true)?return true:return false;
+		    var t=patt.test(n);
+				if(t){
+					valido=true;
+				}else{
+					alert("El formato del nombre no es correcto.");
+					valido=false;
+				}
+		    return valido;
 		    }
-			
-		function valApellido(){
+
+		function validarA_Partic(){
+			var valido;
 			        var pa=/^[A-Z]{1}[a-zA-ZñÑçÇáéíóú ]{2,40}$/;
 			        var a=document.partForm.apellido.value;
 			        var t=pa.test(a);
-			       (t==true) ? return true : return false;
+							if(t){
+								valido=true;
+							}else{
+								alert("El formato de los apellidos no es correcto.");
+								valido=false;
+							}
+
+			       return valido;
 			      }
-						function valCategoria(c){
-						     if(c!=null){
-						    	 console.log("y")
+
+						function validarC_Partic(){
+							var valido;
+							var c=document.partForm.idCat.value;
+						     if(c==null){
+						    	 valido=true;
 						     }else{
-						    	 console.log("nanai")
-						     }  }
-					       
+									 alert("Debes elegir una categoría.");
+						    	 valido=false;
+						     }
+						     return valido;
+						     }
+
+						function vfP(){
+							if(validarN_Partic() && validarA_Partic()&& validarC_Partic()){
+										return true;
+							}else{
+								return alert("Nombre, Apellidos y Participante deberán estar rellenos.")
+							}
+						}
+
 	</script>
-		
+
 		<div class="col m12">
 			<h3>Nuevo Participante</h3>
 		</div>
-		
+
 	</div>
 	<br>
 		<br>
 	<div class="row">
-		<form method="post"  enctype="multipart/form-data" name="partForm" action="https://thegaminghub.herokuapp.com/participante/c" class="col s12">
+		<form method="post"  enctype="multipart/form-data" onsubmit="vfP()" name="partForm" action="https://thegaminghub.herokuapp.com/participante/c" class="col s12">
 
 				<div class="input-field col s6">
 				<label for="nombre">Nombre</label>
@@ -64,15 +94,8 @@
 				</div>
 			<br>
 			<br>
-		<select class="" name="idCat">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
 
-		</select>
-		<button onclick="valCategoria(document.partForm.idCat.value)">ValC</button>
-
-			<!-- <div class="col s12">
+			 <div class="col s12">
 				<fieldset class="separacion">
 					<legend>Categorias</legend>
 					<span th:each="categoria:${categorias}"> <label
@@ -84,14 +107,14 @@
 					</label>
 					</span>
 				</fieldset>
-			</div> -->
+			</div>
 		<br>
 
 		<br>
 		<br>
 		<br>
 
-		<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
+		<button class="btn waves-effect waves-light purple" type="submit"  name="action">
 			Crear <i class="material-icons left">send</i></button>
 
 	</form>
