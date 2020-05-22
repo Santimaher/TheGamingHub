@@ -154,5 +154,11 @@ td.is-selected,
     color: black !important
 }
 
+.modales
+{
+height: 100%;
+width: 100%;	
+}
+
 
 
