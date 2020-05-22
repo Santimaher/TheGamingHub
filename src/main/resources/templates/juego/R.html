@@ -12,7 +12,7 @@
 			Buscar</button>
 	</form>
 	<div class="row">
-		<div class="col s4" th:each="juego:${juegos}">
+		<div class="col s12 m6 l4 xl3" th:each="juego:${juegos}">
 			<div th:id="|modal${juego.id}|" class="modal">
 				<div class="modal-content fondo-carta black">
 					<h4 th:text="|Trailer del juego:${juego.nombre}|"
