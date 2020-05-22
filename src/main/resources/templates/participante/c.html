@@ -1,5 +1,23 @@
 <div class="container">
-	
+	<script type="text/javascript">
+		function validarNombre(str)	{
+		    var patt = new RegExp("^[a-zA-ZáéíóúñÑçÇ ]{2,30}$");
+		    var t=patt.test(str);
+		    (t==true)?return true:return false;
+		    }
+			
+		function valApellido(){
+			        var pa=/^[A-Z]{1}[a-zA-ZñÑçÇáéíóú ]{2,40}$/;
+			        var a=document.partForm.apellido.value;
+			        var t=pa.test(a);
+			       (t==true) ? return true : return false;
+			      }
+						function valCategoria(){
+						        var c=document.partForm.idCat.value
+					       (c==true) ? return console.log("y"): console.log("nanai");
+					      }
+	</script>
+		
 		<div class="col m12">
 			<h3>Nuevo Participante</h3>
 		</div>
@@ -8,32 +26,32 @@
 	<br>
 		<br>
 	<div class="row">
-		<form method="post" enctype="multipart/form-data" action="https://thegaminghub.herokuapp.com/participante/c" class="col s12">
-			
+		<form method="post"  enctype="multipart/form-data" name="partForm" action="https://thegaminghub.herokuapp.com/participante/c" class="col s12">
+
 				<div class="input-field col s6">
 				<label for="nombre">Nombre</label>
-					<input name="nombre" type="text" class="validate"> 
-					
+					<input name="nombre" type="text" class="validate">
+
 				</div>
 
 
 				<div class="input-field col s6">
 				<label for="apellido">Apellidos</label>
-					<input type="text" name="apellido" class="validate"> 
-					
+					<input type="text" name="apellido" class="validate">
+
 				</div>
-			
+
 
 			<div class="input-field col s12">
 			<label for="bio">Biografía</label>
 				<input type="text" name="bio" class="validate">
-				 
+
 			</div>
 
 			<div class="input-field col s12">
 			<label for="teaser">Teaser</label>
 				<input type="text" name="teaser" class="">
-				
+
 			</div>
 
 			<div class="file-field input-field col s12">
@@ -43,9 +61,15 @@
 				</div>
 			<br>
 			<br>
+		<select class="" name="idCat" onchange="">
+			<option value="">1</option>
+			<option value="">2</option>
+			<option value="">3</option>
 
+		</select>
+		<button onclick="valCategoria()">ValC</button>
 
-			<div class="col s12">
+			<!-- <div class="col s12">
 				<fieldset class="separacion">
 					<legend>Categorias</legend>
 					<span th:each="categoria:${categorias}"> <label
@@ -57,21 +81,21 @@
 					</label>
 					</span>
 				</fieldset>
-			</div>
+			</div> -->
 		<br>
-	
+
 		<br>
 		<br>
 		<br>
-		
+
 		<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
-			Crear <i class="material-icons left">send</i>
+			Crear <i class="material-icons left">send</i></button>
 
 	</form>
 			<br>
-		<br>	
+		<br>
 			<a href="/">
-				
+
 				<button class="btn waves-effect waves-light purple">
 				Home <i class="material-icons left">home</i>
 				</button>
