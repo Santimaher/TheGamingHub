@@ -25,7 +25,7 @@
         <div class="card-content white-text">
           <span class="card-title" th:text="${MensajeFijado.escribe.loginname}"></span><i th:if="${MensajeFijado.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
           <p th:text="|${MensajeFijado.comentario}|"></p>
-          <span th:if="${MensajeFijado.img!=null}"><img th:src="${MensajeFijado.img}" width="400px" height="350px"></span>
+          <span th:if="${MensajeFijado.img!=null}"><img th:src="${MensajeFijado.img}" width="100%" height="100%"></span>
           <p th:text="${MensajeFijado.fechaPublicacion}"></p>
           <span th:text="|${MensajeFijado.ranking}|"></span><img src="/img/like.svg" width="25px" height="25px">
         </div>
@@ -44,7 +44,7 @@
           <span class="card-title" th:text="${entrada.escribe.loginname}"></span><i th:if="${entrada.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
           
           <p th:text="|${entrada.comentario}|"></p>
-          <span th:if="${entrada.img!=null}"><img th:src="${entrada.img}" width="400px" height="350px"></span>
+          <span th:if="${entrada.img!=null}"><img th:src="${entrada.img}" width="100%" height="100%"></span>
           <p th:text="${entrada.fechaPublicacion}"></p>
           
           <span th:text="|${entrada.ranking}|"></span><img src="/img/like.svg" width="25px" height="25px">
