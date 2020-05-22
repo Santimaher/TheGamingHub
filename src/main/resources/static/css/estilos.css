@@ -156,8 +156,8 @@ td.is-selected,
 
 .modales
 {
-height: 100%;
-width: 100%;	
+height: 80% !important;
+	
 }
 
 
