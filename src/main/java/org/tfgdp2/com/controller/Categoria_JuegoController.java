@@ -42,7 +42,7 @@ public class Categoria_JuegoController {
 	@GetMapping("c")
 	public String cGet(ModelMap m,HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
-		m.put("view", "categoria/c");
+		m.put("view", "categoria/C");
 		return "_t/frame";
 	}
 
@@ -55,9 +55,9 @@ public class Categoria_JuegoController {
 			cat.setNombre(nombre);
 			repoCategoria_Juego.save(cat);
 		} catch (Exception e) {
-			PRG.error("Categoria " + nombre + " duplicada", "categoria/c");
+			PRG.error("Categoria " + nombre + " duplicada", "categoria/C");
 		}
-		PRG.info("Categoria " + nombre + " creada correctamente", "categoria/r");
+		PRG.info("Categoria " + nombre + " creada correctamente", "categoria/R");
 	}
 
 	@GetMapping("u")
