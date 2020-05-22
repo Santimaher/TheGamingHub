@@ -69,14 +69,14 @@
           <span class="card-title" th:text="${entrada.escribe.loginname}"></span><i th:if="${entrada.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
           
           <p th:text="|${entrada.comentario}|"></p>
-          <span th:if="${entrada.img!=null}"><img th:src="${entrada.img}" width="auto" height="auto"></span>
+          <span th:if="${entrada.img!=null}"><img th:src="${entrada.img}" width="100%" height="100%"></span>
           <p th:text="${entrada.fechaPublicacion}"></p>
           
           <span th:text="|${entrada.ranking}|"></span><img src="/img/like.svg" width="25px" height="25px">
         </div>
         <div class="card-action grey darken-4">
         <div class="row">
-        <div class="col s6 m4 l2 xl2">
+        <div class="col s12 m6 l2 xl2">
           <form action="https://thegaminghub.herokuapp.com/entradaForo/like" method="get">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
@@ -85,7 +85,7 @@
 					</button>
 				</form>
 				</div>
-		<div class="col s6 m4 l2 xl2">
+		<div class="col s12 m6 l2 xl2">
           <form action="https://thegaminghub.herokuapp.com/entradaForo/dislike" method="get">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
@@ -94,7 +94,7 @@
 					</button>
 				</form>
 				</div>
-		<div class="col s6 m4 l2 xl2">
+		<div class="col s12 m6 l2 xl2">
 				<form action="https://thegaminghub.herokuapp.com/entradaForo/responder" method="get">
 					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
@@ -103,7 +103,7 @@
 					</button>
 				</form>
 				</div>
-				<div class="col s6 m4 l2 xl2">
+				<div class="col s12 m6 l2 xl2">
 				<form action="https://thegaminghub.herokuapp.com/entradaForo/verRespuestas" method="get">
 				<input type="hidden" name="idJuego" th:value="${idJuego}">
 					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
