@@ -136,7 +136,7 @@ public class JuegoController {
 			PRG.error("Juego " + nombre + " duplicado", "juego/c");
 		
 		}
-		PRG.info("Juego " + nombre + " creado correctamente", "juego/r");
+		PRG.info("Juego " + nombre + " creado correctamente", "juego/r/1");
 
 	}
 
@@ -197,7 +197,7 @@ public class JuegoController {
 		} catch (Exception e) {
 			PRG.error("Error al actualizar " + nombre , "juego/c");
 		}
-		PRG.info("Juego " + nombre + " actualizado correctamente", "juego/r");
+		PRG.info("Juego " + nombre + " actualizado correctamente", "juego/r/1");
 
 	}
 	
@@ -211,10 +211,10 @@ public class JuegoController {
 			}
 			repoJuego.deleteById(id);
 		} catch (Exception e) {
-			PRG.error("Error al borrar el Juego"+e.getMessage(), "juego/r");
+			PRG.error("Error al borrar el Juego"+e.getMessage(), "juego/r/1");
 		}
 
-		PRG.info("Juego borrado correctamente", "juego/r");
+		PRG.info("Juego borrado correctamente", "juego/r/1");
 
 	}
 
