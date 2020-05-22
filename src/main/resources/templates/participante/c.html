@@ -12,8 +12,8 @@
 			        var t=pa.test(a);
 			       (t==true) ? return true : return false;
 			      }
-						function valCategoria(){
-						        var c=document.partForm.idCat.value
+						function valCategoria(c){
+						     
 					       (c==true) ? return console.log("y"): console.log("nanai");
 					      }
 	</script>
@@ -61,13 +61,13 @@
 				</div>
 			<br>
 			<br>
-		<select class="" name="idCat" onchange="">
+		<select class="" name="idCat">
 			<option value="">1</option>
 			<option value="">2</option>
 			<option value="">3</option>
 
 		</select>
-		<button onclick="valCategoria()">ValC</button>
+		<button onclick="valCategoria(document.partForm.idCat.value)">ValC</button>
 
 			<!-- <div class="col s12">
 				<fieldset class="separacion">
