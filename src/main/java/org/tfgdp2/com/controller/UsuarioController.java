@@ -53,7 +53,7 @@ public class UsuarioController {
 		} catch (Exception e) {
 			PRG.error("Error al crear " + nombreusuario, "usuario/r");
 		}
-		return "redirect:info";
+		return "redirect:/info";
 	}
 
 	@GetMapping("r")
