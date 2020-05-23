@@ -51,7 +51,7 @@ public class UsuarioController {
 			usuarioRepo.save(usuario);
 
 		} catch (Exception e) {
-			PRG.error("Error al crear " + nombreusuario, "usuario/r");
+			PRG.error("Error al crear " + nombreusuario+"##"+e.getMessage(), "usuario/r");
 		}
 		return "redirect:/info";
 	}
