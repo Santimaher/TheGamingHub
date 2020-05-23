@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.tfgdp2.com.domain.Usuario;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
@@ -33,15 +34,16 @@ public class UsuarioController {
 	}
 
 	@PostMapping("c")
-	public String crearPost(@RequestParam("img") String imgusuario,@RequestParam("nombre") String nombreusuario, @RequestParam("loginname") String log,
+	public String crearPost(@RequestParam("img") MultipartFile img,@RequestParam("nombre") String nombreusuario, @RequestParam("loginname") String log,
 			@RequestParam("pass") String pass, @RequestParam("email") String email, HttpSession s)
 			throws DangerException {
 
 		try {
-
+			
 			Usuario usuario = new Usuario();
+			H.subirImagen(usuario, img);
 			usuario.setNombre(nombreusuario);
-			usuario.setImg(imgusuario);
+			usuario.setImg(usuario.getLoginname());
 			usuario.setLoginname(log);
 			usuario.setPassword(pass);
 			usuario.setEmail(email);

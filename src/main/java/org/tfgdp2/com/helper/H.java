@@ -53,7 +53,7 @@ public class H {
 			ftpClient.login(user, pass);
 			ftpClient.enterLocalPassiveMode();
 			ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
-			boolean result = ftpClient.storeFile(u.getId()+".png", imagen.getInputStream());
+			boolean result = ftpClient.storeFile(u.getLoginname()+".png", imagen.getInputStream());
 			ftpClient.logout();
 			ftpClient.disconnect();
 		} catch (Exception e) {
