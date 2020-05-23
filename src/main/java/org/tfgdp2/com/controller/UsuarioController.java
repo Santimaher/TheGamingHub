@@ -41,9 +41,8 @@ public class UsuarioController {
 		try {
 			
 			Usuario usuario = new Usuario();
-			H.subirImagen(usuario, img);
 			usuario.setNombre(nombreusuario);
-			usuario.setImg(usuario.getLoginname());
+			usuario.setImg(img+".png");
 			usuario.setLoginname(log);
 			usuario.setPassword(pass);
 			usuario.setEmail(email);
