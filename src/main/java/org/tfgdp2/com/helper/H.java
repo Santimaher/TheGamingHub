@@ -3,11 +3,13 @@ package org.tfgdp2.com.helper;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.Collection;
 
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPSClient;
 import org.springframework.web.multipart.MultipartFile;
 import org.tfgdp2.com.domain.Usuario;
 import org.tfgdp2.com.exception.DangerException;
@@ -45,26 +47,26 @@ public class H {
 	
 	public static void subirImagen(Usuario u,MultipartFile imagen) throws DangerException {
 		String server = "ftp.site4now.net";
-		int port= 21;
-		String user = "grupodosrfvi-001";
+		String user = "ftpgp2";
 		String pass = "losnuggets45";
-		FTPClient ftpClient = new FTPClient();
-		try {
-			ftpClient.changeWorkingDirectory("/tgh/");
-			ftpClient.connect(server, port);
-			ftpClient.login(user, pass);
-			ftpClient.enterLocalPassiveMode();
-			ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
-			InputStream is = imagen.getInputStream();
-			boolean result = ftpClient.storeFile(u.getLoginname()+".png", is);
-			is.close();
-			
-			if(result) {
-				ftpClient.logout();
-				ftpClient.disconnect();
-			}
-		} catch (Exception e) {
-			PRG.error("Fallo al subir la imagen"+e.getMessage());
-		}
+		FTPClient con = null;
+	    String fileExtension =  imagen.getOriginalFilename().split("\\.")[1];
+		
+	    try {
+	        con = new FTPClient();
+	        con.connect(server);
+
+	        if (con.login(user, pass)) {
+	            con.enterLocalPassiveMode(); // important!
+	            con.setFileType(FTP.BINARY_FILE_TYPE);
+
+	            boolean result = con.storeFile(u.getLoginname()+"#"+u.getId()+"."+fileExtension, imagen.getInputStream());
+	            con.logout();
+	            con.disconnect();
+	            
+	        }
+	    } catch (Exception e) {
+	    	PRG.error("Fallo al subir la imagen"+e.getMessage());
+	    }
 	}
 }
