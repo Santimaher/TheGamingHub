@@ -1,6 +1,9 @@
 package org.tfgdp2.com.controller;
 
+
 import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -170,5 +173,16 @@ public class GalaController {
 
 		PRG.info("Gala borrada correctamente", "gala/r");
 
+	}
+	@GetMapping("GA")
+	public String GalaActual(ModelMap m, HttpSession s) 
+	{
+		Calendar ca=Calendar.getInstance();
+		List<Gala>galas=repoGala.findByOrderByEdicionDesc();
+		m.put("fecha",galas.get(0).getFin());
+		m.put("estado",galas.get(0).getActivo());
+		m.put("fechaActual",ca);
+		m.put("view","gala/galaActiva");
+		return "_t/frame";
 	}
 }

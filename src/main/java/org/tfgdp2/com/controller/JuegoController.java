@@ -27,6 +27,7 @@ import org.tfgdp2.com.domain.Categoria_Juego;
 import org.tfgdp2.com.domain.Foro;
 import org.tfgdp2.com.domain.Juego;
 import org.tfgdp2.com.domain.Plataforma;
+import org.tfgdp2.com.domain.Usuario;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.H;
@@ -100,14 +101,16 @@ public class JuegoController {
 			throws DangerException, InfoException {
 		
 		try {
-			String img2 = img + "qwe";
+			Usuario u = (Usuario) s.getAttribute("usuario");
+			 String fileExtension =  img.getOriginalFilename().split("\\.")[1];
+			String nombreImg = u.getLoginname()+"#"+u.getId()+"."+fileExtension;
 			H.isRolOK("admin", s);
 			Juego j = new Juego();
 			j.setNombre(nombre);
 			j.setPrecio(precio);
 			j.setStock(stock);
 			j.setDesarrolladora(desarrolladora);
-			j.setImg(img2);
+			j.setImg(nombreImg);
 			j.setTeaser(teaser);
 			j.setFechaLanzamiento(flan);
 

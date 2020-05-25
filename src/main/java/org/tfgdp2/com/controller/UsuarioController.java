@@ -34,15 +34,18 @@ public class UsuarioController {
 	}
 
 	@PostMapping("c")
-	public String crearPost(@RequestParam("img") String img,@RequestParam("nombre") String nombreusuario, @RequestParam("loginname") String log,
+	public String crearPost(@RequestParam("img") MultipartFile img,@RequestParam("nombre") String nombreusuario, @RequestParam("loginname") String log,
 			@RequestParam("pass") String pass, @RequestParam("email") String email, HttpSession s)
 			throws DangerException {
 
 		try {
-			
+			 
 			Usuario usuario = new Usuario();
+			
+			String fileExtension =  img.getOriginalFilename().split("\\.")[1];
+			String nombreImg = nombreusuario+"#"+usuario.getId()+"."+fileExtension;
 			usuario.setNombre(nombreusuario);
-			usuario.setImg(img);
+			usuario.setImg(nombreImg);
 			usuario.setLoginname(log);
 			usuario.setPassword(pass);
 			usuario.setEmail(email);
