@@ -55,8 +55,10 @@ public class H {
 			ftpClient.enterLocalPassiveMode();
 			ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
 			boolean result = ftpClient.storeFile(u.getLoginname()+".png", imagen.getInputStream());
-			ftpClient.logout();
-			ftpClient.disconnect();
+			if(result) {
+				ftpClient.logout();
+				ftpClient.disconnect();
+			}
 		} catch (Exception e) {
 			PRG.error("Fallo al subir la imagen"+e.getMessage());
 		}
