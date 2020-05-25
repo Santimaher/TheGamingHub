@@ -1,6 +1,8 @@
 package org.tfgdp2.com.controller;
 
+
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -170,5 +172,15 @@ public class GalaController {
 
 		PRG.info("Gala borrada correctamente", "gala/r");
 
+	}
+	@PostMapping("GA")
+	public void GalaActual(ModelMap m, HttpSession s) 
+	{
+		Date fechaac=new Date();
+		List<Gala>galas=repoGala.findByOrderByEdicionDesc();
+		m.put("fecha",galas.get(0).getFin());
+		m.put("estado",galas.get(0).getActivo());
+		m.put("fechaActual",fechaac);
+		m.put("view","gala/galaActiva");
 	}
 }
