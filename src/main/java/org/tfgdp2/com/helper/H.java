@@ -50,10 +50,11 @@ public class H {
 		String pass = "losnuggets45";
 		FTPClient ftpClient = new FTPClient();
 		try {
-			ftpClient.changeWorkingDirectory("/tgh/");
+			
 			ftpClient.connect(server, port);
 			ftpClient.login(user, pass);
 			ftpClient.enterLocalPassiveMode();
+			ftpClient.changeWorkingDirectory("/tgh");
 			ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
 			InputStream is = imagen.getInputStream();
 			boolean result = ftpClient.storeFile(u.getLoginname()+".png", is);
