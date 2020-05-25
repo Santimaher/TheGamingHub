@@ -42,7 +42,7 @@ public class UsuarioController {
 			
 			Usuario usuario = new Usuario();
 			usuario.setNombre(nombreusuario);
-			usuario.setImg(img+".png");
+			usuario.setImg(img);
 			usuario.setLoginname(log);
 			usuario.setPassword(pass);
 			usuario.setEmail(email);
