@@ -2,6 +2,7 @@
 package org.tfgdp2.com.helper;
 
 import java.io.File;
+import java.io.InputStream;
 
 import javax.servlet.http.HttpSession;
 
@@ -54,7 +55,10 @@ public class H {
 			ftpClient.login(user, pass);
 			ftpClient.enterLocalPassiveMode();
 			ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
-			boolean result = ftpClient.storeFile(u.getLoginname()+".png", imagen.getInputStream());
+			InputStream is = imagen.getInputStream();
+			boolean result = ftpClient.storeFile(u.getLoginname()+".png", is);
+			is.close();
+			
 			if(result) {
 				ftpClient.logout();
 				ftpClient.disconnect();
