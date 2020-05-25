@@ -1,87 +1,90 @@
 <div class="container">
-	<div class="col m12">
-		<h1>Nuevo Juego</h1>
+<div class="col m12">
+			<h1>Nuevo Juego</h1>
+		</div>
+		
+		<div class="row">
+	<form method="post" enctype="multipart/form-data" action="https://thegaminghub.herokuapp.com/juego/c">
+	
+	<div class="input-field col s12">
+	<label for="nombreJ">Nombre</label>
+	<input type="text" id="nombreJ" name="nombre">
 	</div>
-
-	<div class="row">
-		<form method="post" enctype="multipart/form-data"
-			action="https://thegaminghub.herokuapp.com/juego/c">
-
-			<div class="input-field col s12">
-				<label for="nombreJ">Nombre</label> <input type="text" id="nombreJ"
-					name="nombre">
-			</div>
-
-
-			<div class="input-field col s12">
-				<label for="precio">Precio</label> <input type="text" id="precio"
-					name="precio">
-			</div>
-
-			<div class="input-field col s12">
-				<label for="stockJ">Stock del Juego</label> <input type="number"
-					id="stockJ" name="stock" min="0" max="500" step="10">
-			</div>
-
-			<div class="input-field col s12">
-				<label for="desaJ">Desarrolladora del Juego</label> <input
-					type="text" id="desaJ" name="desarrolladora">
-			</div>
-
-
-
-			<br />
-			<div class="col s12">
-				<label for="flan">Fecha de lanzamiento</label> <input type="text"
-					id="flan" name="flan" class="datepicker">
-			</div>
-
-			<div class="input-field col s12">
-				<label for="teaserJ">Teaser del Juego</label> <input type="text"
-					id="teaserJ" name="teaser">
-			</div>
-
-			<fieldset>
-				<legend>Categorias</legend>
-				<span th:each="categoria:${categorias}"> <label
-					th:for="|cat-${categoria.id}|"> <input type="checkbox"
-						th:id="|cat-${categoria.id}|" class="indeterminate-checkbox"
-						th:name="idCat[]" th:value="${categoria.id}" /> <span
-						th:text="${categoria.nombre}"></span>
-				</label>
-				</span>
-			</fieldset>
-
-			<fieldset>
-				<legend>Plataformas seleccionadas</legend>
-				<div name="seleccionadas" id="selec"></div>
-				<div>
-					<select onchange="buscar()" name="selector" id="busca">
-						<option value="">Elegir</option>
-						<option value="Sony">Sony</option>
-						<option value="Microsoft">Microsoft</option>
-						<option value="Nintendo">Nintendo</option>
-						<option value="PC">PC</option>
-						<option value="Sega">Sega</option>
-						<option value="SNK">SNK</option>
-						<option value="Atari">Atari</option>
-					</select>
+	
+	
+	<div class="input-field col s12">
+	<label for="precio">Precio</label>
+	<input type="text" id="precio" name="precio">
+	</div>
+	
+	<div class="input-field col s12">
+	<label for="stockJ">Stock del Juego</label>
+	<input type="number" id="stockJ" name="stock" min="0" max="500" step="10">
+	</div>
+	
+	<div class="input-field col s12">
+	<label for="desaJ">Desarrolladora del Juego</label>
+	<input type="text" id="desaJ" name="desarrolladora">
+	</div>
+	
+	
+	<div class="file-field input-field col s12">
+				<div class="btn waves-effect waves-dark">
+					<span>Imagen</span> <input type="file" name="imgJ" class="">
+					</div>
 				</div>
-				<div name="expositor" id="exp"></div>
-			</fieldset>
-
-
-			<button class="btn waves-effect waves-light purple"
-				onclick="submit()" name="action">
-				Crear <i class="material-icons left">send</i>
+				<br/>
+	<div class="col s12">	
+	<label for="flan">Fecha de lanzamiento</label>
+	<input type="text" id="flan" name="flan" class="datepicker">
+	</div>
+	
+	<div class="input-field col s12">	
+	<label for="teaserJ">Teaser del Juego</label>
+	<input type="text" id="teaserJ" name="teaser">
+	</div>
+	
+	<fieldset>
+		<legend>Categorias</legend>
+			<span th:each="categoria:${categorias}" >				
+				<label th:for="|cat-${categoria.id}|">
+					<input type="checkbox" th:id="|cat-${categoria.id}|" class="indeterminate-checkbox" th:name="idCat[]" th:value="${categoria.id}"/>
+					<span th:text="${categoria.nombre}"></span>
+				</label>
+			</span>
+	</fieldset>	
+	
+	<fieldset>
+		<legend>Plataformas seleccionadas</legend>
+			<div  name="seleccionadas" id="selec"></div>
+			<div>
+            <select onchange="buscar()" name="selector" id="busca">
+                <option value="">Elegir</option>
+                <option value="Sony">Sony</option>
+                <option value="Microsoft">Microsoft</option>
+                <option value="Nintendo">Nintendo</option>
+                <option value="PC">PC</option>
+                <option value="Sega">Sega</option>
+                <option value="SNK">SNK</option>
+                <option value="Atari">Atari</option>
+            </select>
+			</div>
+			<div name="expositor" id="exp">
+				
+			</div>
+	</fieldset>
+	
+	
+	<button class="btn waves-effect waves-light purple"  onclick="submit()" name="action">
+			Crear <i class="material-icons left">send</i>
 			</button>
 			<a href="/">
 				<button class="btn waves-effect waves-light purple">
-					Home <i class="material-icons left">home</i>
+				Home <i class="material-icons left">home</i>
 				</button>
 			</a>
-
-		</form>
-
+		
+	</form>
+		
 	</div>
 </div>
