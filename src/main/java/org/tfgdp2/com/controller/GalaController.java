@@ -173,7 +173,7 @@ public class GalaController {
 		PRG.info("Gala borrada correctamente", "gala/r");
 
 	}
-	@PostMapping("GA")
+	@GetMapping("GA")
 	public void GalaActual(ModelMap m, HttpSession s) 
 	{
 		Date fechaac=new Date();
