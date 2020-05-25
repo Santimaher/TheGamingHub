@@ -1,8 +1,15 @@
 
 package org.tfgdp2.com.helper;
 
+import java.io.File;
+import java.io.InputStream;
+
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.net.ftp.FTP;
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPSClient;
+import org.springframework.web.multipart.MultipartFile;
 import org.tfgdp2.com.domain.Usuario;
 import org.tfgdp2.com.exception.DangerException;
 
@@ -35,5 +42,29 @@ public class H {
 			}
 		}
 
+	}
+	
+	public static void subirImagen(Usuario u,MultipartFile imagen) throws DangerException {
+		String server = "ftp.site4now.net";
+		String user = "ftpgp2";
+		String pass = "losnuggets45";
+		FTPClient con = null;
+
+	    try {
+	        con = new FTPClient();
+	        con.connect(server);
+
+	        if (con.login(user, pass)) {
+	            con.enterLocalPassiveMode(); // important!
+	            con.setFileType(FTP.BINARY_FILE_TYPE);
+
+	            boolean result = con.storeFile(imagen.getOriginalFilename(), imagen.getInputStream());
+	            con.logout();
+	            con.disconnect();
+	            
+	        }
+	    } catch (Exception e) {
+	    	PRG.error("Fallo al subir la imagen"+e.getMessage());
+	    }
 	}
 }

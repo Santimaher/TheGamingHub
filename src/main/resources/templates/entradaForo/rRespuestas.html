@@ -1,5 +1,5 @@
 <div class="container">
-<form action="/entradaForo/r" method="get">
+<form action="https://thegaminghub.herokuapp.com/entradaForo/r" method="get">
 					<input type="hidden" name="idForo" th:value="${MensajeFijado.pertenece.id}">
 					<button th:text="|Volver a (${MensajeFijado.pertenece.tipo})|" onclick="submit()" class="waves-effect waves-light btn separacion purple">
 						
@@ -11,7 +11,7 @@
 						Menu
 					</button>
 				</form>
-				<form action="/entradaForo/responder" method="get">
+				<form action="https://thegaminghub.herokuapp.com/entradaForo/responder" method="get">
 					<input type="hidden" name="idEntrada" th:value="${MensajeFijado.id}" />
 					<input type="hidden" name="idForo" th:value="${MensajeFijado.pertenece.id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
@@ -25,7 +25,7 @@
         <div class="card-content white-text">
           <span class="card-title" th:text="${MensajeFijado.escribe.loginname}"></span><i th:if="${MensajeFijado.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
           <p th:text="|${MensajeFijado.comentario}|"></p>
-          <span th:if="${MensajeFijado.img!=null}"><img th:src="${MensajeFijado.img}" width="400px" height="350px"></span>
+          <span th:if="${MensajeFijado.img!=null}"><img th:src="${MensajeFijado.img}" width="100%" height="100%"></span>
           <p th:text="${MensajeFijado.fechaPublicacion}"></p>
           <span th:text="|${MensajeFijado.ranking}|"></span><img src="/img/like.svg" width="25px" height="25px">
         </div>
@@ -44,15 +44,15 @@
           <span class="card-title" th:text="${entrada.escribe.loginname}"></span><i th:if="${entrada.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
           
           <p th:text="|${entrada.comentario}|"></p>
-          <span th:if="${entrada.img!=null}"><img th:src="${entrada.img}" width="400px" height="350px"></span>
+          <span th:if="${entrada.img!=null}"><img th:src="${entrada.img}" width="100%" height="100%"></span>
           <p th:text="${entrada.fechaPublicacion}"></p>
           
           <span th:text="|${entrada.ranking}|"></span><img src="/img/like.svg" width="25px" height="25px">
         </div>
         <div class="card-action grey darken-4">
         <div class="row">
-        <div class="col s2">
-          <form action="/entradaForo/likeR" method="get">
+        <div class="col s12 m6 l2 xl2">
+          <form action="https://thegaminghub.herokuapp.com/entradaForo/likeR" method="get">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
@@ -60,8 +60,8 @@
 					</button>
 				</form>
 				</div>
-		<div class="col s2">
-          <form action="/entradaForo/dislikeR" method="get">
+		<div class="col s12 m6 l2 xl2">
+          <form action="https://thegaminghub.herokuapp.com/entradaForo/dislikeR" method="get">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
@@ -69,8 +69,8 @@
 					</button>
 				</form>
 				</div>
-		<div class="col s3">
-				<form action="/entradaForo/responder" method="get">
+		<div class="col s12 m6 l3 xl3">
+				<form action="https://thegaminghub.herokuapp.com/entradaForo/responder" method="get">
 					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple" >
@@ -78,8 +78,8 @@
 					</button>
 				</form>
 				</div>
-				<div class="col s5">
-				<form action="/entradaForo/verRespuestas" method="get">
+				<div class="col s12 m6 l5 xl5">
+				<form action="https://thegaminghub.herokuapp.com/entradaForo/verRespuestas" method="get">
 				<input type="hidden" name="idJuego" th:value="${idJuego}">
 					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
 					<input type="hidden" name="id" th:value="${entrada?.pertenece.id}" />

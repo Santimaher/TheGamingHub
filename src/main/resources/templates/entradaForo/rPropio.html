@@ -1,6 +1,7 @@
 <div class="container">
-				<form action="/foro/r" method="get">
+				<form action="https://thegaminghub.herokuapp.com/entradaForo/r" method="get">
 					<input type="hidden" name="id" th:value="${idJuego}">
+					<input type="hidden" name="idForo" th:value="${id}">
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
 						Menu
 					</button>
@@ -13,15 +14,15 @@
           <span class="card-title" th:text="${entrada.escribe.loginname}"></span><i th:if="${entrada.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
           
           <p th:text="|${entrada.comentario}|"></p>
-          <span th:if="${entrada.img!=null}"><img th:src="${entrada.img}" width="auto" height="auto"></span>
+          <span th:if="${entrada.img!=null}"><img th:src="${entrada.img}" width="100%" height="100%"></span>
           <p th:text="${entrada.fechaPublicacion}"></p>
           
           <span th:text="|${entrada.ranking}|"></span><img src="/img/like.svg" width="25px" height="25px">
         </div>
         <div class="card-action grey darken-4">
         <div class="row">
-        <div class="col s2">
-          <form action="/entradaForo/like" method="get">
+        <div class="col s12 m6 l2 xl2">
+          <form action="https://thegaminghub.herokuapp.com/entradaForo/like" method="get">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
@@ -29,8 +30,8 @@
 					</button>
 				</form>
 				</div>
-		<div class="col s2">
-          <form action="/entradaForo/dislike" method="get">
+		<div class="col s12 m6 l2 xl2">
+          <form action="https://thegaminghub.herokuapp.com/entradaForo/dislike" method="get">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
@@ -38,8 +39,8 @@
 					</button>
 				</form>
 				</div>
-		<div class="col s3">
-				<form action="/entradaForo/responder" method="get">
+		<div class="col s12 m6 l3 xl3">
+				<form action="https://thegaminghub.herokuapp.com/entradaForo/responder" method="get">
 					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple" >
@@ -47,8 +48,8 @@
 					</button>
 				</form>
 				</div>
-				<div class="col s5">
-				<form action="/entradaForo/verRespuestas" method="get">
+				<div class="col s12 m6 l5 xl5">
+				<form action="https://thegaminghub.herokuapp.com/entradaForo/verRespuestas" method="get">
 				<input type="hidden" name="idJuego" th:value="${idJuego}">
 					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
 					<input type="hidden" name="id" th:value="${entrada?.pertenece.id}" />
@@ -56,16 +57,16 @@
 					</button>
 				</form>
 				<div class="row">
-				<div class="col s5">
-				<form action="/entradaForo/u" method="get">
+				<div class="col s12 m6 l5 xl5">
+				<form action="https://thegaminghub.herokuapp.com/entradaForo/u" method="get">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
 						<i class="material-icons left">edit</i>
 					</button>
 				</form>
 				</div>
-				<div class="col s5">
-				<form action="/entradaForo/d" method="post">
+				<div class="col s12 m6 l5 xl5">
+				<form action="https://thegaminghub.herokuapp.com/entradaForo/d" method="post">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
 						<i class="material-icons left">delete</i>

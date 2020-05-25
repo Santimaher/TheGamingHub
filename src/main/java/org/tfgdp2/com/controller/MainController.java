@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.tfgdp2.com.domain.Usuario;
 import org.tfgdp2.com.exception.DangerException;
+import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.Categoria_JuegoRepository;
@@ -63,9 +65,22 @@ public class MainController {
 	}
 	@GetMapping("/danger")
 	public String danger(ModelMap m) {
-		m.put("view", "/anonymous/danger.html");
+		m.put("view", "anonymous/danger.html");
 		m.put("script", "PlataformasAJAX");
 		return "_t/frame";
+	}
+	
+	@PostMapping("/danger")
+	public void subirPost(@RequestParam("img") MultipartFile img, HttpSession s) throws DangerException, InfoException {
+		Usuario u = usuarioRepo.getByLoginname("admin");
+		try {
+			H.subirImagen(u, img);
+		} catch (Exception e) {
+			PRG.error("Error al subir imagen"+e.getMessage(), "danger");
+		
+		}
+		PRG.info("Imagen subida", "danger");
+		
 	}
 	
 	
