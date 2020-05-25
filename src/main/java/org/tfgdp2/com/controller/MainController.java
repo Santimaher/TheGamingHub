@@ -65,7 +65,7 @@ public class MainController {
 	}
 	@GetMapping("/danger")
 	public String danger(ModelMap m) {
-		m.put("view", "/anonymous/danger.html");
+		m.put("view", "anonymous/danger.html");
 		m.put("script", "PlataformasAJAX");
 		return "_t/frame";
 	}
