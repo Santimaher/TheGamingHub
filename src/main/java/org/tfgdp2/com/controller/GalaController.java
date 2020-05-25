@@ -174,7 +174,7 @@ public class GalaController {
 
 	}
 	@GetMapping("GA")
-	public void GalaActual(ModelMap m, HttpSession s) 
+	public String GalaActual(ModelMap m, HttpSession s) 
 	{
 		Date fechaac=new Date();
 		List<Gala>galas=repoGala.findByOrderByEdicionDesc();
@@ -182,5 +182,6 @@ public class GalaController {
 		m.put("estado",galas.get(0).getActivo());
 		m.put("fechaActual",fechaac);
 		m.put("view","gala/galaActiva");
+		return "_t/frame";
 	}
 }
