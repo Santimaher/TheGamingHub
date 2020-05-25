@@ -104,6 +104,7 @@ public class JuegoController {
 			Usuario u = (Usuario) s.getAttribute("usuario");
 			 String fileExtension =  img.getOriginalFilename().split("\\.")[1];
 			String nombreImg = u.getLoginname()+"#"+u.getId()+"."+fileExtension;
+			H.subirImagen(u, img);
 			H.isRolOK("admin", s);
 			Juego j = new Juego();
 			j.setNombre(nombre);

@@ -75,12 +75,17 @@ public class UsuarioController {
 
 	}
 	@PostMapping("uUsuarioPost")
-	public String uUsuarioPost(@RequestParam("nombre") String nombreusuario, @RequestParam("loginname") String log,
+	public String uUsuarioPost(@RequestParam("nombre") String nombreusuario,@RequestParam("img") MultipartFile img, @RequestParam("loginname") String log,
 			@RequestParam("id") Long id, @RequestParam("email") String email, HttpSession s) throws DangerException {
 		
 		try {
 			H.isRolOK("auth", s);
 			Usuario usuario = usuarioRepo.getOne(id);
+		
+			 String fileExtension =  img.getOriginalFilename().split("\\.")[1];
+			String nombreImg = usuario.getLoginname()+"#"+usuario.getId()+"."+fileExtension;
+			H.subirImagen(usuario, img);
+			
 			usuario.setNombre(nombreusuario);
 			usuario.setLoginname(log);
 			usuario.setEmail(email);

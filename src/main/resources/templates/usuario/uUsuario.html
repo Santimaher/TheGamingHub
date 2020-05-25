@@ -3,7 +3,7 @@
 			<h1>Editar usuario</h1>
 		</div>
 	
-	<form method="post" action="https://thegaminghub.herokuapp.com/usuario/uUsuarioPost" class="form">
+	<form method="post" action="https://thegaminghub.herokuapp.com/usuario/uUsuarioPost" class="form" enctype="multipart/form-data">
 	<input type="hidden" name="id" th:value="${usuario.id}">
 	
 	<div class="input-field col s12">
@@ -14,6 +14,14 @@
 			<label for="loginname">LoginName</label>
 			<input type="text" name="loginname" th:value="${usuario.loginname}">
 		</div>
+		
+				<div class=" file-field input-field col s12">
+		<div class="btn waves-effect  purple white-text">
+			<label for="img">Imagen de usuario</label>
+			<input type="file" id="img" name="img">
+			</div>
+	</div>
+	
 		
 		<div class="input-field col s12">
 			<label for="email">Email</label>
