@@ -3,6 +3,7 @@ package org.tfgdp2.com.helper;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.Collection;
 
 import javax.servlet.http.HttpSession;
 
@@ -49,7 +50,8 @@ public class H {
 		String user = "ftpgp2";
 		String pass = "losnuggets45";
 		FTPClient con = null;
-
+	    String fileExtension =  imagen.getOriginalFilename().split("\\.")[1];
+		
 	    try {
 	        con = new FTPClient();
 	        con.connect(server);
@@ -58,7 +60,7 @@ public class H {
 	            con.enterLocalPassiveMode(); // important!
 	            con.setFileType(FTP.BINARY_FILE_TYPE);
 
-	            boolean result = con.storeFile(imagen.getOriginalFilename(), imagen.getInputStream());
+	            boolean result = con.storeFile(u.getLoginname()+"#"+u.getId()+"."+fileExtension, imagen.getInputStream());
 	            con.logout();
 	            con.disconnect();
 	            
