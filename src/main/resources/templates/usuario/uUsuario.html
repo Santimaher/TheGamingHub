@@ -1,11 +1,13 @@
 <div class="container">
+	<script>
+
+	
+	</script>
 	<div class="col s12 m12 l12 xl12 ">
 		<h1>Editar usuario</h1>
 	</div>
 
-	<form method="post"
-		action="https://thegaminghub.herokuapp.com/usuario/uUsuarioPost"
-		class="form" enctype="multipart/form-data">
+	<form method="post"	action="https://thegaminghub.herokuapp.com/usuario/uUsuarioPost"  class="updateUserform" enctype="multipart/form-data">
 		<input type="hidden" name="id" th:value="${usuario.id}">
 
 		<div class="input-field col s12 m12 l12 xl12">
@@ -23,10 +25,8 @@
 		</div>
 
 		<div class="col s12 m4 l4 xl4">
-		<button class="btn waves-effect waves-light purple " type="submit"
+		<input class="btn waves-effect waves-light purple " type="submit"
 			onclick="submit()" name="action">
-			Actualizar <i class="material-icons left">send</i>
-		</button>
 		</div>
 
 		<div class="col s12 m4 l4 xl4">
