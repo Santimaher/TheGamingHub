@@ -177,7 +177,12 @@ public class GalaController {
 	@GetMapping("GA")
 	public String GalaActual(ModelMap m, HttpSession s) 
 	{
-		String ca=Calendar.getInstance().toString();
+		
+		
+		int mes=Calendar.MONTH;
+		int dia=Calendar.DAY_OF_MONTH;
+		int anio=Calendar.YEAR;
+		String ca= anio+"/"+mes+"/"+dia;
 		List<Gala>galas=repoGala.findByOrderByEdicionDesc();
 		m.put("fecha",galas.get(0).getFin());
 		m.put("estado",galas.get(0).getActivo());
