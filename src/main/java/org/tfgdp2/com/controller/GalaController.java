@@ -178,16 +178,12 @@ public class GalaController {
 	public String GalaActual(ModelMap m, HttpSession s) 
 	{
 		
-		Date fe=new Date();
-		int mes=fe.getMonth();
-		int dia=fe.getDate();
-		int anio=fe.getYear();
-		String ca= anio+"/"+mes+"/"+dia;
-		System.out.println(ca);
+		
+
 		List<Gala>galas=repoGala.findByOrderByEdicionDesc();
 		m.put("fecha",galas.get(0).getFin());
 		m.put("estado",galas.get(0).getActivo());
-		m.put("fechaActual",fe);
+		m.put("fechaActual",LocalDate.now());
 		m.put("view","gala/galaActiva");
 		return "_t/frame";
 	}
