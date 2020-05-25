@@ -50,7 +50,7 @@ public class H {
 		String pass = "losnuggets45";
 		FTPClient ftpClient = new FTPClient();
 		try {
-			ftpClient.changeWorkingDirectory("/tgh");
+			ftpClient.changeWorkingDirectory("/tgh/");
 			ftpClient.connect(server, port);
 			ftpClient.login(user, pass);
 			ftpClient.enterLocalPassiveMode();
