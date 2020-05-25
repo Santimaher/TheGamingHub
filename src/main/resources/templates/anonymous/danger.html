@@ -1,30 +1,7 @@
 <div class="container">
-	<form action="test" method="post">
-	<span  name="seleccionadas" id="123">
-	
-        <fieldset>Plataformas seleccionadas</fieldset>
-        
-        </span>
-        
-        <span style="border: solid black 3px;">
-        <fieldset>Plataformas disponibles</fieldset>
-        <span>
-            <select onchange="buscar()" name="selector" id="busca">
-                <option value="">Elegir</option>
-                <option value="Sony">Sony</option>
-                <option value="Microsoft">Microsoft</option>
-                <option value="Nintendo">Nintendo</option>
-                <option value="PC">PC</option>
-                <option value="Sega">Sega</option>
-                <option value="SNK">SNK</option>
-                <option value="Atari">Atari</option>
-            </select>
-        </span>
-        
-        <span name="expositor" id="exp">
-
-        </span>
-        </span>
+	<form action="test" method="post" enctype="multipart/form-data">
+	Archivo
+	<input type="file" name="img">
 
         </form>
 <input type="submit"/>
