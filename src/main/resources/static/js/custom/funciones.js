@@ -84,3 +84,90 @@ function validarJC(){
 	
 	
 }
+/////////////participante c u
+function validarN_Partic()	{
+	var valido;
+	 var n=document.partForm.nombre.value;
+    var patt = new RegExp("^[a-zA-ZáéíóúñÑçÇ ]{2,30}$");
+    var t=patt.test(n);
+		if(t){
+			valido=true;
+		}else{
+			alert("El formato del nombre no es correcto.");
+			valido=false;
+		}
+    return valido;
+    }
+
+function validarA_Partic(){
+	var valido;
+	        var pa=/^[A-Z]{1}[a-zA-ZñÑçÇáéíóú ]{2,40}$/;
+	        var a=document.partForm.apellido.value;
+	        var t=pa.test(a);
+					if(t){
+						valido=true;
+					}else{
+						alert("El formato de los apellidos no es correcto.");
+						valido=false;
+					}
+
+	       return valido;
+	      }
+
+				function validarC_Partic(){
+					var valido;
+					var c=document.partForm.idCat.value;
+				     if(c==null){
+				    	 valido=true;
+				     }else{
+							 alert("Debes elegir una categoría.");
+				    	 valido=false;
+				     }
+				     return valido;
+				     }
+
+				function vfP(){
+					if(validarN_Partic() && validarA_Partic()&& validarC_Partic()){
+								return true;
+					}else{
+						return false;
+					}
+				}
+				
+				function validarN_ParticU()	{
+					var valido;
+					 var n=document.partFormu.nombre.value;
+				   		var patt = new RegExp("^[a-zA-ZáéíóúñÑçÇ ]{2,30}$");
+				  		 var t=patt.test(n);
+						if(t){
+							valido=true;
+						}else{
+							alert("El formato del nombre no es correcto.");
+							valido=false;
+						}
+				   return valido;
+				   }
+
+					function validarA_ParticU(){
+						var valido;
+					        var pa=/^[A-Z]{1}[a-zA-ZñÑçÇáéíóú ]{2,40}$/;
+					        var a=document.partFormu.apellido.value;
+					        var t=pa.test(a);
+									if(t){
+										valido=true;
+									}else{
+										alert("El formato de los apellidos no es correcto.");
+										valido=false;
+									}
+
+					       return valido;
+					      }
+
+
+								function vfPu(){
+									if(validarN_ParticU() && validarA_ParticU()){
+												return true;
+									}else{
+										return false;
+									}
+								}

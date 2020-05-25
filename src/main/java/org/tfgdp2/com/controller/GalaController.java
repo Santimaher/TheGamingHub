@@ -2,6 +2,7 @@ package org.tfgdp2.com.controller;
 
 
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -176,11 +177,11 @@ public class GalaController {
 	@GetMapping("GA")
 	public String GalaActual(ModelMap m, HttpSession s) 
 	{
-		Date fechaac=new Date();
+		Calendar ca=Calendar.getInstance();
 		List<Gala>galas=repoGala.findByOrderByEdicionDesc();
 		m.put("fecha",galas.get(0).getFin());
 		m.put("estado",galas.get(0).getActivo());
-		m.put("fechaActual",fechaac);
+		m.put("fechaActual",ca);
 		m.put("view","gala/galaActiva");
 		return "_t/frame";
 	}
