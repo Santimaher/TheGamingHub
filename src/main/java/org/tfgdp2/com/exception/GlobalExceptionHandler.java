@@ -12,7 +12,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(DangerException.class)
 	public RedirectView danger(HttpSession s, DangerException e) {
 		String mensaje = e.getMessage() != null && e.getMessage() != "" ? e.getMessage().split("@")[0] : "Ha ocurrido un error. Pulsa para volver a home";
-		String link = e.getMessage() != null && e.getMessage() != "" && e.getMessage().split("@").length >1 ? e.getMessage().split("@")[1] : "/";
+		String link = e.getMessage() != null && e.getMessage() != "" && e.getMessage().split("@").length >1 ? e.getMessage().split("@")[1] : "https://thegaminghub.herokuapp.com/";
 		String idForo = e.getMessage() != null && e.getMessage() != "" && e.getMessage().split("@").length >2 ?  e.getMessage().split("@")[2] : "";
 		String idEntrada = e.getMessage() != null && e.getMessage() != "" && e.getMessage().split("@").length >3 ?  e.getMessage().split("@")[3] : "";
 		

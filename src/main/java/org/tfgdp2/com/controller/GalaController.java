@@ -44,7 +44,7 @@ public class GalaController {
 	@GetMapping("c")
 	public String cGet(ModelMap m,HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);		
-		m.put("view", "gala/c");
+		m.put("view", "gala/C");
 		return "_t/frame";
 	}
 	@PostMapping("c")
