@@ -71,7 +71,7 @@ public class MainController {
 	}
 	
 	@PostMapping("/danger")
-	public void subirPost(@RequestParam("imgJ") MultipartFile img, HttpSession s) throws DangerException, InfoException {
+	public void subirPost(@RequestParam("img") MultipartFile img, HttpSession s) throws DangerException, InfoException {
 		Usuario u = usuarioRepo.getByLoginname("admin");
 		try {
 			H.subirImagen(u, img);
