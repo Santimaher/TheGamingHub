@@ -178,10 +178,10 @@ public class GalaController {
 	public String GalaActual(ModelMap m, HttpSession s) 
 	{
 		
-		Date fe=Calendar.getInstance().getTime();
-		int mes=Calendar.MONTH;
-		int dia=Calendar.DAY_OF_MONTH;
-		int anio=Calendar.YEAR;
+		Date fe=new Date();
+		int mes=fe.getMonth();
+		int dia=fe.getDate();
+		int anio=fe.getYear();
 		String ca= anio+"/"+mes+"/"+dia;
 		System.out.println(ca);
 		List<Gala>galas=repoGala.findByOrderByEdicionDesc();
