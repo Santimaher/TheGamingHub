@@ -130,6 +130,7 @@ function validarA_Partic(){
 					if(validarN_Partic() && validarA_Partic()&& validarC_Partic()){
 								return true;
 					}else{
+						alert("El formato introducido en los campo de texto no es el correcto.");
 						return false;
 					}
 				}
@@ -168,6 +169,62 @@ function validarA_Partic(){
 									if(validarN_ParticU() && validarA_ParticU()){
 												return true;
 									}else{
+										alert("El formato introducido en los campo de texto no es el correcto.");
 										return false;
 									}
 								}
+								
+///////////// usuario c
+							
+								
+								function validarN_User(){
+									var valido;
+										 var n=document.userform.nombre.value;
+									    var patt = new RegExp("^[a-zA-ZáéíóúñÑçÇ ]{2,30}$");
+									    var t=patt.test(n);
+											if(t){
+												valido=true;
+											}else{
+												alert("El formato del nombre no es correcto.");
+												valido=false;
+											}
+									    return valido;
+									    }
+									
+									function validarE_User(){
+										var valido;
+										        var pa=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+										        var e=document.userform.email.value;
+										        var t=pa.test(e);
+														if(t){
+															valido=true;
+														}else{
+															alert("El formato del correo electrónico no es correcto.");
+															valido=false;
+														}
+									
+										       return valido;
+										      }
+									
+									function validarN_Usuario()	{
+										var valido;
+										 var n=document.userform.pass.value;
+									    var patt = new RegExp("^[a-zA-ZáéíóúñÑçÇ0-9 ][4,30}$");
+									    var t=patt.test(n);
+											if(t){
+												valido=true;
+											}else{
+												alert("El mín de caracteres para la contraseña son 4 y el máximo 30.");
+												valido=false;
+											}
+									    return valido;
+									    }
+										    function vfU(){
+												if(validarN_User() && validarE_User() && validarN_Usuario()){
+															return true;
+												}else{
+													alert("El formato introducido en los campo de texto no es el correcto.");
+													return false;
+												}
+											}
+											

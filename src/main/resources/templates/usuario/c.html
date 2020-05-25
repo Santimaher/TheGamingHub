@@ -1,42 +1,37 @@
 <div class="container">
+
 	<div class="col m12">
-		<h1>Nuevo usuario</h1>
+			<h1>Nuevo usuario</h1>
+		</div>
+		<div class="row">
+	<form method="post" action="https://thegaminghub.herokuapp.com/usuario/c" name="userform" onsubmit="return vfU();" class="form" enctype="multipart/form-data">
+	
+		<div class="input-field col s12">
+			<input type="text" id="nombre" name="nombre" placeholder="Nombre" >
+		</div>
+		
+		<div class="input-field col s12">
+			<input type="text" id="loginname" name="loginname" placeholder="Nombre de usuario">
 	</div>
-	<div class="row">
-		<form method="post"
-			action="https://thegaminghub.herokuapp.com/usuario/c" class="form"
-			enctype="multipart/form-data">
-
-			<div class="input-field col s12">
-
-				<input type="text" id="nombre" name="nombre" placeholder="Nombre">
-			</div>
-
-			<div class="input-field col s12">
-				<input type="text" id="loginname" name="loginname"
-					placeholder="Nombre de usuario">
-			</div>
-			<div class="input-field col s12">
-				<input type="text" id="email" name="email" placeholder="Email">
-			</div>
-
-			<div class="input-field col s12">
-				<input type="password" id="pass" name="pass"
-					placeholder="Contraseña">
-			</div>
-
-
-			<button class="btn waves-effect waves-light purple" type="submit"
-				onclick="submit()" name="action">
-				Crear <i class="material-icons left">send</i>
-			</button>
-
+		
+	<div class="input-field col s12">
+			<input type="text" id="email" name="email" placeholder="Email">
+	</div>
+		
+		<div class="input-field col s12">
+			<input type="password" id="pass" name="pass" placeholder="Contraseña">
+	</div>
+		
+		
+		<input class="btn waves-effect waves-light purple" type="submit"  name="action">
+			
+			
 			<a href="/">
 				<button class="btn waves-effect waves-light purple">
-					Home <i class="material-icons left">home</i>
+				Home <i class="material-icons left">home</i>
 				</button>
 			</a>
-
+	
 		</form>
 	</div>
 </div>
