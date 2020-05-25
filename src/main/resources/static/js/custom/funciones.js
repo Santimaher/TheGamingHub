@@ -130,7 +130,7 @@ function validarA_Partic(){
 					if(validarN_Partic() && validarA_Partic()&& validarC_Partic()){
 								return true;
 					}else{
-						return alert("Nombre, Apellidos y Participante deberán estar rellenos.")
+						return false;
 					}
 				}
 				
@@ -168,6 +168,6 @@ function validarA_Partic(){
 									if(validarN_ParticU() && validarA_ParticU()){
 												return true;
 									}else{
-										return alert("Nombre, Apellidos deberán estar rellenos.")
+										return false;
 									}
 								}
