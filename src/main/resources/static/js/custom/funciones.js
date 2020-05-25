@@ -130,6 +130,7 @@ function validarA_Partic(){
 					if(validarN_Partic() && validarA_Partic()&& validarC_Partic()){
 								return true;
 					}else{
+						alert("El formato introducido en los campo de texto no es el correcto.");
 						return false;
 					}
 				}
@@ -168,6 +169,7 @@ function validarA_Partic(){
 									if(validarN_ParticU() && validarA_ParticU()){
 												return true;
 									}else{
+										alert("El formato introducido en los campo de texto no es el correcto.");
 										return false;
 									}
 								}

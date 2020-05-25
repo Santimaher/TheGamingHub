@@ -1,42 +1,97 @@
 <div class="container">
+	<script>
+	function validarN_User(){
+	var valido;
+		 var n=document.userform.nombre.value;
+	    var patt = new RegExp("^[a-zA-ZáéíóúñÑçÇ ]{2,30}$");
+	    var t=patt.test(n);
+			if(t){
+				valido=true;
+			}else{
+				alert("El formato del nombre no es correcto.");
+				valido=false;
+			}
+	    return valido;
+	    }
+	
+	function validarE_User(){
+		var valido;
+		        var pa=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		        var e=document.userform.email.value;
+		        var t=pa.test(e);
+						if(t){
+							valido=true;
+						}else{
+							alert("El formato del correo electrónico no es correcto.");
+							valido=false;
+						}
+	
+		       return valido;
+		      }
+	
+	function validarN_Usuario()	{
+		var valido;
+		 var n=document.userform.pass.value;
+	    var patt = new RegExp("^[a-zA-ZáéíóúñÑçÇ0-9 ][4,30}$");
+	    var t=patt.test(n);
+			if(t){
+				valido=true;
+			}else{
+				alert("El mín de caracteres para la contraseña son 4 y el máximo 30.");
+				valido=false;
+			}
+	    return valido;
+	    }
+		    function vfU(){
+				if(validarN_User() && validarE_User() && validarN_Usuario()){
+							return true;
+				}else{
+					alert("El formato introducido en los campo de texto no es el correcto.");
+					return false;
+				}
+			}
+			
+	
+	</script>
 	<div class="col m12">
-		<h1>Nuevo usuario</h1>
+			<h1>Nuevo usuario</h1>
+		</div>
+		<div class="row">
+	<form method="post" action="https://thegaminghub.herokuapp.com/usuario/c" name="userform" onsubmit="return vfU();" class="form" enctype="multipart/form-data">
+	
+		<div class="input-field col s12">
+			<input type="text" id="nombre" name="nombre" placeholder="Nombre" onkeyup="validarN_User()">
+		</div>
+		
+		<div class="input-field col s12">
+			<input type="text" id="loginname" name="loginname" placeholder="Nombre de usuario">
 	</div>
-	<div class="row">
-		<form method="post"
-			action="https://thegaminghub.herokuapp.com/usuario/c" class="form"
-			enctype="multipart/form-data">
-
-			<div class="input-field col s12">
-
-				<input type="text" id="nombre" name="nombre" placeholder="Nombre">
+		
+		<div class=" file-field input-field col s12">
+		<div class="btn waves-effect  purple white-text">
+			<label for="img">Imagen de usuario</label>
+			<input type="file" id="img" name="img">
 			</div>
-
-			<div class="input-field col s12">
-				<input type="text" id="loginname" name="loginname"
-					placeholder="Nombre de usuario">
-			</div>
-			<div class="input-field col s12">
-				<input type="text" id="email" name="email" placeholder="Email">
-			</div>
-
-			<div class="input-field col s12">
-				<input type="password" id="pass" name="pass"
-					placeholder="Contraseña">
-			</div>
-
-
-			<button class="btn waves-effect waves-light purple" type="submit"
-				onclick="submit()" name="action">
-				Crear <i class="material-icons left">send</i>
+	</div>
+	<div class="input-field col s12">
+			<input type="text" id="email" name="email" placeholder="Email" onkeyup="validarE_User()">
+	</div>
+		
+		<div class="input-field col s12">
+			<input type="password" id="pass" name="pass" placeholder="Contraseña">
+	</div>
+		
+		
+		<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
+			Crear <i class="material-icons left">send</i>
 			</button>
-
+			
 			<a href="/">
 				<button class="btn waves-effect waves-light purple">
-					Home <i class="material-icons left">home</i>
+				Home <i class="material-icons left">home</i>
 				</button>
 			</a>
-
+	
 		</form>
 	</div>
 </div>
