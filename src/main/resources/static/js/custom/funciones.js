@@ -80,64 +80,61 @@ function esta(nombre){
 	}
 	return check
 }
-function validarJC(){
-	
-	
-}
-/////////////participante c u
-//function validarN_Partic()	{
-//	var valido;
-//	 var n=document.partForm.nombre.value;
-//    var patt = new RegExp("^[a-zA-ZáéíóúñÑçÇ ]{2,30}$");
-//    var t=patt.test(n);
-//		if(t){
-//			valido=true;
-//		}else{
-//			alert("El formato del nombre no es correcto.");
-//			document.partForm.nombre.style.backgroundColor='red';
-//			valido=false;
-//		}
-//    return valido;
-//    }
-//
-//function validarA_Partic(){
-//	var valido;
-//	        var pa=/^[A-Z]{1}[a-zA-ZñÑçÇáéíóú ]{2,40}$/;
-//	        var a=document.partForm.apellido.value;
-//	        var t=pa.test(a);
-//					if(t){
-//						valido=true;
-//					}else{
-//						alert("El formato de los apellidos no es correcto.");
-//						document.partForm.apellido.style.backgroundColor='red';
-//						valido=false;
-//					}
-//
-//	       return valido;
-//	      }
-//
-//				function validarC_Partic(){
-//					var valido;
-//					var c=document.partForm.idCat.value;
-//				     if(c==null){
-//				    	 valido=true;
-//				     }else{
-//				    	 M.toast({html: 'Debes seleccionar una categoría.'});
-//				    	valido=false;
-//				     }
-//				     return valido;
-//				     }
-//
-//				function vfP(){
-//					if(validarN_Partic() && validarA_Partic()&& validarC_Partic()){
-//						M.toast({html: 'Funciona.'});
-//								return true;
-//					}else{
-//						alert("El formato introducido en los campo de texto no es el correcto.");
-//						return false;
-//					}
-//				}
-//				
+
+// ///////////participante c u
+ function validarN_Partic() {
+ var valido;
+ var n=document.partForm.nombre.value;
+ var patt = new RegExp("^[a-zA-ZáéíóúñÑçÇ ]{2,30}$");
+ var t=patt.test(n);
+ if(t){
+ valido=true;
+ }else{
+ alert("El formato del nombre no es correcto.");
+ document.partForm.nombre.style.backgroundColor='red';
+ valido=false;
+ }
+ return valido;
+ }
+
+ function validarA_Partic(){
+ var valido;
+ var pa=/^[A-Z]{1}[a-zA-ZñÑçÇáéíóú ]{2,40}$/;
+ var a=document.partForm.apellido.value;
+ var t=pa.test(a);
+ if(t){
+ valido=true;
+ }else{
+ alert("El formato de los apellidos no es correcto.");
+ document.partForm.apellido.style.backgroundColor='red';
+ valido=false;
+ }
+
+ return valido;
+ }
+
+ function validarC_Partic(){
+ var valido;
+ var c=document.partForm.idCat.value;
+ if(c==null){
+ valido=true;
+ }else{
+ M.toast({html: 'Debes seleccionar una categoría.'});
+ valido=false;
+ }
+ return valido;
+ }
+
+ function vfP(){
+ if(validarN_Partic() && validarA_Partic()&& validarC_Partic()){
+ M.toast({html: 'Funciona.'});
+ return true;
+ }else{
+ alert("El formato introducido en los campo de texto no es el correcto.");
+ return false;
+ }
+ }
+				
 				function validarN_ParticU()	{
 					var valido;
 					 var n=document.partFormu.nombre.value;
@@ -177,7 +174,7 @@ function validarJC(){
 									}
 								}
 								
-///////////// usuario c uUser
+// /////////// usuario c uUser
 							
 								
 								function validarN_User(){
@@ -231,7 +228,7 @@ function validarJC(){
 												}
 											}
 											
-										  ////////////////////////////////  
+										  // //////////////////////////////
 
 											function validarNameupdate_User(){
 												var valido;
@@ -273,5 +270,5 @@ function validarJC(){
 																return false;
 															}
 														}				    
-							         /////////////////////////////////////////////////
+							         // ///////////////////////////////////////////////
 													    
