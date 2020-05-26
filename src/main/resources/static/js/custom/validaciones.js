@@ -8,7 +8,7 @@ function validarN_Partic() {
 	 }else{
 		 
 	 M.toast({html: 'El formato del nombre no es correcto.'}); 
-	 document.partForm.nombre.style.backgroundColor='red';
+	 document.partForm.nombre.style.color='red';
 	 valido=false;
 	 
 	 }
@@ -24,7 +24,7 @@ function validarN_Partic() {
 	 valido=true;
 	 }else
 		M.toast({html: 'El formato de los apellidos no es correcto.'});
-	 document.partForm.apellido.style.backgroundColor='red';
+	 document.partForm.apellido.style.color='red';
 	 valido=false;
 	 }
 
@@ -53,7 +53,7 @@ function validarN_Partic() {
 	 }
 	 
  }
-
+/////////////////////////
 function validarN_ParticU()	{
 					var valido;
 					 var n=document.partFormu.nombre.value;
@@ -62,7 +62,7 @@ function validarN_ParticU()	{
 						if(t){
 							valido=true;
 						}else{
-							alert("El formato del nombre no es correcto.");
+							 M.toast({html: 'El formato del nombre no es correcto.'});
 							valido=false;
 						}
 				   return valido;
