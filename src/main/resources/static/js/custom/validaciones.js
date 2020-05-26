@@ -22,7 +22,7 @@ function validarN_Partic() {
 	 var t=pa.test(a);
 	 if(t){
 	 valido=true;
-	 }else
+	 }else{
 		M.toast({html: 'El formato de los apellidos no es correcto.'});
 	 document.partForm.apellido.style.color='red';
 	 valido=false;
@@ -53,7 +53,7 @@ function validarN_Partic() {
 	 }
 	 
  }
-/////////////////////////
+// ///////////////////////
 function validarN_ParticU()	{
 					var valido;
 					 var n=document.partFormu.nombre.value;
