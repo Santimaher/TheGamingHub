@@ -6,23 +6,21 @@
 		<h1>Editar usuario</h1>
 	</div>
 
-	<form method="post"
-		action="https://thegaminghub.herokuapp.com/usuario/uUsuarioPost"
-		class="updateUserform" enctype="multipart/form-data">
+	<form method="post"	action="https://thegaminghub.herokuapp.com/usuario/uUsuarioPost" name="userform" onclick="return vformupdateUser();" class="updateUserform" enctype="multipart/form-data">
 		<input type="hidden" name="id" th:value="${usuario.id}">
 
 		<div class="input-field col s12 m12 l12 xl12">
-			<label for="nombre">Nombre</label> <input type="text" name="nombre"
-				th:value="${usuario.nombre}">
+			 <input type="text" name="nombre"
+				th:value="${usuario.nombre}" placeholder="nombre">
 		</div>
 		<div class="input-field col s12 m12 l12 xl12">
-			<label for="loginname">LoginName</label> <input type="text"
-				name="loginname" th:value="${usuario.loginname}">
+			<input type="text"
+				name="loginname" th:value="${usuario.loginname}" placeholder="Nombre de Usuario">
 		</div>
 
 		<div class="input-field col s12 m12 l12 xl12">
-			<label for="email">Email</label> <input type="text" name="email"
-				th:value="${usuario.email}">
+			<input type="text" name="email"
+				th:value="${usuario.email}" placeholder="Email">
 		</div>
 		
 		<div class="file-field input-field col s12 m4 l4 xl4">
@@ -36,7 +34,7 @@
 
 		<div class="col s12 m4 l4 xl4">
 			<input class="btn waves-effect waves-light purple " type="submit"
-				onclick="submit()" name="action">
+				 name="action">
 		</div>
 		<br/>
 		<div class="col s12 m4 l4 xl4">

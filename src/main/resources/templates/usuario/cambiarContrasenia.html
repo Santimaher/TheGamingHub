@@ -3,23 +3,21 @@
 			<h1>Cambiar contraseña</h1>
 		</div>
 		<div class="row">
-	<form method="post" action="https://thegaminghub.herokuapp.com/cambioContrasenia" class="form">
+	<form method="post" action="https://thegaminghub.herokuapp.com/cambioContrasenia" onsubmit="return validarUpdate_Pwd();" name="passForm" class="form">
 		<input type="hidden" name="id" th:value="${usuario.id}">
 	     
 	     <div class="input-field col s12">
-			<label for="passwordAc">Contraseña Actual</label>
-			<input type="password"  name="passwordAc">
+			
+			<input type="password"  name="passwordAc" placeholder="Contraseña Actual">
 		</div>
 	     
 	      <div class="input-field col s12">
-			<label for="passwordNu">Nueva Contraseña</label>
-			<input type="password"  name="passwordNu">
+			<input type="password"  name="passwordNu" placeholder="Nueva Contraseña">
 		</div>
 		
 		
-		<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
-			Crear <i class="material-icons left">send</i>
-			</button>
+		<input class="btn waves-effect waves-light purple" type="submit" name="action" value="Actualizar">
+			
 			
 			<a href="/">
 				<button class="btn waves-effect waves-light purple">
