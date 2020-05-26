@@ -2,21 +2,21 @@
 
 	 <ul class="collapsible">
     <li>
-      <div class="collapsible-header"><i class="material-icons">people_outline</i>Participantes</div>
-      <div class="collapsible-body">
+      <div class="collapsible-header black fondo-carta"><i class="material-icons">people_outline</i>Participantes</div>
+      <div class="collapsible-body black">
       	<ul th:each="premio:${pp}">
       		<li>
-      		<button class="btn-floating btn-large waves-effect waves-light purple" th:onclick="|https://thegaminghub.herokuapp.com/premio/addVotoP?id=${premio.id}|" th:value="${premio.nombrePremio}"></button>
+      		<button class="btn-floating btn-large waves-effect waves-light purple" th:onclick="|https://thegaminghub.herokuapp.com/premio/addVotoP?id=${premio.id}|" th:text="${premio.nombrePremio}"></button>
       		</li>
       	</ul>
       </div>
     </li>
     <li>
-      <div class="collapsible-header"><i class="material-icons">nature</i>Juegos</div>
-      <div class="collapsible-body">
+      <div class="collapsible-header fondo-carta black"><i class="material-icons">nature</i>Juegos</div>
+      <div class="collapsible-body black">
       	<ul th:each="premio:${pj}">
       		<li>
-      		<button class="btn-floating btn-large waves-effect waves-light purple" th:onclick="|https://thegaminghub.herokuapp.com/premio/addVotoJ?id=${premio.id}|" th:value="${premio.nombrePremio}"></button>
+      		<button class="btn-floating btn-large waves-effect waves-light purple" th:onclick="|https://thegaminghub.herokuapp.com/premio/addVotoJ?id=${premio.id}|" th:text="${premio.nombrePremio}"></button>
       		</li>
       	</ul>
       </div>
