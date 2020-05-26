@@ -66,11 +66,12 @@ public class NominacionController {
 		Premio_Participante pr = repoPremioP.getOne(idPremio);
 		p.setEstaNominado(true);
 		Nominacion_Participante np = new Nominacion_Participante();
-		np.getParticipantes().add(p);
-		p.getNominado().add(np);
 		np.setNombre(p.getNombre());
 		np.setPremio(pr);
 		pr.getPremiados().add(np);
+		
+		np.getParticipantes().add(p);
+		p.getNominado().add(np);		
 		repoNP.save(np);
 		}		
 		catch (Exception e) {
@@ -95,8 +96,10 @@ public class NominacionController {
 		j.setEstaNominado(true);
 		Nominacion_Juego nj = new Nominacion_Juego();
 		nj.setNombre(j.getNombre());
-		nj.setPremio(pr);
+		nj.setPremio(pr);		
 		pr.getPremiados().add(nj);
+		nj.getJuegos().add(j);
+		j.getNominado().add(nj);
 		repoNJ.save(nj);
 		}		
 		catch (Exception e) {
