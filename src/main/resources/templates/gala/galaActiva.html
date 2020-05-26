@@ -31,9 +31,8 @@ function restaFechas(f1,f2){
  var dif = fFecha2 - fFecha1;
  var minutos =Math.floor(((dif % (1000 * 60 * 60))/(1000*60)));
  var horas =Math.floor(((dif % (1000 * 60 * 60 *24))/(1000*60*60)));
- var dias =Math.floor(((dif % (1000 * 60 * 60 * 24 * 30))/(1000*60*60*24)));
- var meses =Math.floor((dif / (1000 * 60 * 60 * 24 * 30)));
- document.getElementById("crono").innerHTML=("Quedan "+ meses+" m "+dias+" d "+horas+" h "+minutos+" m para la entrega de premios");
+ var dias =Math.floor(((dif / (1000 * 60 * 60 * 24 ));
+ document.getElementById("crono").innerHTML=("Quedan "+dias+" d "+horas+" h "+minutos+" m para la entrega de premios");
 
  }
 
