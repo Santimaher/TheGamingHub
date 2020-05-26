@@ -178,9 +178,7 @@ function validarN_ParticU()	{
 													       return valido;
 													      }
 												
-												
-												    return valido;
-												    }
+									
 													    function vformupdateUser(){
 															if(validarN_User() && validarE_User()){
 																		return true;
