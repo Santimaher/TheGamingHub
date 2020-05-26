@@ -4,9 +4,12 @@
     <li>
       <div class="collapsible-header black fondo-carta"><i class="material-icons">people_outline</i>Participantes</div>
       <div class="collapsible-body black">
-      	<ul th:each="premio:${pp}">
-      		<li>
-      		<button class="btn-large waves-effect waves-light purple" th:onclick="|https://thegaminghub.herokuapp.com/premio/addVotoP?id=${premio.id}|" th:text="${premio.nombrePremio}"></button>
+      	<ul> 
+      		<li th:each="premio:${pp}">
+      		<form action="https://thegaminghub.herokuapp.com/premio/addVotoP" method="get">
+      		<input type="hidden" name="id" th:value="${premio.id}"/>
+      		<button class="btn-large waves-effect waves-light purple" th:text="${premio.nombrePremio}" onclick="submit()"></button>
+      		</form>
       		</li>
       	</ul>
       </div>
@@ -14,9 +17,12 @@
     <li>
       <div class="collapsible-header fondo-carta black"><i class="material-icons">nature</i>Juegos</div>
       <div class="collapsible-body black">
-      	<ul th:each="premio:${pj}">
-      		<li>
-      		<button class="btn-large waves-effect waves-light purple" th:onclick="|https://thegaminghub.herokuapp.com/premio/addVotoJ?id=${premio.id}|" th:text="${premio.nombrePremio}"></button>
+      	<ul>
+      		<li th:each="premio:${pj}">
+      		<form action="https://thegaminghub.herokuapp.com/premio/addVotoJ" method="get">
+      		<input type="hidden" name="id" th:value="${premio.id}"/>
+      		<button class="btn-large waves-effect waves-light purple separacion" onclick="submit()" th:text="${premio.nombrePremio}"></button>
+      		</form>
       		</li>
       	</ul>
       </div>
