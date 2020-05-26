@@ -46,13 +46,14 @@ function restaFechas(f1,f2){
  }
 
     window.onload=function(){
-    	setTimeout(function(){
+    	var actual=new Date();
+    	var fechacom=actual.getDate()+"/"+(actual.getMonth()+1)+"/"+actual.getFullYear()+"/"+actual.getHours()+"/"+actual.getMinutes()+"/"+actual.getSeconds();
+    	restaFechas(fechacom,document.getElementById('ff').innerHTML);
     		setInterval(function(){
-			var actual=new Date();
-			var fechacom=actual.getDate()+"/"+(actual.getMonth()+1)+"/"+actual.getFullYear()+"/"+actual.getHours()+"/"+actual.getMinutes()+"/"+actual.getSeconds();
+			 actual=new Date();
+			 fechacom=actual.getDate()+"/"+(actual.getMonth()+1)+"/"+actual.getFullYear()+"/"+actual.getHours()+"/"+actual.getMinutes()+"/"+actual.getSeconds();
 			restaFechas(fechacom,document.getElementById('ff').innerHTML);
 			},60000);
-    		}
-    	,1000);
+    	
     }
 </script>
