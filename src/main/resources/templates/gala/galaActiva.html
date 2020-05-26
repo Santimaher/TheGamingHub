@@ -1,11 +1,37 @@
-<div th:if="${fecha}<${fechaActual}"class="container">
-<script>console.log("Entra")</script>
+<div th:if="${fecha}<${fechaActual}|${estado}==false"class="container">
+<h3>Ninguna gala activa</h3>
+<form action="https://thegaminghub.herokuapp.com/gala/r">
+<button class="btn waves-effect waves-light purple" onclick="submit()">Ver pasadas ediciones</button>
+</form>
 </div>
-<div class="container">
-<script>console.log("No Entra")</script>
+<div th:if="${fecha}>${fechaActual}&&|${estado}==true"class="container">
+<span style="display:none" th:utext="${#temporals.format(fecha, 'dd-MM-yyyy')}" id="ff"></span>
+<h3>Gala activa</h3><h3 id="crono"></h3>
+<form action="https://thegaminghub.herokuapp.com/gala/r">
+<button class="btn waves-effect waves-light purple" onclick="submit()">Ver pasadas ediciones</button>
+</form>
+<script type="text/javascript">
+function restaFechas(f1,f2){
+ var aFecha1 = f1.split('/');
+ var aFecha2 = f2.split('/');
+ var fFecha1 = Date.UTC(aFecha1[2],aFecha1[1]-1,aFecha1[0],aFecha1[3],aFecha1[4],aFecha1[5]);
+ var fFecha2 = Date.UTC(aFecha2[2],aFecha2[1]-1,aFecha2[0],0,0,0);
+ var dif = fFecha2 - fFecha1;
+ var segundos =Math.floor(((dif % (1000 * 60))/(1000)));
+ var minutos =Math.floor(((dif % (1000 * 60 * 60))/(1000*60)));
+ var horas =Math.floor(((dif % (1000 * 60 * 60 *24))/(1000*60*60)));
+ var dias =Math.floor(((dif % (1000 * 60 * 60 * 24 * 30))/(1000*60*60*24)));
+ var meses =Math.floor((dif / (1000 * 60 * 60 * 24 * 30)));
+ document.getElementById("crono").innerHTML=(meses+" meses "+dias+" dias "+horas+" horas "+minutos+" minutos y "+segundos+" segundos");
+
+ }
+
+    window.onload=function(){
+      setInterval(function(){
+        var actual=new Date();
+        var fechacom=actual.getDate()+"/"+(actual.getMonth()+1)+"/"+actual.getFullYear()+"/"+actual.getHours()+"/"+actual.getMinutes()+"/"+actual.getSeconds();
+restaFechas(fechacom,document.getElementById('ff').innerHTML);
+      },1000);
+    }
+</script>
 </div>
-	<a href="https://thegaminghub.herokuapp.com/">
-		<button class="btn waves-effect waves-light purple">
-				Pagina principal<i class="material-icons left">home</i>
-				</button>
-	</a>
