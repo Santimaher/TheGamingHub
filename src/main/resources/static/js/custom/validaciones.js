@@ -124,9 +124,13 @@ function validarN_ParticU()	{
 									
 									function validarPwd_Usuario()	{
 										var valido=false;
-										 var n=document.userform.pass.value;
-										 var patt=/^(?=.\d)(?=.[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,20}$/;
-									    var t=patt.test(n);
+										 var pass=document.userform.pass.value;
+										 var patt1=/^[a-zA-Z0-9]{8,20}$/;
+									      var patt2=/[A-Z]{1,20}/
+									      var patt3=/[0-9]{1,20}/
+									      console.log(patt1.test(pass)&&patt2.test(pass)&&patt3.test(pass));
+										
+									    var t=(patt1.test(pass)&&patt2.test(pass)&&patt3.test(pass));
 											if(t){
 												valido=true;
 											}else{
@@ -186,9 +190,14 @@ function validarN_ParticU()	{
 														}				    
 							         // ///////////////////////////////////////////////
 									function validarUpdate_Pwd(){
-										 var n=document.passForm.passwordNu.value;
-									    var patt=/^(?=.\d)(?=.[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,20}$/;
-									   var t=patt.test(n);
+										 var pass=document.passForm.passwordNu.value;
+										
+										 var patt1=/^[a-zA-Z0-9]{8,20}$/;
+									      var patt2=/[A-Z]{1,20}/
+									      var patt3=/[0-9]{1,20}/
+									      console.log(patt1.test(pass)&&patt2.test(pass)&&patt3.test(pass));
+									    var t=(patt1.test(pass)&&patt2.test(pass)&&patt3.test(pass));
+									    
 											if(t){
 											    return true;
 											}else{
