@@ -69,8 +69,8 @@ public class MainController {
 		Gala g  = repoGala.getByActivoTrue();
 		m.put("view", "anonymous/danger.html");
 		m.put("gala",g );
-		m.put("pj", repoPremioJ.findByGalaId(g.getId()));
-		m.put("pp", repoPremioP.findByGalaId(g.getId()));
+		m.put("pj", repoPremioJ.findByTiene_id(g.getId()));
+		m.put("pp", repoPremioP.findByTiene_id(g.getId()));
 		return "_t/frame";
 	}
 	
