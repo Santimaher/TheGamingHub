@@ -1,8 +1,9 @@
 <div class="container">
 	<div class="col m12">
 	<span th:text="|Listado de participantes para: ${premio.nombrePremio} |"></span>
-	</div>
-	<div class="col s12 m6 l4 xl4" th:each="juego:${juegos}">
+		</div>
+		<div th:each="n:${nominados}">
+			<div class="col s12 m6 l4 xl4" th:each="juego:${juegos}">
 	<div th:id="|modal${n.id}|" class="modal s12 m12 l12 xl12 fondo-carta black modales">
 		<div style="height:94%" class="modal-content ">
 		<div class="modal-footer fondo-carta black">
@@ -54,7 +55,9 @@
 			</div>
 		</div>
 	</div>	
-</div>
+</div>	
+			
+		</div>
 
 	
 	
