@@ -177,13 +177,11 @@ public class GalaController {
 	@GetMapping("GA")
 	public String GalaActual(ModelMap m, HttpSession s) 
 	{
-		
-		
-
 		List<Gala>galas=repoGala.findByOrderByEdicionDesc();
 		m.put("fecha",galas.get(0).getFin());
 		m.put("estado",galas.get(0).getActivo());
 		m.put("fechaActual",LocalDate.now());
+		m.put("fechaDePremio",galas.get(0).getFin().plusDays(5));
 		m.put("view","gala/galaActiva");
 		return "_t/frame";
 	}
