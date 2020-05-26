@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.tfgdp2.com.domain.Gala;
 import org.tfgdp2.com.domain.Usuario;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
@@ -65,8 +66,11 @@ public class MainController {
 	}
 	@GetMapping("/danger")
 	public String danger(ModelMap m) {
+		Gala g  = repoGala.getByActivoTrue();
 		m.put("view", "anonymous/danger.html");
-		m.put("script", "PlataformasAJAX");
+		m.put("gala",g );
+		m.put("pj", repoPremioJ.findByGalaId(g.getId()));
+		m.put("pp", repoPremioP.findByGalaId(g.getId()));
 		return "_t/frame";
 	}
 	

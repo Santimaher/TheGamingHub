@@ -13,4 +13,5 @@ public interface GalaRepository extends JpaRepository<Gala, Long> {
 	
 	public Gala findTopByOrderByEdicionDesc();
 	public List<Gala> findByOrderByEdicionDesc();
+	public Gala getByActivoTrue();
 }
