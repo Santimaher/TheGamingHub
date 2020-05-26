@@ -109,8 +109,10 @@ public class PremioController {
 	@GetMapping("r")
 	public String r(ModelMap m) {
 
-		m.put("premioPartipantes", repoPremioPar.findAll());
-		m.put("premioJuegos", repoPremioJuego.findAll());
+		Gala g  = repoGala.getByActivoTrue();
+		m.put("gala",g );
+		m.put("pj", repoPremioJuego.findByTiene_id(g.getId()));
+		m.put("pp", repoPremioPar.findByTiene_id(g.getId()));
 		m.put("view", "premio/r");
 
 		return "_t/frame";

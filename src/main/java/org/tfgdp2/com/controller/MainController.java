@@ -66,8 +66,9 @@ public class MainController {
 	}
 	@GetMapping("/danger")
 	public String danger(ModelMap m) {
-		Gala g  = repoGala.getByActivoTrue();
+		
 		m.put("view", "anonymous/danger.html");
+		Gala g  = repoGala.getByActivoTrue();
 		m.put("gala",g );
 		m.put("pj", repoPremioJ.findByTiene_id(g.getId()));
 		m.put("pp", repoPremioP.findByTiene_id(g.getId()));
