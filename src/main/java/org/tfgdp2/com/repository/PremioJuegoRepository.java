@@ -10,5 +10,5 @@ import org.tfgdp2.com.domain.Premio_Participante;
 
 @Repository
 public interface PremioJuegoRepository extends JpaRepository<Premio_Juego, Long> {
-	public List<Premio_Juego> findByGalaId(Long idGala);
+	public List<Premio_Juego> findByTiene_id(Long idGala);
 }
