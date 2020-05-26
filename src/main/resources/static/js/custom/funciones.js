@@ -94,6 +94,7 @@ function validarN_Partic()	{
 			valido=true;
 		}else{
 			alert("El formato del nombre no es correcto.");
+			document.partForm.nombre.style.backgroundColor='red';
 			valido=false;
 		}
     return valido;
@@ -108,6 +109,7 @@ function validarA_Partic(){
 						valido=true;
 					}else{
 						alert("El formato de los apellidos no es correcto.");
+						document.partForm.apellido.style.backgroundColor='red';
 						valido=false;
 					}
 
@@ -120,14 +122,15 @@ function validarA_Partic(){
 				     if(c==null){
 				    	 valido=true;
 				     }else{
-							 alert("Debes elegir una categoría.");
-				    	 valido=false;
+				    	 M.toast({html: 'Debes seleccionar una categoría.'});
+				    	valido=false;
 				     }
 				     return valido;
 				     }
 
 				function vfP(){
 					if(validarN_Partic() && validarA_Partic()&& validarC_Partic()){
+						M.toast({html: 'Funciona.'});
 								return true;
 					}else{
 						alert("El formato introducido en los campo de texto no es el correcto.");
@@ -270,5 +273,5 @@ function validarA_Partic(){
 																return false;
 															}
 														}				    
-							/////////////////////////////////////////////////
+							         /////////////////////////////////////////////////
 													    
