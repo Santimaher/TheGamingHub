@@ -38,20 +38,11 @@
 				</div>
 			</div>
 			<div class="fondo-carta card-reveal black white-text letra-grande">
-				<span class="card-title white-text flow-text "th:text="${n.nombre}">
+				<span class="card-title white-text flow-text "th:text="|${n.nombre} ${n.apellido}|">
 					<i class="material-icons right">close</i>
 				</span>
-				<p th:text="|Desarrolladora: ${n.participantes[0].desarrolladora}|">
+				<p th:text="|Desarrolladora: ${n.participantes[0].bio}|">
 				</p>				
-					<ul th:each="plataforma:${n.participantes[0].plataformas}">
-						<li th:text="${plataforma.nombre}">
-						</li>
-					</ul>
-				
-				
-					<ul th:each="categoria:${n.participantes[0].pertenece}">
-						<li th:text="${categoria.nombre}"></li>
-					</ul>
 				<button th:data-target="|modal${n.id}|" class="btn modal-trigger purple">Trailer</button>
 			</div>
 		</div>
