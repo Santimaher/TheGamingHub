@@ -5,7 +5,7 @@
 </form>
 </div>
 <div th:if="${fecha}>${fechaActual} and ${estado}==true"class="container">
-<span style="display:none" th:utext="${#temporals.format(fecha, 'dd/MM/yyyy')}" id="ff"></span>
+<span style="display:none" th:utext="${#temporals.format(fecha, 'dd-MM-yyyy')}" id="ff"></span>
 <h3>Gala activa</h3><h3 id="crono"></h3>
 <form action="https://thegaminghub.herokuapp.com/gala/r">
 <button class="btn waves-effect waves-light purple" onclick="submit()">Ver pasadas ediciones</button>
@@ -14,7 +14,7 @@
 <script type="text/javascript" th:if="${fecha}>${fechaActual} and ${estado}==true">
 function restaFechas(f1,f2){
  var aFecha1 = f1.split('/');
- var aFecha2 = f2.split('/');
+ var aFecha2 = f2.split('-');
  var fFecha1 = Date.UTC(aFecha1[2],aFecha1[1]-1,aFecha1[0],aFecha1[3],aFecha1[4],aFecha1[5]);
  var fFecha2 = Date.UTC(aFecha2[2],aFecha2[1]-1,aFecha2[0],0,0,0);
  var dif = fFecha2 - fFecha1;
