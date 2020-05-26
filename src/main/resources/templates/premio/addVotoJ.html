@@ -11,13 +11,13 @@
 		<a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons right">close</i></a>
 			</div>
 				<div style="height:100% ; width:80%">
-				<iframe width="95%" height="90%" th:src="${n.juegos.teaser}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe width="95%" height="90%" th:src="${n.juegos[0].teaser}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 	</div>	
 		<div class="card grey darken-3 white-text">
 			<div class="card-image waves-effect waves-block waves-light">
-				<img class="activator" th:src="|/img/cover/${n.juegos.img}|" width="150px" height="500px">
+				<img class="activator" th:src="|/img/cover/${n.juegos[0].img}|" width="150px" height="500px">
 			</div>
 			
 			<div class="fondo-carta card-content black  white-text ">
@@ -40,15 +40,15 @@
 				<span class="card-title white-text flow-text "th:text="${n.nombre}">
 					<i class="material-icons right">close</i>
 				</span>
-				<p th:text="|Desarrolladora: ${n.juegos.desarrolladora}|">
+				<p th:text="|Desarrolladora: ${n.juegos[0].desarrolladora}|">
 				</p>				
-					<ul th:each="plataforma:${n.juegos.plataformas}">
+					<ul th:each="plataforma:${n.juegos[0].plataformas}">
 						<li th:text="${plataforma.nombre}">
 						</li>
 					</ul>
 				
 				
-					<ul th:each="categoria:${n.juegos.pertenece}">
+					<ul th:each="categoria:${n.juegos[0].pertenece}">
 						<li th:text="${categoria.nombre}"></li>
 					</ul>
 				<button th:data-target="|modal${n.id}|" class="btn modal-trigger purple">Trailer</button>
