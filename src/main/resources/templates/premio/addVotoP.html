@@ -1,6 +1,6 @@
 <div class="container">
 	
-	<div class="col m12">
+	<div class="col s12 m6 l4 xl4">
 	<span th:text="${premio.nombrePremio}"></span>
 	</div>
 	<div th:each="n:${nominados}">
@@ -18,7 +18,7 @@
 	</div>	
 		<div class="card grey darken-3 white-text">
 			<div class="card-image waves-effect waves-block waves-light">
-				<img class="activator" th:src="|/img/cover/${n.participantes.img}|" width="150px" height="500px">
+				<img class="activator" th:src="|/img/cover/${n.participantes[0].img}|" width="150px" height="500px">
 			</div>
 			
 			<div class="fondo-carta card-content black  white-text ">
@@ -41,15 +41,15 @@
 				<span class="card-title white-text flow-text "th:text="${n.nombre}">
 					<i class="material-icons right">close</i>
 				</span>
-				<p th:text="|Desarrolladora: ${n.participantes.desarrolladora}|">
+				<p th:text="|Desarrolladora: ${n.participantes[0].desarrolladora}|">
 				</p>				
-					<ul th:each="plataforma:${n.participantes.plataformas}">
+					<ul th:each="plataforma:${n.participantes[0].plataformas}">
 						<li th:text="${plataforma.nombre}">
 						</li>
 					</ul>
 				
 				
-					<ul th:each="categoria:${n.participantes.pertenece}">
+					<ul th:each="categoria:${n.participantes[0].pertenece}">
 						<li th:text="${categoria.nombre}"></li>
 					</ul>
 				<button th:data-target="|modal${n.id}|" class="btn modal-trigger purple">Trailer</button>
