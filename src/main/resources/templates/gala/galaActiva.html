@@ -5,7 +5,7 @@
 </form>
 </div>
 <div th:if="${fecha}>${fechaActual} and ${estado}==true"class="container">
-<span style="display:none" th:utext="${#temporals.format(fecha, 'dd-MM-yyyy')}" id="ff"></span>
+<span style="display:none" th:utext="${#temporals.format(fecha, 'dd/MM/yyyy')}" id="ff"></span>
 <h3>Gala activa</h3><h3 id="crono"></h3>
 <form action="https://thegaminghub.herokuapp.com/gala/r">
 <button class="btn waves-effect waves-light purple" onclick="submit()">Ver pasadas ediciones</button>
