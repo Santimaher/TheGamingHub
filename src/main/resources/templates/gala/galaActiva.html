@@ -46,12 +46,13 @@ function restaFechas(f1,f2){
  }
 
     window.onload=function(){
-    	restaFechas(fechacom,document.getElementById('ff').innerHTML);
+    	setTimeout(function(){
     		setInterval(function(){
-    			var actual=new Date();
-    			var fechacom=actual.getDate()+"/"+(actual.getMonth()+1)+"/"+actual.getFullYear()+"/"+actual.getHours()+"/"+actual.getMinutes()+"/"+actual.getSeconds();
-    			restaFechas(fechacom,document.getElementById('ff').innerHTML);
-    			},60000)
-      
+			var actual=new Date();
+			var fechacom=actual.getDate()+"/"+(actual.getMonth()+1)+"/"+actual.getFullYear()+"/"+actual.getHours()+"/"+actual.getMinutes()+"/"+actual.getSeconds();
+			restaFechas(fechacom,document.getElementById('ff').innerHTML);
+			},60000);
+    		}
+    	,1000);
     }
 </script>
