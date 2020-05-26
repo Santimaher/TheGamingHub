@@ -174,7 +174,7 @@ function validarA_Partic(){
 									}
 								}
 								
-///////////// usuario c
+///////////// usuario c uUser
 							
 								
 								function validarN_User(){
@@ -228,3 +228,47 @@ function validarA_Partic(){
 												}
 											}
 											
+										  ////////////////////////////////  
+
+											function validarNameupdate_User(){
+												var valido;
+													 var n=document.userform.nombre.value;
+												    var patt = new RegExp("^[a-zA-ZáéíóúñÑçÇ ]{2,30}$");
+												    var t=patt.test(n);
+														if(t){
+															valido=true;
+														}else{
+															alert("El formato del nombre no es correcto.");
+															valido=false;
+														}
+												    return valido;
+												    }
+												
+												function validarEmailupdate_User(){
+													var valido;
+													        var pa=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+													        var e=document.userform.email.value;
+													        var t=pa.test(e);
+																	if(t){
+																		valido=true;
+																	}else{
+																		alert("El formato del correo electrónico no es correcto.");
+																		valido=false;
+																	}
+												
+													       return valido;
+													      }
+												
+												
+												    return valido;
+												    }
+													    function vformupdateUser(){
+															if(validarN_User() && validarE_User()){
+																		return true;
+															}else{
+																alert("El formato introducido en los campo de texto no es el correcto.");
+																return false;
+															}
+														}				    
+							/////////////////////////////////////////////////
+													    

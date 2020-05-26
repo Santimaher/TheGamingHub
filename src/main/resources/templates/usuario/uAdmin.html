@@ -1,9 +1,10 @@
 <div class="container">
+
 	<div class="col m12">
 			<h1>Editar usuario</h1>
 		</div>
 		<div class="row">
-		<form method="post" action="https://thegaminghub.herokuapp.com/usuario/uAdminPost" class="form">
+		<form method="post" action="https://thegaminghub.herokuapp.com/usuario/uAdminPost" class="form" name="userform" onclick="return vformupdateUser();">
 		<input type="hidden" name="id" th:value="${usuario.id}">
 		
 		<div class="input-field col s12">
@@ -22,9 +23,9 @@
 		</div>
 		
 	
-		<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
-			Actualizar <i class="material-icons left">send</i>
-		</button>
+		<input class="btn waves-effect waves-light purple" type="submit" value="Actualizar"  name="action">
+			
+		
 			
 			<a href="/">
 				<button class="btn waves-effect waves-light purple">
