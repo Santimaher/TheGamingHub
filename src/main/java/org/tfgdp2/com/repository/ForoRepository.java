@@ -11,5 +11,5 @@ import org.tfgdp2.com.domain.Foro;
 public interface ForoRepository extends JpaRepository<Foro, Long> {
 
 	public List<Foro> findAllByJuego_id(Long idJuego);
-	
+	public List<Foro> findAllByTipo(String tipo);
 }

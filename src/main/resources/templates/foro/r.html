@@ -1,5 +1,5 @@
 <div class="container">
-	<h1 th:text="|Foro del juego ${juego.nombre}|"></h1>
+	<h1 th:text="|Subforos del juego ${juego.nombre}|"></h1>
 	<div th:each="foro:${foros}">
 	<form action="https://thegaminghub.herokuapp.com/entradaForo/r">
 	<button onclick="submit()" class="waves-effect waves-light btn separacion purple" th:text="${foro.tipo}"></button>

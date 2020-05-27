@@ -33,5 +33,14 @@ public class ForoController {
 		m.put("view", "foro/r");
 		return "_t/frame";
 	}
+	@GetMapping("r2")
+	public String read2(ModelMap m) {
+		m.put("fanarts", repoForo.findAllByTipo("Fan art"));
+		m.put("debugs", repoForo.findAllByTipo("Debug"));
+		m.put("memes", repoForo.findAllByTipo("Memes"));
+		m.put("miscs", repoForo.findAllByTipo("Miscs"));
+		m.put("view", "foro/r2");
+		return "_t/frame";
+	}
 
 }
