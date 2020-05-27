@@ -1,6 +1,7 @@
 <div class="container">
 <!-- s6 m4 l2 xl2 -->
 <div class="row">
+<p th:if="${session.usuario==null}">Debes haber iniciado sesion para dar me gusta o no me gusta, comentar y para leer mensajes propio escritos en este foro <a href="https://thegaminghub.herokuapp.com/login">Iniciar sesion</a></p>
 				<div class="col s12 m4 l2 xl2">
 				<form method="get">
 					<input type="text" name="filtro" th:value="${filtro}" placeholder="Buscar entrada en el foro"/>
@@ -94,7 +95,7 @@
 					</button>
 				</form>
 				</div>
-		<div class="col s12 m6 l2 xl2">
+		<div class="col s12 m6 l3 xl3">
 				<form action="https://thegaminghub.herokuapp.com/entradaForo/responder" method="get">
 					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
@@ -103,7 +104,7 @@
 					</button>
 				</form>
 				</div>
-				<div class="col s12 m6 l2 xl2">
+				<div class="col s12 m6 l5 xl5">
 				<form action="https://thegaminghub.herokuapp.com/entradaForo/verRespuestas" method="get">
 				<input type="hidden" name="idJuego" th:value="${idJuego}">
 					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />

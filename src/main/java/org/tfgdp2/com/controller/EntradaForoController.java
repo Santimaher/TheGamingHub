@@ -48,7 +48,7 @@ public class EntradaForoController {
 		
 		m.put("entradas",repoEntrada.findByPerteneceIdAndEscribeIdOrderByRankingDesc(id,idUsuario));
 		}catch(Exception e) {
-			PRG.error("Debes iniciar sesion ","entradaForo/r",id);
+			PRG.error("Debes iniciar sesion ","/login");
 		}	
 
 		return "_t/frame";
@@ -64,6 +64,7 @@ public class EntradaForoController {
 	}
 	@GetMapping("r")
 	public String leer(@RequestParam("idForo") Long id, ModelMap m,@RequestParam(value = "filtro", required = false) String filtro,@RequestParam(value = "tipo", required = false) String tipo) {
+		
 		filtro = (filtro == null) ? "" : filtro;
 		tipo = (tipo == null) ? "normal" : tipo;
 		m.put("view","entradaForo/r");
@@ -151,7 +152,7 @@ public class EntradaForoController {
 			entrada.setEscribe(u);
 			repoEntrada.save(entrada);
 		}catch(Exception e) {
-			PRG.error("Error al crear la entrada  "+e.getMessage(), "entradaForo/c");
+			PRG.error("Error al crear la entrada  ", "entradaForo/c");
 		}	
 
 		PRG.info("Entrada del foro creada correctamente", "entradaForo/r",id);
