@@ -1,5 +1,26 @@
 
 <div class="container">
+<div>
+	<div class="row" th:if="${session.usuario==null}">
+		<div class="center">
+			<h2>The Gaming Hub</h2>
+			<h4>Pagina de gamers hecha por gamers.</h4>
+			<h4>Opina, comparte y más</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="center">
+		<ul class="separacion">
+			<li><a class="waves-effect waves-light btn hoverable purple white-text" href="/login">Login</a></li>
+			<li><a class="waves-effect waves-light btn hoverable purple white-text" href="/login">Foros</a></li>
+		</ul>
+		<ul>
+			<li><a class="waves-effect waves-light btn hoverable purple white-text" href="/juego/r/1">Catalogo</a></li>
+			<li><a class="waves-effect waves-light btn hoverable purple white-text" href="/gala/r">Galas</a></li>
+		</ul>
+		</div>
+	</div>
+</div>
 <div class="animation-wrapper">
   <div class="sphere-animation">
     <svg class="sphere" viewBox="0 0 440 440" stroke="rgba(80,80,80,.35)">
@@ -34,4 +55,5 @@
     </svg>
   </div>
 </div>
+
 </div>

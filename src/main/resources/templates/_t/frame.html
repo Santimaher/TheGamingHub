@@ -6,7 +6,7 @@
 <body class="cuerpo-pagina">
 
 <div th:replace="_t/header"></div>
-<div th:if="${session.usuario==null}"><div th:replace="_t/nav2" ></div></div>
+<div th:if="${session.usuario==null}"><div th:replace="_t/nav4" ></div></div>
 <div th:if="${session.usuario?.rol=='auth'}"><div th:replace="_t/nav2" ></div></div>
 <div th:if="${session.usuario?.rol=='admin'}"><div th:replace="_t/nav" ></div></div>
 <div th:if="${session.usuario?.rol=='jurado'}"><div th:replace="_t/nav3" ></div></div>
