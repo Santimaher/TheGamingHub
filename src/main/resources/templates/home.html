@@ -1,7 +1,7 @@
 
 <div class="container">
-<div>
-	<div class="row" th:if="${session.usuario==null}">
+<div th:if="${session.usuario==null}">
+	<div class="row" >
 		<div class="center">
 			<h2>The Gaming Hub</h2>
 			<h4>Pagina de gamers hecha por gamers.</h4>
@@ -10,14 +10,13 @@
 	</div>
 	<div class="row">
 		<div class="center">
-		<ul class="separacion" >
-			<li><a class="waves-effect waves-light btn hoverable purple white-text" href="/login">Login</a></li>
-			<li><a class="waves-effect waves-light btn hoverable purple white-text" href="/login" style="float: left">Foros</a></li>
-		</ul>
-		<ul class="separacion" >
-			<li><a class="waves-effect waves-light btn hoverable purple white-text" href="/juego/r/1">Catalogo</a></li>
-			<li><a class="waves-effect waves-light btn hoverable purple white-text" href="/gala/r" style="float: left">Galas</a></li>
-		</ul>
+		<div class="separacion" >
+			<button class="waves-effect waves-light btn hoverable purple white-text" onclick="location.href='/login';">Login</button>
+			<button class="waves-effect waves-light btn hoverable purple white-text" onclick="location.href='/login';" >Foros</button>
+			<button class="waves-effect waves-light btn hoverable purple white-text" onclick="location.href='/juego/r/1';">Catalogo</button>
+			<button class="waves-effect waves-light btn hoverable purple white-text" onclick="location.href='/gala/r';" >Galas</button>
+		</div>
+		
 		</div>
 	</div>
 </div>
