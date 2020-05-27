@@ -1,54 +1,35 @@
 <div class="container">
 <div class="col m12">
-			<h1>Premios</h1>
+			<h1 th:text="|Fase de votacion de la Gala ${gala.edicion}|"></h1>
 		</div>
-	<table class="highlight">
-	<tr>
-		<th>Premios para participantes</th>
-	
-	</tr>
-	<tr th:each="pParticipante:${premioPartipantes}">
-		<td th:text="${pParticipante.nombrePremio}"></td>
-		<td class="row">
-				<form action="https://thegaminghub.herokuapp.com/premio/addVotoP" method="get">
-					<input type="hidden" name="id" th:value="${pParticipante.id}" />
-					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
-					Vote
-					</button>
-				</form>
-				<form action="https://thegaminghub.herokuapp.com/premio/dP" method="post">
-					<input type="hidden" name="id" th:value="${pParticipante.id}" />
-					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
-						<i class="material-icons left">delete</i>
-					</button>
-				</form>
-		</td>
-	</tr>
-	</table>
-	<table class="highlight">
-	<tr>
-		<th>Premios para juegos</th>
-	
-	</tr>
-	<tr th:each="pJuego:${premioJuegos}">
-		<td th:text="${pJuego.nombrePremio}"></td>
-		
-		<td class="row">
-				<form action="https://thegaminghub.herokuapp.com/premio/addVotoJ" method="get">
-					<input type="hidden" name="id" th:value="${pJuego.id}" />
-					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
-						Vote
-					</button>
-				</form>
-				<form action="https://thegaminghub.herokuapp.com/premio/dJ" method="post">
-					<input type="hidden" name="id" th:value="${pJuego.id}" />
-					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
-						<i class="material-icons left">delete</i>
-					</button>
-				</form>
-		</td>
-	</tr>
-	</table>
+	<ul class="collapsible">
+    <li>
+      <div class="collapsible-header black fondo-carta"><i class="material-icons">people_outline</i>Participantes</div>
+      <div class="collapsible-body black">
+      	<ul> 
+      		<li th:each="premio:${pp}">
+      		<form action="https://thegaminghub.herokuapp.com/premio/addVotoP" method="get">
+      		<input type="hidden" name="id" th:value="${premio.id}"/>
+      		<button class="btn-large waves-effect waves-light purple separacion" th:text="${premio.nombrePremio}" onclick="submit()"></button>
+      		</form>
+      		</li>
+      	</ul>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header fondo-carta black"><i class="material-icons">nature</i>Juegos</div>
+      <div class="collapsible-body black">
+      	<ul>
+      		<li th:each="premio:${pj}">
+      		<form action="https://thegaminghub.herokuapp.com/premio/addVotoJ" method="get">
+      		<input type="hidden" name="id" th:value="${premio.id}"/>
+      		<button class="btn-large waves-effect waves-light purple separacion" onclick="submit()" th:text="${premio.nombrePremio}"></button>
+      		</form>
+      		</li>
+      	</ul>
+      </div>
+    </li>
+    </ul>
 	
 	<a href="/">
 		<button class="btn waves-effect waves-light purple">

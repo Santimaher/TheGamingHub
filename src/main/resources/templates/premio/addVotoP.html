@@ -1,6 +1,6 @@
 <div class="container">
 <div class="row">	
-	<div class="col s12 m6 l4 xl4">
+	<div class="s12 m6 l4 xl4">
 	<span th:text="${premio.nombrePremio}"></span>
 	</div>
 	<div th:each="n:${nominados}">
@@ -12,7 +12,7 @@
 		<a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons right">close</i></a>
 			</div>
 				<div style="height:100% ; width:80%">
-				<iframe width="95%" height="90%" th:src="${n.participantes.teaser}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe width="95%" height="90%" th:src="${n.participantes[0].teaser}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 	</div>	
@@ -38,20 +38,11 @@
 				</div>
 			</div>
 			<div class="fondo-carta card-reveal black white-text letra-grande">
-				<span class="card-title white-text flow-text "th:text="${n.nombre}">
+				<span class="card-title white-text flow-text "th:text="|${n.participantes[0].nombre} ${n.participantes[0].apellido}|">
 					<i class="material-icons right">close</i>
 				</span>
-				<p th:text="|Desarrolladora: ${n.participantes[0].desarrolladora}|">
+				<p th:text="|Desarrolladora: ${n.participantes[0].bio}|">
 				</p>				
-					<ul th:each="plataforma:${n.participantes[0].plataformas}">
-						<li th:text="${plataforma.nombre}">
-						</li>
-					</ul>
-				
-				
-					<ul th:each="categoria:${n.participantes[0].pertenece}">
-						<li th:text="${categoria.nombre}"></li>
-					</ul>
 				<button th:data-target="|modal${n.id}|" class="btn modal-trigger purple">Trailer</button>
 			</div>
 		</div>

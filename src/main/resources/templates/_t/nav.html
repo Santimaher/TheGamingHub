@@ -1,7 +1,7 @@
 <nav>
 	<nav class="fondo-carta black">
 		<div class="nav-wrapper">
-			<div class="valign-wrapper" style="float: left">			
+			<div class="valign-wrapper s4 m4 l4 xl4" style="float: left">
 				<button
 					class="waves-effect waves-light btn-floating btn-large botones"
 					onclick="location.href = '/';">
@@ -13,156 +13,203 @@
 				</button>
 				
 			</div>
-			<ul class="right hide-on-med-and-down">
-
-				<li><a class="dropdown-trigger" href="#!" data-target="juego">Juego<i
-						class="material-icons right"></i></a></li>
-				<li><a class="dropdown-trigger" href="#!"
-					data-target="categoria">Categoria<i
-						class="material-icons right"></i></a></li>
-				<li><a class="dropdown-trigger" href="#!" data-target="usuario">Usuario<i
-						class="material-icons right"></i></a></li>
-				<li><a class="dropdown-trigger" href="#!"
-					data-target="nominacion">Nominacion<i
-						class="material-icons right"></i></a></li>
-				<li><a class="dropdown-trigger" href="#!"
-					data-target="participante">Participante<i
-						class="material-icons right"></i></a></li>
-				<li><a class="dropdown-trigger" href="#!"
-					data-target="categoria">Categoria Juego<i
-						class="material-icons right"></i></a></li>
-				<li><a class="dropdown-trigger" href="#!"
-					data-target="categoriaP">Categoria Participante<i
-						class="material-icons right"></i></a></li>
-				<li><a class="dropdown-trigger" href="#!" data-target="galas">Galas<i
-						class="material-icons right"></i></a></li>
-				<li><a class="dropdown-trigger" href="#!" data-target="premios">Premios<i
-						class="material-icons right"></i></a></li>
-				<li><a class="dropdown-trigger" href="#!"
-					data-target="nominarP">Nominar Participantes<i
-						class="material-icons right"></i></a></li>
-				<li><a class="dropdown-trigger" href="#!"
-					data-target="nominarJ">Nominar Juegos<i
-						class="material-icons right"></i></a></li>
-				<li><a class="dropdown-trigger" href="#!" data-target="init">Init<i
-						class="material-icons right"></i></a></li>
-				<li></li>
-			</ul>
+			<ul class="center s4 m4 l4 xl4">
+			<li>
+			<button class="waves-effect waves-light btn-floating btn-large sidenav-trigger botones center">
+				<img style="margin-top:5px"	src="/img/logo2.png" height="50" width="50" alt="logo"></img>
+				</button></li>
+				</ul>
 		</div>
 	</nav>
-	<!-- Dropdown Structure -->
-	<ul id="juego" class="dropdown-content">
-		<li><a href="https://thegaminghub.herokuapp.com/juego/c">Crear</a></li>
-		<li class="divider"></li>
-		<li><a href="https://thegaminghub.herokuapp.com/juego/r/1">Listar</a></li>
-	</ul>
-
-	<ul id="plataforma" class="dropdown-content">
-		<li><a href="https://thegaminghub.herokuapp.com/plataforma/c">Crear</a></li>
-		<li class="divider"></li>
-		<li><a href="https://thegaminghub.herokuapp.com/plataforma/r">Listar</a></li>
-	</ul>
-
-	<ul id="usuario" class="dropdown-content">
-		<li><a href="https://thegaminghub.herokuapp.com/usuario/c">Crear</a></li>
-		<li class="divider"></li>
-		<li><a href="https://thegaminghub.herokuapp.com/usuario/r">Listar</a></li>
-	</ul>
-
-	<ul id="nominacion" class="dropdown-content">
-		<li><a href="https://thegaminghub.herokuapp.com/nominacion/c">Crear</a></li>
-		<li class="divider"></li>
-		<li><a href="https://thegaminghub.herokuapp.com/nominacion/r">Listar</a></li>
-	</ul>
-
-	<ul id="participante" class="dropdown-content">
-		<li><a href="https://thegaminghub.herokuapp.com/participante/c">Crear</a></li>
-		<li class="divider"></li>
-		<li><a href="https://thegaminghub.herokuapp.com/participante/r">Listar</a></li>
-	</ul>
-
-	<ul id="categoria" class="dropdown-content">
-		<li><a href="https://thegaminghub.herokuapp.com/categoria/c">Crear</a></li>
-		<li class="divider"></li>
-		<li><a href="https://thegaminghub.herokuapp.com/categoria/r">Listar</a></li>
-	</ul>
-
-	<ul id="categoriaP" class="dropdown-content">
-		<li><a href="https://thegaminghub.herokuapp.com/categoriaParticipante/c">Crear</a></li>
-		<li class="divider"></li>
-		<li><a href="https://thegaminghub.herokuapp.com/categoriaParticipante/r">Listar</a></li>
-	</ul>
-
-	<ul id="galas" class="dropdown-content">
-		<li><a href="https://thegaminghub.herokuapp.com/gala/c">Crear</a></li>
-		<li class="divider"></li>
-		<li><a href="https://thegaminghub.herokuapp.com/gala/r">Listar</a></li>
-	</ul>
-
-	<ul id="premios" class="dropdown-content">
-		<li><a href="https://thegaminghub.herokuapp.com/premio/c">Crear</a></li>
-		<li class="divider"></li>
-		<li><a href="https://thegaminghub.herokuapp.com/premio/r">Listar</a></li>
-	</ul>
-
-	<ul id="nominarP" class="dropdown-content">
-		<li><a
-			href="https://thegaminghub.herokuapp.com/nominacion/nominarParticipante">Nominar</a></li>
-	</ul>
-
-	<ul id="nominarJ" class="dropdown-content">
-		<li><a href="https://thegaminghub.herokuapp.com/nominacion/nominarJuego">Nominar</a></li>
-	</ul>
 
 
-	<ul id="init" class="dropdown-content">
-		<li><a href="https://thegaminghub.herokuapp.com/init">Inicializar base de
-				datos</a></li>
-	</ul>
-
-</nav>
 
 
-<ul id="slide-out" class="sidenav fondo-geometrico black white-text">
-	<li><div class="user-view">
-			<!-- 			<div class="background"> -->
-			<!-- 				<img src="images/office.jpg"> -->
-			<!-- 			</div> -->
-			<!--       <a href="#user"><img class="circle" src="images/yuna.jpg"></a> -->
-			<!--       <a href="#name"><span class="white-text name">John Doe</span></a> -->
-			<!--       <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a> -->
-			<div class="col-12" th:if="${session.usuario == null}">
-				<a class="waves-effect waves-light btn hoverable purple white-text"
-					href="/registro">Registro</a> <a
-					class="waves-effect waves-light btn hoverable purple white-text" href="/login">Login</a>
-			</div>
-			<div class="col-12" th:if="${session.usuario != null}">
-				<div class="chip purple white-text">
-					<img th:src="|/img/${session.usuario.img}|" alt="Contact Person">
-					<span th:text="${session.usuario.nombre}"></span> <i th:if="${session.usuario.rol=='admin'}" class="material-icons"> verified_user</i>
+	<ul id="slide-out" class="sidenav fondo-geometrico black white-text">
+		<li><div class="user-view">
+				<!-- 			<div class="background"> -->
+				<!-- 				<img src="images/office.jpg"> -->
+				<!-- 			</div> -->
+				<!--       <a href="#user"><img class="circle" src="images/yuna.jpg"></a> -->
+				<!--       <a href="#name"><span class="white-text name">John Doe</span></a> -->
+				<!--       <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a> -->
+				<div class="col-12" th:if="${session.usuario == null}">
+					<a class="waves-effect waves-light btn hoverable purple white-text"
+						href="/registro">Registro</a> <a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="/login">Login</a>
 				</div>
-				<ul class="collapsible ">
-					<li>
-						<div class="collapsible-header main-color">
-							<i class="material-icons">brightness_7</i> Opciones
-						</div>
-						<div class="collapsible-body fondo-geometrico color-trans">
-							<ul>
-								<li><a class="waves-effect waves-light btn hoverable purple white-text"
-									href="/logout">Logout</a></li>
-								<li><a class="waves-effect waves-light btn hoverable purple white-text"
-									href="/usuario/uUsuario">Editar perfil</a></li>
+				<div class="col-12" th:if="${session.usuario != null}">
+					<div class="chip purple white-text">
+						<img th:src="|/img/${session.usuario.img}|" alt="Contact Person">
+						<span th:text="${session.usuario.nombre}"></span> <i
+							th:if="${session.usuario.rol=='admin'}" class="material-icons">
+							verified_user</i>
+					</div>
+					<ul class="collapsible ">
+						<li>
+							<div class="collapsible-header main-color">
+								<i class="material-icons">brightness_7</i> Opciones
+							</div>
+							<div class="collapsible-body fondo-geometrico color-trans">
+								<ul>
+									<li><a
+										class="waves-effect waves-light btn hoverable purple white-text"
+										href="/logout">Logout</a></li>
+									<li><a
+										class="waves-effect waves-light btn hoverable purple white-text"
+										href="/usuario/uUsuario">Editar perfil</a></li>
 
-							</ul>
-						</div>
-				</ul>
-			</div>
-		</div></li>
-	<li><div class="divider "></div></li>
-	<li><a href="#!">First Link
-			With Icon</a></li>
-	<li><a href="#!">Second Link</a></li>
-	<li><div class="divider"></div></li>
-	<li><a class="subheader">Subheader</a></li>
-	<li><a class="waves-effect " href="#!">Third Link With Waves</a></li>
-</ul>
+								</ul>
+							</div>
+					</ul>
+				</div>
+			</div></li>
+		<li><div class="divider "></div></li>
+		<li>Opciones de admin</li>
+		<li><div class="divider "></div></li>
+		<li>
+		<ul class="collapsible">
+			<li>
+				<div class="collapsible-header main-color">Juego</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/juego/c">Crear</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/juego/r/1">Listar</a></li>
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header main-color">Participantes</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/participante/c">Crear</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/participante/r">Crear</a></li>
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header main-color">Usuarios</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/usuario/c">Crear</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/usuario/r">Listar</a></li>
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header main-color">Cat. Participante</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/categoriaParticipante/c">Crear</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/categoriaParticipante/r">Listar</a></li>
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header main-color">Cat. Juego</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/categoria/c">Crear</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/categoria/r">Listar</a></li>
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header main-color">Plataformas</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/plataforma/c">Crear</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/plataforma/r">Listar</a></li>
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header main-color">Galas</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/gala/c">Crear</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/gala/r">Listar</a></li>
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header main-color">Premios</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/premio/c">Crear</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/premio/r">Listar</a></li>
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header main-color">Nominar Participantes</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/nominacion/nominarParticipante">Nominar</a></li>
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header main-color">Nominar Juegos</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/nominacion/nominarJuego">Nominar</a></li>
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header main-color">Init</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/init">Inicializar
+							base de datos</a></li>
+				</ul>			
+				</div>
+			</li>
+		</ul>
+		</li>
+		<li><div class="divider"></div></li>
+		<li><a href="#!">Second Link</a></li>
+		<li><div class="divider"></div></li>
+		<li><a class="subheader">Subheader</a></li>
+		<li><a class="waves-effect " href="#!">Third Link With Waves</a></li>
+	</ul>
