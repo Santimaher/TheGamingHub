@@ -37,7 +37,7 @@
     <li>
       <div class="collapsible-header black fondo-carta">Miscelaneo</div>
       <div class="collapsible-body black">
-      <div th:each="meme:${memes}">
+      <div th:each="misc:${miscs}">
       <form action="https://thegaminghub.herokuapp.com/entradaForo/r">
 	<button onclick="submit()" class="waves-effect waves-light btn separacion purple" th:text="${misc.juego.nombre}"></button>
 	<input  name="idForo" type="hidden" th:value="${misc.id}">
