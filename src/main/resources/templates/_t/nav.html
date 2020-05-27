@@ -1,7 +1,7 @@
 <nav>
 	<nav class="fondo-carta black">
 		<div class="nav-wrapper">
-			<div class="valign-wrapper s4 m4 l4 xl4" style="float: left">
+			<div class="valign-wrapper s6 m6 l6 xl6" style="float: left">
 				<button
 					class="waves-effect waves-light btn-floating btn-large botones"
 					onclick="location.href = '/';">
@@ -13,12 +13,12 @@
 				</button>
 				
 			</div>
-			<ul class="center s4 m4 l4 xl4">
+			<ul class="right s6 m6 l6 xl6">
 			<li>
-			<button class="waves-effect waves-light btn-floating btn-large sidenav-trigger botones center">
-				<img style="margin-top:5px"	src="/img/logo2.png" height="50" width="50" alt="logo"></img>
-				</button></li>
-				</ul>
+			<button data-target="slide-out2"
+					class="waves-effect waves-light btn-floating btn-large sidenav-trigger botones">
+					<i class="material-icons">menu </i>
+				</button>
 		</div>
 	</nav>
 
@@ -68,6 +68,16 @@
 		<li><div class="divider "></div></li>
 		<li>Opciones de admin</li>
 		<li><div class="divider "></div></li>
+		
+		<li><div class="divider"></div></li>
+		<li><a href="#!">Second Link</a></li>
+		<li><div class="divider"></div></li>
+		<li><a class="subheader">Subheader</a></li>
+		<li><a class="waves-effect " href="#!">Third Link With Waves</a></li>
+	</ul>
+	
+		<ul id="slide-out2" class="sidenav fondo-geometrico black white-text">
+		<li>Opciones de Admin</li>
 		<li>
 		<ul class="collapsible">
 			<li>
@@ -92,7 +102,7 @@
 						href="https://thegaminghub.herokuapp.com/participante/c">Crear</a></li>
 					<li><a
 						class="waves-effect waves-light btn hoverable purple white-text"
-						href="https://thegaminghub.herokuapp.com/participante/r">Crear</a></li>
+						href="https://thegaminghub.herokuapp.com/participante/r">Listar</a></li>
 				</ul>		
 				</div>
 			</li>
@@ -207,9 +217,4 @@
 			</li>
 		</ul>
 		</li>
-		<li><div class="divider"></div></li>
-		<li><a href="#!">Second Link</a></li>
-		<li><div class="divider"></div></li>
-		<li><a class="subheader">Subheader</a></li>
-		<li><a class="waves-effect " href="#!">Third Link With Waves</a></li>
 	</ul>
