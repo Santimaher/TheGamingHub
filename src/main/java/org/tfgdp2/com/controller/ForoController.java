@@ -38,7 +38,7 @@ public class ForoController {
 		m.put("fanarts", repoForo.findAllByTipo("Fan art"));
 		m.put("debugs", repoForo.findAllByTipo("Debug"));
 		m.put("memes", repoForo.findAllByTipo("Memes"));
-		m.put("miscs", repoForo.findAllByTipo("Miscs"));
+		m.put("miscs", repoForo.findAllByTipo("Misc"));
 		m.put("view", "foro/r2");
 		return "_t/frame";
 	}
