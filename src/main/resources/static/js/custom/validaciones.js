@@ -73,7 +73,7 @@ function validarN_ParticU()	{
 									if(t){
 										valido=true;
 									}else{
-										M.toast({'El formato de los apellidos no es correcto'});
+										M.toast({html: 'El formato de los apellidos no es correcto'});
 										document.partFormu.apellido.style.color='red';
 									
 									}
@@ -101,7 +101,7 @@ function validarN_ParticU()	{
 											if(t){
 												valido=true;
 											}else{
-												M.toast({'El formato del nombre no es correcto.'});
+												M.toast({ html: 'El formato del nombre no es correcto.'});
 												document.userform.nombre.style.color='red';
 																							}
 									    return valido;
@@ -116,7 +116,7 @@ function validarN_ParticU()	{
 													valido=true;
 														}else{
 															document.userform.email.style.color='red';
-															M.toast({'El formato del correo electrónico no es correcto.'});
+															M.toast({html:'El formato del correo electrónico no es correcto.'});
 														}														
 									
 										       return valido;
@@ -134,7 +134,7 @@ function validarN_ParticU()	{
 											if(t){
 												valido=true;
 											}else{
-												M.toast({'El mínimo de carácteres para la contraseña son 8 y el máximo 20. Además es obligatorio el uso de mayúsculas y números.'});
+												M.toast({html:'El mínimo de carácteres para la contraseña son 8 y el máximo 20. Además es obligatorio el uso de mayúsculas y números.'});
 												document.userform.pass.style.color='red';
 											
 											}
@@ -158,7 +158,7 @@ function validarN_ParticU()	{
 														if(t){
 															valido=true;
 														}else{
-															M.toast({'El formato del nombre no es correcto.'});
+															M.toast({html:'El formato del nombre no es correcto.'});
 															document.userform.nombre.style.color='red';
 																		}
 												    return valido;
@@ -172,7 +172,7 @@ function validarN_ParticU()	{
 																	if(t){
 																		valido=true;
 																	}else{
-																		M.toast({'El formato del correo electrónico no es correcto.'});
+																		M.toast({html:'El formato del correo electrónico no es correcto.'});
 																		document.userform.nombre.email.color='red';
 																	
 																	}
@@ -201,7 +201,7 @@ function validarN_ParticU()	{
 											if(t){
 											    return true;
 											}else{
-									     		M.toast({'El mínimo de carácteres para la contraseña son 8 y el máximo 20. Además es obligatorio el uso de mayúsculas y números.'});
+									     		M.toast({html:'El mínimo de carácteres para la contraseña son 8 y el máximo 20. Además es obligatorio el uso de mayúsculas y números.'});
 												document.passForm.passwordNu.style.color='red';
 																return false;
 																}
