@@ -1,40 +1,48 @@
 <div class="container">
 	<h1>Subforos activos</h1>
 <ul class="collapsible">
-    <li th:each="fanart:${fanarts}">
+    <li>
       <div class="collapsible-header black fondo-carta">Fan Art</div>
       <div class="collapsible-body black">
+      <div th:each="fanart:${fanarts}">
       <form action="https://thegaminghub.herokuapp.com/entradaForo/r">
 	<button onclick="submit()" class="waves-effect waves-light btn separacion purple" th:text="${fanart.juego.nombre}"></button>
 	<input  name="idForo" type="hidden" th:value="${fanart.id}">
 	</form>
 	</div>
+	</div>
     </li>
-    <li th:each="debug:${debugs}">
+    <li>
       <div class="collapsible-header black fondo-carta">Debug</div>
       <div class="collapsible-body black">
+      <div th:each="debug:${debugs}">
       <form action="https://thegaminghub.herokuapp.com/entradaForo/r">
 	<button onclick="submit()" class="waves-effect waves-light btn separacion purple" th:text="${debug.juego.nombre}"></button>
 	<input  name="idForo" type="hidden" th:value="${debug.id}">
 	</form>
 	</div>
+	</div>
     </li>
-    <li th:each="meme:${memes}">
+    <li>
       <div class="collapsible-header black fondo-carta">Memes</div>
       <div class="collapsible-body black">
+      <div th:each="meme:${memes}">
       <form action="https://thegaminghub.herokuapp.com/entradaForo/r">
 	<button onclick="submit()" class="waves-effect waves-light btn separacion purple" th:text="${meme.juego.nombre}"></button>
 	<input  name="idForo" type="hidden" th:value="${meme.id}">
 	</form>
 	</div>
+	</div>
     </li>
-    <li th:each="misc:${miscs}">
+    <li>
       <div class="collapsible-header black fondo-carta">Miscelaneo</div>
       <div class="collapsible-body black">
+      <div th:each="meme:${memes}">
       <form action="https://thegaminghub.herokuapp.com/entradaForo/r">
 	<button onclick="submit()" class="waves-effect waves-light btn separacion purple" th:text="${misc.juego.nombre}"></button>
 	<input  name="idForo" type="hidden" th:value="${misc.id}">
 	</form>
+	</div>
 	</div>
     </li>
   </ul>
