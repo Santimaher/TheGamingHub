@@ -10,18 +10,18 @@
 	</div>
 	<div class="row">
 		<div class="center">
-		<ul class="separacion">
+		<ul class="separacion" style="float: left">
 			<li><a class="waves-effect waves-light btn hoverable purple white-text" href="/login">Login</a></li>
 			<li><a class="waves-effect waves-light btn hoverable purple white-text" href="/login">Foros</a></li>
 		</ul>
-		<ul>
+		<ul class="separacion" style="float: left">
 			<li><a class="waves-effect waves-light btn hoverable purple white-text" href="/juego/r/1">Catalogo</a></li>
 			<li><a class="waves-effect waves-light btn hoverable purple white-text" href="/gala/r">Galas</a></li>
 		</ul>
 		</div>
 	</div>
 </div>
-<div class="animation-wrapper">
+<div class="animation-wrapper" th:if="${session.usuario!=null}">
   <div class="sphere-animation">
     <svg class="sphere" viewBox="0 0 440 440" stroke="rgba(80,80,80,.35)">
       <defs>
