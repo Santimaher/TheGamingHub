@@ -12,6 +12,7 @@
 
 <div th:if="${fecha}>${fechaActual} and ${estado}==true"
 	class="container">
+	Para poder votar tienes que <a href="https://thegaminghub.herokuapp.com/login">iniciar sesion</a>
 	<span style="display: none"
 		th:utext="${#temporals.format(fecha, 'dd-MM-yyyy')}" id="ff"></span>
 	<h3>Gala activa</h3>
@@ -27,6 +28,7 @@
 
 <div th:if="${fecha}<${fechaActual} and ${fechaDePremio}>${fechaActual}"
 	class="container">
+	Para poder votar tienes que <a href="https://thegaminghub.herokuapp.com/login">iniciar sesion</a>
 	<h3>Gala concluida</h3>
 	<form action="https://thegaminghub.herokuapp.com/gala/r">
 		<button class="btn waves-effect waves-light purple" onclick="submit()">Ver
