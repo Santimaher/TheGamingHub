@@ -1,8 +1,10 @@
 package org.tfgdp2.com.domain;
 
 import java.sql.Blob;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -187,7 +189,10 @@ public class Juego {
 		this.imgPre = imgPre;
 	}
 	
-	
+	public String generateBase64Image() throws SQLException
+	{
+	    return Base64.getEncoder().encodeToString(this.getImg().getBytes(1l, (int)this.img.length()));
+	}
 	
 	
 }
