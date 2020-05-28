@@ -3,6 +3,7 @@ package org.tfgdp2.com.helper;
 
 import java.io.File;
 import java.io.InputStream;
+import java.sql.Blob;
 import java.util.Collection;
 
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPSClient;
+import org.hibernate.Hibernate;
 import org.springframework.web.multipart.MultipartFile;
 import org.tfgdp2.com.domain.Usuario;
 import org.tfgdp2.com.exception.DangerException;
@@ -68,5 +70,10 @@ public class H {
 	    } catch (Exception e) {
 	    	PRG.error("Fallo al subir la imagen"+e.getMessage());
 	    }
+	}
+	public static Blob blobCreator(MultipartFile imagen) {
+		Blob blob = blobCreator(imagen);
+		return blob;
+		
 	}
 }

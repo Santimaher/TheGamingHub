@@ -1,5 +1,6 @@
 package org.tfgdp2.com.domain;
 
+import java.sql.Blob;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -33,7 +35,10 @@ public class Juego {
 
 	private String desarrolladora;
 
-	private String img;
+	@Lob
+	private Blob img;
+	
+	private String imgPre;
 
 	private String teaser;
 	
@@ -109,14 +114,6 @@ public class Juego {
 	public void setDesarrolladora(String desarrolladora) {
 		this.desarrolladora = desarrolladora;
 	}
-
-	public String getImg() {
-		return img;
-	}
-
-	public void setImg(String img) {
-		this.img = img;
-	}
 	
 	public Boolean getEstaNominado() {
 		return estaNominado;
@@ -173,6 +170,24 @@ public class Juego {
 	public void setNominado(Collection<Nominacion_Juego> nominado) {
 		this.nominado = nominado;
 	}
+
+	public Blob getImg() {
+		return img;
+	}
+
+	public void setImg(Blob img) {
+		this.img = img;
+	}
+
+	public String getImgPre() {
+		return imgPre;
+	}
+
+	public void setImgPre(String imgPre) {
+		this.imgPre = imgPre;
+	}
+	
+	
 	
 	
 }

@@ -30,7 +30,9 @@
 			</div>
 			<div class="card grey darken-3 white-text">
 				<div class="card-image waves-effect waves-block waves-light">
-					<img class="activator" th:src="|/img/cover/${juego.img}|"
+					<img class="activator" th:if="${juego.id} <= 210 " th:src="|/img/cover/${juego.imgPre}|"
+						width="150px" height="500px">
+					<img class="activator" th:unless="${juego.id} > 210" th:src="@{/img/${juego.id}}"
 						width="150px" height="500px">
 				</div>
 				<div class="fondo-carta card-content black  white-text ">

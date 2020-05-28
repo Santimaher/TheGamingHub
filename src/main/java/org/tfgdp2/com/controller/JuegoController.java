@@ -1,5 +1,8 @@
 package org.tfgdp2.com.controller;
 
+import java.net.http.HttpHeaders;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,6 +18,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -101,17 +107,13 @@ public class JuegoController {
 			throws DangerException, InfoException {
 		
 		try {
-			Usuario u = (Usuario) s.getAttribute("usuario");
-			 String fileExtension =  img.getOriginalFilename().split("\\.")[1];
-			String nombreImg = u.getLoginname()+"#"+u.getId()+"."+fileExtension;
-			H.subirImagen(u, img);
 			H.isRolOK("admin", s);
 			Juego j = new Juego();
 			j.setNombre(nombre);
 			j.setPrecio(precio);
 			j.setStock(stock);
 			j.setDesarrolladora(desarrolladora);
-			j.setImg(nombreImg);
+			j.setImg(H.blobCreator(img));
 			j.setTeaser(teaser);
 			j.setFechaLanzamiento(flan);
 
@@ -164,7 +166,7 @@ public class JuegoController {
 	public void uPost(@RequestParam("id") Long id, @RequestParam("nombre") String nombre,
 			@RequestParam("precio") Double precio, @RequestParam("stock") Integer stock,
 			@RequestParam("desarrolladora") String desarrolladora,
-			@RequestParam("imgJ") String img, @RequestParam("teaser") String teaser,
+			@RequestParam("imgJ") MultipartFile img, @RequestParam("teaser") String teaser,
 			@RequestParam(value = "idPlataforma[]") List<Long> idsPlataforma,
 			@RequestParam(value = "idCat[]") List<Long> idsCat,
 			@RequestParam("flan") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate flan, HttpSession s)
@@ -176,7 +178,7 @@ public class JuegoController {
 			j.setPrecio(precio);
 			j.setStock(stock);
 			j.setDesarrolladora(desarrolladora);			
-			j.setImg(img);
+			j.setImg(H.blobCreator(img));
 			j.setTeaser(teaser);
 			j.setFechaLanzamiento(flan);
 			
@@ -220,6 +222,15 @@ public class JuegoController {
 
 		PRG.info("Juego borrado correctamente", "juego/r/1");
 
+	}
+	
+	@RequestMapping(value="/img/{juego_id}",produces = MediaType.IMAGE_PNG_VALUE)
+	public ResponseEntity<byte[]> imagen(@PathVariable("juego_id") Long juegoId) throws SQLException{
+		Blob imagen = repoJuego.getOne(juegoId).getImg();
+		byte[] bytes = imagen.getBytes(1l, (int)imagen.length());
+		final org.springframework.http.HttpHeaders header = new org.springframework.http.HttpHeaders();
+		header.setContentType(MediaType.IMAGE_PNG);
+		return new ResponseEntity<byte[]>(bytes,header,HttpStatus.OK);
 	}
 
 }
