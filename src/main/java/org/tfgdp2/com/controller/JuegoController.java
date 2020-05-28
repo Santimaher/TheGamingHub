@@ -1,22 +1,17 @@
 package org.tfgdp2.com.controller;
 
-import java.net.http.HttpHeaders;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -33,7 +28,6 @@ import org.tfgdp2.com.domain.Categoria_Juego;
 import org.tfgdp2.com.domain.Foro;
 import org.tfgdp2.com.domain.Juego;
 import org.tfgdp2.com.domain.Plataforma;
-import org.tfgdp2.com.domain.Usuario;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.H;
