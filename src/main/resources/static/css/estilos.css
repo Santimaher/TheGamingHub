@@ -41,9 +41,10 @@ body {
 	
 }
 .cuerpo-pagina{
-	background-image:url("/img/universo.jpg");
+	background-image:url("https://wallpaperstock.net/noche-estrellas-wallpapers_41546_2560x1600.jpg");
 	background-size:120%;
 	background-repeat: no-repeat;
+	background-attachment:fixed;
 	color:rgb(255,255,255);
 }
 nav{
