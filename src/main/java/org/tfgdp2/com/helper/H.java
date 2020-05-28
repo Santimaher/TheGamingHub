@@ -2,11 +2,14 @@
 package org.tfgdp2.com.helper;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.Collection;
 
 import javax.servlet.http.HttpSession;
+import javax.sql.rowset.serial.SerialException;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -71,8 +74,11 @@ public class H {
 	    	PRG.error("Fallo al subir la imagen"+e.getMessage());
 	    }
 	}
-	public static Blob blobCreator(MultipartFile imagen) {
-		Blob blob = blobCreator(imagen);
+	public static Blob blobCreator(MultipartFile imagen) throws IOException, SerialException, SQLException {
+		
+		    byte[] bytes = imagen.getBytes();
+		    Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+		    
 		return blob;
 		
 	}
