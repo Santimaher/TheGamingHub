@@ -218,13 +218,6 @@ public class JuegoController {
 
 	}
 	
-	@RequestMapping(value="/img/{juego_id}",produces = MediaType.IMAGE_PNG_VALUE)
-	public ResponseEntity<byte[]> imagen(@PathVariable("juego_id") Long juegoId) throws SQLException{
-		Blob imagen = repoJuego.getOne(juegoId).getImg();
-		byte[] bytes = imagen.getBytes(1l, (int)imagen.length());
-		final org.springframework.http.HttpHeaders header = new org.springframework.http.HttpHeaders();
-		header.setContentType(MediaType.IMAGE_PNG);
-		return new ResponseEntity<byte[]>(bytes,header,HttpStatus.OK);
-	}
+	
 
 }
