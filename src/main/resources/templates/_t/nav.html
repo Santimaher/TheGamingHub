@@ -41,7 +41,7 @@
 				</div>
 				<div class="chip purple white-text ">
 				<img  th:src="|data:image/png;base64,${session.usuario.imgUP}|"alt="Contact Person">					
-					<span th:text="${session.usuario.nombre}"></span> <i th:if="${session.usuario.rol=='admin'}" class="material-icons"> verified_user</i>    
+					<span th:text="${session.usuario.nombre}"></span> <i th:if="${session.usuario.rol=='admin'}" class="material-icons iPropio"> verified_user</i>    
 				</div>
 					<ul class="collapsible ">
 						<li>
@@ -61,8 +61,8 @@
 							</div>
 					</ul>
 				</div>
-			</div></li>
-		<li><div class="divider "></div></li>
+			</li>
+		
 	</ul>
 	
 		<ul id="slide-out2" class="sidenav sidenav2 fondo-geometrico black white-text" style="color: white">
