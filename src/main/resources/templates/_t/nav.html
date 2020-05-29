@@ -42,8 +42,8 @@
 				<div class="col-12" th:if="${session.usuario != null}">
 					<div class="chip purple white-text">
 						
-						<img th:if="${session.usuario.imgUP == null}" th:src="/img/${session.usuario.img}"alt="Contact Person">
-						<img th:if="${session.usuario.imgUP != null}" th:src="|data:image/png;base64,${session.usuario.imgUP}|"alt="Contact Person">
+						<img th:if="${session.usuario.imgUP} == null" th:src="/img/${session.usuario.img}"alt="Contact Person">
+						<img th:if="${session.usuario.imgUP} != null" th:src="|data:image/png;base64,${session.usuario.imgUP}|"alt="Contact Person">
 						<span th:text="${session.usuario.nombre}"></span> <i th:if="${session.usuario.rol=='admin'}" class="material-icons iPropio">verified_user</i>
 					</div>
 					<ul class="collapsible ">
