@@ -188,7 +188,10 @@ public class Juego {
 	public void setImgPre(String imgPre) {
 		this.imgPre = imgPre;
 	}
-	
+	public byte[] toBase64() throws SQLException {
+		byte[] bytes = Base64.getEncoder().encode(this.img.getBytes(1l, (int)this.img.length()));
+		return bytes;
+	}
 	
 	
 }
