@@ -34,7 +34,7 @@ public class UsuarioController {
 	}
 
 	@PostMapping("c")
-	public String crearPost(@RequestParam("nombre") String nombreusuario, @RequestParam("loginname") String log,
+	public String crearPost(@RequestParam("nombre") String nombreusuario,@RequestParam("img") MultipartFile img, @RequestParam("loginname") String log,
 			@RequestParam("pass") String pass, @RequestParam("email") String email, HttpSession s)
 			throws DangerException {
 
@@ -46,6 +46,7 @@ public class UsuarioController {
 			usuario.setPassword(pass);
 			usuario.setEmail(email);
 			usuario.setRol("auth");
+			usuario.setImgUP(H.blobCreator(img));
 
 			usuarioRepo.save(usuario);
 
