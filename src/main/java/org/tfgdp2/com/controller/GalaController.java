@@ -29,6 +29,8 @@ import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.GalaRepository;
+import org.tfgdp2.com.repository.NominacionJuegoRepository;
+import org.tfgdp2.com.repository.NominacionParticipanteRepository;
 import org.tfgdp2.com.repository.PremioJuegoRepository;
 import org.tfgdp2.com.repository.PremioParticipanteRepository;
 
@@ -39,7 +41,8 @@ public class GalaController {
 	@Autowired GalaRepository repoGala;
 	@Autowired PremioJuegoRepository repoPremioJ;
 	@Autowired PremioParticipanteRepository repoPremioP;
-	
+	@Autowired NominacionJuegoRepository repoNJuego;
+	@Autowired NominacionParticipanteRepository repoNParticipante;
 	@GetMapping("r")
 	public String read(ModelMap m) {
 		m.put("galas", repoGala.findAll());
@@ -184,6 +187,24 @@ public class GalaController {
 		m.put("estado",galas.get(0).getActivo());
 		m.put("fechaActual",LocalDate.now());
 		m.put("fechaDePremio",galas.get(0).getFin().plusDays(5));
+		m.put("JuegoDeMayorImpacto",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Juego de Mayor Impacto", galas.get(0).getId()));
+		m.put("JuegoDelAño",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Juego del Año", galas.get(0).getId()));
+		m.put("MejorBandaSonora",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Banda Sonoro", galas.get(0).getId()));
+		m.put("MejorEventoDeEsport",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Evento de eSports", galas.get(0).getId()));
+		m.put("MejorJuegoComoServicio",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego como Servicio", galas.get(0).getId()));
+		m.put("MejorJuegoDeAccion",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego de Accion", galas.get(0).getId()));
+		m.put("MejorJuegoDeCarreras",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego de Deportes/Carreras", galas.get(0).getId()));
+		m.put("MejorJuegoDeEsports",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego de eSports", galas.get(0).getId()));
+		m.put("MejorJuegoDeEstrategia",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego de Estrategia", galas.get(0).getId()));
+		m.put("MejorJuegoDeLucha",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego de Lucha ", galas.get(0).getId()));
+		m.put("MejorJuegoDeRol",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego de Rol", galas.get(0).getId()));
+		m.put("MejorJuegoFamiliar",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego Familiar", galas.get(0).getId()));
+		m.put("MejorJuegoIndie",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego Indie", galas.get(0).getId()));
+		m.put("MejorJuegoMultijugador",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego Multijugador", galas.get(0).getId()));
+		m.put("MejorMoviles",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego para Moviles", galas.get(0).getId()));
+		m.put("MejorJuegoVR",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego VR", galas.get(0).getId()));
+		m.put("MejorNarrativa",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Narrativa", galas.get(0).getId()));
+		m.put("MejorComunidad",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Soporte a la Comunidad", galas.get(0).getId()));
 		m.put("view","gala/galaActiva");
 		return "_t/frame";
 	}

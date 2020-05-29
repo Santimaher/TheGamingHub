@@ -12,4 +12,5 @@ import org.tfgdp2.com.domain.Nominacion_Participante;
 public interface NominacionJuegoRepository extends JpaRepository<Nominacion_Juego, Long> {
 
 	public List<Nominacion_Juego> findByPremioId(Long idPremio);
+	public Nominacion_Juego getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc(String nombre,Long id);
 }
