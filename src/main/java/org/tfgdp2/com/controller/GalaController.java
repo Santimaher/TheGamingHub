@@ -128,8 +128,8 @@ public class GalaController {
 	@PostMapping("activar")
 	public void activar(@RequestParam("id") Long id,HttpSession s) throws DangerException, InfoException {	
 		ScheduledExecutorService scheduler=Executors.newSingleThreadScheduledExecutor();
-        int initialDelay = 10;
-        int periodicDelay = 10;
+        int initialDelay = 1;
+        int periodicDelay = 1;
         scheduler.scheduleAtFixedRate(acabar(id), initialDelay, periodicDelay,TimeUnit.MINUTES);
 		try {
 			H.isRolOK("admin", s);
