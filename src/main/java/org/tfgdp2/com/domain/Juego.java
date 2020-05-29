@@ -189,10 +189,6 @@ public class Juego {
 		this.imgPre = imgPre;
 	}
 	
-	public String generateBase64Image() throws SQLException
-	{
-	    return Base64.getEncoder().encodeToString(this.getImg().getBytes(1l, (int)this.img.length()));
-	}
 	
 	
 }
