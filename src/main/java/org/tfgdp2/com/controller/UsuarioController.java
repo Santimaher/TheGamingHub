@@ -80,15 +80,11 @@ public class UsuarioController {
 		
 		try {
 			H.isRolOK("auth", s);
-			Usuario usuario = usuarioRepo.getOne(id);
-		
-			 String fileExtension =  img.getOriginalFilename().split("\\.")[1];
-			String nombreImg = usuario.getLoginname()+"#"+usuario.getId()+"."+fileExtension;
-			H.subirImagen(usuario, img);
-			
+			Usuario usuario = usuarioRepo.getOne(id);			
 			usuario.setNombre(nombreusuario);
 			usuario.setLoginname(log);
 			usuario.setEmail(email);
+			usuario.setImgUP(H.blobCreator(img));
 
 			usuarioRepo.save(usuario);
 

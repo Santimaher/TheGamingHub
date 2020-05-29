@@ -1,6 +1,9 @@
 package org.tfgdp2.com.domain;
 
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -10,6 +13,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -33,6 +37,8 @@ public class Usuario {
 	private String password;
 	private String rol;
 	private String img;
+	@Lob
+	private Blob imgUP;
 
 //	@ManyToMany(mappedBy="votacion")
 //    private Collection<Juego> votaciones;
@@ -166,6 +172,17 @@ public class Usuario {
 	public void setVotos(Collection<Votacion_Foro> votos) {
 		this.votos = votos;
 	}
+
+	public String getImgUP() throws SQLException {
+		String bytes = Base64.getEncoder().encodeToString(this.imgUP.getBytes(1l, (int)this.imgUP.length()));
+		return bytes;
+	}
+
+	public void setImgUP(Blob imgUP) {
+		this.imgUP = imgUP;
+	}
+	
+	
 
 //
 //	public Collection<Votacion_Participante> getVotadosP() {

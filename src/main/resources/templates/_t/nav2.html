@@ -40,7 +40,7 @@
 			</div>
 			<div class="col-12" th:if="${session.usuario != null}">
 				<div class="chip purple white-text ">
-					<img th:src="|/img/${session.usuario.img}|" alt="Contact Person">
+					<img th:src="|data:image/png;base64,${session.usuario.imgUP}|" alt="Foto del Usuario">
 					<span th:text="${session.usuario.nombre}"></span> <i th:if="${session.usuario.rol=='admin'}" class="material-icons"> verified_user</i>    
 				</div>
 				<ul class="collapsible">
