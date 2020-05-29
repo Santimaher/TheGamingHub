@@ -1,5 +1,6 @@
 package org.tfgdp2.com.controller;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -147,12 +148,17 @@ public class PremioController {
 	@GetMapping("addVotoP")
 	public String addVotoP(ModelMap m, @RequestParam("id") Long id,HttpSession s) throws DangerException {
 		String vista = null;
-		
+		Gala g = repoGala.findTopByOrderByEdicionDesc();
 		try {
 			Usuario usu = (Usuario) s.getAttribute("usuario");	
 		if (haVotado(usu.getId(), id, false)) {
 			PRG.error("Ya ha votado en este premio", "/premio/r");
-			
+			if (g.getActivo()==true) {
+				PRG.error("La gala no esta activa", "premio/r");
+				if (g.getFin().isAfter(LocalDate.now())) {
+					PRG.error("El tiempo de votacion ha excedido", "premio/r");
+				}
+			}
 		} else {
 			m.put("premio", repoPremioPar.getOne(id));
 			m.put("nominados", repoNP.findByPremioId(id));
@@ -170,10 +176,18 @@ public class PremioController {
 	@GetMapping("addVotoJ")
 	public String addVotoJ(ModelMap m, @RequestParam("id") Long id,HttpSession s) throws DangerException {
 		String vista = null;
+		Gala g = repoGala.findTopByOrderByEdicionDesc();
 		try {
 			Usuario usu = (Usuario) s.getAttribute("usuario");
-		if (haVotado(usu.getId(), id, true)) {
+		if (haVotado(usu.getId(), id, true) ) {
 			PRG.error("Ya ha votado en este premio", "premio/r");
+			if (g.getActivo()==true) {
+				PRG.error("La gala no esta activa", "premio/r");
+				if (g.getFin().isAfter(LocalDate.now())) {
+					PRG.error("El tiempo de votacion ha excedido", "premio/r");
+				}
+			}
+			
 		} else {
 			m.put("premio", repoPremioJuego.getOne(id));
 			m.put("nominados", repoNJ.findByPremioId(id));
