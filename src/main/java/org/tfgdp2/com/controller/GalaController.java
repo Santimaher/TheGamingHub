@@ -188,7 +188,7 @@ public class GalaController {
 		m.put("fechaActual",LocalDate.now());
 		m.put("fechaDePremio",galas.get(0).getFin().plusDays(5));
 		m.put("JuegoDeMayorImpacto",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Juego de Mayor Impacto", galas.get(0).getId()));
-		m.put("JuegoDelAño",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Juego del Año", galas.get(0).getId()));
+		m.put("JuegoDelAnio",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Juego del Año", galas.get(0).getId()));
 		m.put("MejorBandaSonora",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Banda Sonoro", galas.get(0).getId()));
 		m.put("MejorEventoDeEsport",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Evento de eSports", galas.get(0).getId()));
 		m.put("MejorJuegoComoServicio",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego como Servicio", galas.get(0).getId()));
