@@ -181,12 +181,12 @@ public class PremioController {
 			Usuario usu = (Usuario) s.getAttribute("usuario");
 		if (haVotado(usu.getId(), id, true) ) {
 			PRG.error("Ya ha votado en este premio", "premio/r");
-			if (g.getActivo()==true) {
-				PRG.error("La gala no esta activa", "premio/r");
-				if (g.getFin().isAfter(LocalDate.now())) {
-					PRG.error("El tiempo de votacion ha excedido", "premio/r");
-				}
-			}
+//			if (g.getActivo()==true) {
+//				PRG.error("La gala no esta activa", "premio/r");
+//				if (g.getFin().isAfter(LocalDate.now())) {
+//					PRG.error("El tiempo de votacion ha excedido", "premio/r");
+//				}
+//			}
 			
 		} else {
 			m.put("premio", repoPremioJuego.getOne(id));
