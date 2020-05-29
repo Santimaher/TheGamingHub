@@ -74,19 +74,19 @@
 				<div class="fondo-carta card-reveal black white-text letra-grande">
 					<span class="card-title white-text flow-text "
 						th:text="${juego.nombre}"><i class="material-icons right">close</i></span>
-					<p th:text="|Precio: ${juego.precio} €|"></p>
-					<p th:text="|Stock: ${juego.stock} .ud|"></p>
 					<p th:text="|Desarrolladora: ${juego.desarrolladora}|"></p>
-					<p>
-					<ul th:each="plataforma:${juego.plataformas}">
-						<li th:text="${plataforma.nombre}"></li>
-					</ul>
-					</p>
-					<p>
-					<ul th:each="categoria:${juego.pertenece}">
-						<li th:text="${categoria.nombre}"></li>
-					</ul>
-					</p>
+					
+					<fieldset>
+					<legend>Plataformas disponibles</legend>
+						<div th:each="plataforma:${juego.plataformas}" class="chip" th:text="${plataforma.nombre}"></div>
+					</fieldset>
+					
+					
+					<fieldset>
+					<legend>Categorias</legend>
+						<div th:each="categoria:${juego.pertenece}" class="chip" th:text="${categoria.nombre}"></div>
+					</fieldset>
+					
 					<button th:data-target="|modal${juego.id}|"
 						class="btn modal-trigger purple">Trailer</button>
 
