@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpSession;
 
@@ -106,11 +109,28 @@ public class GalaController {
 		}
 		PRG.info("Observacion añadida", "gala/r");
 	}
-	
+	public Runnable acabar(Long id) throws DangerException, InfoException 
+	{
+		Gala ga=repoGala.getOne(id);
+		if(ga.getFin()==LocalDate.now()) 
+		{
+			if(ga.getActivo()) {
+				ga.setActivo(false);
+			}
+			else {
+				ga.setActivo(true);				
+				
+			}
+			repoGala.save(ga);
+		}
+		return null;
+	}
 	@PostMapping("activar")
-	public void activar(ModelMap m,
-			@RequestParam("id") Long id,
-			HttpSession s) throws DangerException, InfoException {	
+	public void activar(@RequestParam("id") Long id,HttpSession s) throws DangerException, InfoException {	
+		ScheduledExecutorService scheduler=Executors.newSingleThreadScheduledExecutor();
+        int initialDelay = 10;
+        int periodicDelay = 10;
+        scheduler.scheduleAtFixedRate(acabar(id), initialDelay, periodicDelay,TimeUnit.MINUTES);
 		try {
 			H.isRolOK("admin", s);
 			Gala g = repoGala.getOne(id);			
