@@ -17,24 +17,24 @@
 		th:utext="${#temporals.format(fecha, 'dd-MM-yyyy')}" id="ff"></span>
 	<h3>Gala activa</h3>
 	<h5 id="crono"></h5>
-	<p th:if="|${JuegoDeMayorImpacto.premio.NombrePremio}: ${JuegoDeMayorImpacto.nombre} con ${JuegoDeMayorImpacto.cantidadVotos} votos|"></p>
-	<p th:if="|${JuegoDelAño.premio.NombrePremio}: ${JuegoDelAño.nombre} con ${JuegoDelAño.cantidadVotos} votos|"></p>
-	<p th:if="|${MejorBandaSonora.premio.NombrePremio}: ${MejorBandaSonora.nombre} con ${MejorBandaSonora.cantidadVotos} votos|"></p>
-	<p th:if="|${MejorEventoDeEsport.premio.NombrePremio}: ${MejorEventoDeEsport.nombre} con ${MejorEventoDeEsport.cantidadVotos} votos|"></p>
-	<p th:if="|${MejorJuegoComoServicio.NombrePremio}: ${MejorJuegoComoServicio.nombre} con ${MejorJuegoComoServicio.cantidadVotos} votos|"></p>
-	<p th:if="|${MejorJuegoDeAccion}: ${MejorJuegoDeAccion.nombre} con ${MejorJuegoDeAccion.cantidadVotos} votos|"></p>
-	<p th:if="|${MejorJuegoDeCarreras.premio.NombrePremio}: ${MejorJuegoDeCarreras.nombre} con ${MejorJuegoDeCarreras.cantidadVotos} votos|"></p>
-	<p th:if="|${MejorJuegoDeEsports.premio.NombrePremio}: ${MejorJuegoDeEsports.nombre} con ${MejorJuegoDeEsports.cantidadVotos} votos|"></p>
-	<p th:if="|${MejorJuegoDeEstrategia.premio.NombrePremio}: ${MejorJuegoDeEstrategia.nombre} con ${MejorJuegoDeEstrategia.cantidadVotos} votos|"></p>
-	<p th:if="|${MejorJuegoDeLucha.premio.NombrePremio}: ${MejorJuegoDeLucha.nombre} con ${MejorJuegoDeLucha.cantidadVotos} votos|"></p>
-	<p th:if="|${MejorJuegoDeRol.premio.NombrePremio}: ${MejorJuegoDeRol.nombre} con ${MejorJuegoDeRol.cantidadVotos} votos|"></p>
-	<p th:if="|${MejorJuegoFamiliar.premio.NombrePremio}: ${MejorJuegoFamiliar.nombre} con ${MejorJuegoFamiliar.cantidadVotos} votos|"></p>
-	<p th:if="|${MejorJuegoIndie.premio.NombrePremio}: ${MejorJuegoIndie.nombre} con ${MejorJuegoIndie.cantidadVotos} votos|"></p>
-	<p th:if="|${MejorJuegoMultijugador.premio.NombrePremio}: ${MejorJuegoMultijugador.nombre} con ${MejorJuegoMultijugador.cantidadVotos} votos|"></p>
-	<p th:if="|${MejorMoviles.premio.NombrePremio}: ${MejorMoviles.nombre} con ${MejorMoviles.cantidadVotos} votos|"></p>
-	<p th:if="|${MejorJuegoVR.premio.NombrePremio}: ${MejorJuegoVR.nombre} con ${MejorJuegoVR.cantidadVotos} votos|"></p>
-	<p th:if="|${MejorNarrativa.premio.NombrePremio}: ${MejorNarrativa.nombre} con ${MejorNarrativa.cantidadVotos} votos|"></p>
-	<p th:if="|${MejorComunidad.premio.NombrePremio}: ${MejorComunidad.nombre} con ${MejorComunidad.cantidadVotos} votos|"></p>
+	<p th:text="|${JuegoDeMayorImpacto.premio.NombrePremio}: ${JuegoDeMayorImpacto.nombre} con ${JuegoDeMayorImpacto.cantidadVotos} votos|"></p>
+	<p th:text="|${JuegoDelAño.premio.NombrePremio}: ${JuegoDelAño.nombre} con ${JuegoDelAño.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorBandaSonora.premio.NombrePremio}: ${MejorBandaSonora.nombre} con ${MejorBandaSonora.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorEventoDeEsport.premio.NombrePremio}: ${MejorEventoDeEsport.nombre} con ${MejorEventoDeEsport.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorJuegoComoServicio.NombrePremio}: ${MejorJuegoComoServicio.nombre} con ${MejorJuegoComoServicio.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorJuegoDeAccion}: ${MejorJuegoDeAccion.nombre} con ${MejorJuegoDeAccion.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorJuegoDeCarreras.premio.NombrePremio}: ${MejorJuegoDeCarreras.nombre} con ${MejorJuegoDeCarreras.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorJuegoDeEsports.premio.NombrePremio}: ${MejorJuegoDeEsports.nombre} con ${MejorJuegoDeEsports.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorJuegoDeEstrategia.premio.NombrePremio}: ${MejorJuegoDeEstrategia.nombre} con ${MejorJuegoDeEstrategia.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorJuegoDeLucha.premio.NombrePremio}: ${MejorJuegoDeLucha.nombre} con ${MejorJuegoDeLucha.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorJuegoDeRol.premio.NombrePremio}: ${MejorJuegoDeRol.nombre} con ${MejorJuegoDeRol.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorJuegoFamiliar.premio.NombrePremio}: ${MejorJuegoFamiliar.nombre} con ${MejorJuegoFamiliar.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorJuegoIndie.premio.NombrePremio}: ${MejorJuegoIndie.nombre} con ${MejorJuegoIndie.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorJuegoMultijugador.premio.NombrePremio}: ${MejorJuegoMultijugador.nombre} con ${MejorJuegoMultijugador.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorMoviles.premio.NombrePremio}: ${MejorMoviles.nombre} con ${MejorMoviles.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorJuegoVR.premio.NombrePremio}: ${MejorJuegoVR.nombre} con ${MejorJuegoVR.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorNarrativa.premio.NombrePremio}: ${MejorNarrativa.nombre} con ${MejorNarrativa.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorComunidad.premio.NombrePremio}: ${MejorComunidad.nombre} con ${MejorComunidad.cantidadVotos} votos|"></p>
 		<form action="https://thegaminghub.herokuapp.com/premio/r">
 		<button class="btn waves-effect waves-light purple separacion" onclick="submit()">Votar para los premios</button>
 	</form>
@@ -58,8 +58,7 @@
 	</form>
 </div>
 
-<script type="text/javascript"
-	th:if="${fecha}>${fechaActual} and ${estado}==true">
+<script type="text/javascript" th:if="${fecha}>${fechaActual} and ${estado}==true">
 function restaFechas(f1,f2){
  var aFecha1 = f1.split('/');
  var aFecha2 = f2.split('-');
