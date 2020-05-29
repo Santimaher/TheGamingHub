@@ -39,7 +39,7 @@
 					<a class="waves-effect waves-light btn hoverable purple white-text" href="/login">Login</a>
 			</div>
 			<div class="col-12" th:if="${session.usuario != null}">
-				<div class="chip purple white-text "">
+				<div class="chip purple white-text ">
 				<img  th:src="|data:image/png;base64,${session.usuario.imgUP}|"alt="Contact Person">					
 					<span th:text="${session.usuario.nombre}"></span> <i th:if="${session.usuario.rol=='admin'}" class="material-icons"> verified_user</i>    
 				</div>
