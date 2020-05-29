@@ -173,8 +173,8 @@ public class Juego {
 		this.nominado = nominado;
 	}
 
-	public byte[] getImg() throws SQLException {
-		byte[] bytes = Base64.getEncoder().encode(this.img.getBytes(1l, (int)this.img.length()));
+	public String getImg() throws SQLException {
+		String bytes = Base64.getEncoder().encodeToString(this.img.getBytes(1l, (int)this.img.length()));
 		return bytes;
 		
 	}
