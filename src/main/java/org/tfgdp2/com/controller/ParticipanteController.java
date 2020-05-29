@@ -65,25 +65,8 @@ public class ParticipanteController {
 			
 			Participante participante = new Participante(nombre,apellido,bio,teaser);
 			
-			//===================IMÁGEN
-			
-			String uploadDir = "/img/upload/";
-			String uploadDirRealPath = "";
-			String fileName = "_p";
-			String fileExtension = "png";
-			
-			if (imgFile != null && imgFile.getOriginalFilename().split("\\.").length == 2) {
-				fileName = "p-" + participante.getId();
-				fileExtension = imgFile.getOriginalFilename().split("\\.")[1];
-				uploadDirRealPath = "C:\\Users\\alica\\git\\TheGamingHub\\src\\main\\resources\\static\\img\\upload";
-				// uploadDirRealPath = sc.getRealPath(uploadDir);
-				// uploadDirRealPath ="img/upload";
-				File transferFile = new File(uploadDirRealPath + fileName + "." + fileExtension);
-				imgFile.transferTo(transferFile);
-			}
-
-			String img = uploadDir + fileName + "." + fileExtension;
-			participante.setImg(img);
+		
+			participante.setImg(H.blobCreator(imgFile));
 			
 			//===================CATEGORIA
 			
@@ -149,28 +132,7 @@ public class ParticipanteController {
         		participante.setApellido(apellido);
         		participante.setBio(bio);
         		participante.setTeaser(teaser);
-			
-				
-				//============IMG
-			String uploadDir = "/img/upload/";
-			String uploadDirRealPath = "";
-			String fileName = "_p";
-			String fileExtension = "png";
-			
-			if (imgFile != null && imgFile.getOriginalFilename().split("\\.").length == 2) {
-				fileName = "p-" + participante.getId();
-				fileExtension = imgFile.getOriginalFilename().split("\\.")[1];
-				uploadDirRealPath = "C:\\Users\\alica\\git\\TheGamingHub\\src\\main\\resources\\static\\img\\upload";
-				// uploadDirRealPath = sc.getRealPath(uploadDir);
-				// uploadDirRealPath ="img/upload";
-				File transferFile = new File(uploadDirRealPath + fileName + "." + fileExtension);
-				imgFile.transferTo(transferFile);
-			}
-
-			String img = uploadDir + fileName + "." + fileExtension;
-			participante.setImg(img);
-			//==============
-			
+        		participante.setImg(H.blobCreator(imgFile));
 			
 			repoParticipante.save(participante);
 		}catch(Exception e) {

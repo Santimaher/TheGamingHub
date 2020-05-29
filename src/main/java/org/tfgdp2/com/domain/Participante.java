@@ -1,12 +1,16 @@
 package org.tfgdp2.com.domain;
 
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -24,8 +28,11 @@ public class Participante {
 	
 	private String teaser;
 	
-	private String img;
+	@Lob
+	private Blob img;
 	
+	
+
 	private Boolean estaNominado;
 	
 	
@@ -54,16 +61,7 @@ public class Participante {
 		
 	}
 	
-//	public Participante(String nombre, String apellido, String bio, String teaser, Boolean estaNominado) {
-//		super();
-//		this.nombre = nombre;
-//		this.apellido = apellido;
-//		this.bio = bio;
-//		this.teaser = teaser;
-//		this.estaNominado=estaNominado;
-//		this.nominado = new ArrayList<>();
-//		
-//	}
+
 
 	//==============================
 	public Long getId() {
@@ -106,13 +104,15 @@ public class Participante {
 		this.teaser = teaser;
 	}
 
-	public String getImg() {
-		return img;
+
+
+	public String getImg() throws SQLException {
+		String bytes = Base64.getEncoder().encodeToString(this.img.getBytes(1l, (int)this.img.length()));
+		return bytes;
 	}
 
-	public void setImg(String img) {
+	public void setImg(Blob img) {
 		this.img = img;
-		
 	}
 
 	public Boolean getEstaNominado() {
