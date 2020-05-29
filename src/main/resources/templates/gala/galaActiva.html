@@ -18,7 +18,7 @@
 	<h3>Gala activa</h3>
 	<h5 id="crono"></h5>
 	<p th:text="|${JuegoDeMayorImpacto.premio.nombrePremio}: ${JuegoDeMayorImpacto.nombre} con ${JuegoDeMayorImpacto.cantidadVotos} votos|"></p>
-	<p th:text="|${JuegoDelAño.premio.nombrePremio}: ${JuegoDelAño.nombre} con ${JuegoDelAño.cantidadVotos} votos|"></p>
+	<p th:text="|${JuegoDelAnio.premio.nombrePremio}: ${JuegoDelAnio.nombre} con ${JuegoDelAnio.cantidadVotos} votos|"></p>
 	<p th:text="|${MejorBandaSonora.premio.nombrePremio}: ${MejorBandaSonora.nombre} con ${MejorBandaSonora.cantidadVotos} votos|"></p>
 	<p th:text="|${MejorEventoDeEsport.premio.nombrePremio}: ${MejorEventoDeEsport.nombre} con ${MejorEventoDeEsport.cantidadVotos} votos|"></p>
 	<p th:text="|${MejorJuegoComoServicio.nombrePremio}: ${MejorJuegoComoServicio.nombre} con ${MejorJuegoComoServicio.cantidadVotos} votos|"></p>
@@ -43,21 +43,6 @@
 			pasadas ediciones</button>
 	</form>
 </div>
-
-<div th:if="${fecha}<${fechaActual} and ${fechaDePremio}>${fechaActual}"
-	class="container">
-	<p th:if="${session.usuario==null}">Para poder votar tienes que <a href="https://thegaminghub.herokuapp.com/login">iniciar sesion</a></p>
-	<h3>Gala concluida</h3>
-	
-	
-	
-	
-	<form action="https://thegaminghub.herokuapp.com/gala/r">
-		<button class="btn waves-effect waves-light purple" onclick="submit()">Ver
-			pasadas ediciones</button>
-	</form>
-</div>
-
 <script type="text/javascript" th:if="${fecha}>${fechaActual} and ${estado}==true">
 function restaFechas(f1,f2){
  var aFecha1 = f1.split('/');
@@ -84,3 +69,18 @@ function restaFechas(f1,f2){
     	
     }
 </script>
+
+<div th:if="${fecha}<${fechaActual} and ${fechaDePremio}>${fechaActual}"
+	class="container">
+	<p th:if="${session.usuario==null}">Para poder votar tienes que <a href="https://thegaminghub.herokuapp.com/login">iniciar sesion</a></p>
+	<h3>Gala concluida</h3>
+	
+	
+	
+	
+	<form action="https://thegaminghub.herokuapp.com/gala/r">
+		<button class="btn waves-effect waves-light purple" onclick="submit()">Ver
+			pasadas ediciones</button>
+	</form>
+</div>
+
