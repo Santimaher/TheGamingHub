@@ -3,27 +3,28 @@
 	
 				</script>
 	<div class="col m12">
-			<h3>Editar Participante</h3>
+			<h3 class="center">Editar Participante</h3>
 		</div>
 		<div class="row">
-	<form method="post" enctype="multipart/form-data" onsubmit="return vfPu()" name="partFormu" action="https://thegaminghub.herokuapp.com/participante/u" class="form">
+	<form method="post" class="form" enctype="multipart/form-data" onsubmit="return vfPu()" name="partFormu" action="https://thegaminghub.herokuapp.com/participante/u" class="form">
 		<div class="input-field col s6">
+		<label for="nombre">Nombre</label>
 			<input name="nombre" type="text" class="validate"  placeholder="Nombre" th:value="${participante.nombre}"> 	
 			</div>
 		<div class="input-field col s6">
-					<input type="text" name="apellido" placeholder="Apellidos" class="validate" th:value="${participante.apellido}"> 
-					
+		<label for="apellido">Apellidos</label>
+			<input type="text" name="apellido" placeholder="Apellidos" class="validate" th:value="${participante.apellido}"> 
 				</div>
+				
 			<div class="input-field col s12">
+			<label for="bio">Biografía</label>
 				<input type="text" name="bio" placeholder="Biografía" class="validate"  th:value="${participante.bio}">
-				 
 			</div>
 
 		<div class="input-field col s12">
-			
+			<label for="teaser">Teaser</label>
 				<input type="text" name="teaser" placeholder="teaser" class=""  th:value="${participante.teaser}">
-				
-			</div>
+				</div>
 			
 			<div class="file-field input-field col s12">
 				<div class="btn waves-effect waves-dark">
@@ -48,5 +49,14 @@
 			
 		<br>
 	</form>
+	<div class="row">
+		<div class="center">
+			<a href="https://thegaminghub.herokuapp.com/participante/r">
+				<button class="btn waves-effect waves-light purple">
+				Atras <i class="material-icons left">arrow_back</i>
+				</button>
+			</a>
+			</div>
+			</div>
 	</div>
 </div>
