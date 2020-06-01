@@ -166,7 +166,7 @@ td.is-selected,
     color: black !important
 }
 
-.datepicker-controls{
+.select-dropdown, dropdown-trigger{
 	background-color: #607d8b !important;
     color: black !important
 }
