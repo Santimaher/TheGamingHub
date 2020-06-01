@@ -180,14 +180,12 @@ public class EntradaForoController {
 				repoVotacion.save(votacion);
 				repoEntrada.save(e);
 				
-				 PRG.info("Like añadido", "entradaForo/r",id,idEntrada);
 			}
 			else 
 			{
 				e.setRanking(e.getRanking()-1);
 				repoVotacion.delete(votacion);
 				repoEntrada.save(e);
-				 PRG.info("Like quitado", "entradaForo/r",id,idEntrada);
 			}
 			
 		}
@@ -202,7 +200,6 @@ public class EntradaForoController {
 			repoVotacion.save(vota);
 			e.setRanking(e.getRanking()+1);
 			repoEntrada.save(e);
-			PRG.info("Like añadido", "entradaForo/r",id,idEntrada);
 		}
 	}
 	@GetMapping("dislike")
@@ -220,14 +217,13 @@ public class EntradaForoController {
 				votacion.setVoto("dislike");
 				repoVotacion.save(votacion);
 				repoEntrada.save(e);
-				PRG.info("Dislike añadido", "entradaForo/r",id,idEntrada);
 			}
 			else 
 			{
 				e.setRanking(e.getRanking()+1);
 				repoVotacion.delete(votacion);
 				repoEntrada.save(e);
-				PRG.info("Dislike quitado", "entradaForo/r",id,idEntrada);
+				
 			}
 			
 		}
@@ -243,7 +239,6 @@ public class EntradaForoController {
 			
 			e.setRanking(e.getRanking()-1);
 			repoEntrada.save(e);
-			PRG.info("Dislike añadido", "entradaForo/r",id,idEntrada);
 		}
 	}
 	@GetMapping("likeR")
