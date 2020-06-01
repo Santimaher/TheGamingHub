@@ -66,7 +66,7 @@
 				</form>
 				</div>
 				<div class="col s12 m6 l5 xl5">
-				<form action="https://thegaminghub.herokuapp.com/entradaForo/d" method="post" th:onsubmit="|return confirmarBorrado('Comentario: ${entrada.comentario}')|">
+				<form action="https://thegaminghub.herokuapp.com/entradaForo/d" method="post" th:onsubmit="|confirmarBorrado('Comentario: ${entrada.comentario}')|">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
 						<i class="material-icons left">delete</i>

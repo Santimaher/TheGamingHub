@@ -81,5 +81,9 @@ function esta(nombre){
 	}
 	return check
 }
+
+function confirmarBorrado(x) {
+	return confirm("¿Estas seguro de que desea borrar este elemento : "+x+"?");
+}
 	
 			
