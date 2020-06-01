@@ -26,7 +26,7 @@
 				</form>
 				<form action="/juego/d" method="post">
 					<input type="hidden" name="id" th:value="${j.id}" />
-					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento : Nominado:> ${j.nombre} ? ')|">
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?');|">
 						<i class="material-icons left">delete</i>
 					</button>
 				</form>
