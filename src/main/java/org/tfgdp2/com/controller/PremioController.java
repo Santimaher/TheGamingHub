@@ -108,15 +108,20 @@ public class PremioController {
 	}
 
 	@GetMapping("r")
-	public String r(ModelMap m) {
-
+	public String r(ModelMap m) throws DangerException {
+		try {
 		Gala g  = repoGala.getByActivoTrue();
 		m.put("gala",g );
 		m.put("pj", repoPremioJuego.findByTiene_id(g.getId()));
 		m.put("pp", repoPremioPar.findByTiene_id(g.getId()));
 		m.put("view", "premio/r");
-
+		
+		}
+	 catch (NullPointerException e) {
+		PRG.error("Inicie sesion para votar", "/login");
+	}
 		return "_t/frame";
+		
 	}
 
 	@PostMapping("dP")
@@ -153,12 +158,12 @@ public class PremioController {
 			Usuario usu = (Usuario) s.getAttribute("usuario");	
 		if (haVotado(usu.getId(), id, false)) {
 			PRG.error("Ya ha votado en este premio", "/premio/r");
-			if (g.getActivo()==true) {
-				PRG.error("La gala no esta activa", "premio/r");
-				if (g.getFin().isAfter(LocalDate.now())) {
-					PRG.error("El tiempo de votacion ha excedido", "premio/r");
-				}
-			}
+//			if (g.getActivo()==true) {
+//				PRG.error("La gala no esta activa", "premio/r");
+//				if (g.getFin().isAfter(LocalDate.now())) {
+//					PRG.error("El tiempo de votacion ha excedido", "premio/r");
+//				}
+//			}
 		} else {
 			m.put("premio", repoPremioPar.getOne(id));
 			m.put("nominados", repoNP.findByPremioId(id));

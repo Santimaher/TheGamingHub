@@ -80,7 +80,7 @@ public class ParticipanteController {
 			repoParticipante.save(participante);			
 			
 		}catch(Exception e) {
-			PRG.error("Error al crear el participante "+e.getStackTrace()+"", "/participante/c");
+			PRG.error("Error al crear el participante "+e.getMessage()+"", "/participante/c");
 		}
 		
 		return "redirect:/participante/r";

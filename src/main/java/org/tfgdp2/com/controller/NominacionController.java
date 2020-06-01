@@ -1,5 +1,8 @@
 package org.tfgdp2.com.controller;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.tfgdp2.com.domain.Gala;
 import org.tfgdp2.com.domain.Juego;
 import org.tfgdp2.com.domain.Nominacion_Juego;
 import org.tfgdp2.com.domain.Nominacion_Participante;
@@ -19,6 +23,7 @@ import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
+import org.tfgdp2.com.repository.GalaRepository;
 import org.tfgdp2.com.repository.JuegoRepository;
 import org.tfgdp2.com.repository.NominacionJuegoRepository;
 import org.tfgdp2.com.repository.NominacionParticipanteRepository;
@@ -48,6 +53,9 @@ public class NominacionController {
 	@Autowired
 	private NominacionJuegoRepository repoNJ;
 	
+	@Autowired
+	private GalaRepository repoGala;
+	
 	
 	@GetMapping("nominarParticipante")
 	public String nominarParticipante(ModelMap m,HttpSession s) throws DangerException {
@@ -68,8 +76,7 @@ public class NominacionController {
 		Nominacion_Participante np = new Nominacion_Participante();
 		np.setNombre(p.getNombre());
 		np.setPremio(pr);
-		pr.getPremiados().add(np);
-		
+		pr.getPremiados().add(np);		
 		np.getParticipantes().add(p);
 		p.getNominado().add(np);		
 		repoNP.save(np);
@@ -81,11 +88,7 @@ public class NominacionController {
 	}
 	
 	@GetMapping("nominarJuego")
-	public String nominarJuego(ModelMap m,HttpSession s) throws DangerException {
-		try{H.isRolOK("jurado", s);}
-		catch (Exception e) {
-			PRG.error("Rol inadecuado");
-		}
+	public String nominarJuego(ModelMap m) {
 		m.put("juegos",repoJuego.findAll());
 		m.put("premioJ", repoPremioJ.findAll());
 		m.put("view", "nominacion/nominarJuego");
@@ -93,10 +96,9 @@ public class NominacionController {
 	}
 	
 	@PostMapping("nominarJuego")
-	public void nominarJpost(@RequestParam("id") Long idJuego,@RequestParam("premio") Long idPremio,HttpSession s) throws DangerException, InfoException{
+	public void nominarJpost(@RequestParam("id") Long idJuego,@RequestParam("premio") Long idPremio) throws DangerException, InfoException{
 		Juego j = repoJuego.getOne(idJuego);
 		try {
-			H.isRolOK("jurado", s);
 		Premio_Juego pr = repoPremioJ.getOne(idPremio);
 		j.setEstaNominado(true);
 		Nominacion_Juego nj = new Nominacion_Juego();
@@ -110,7 +112,7 @@ public class NominacionController {
 		catch (Exception e) {
 			PRG.error("El juego no se pudo nominar");
 		}
-		PRG.info("Juego nominado correctamente.","nominacion/nominacioJuego");
+		PRG.info("Juego nominado correctamente.");
 	}
 	
 	@GetMapping("npr")
@@ -125,5 +127,32 @@ public class NominacionController {
 		m.put("juegos", repoNJ.findAll());
 		m.put("view", "nominacion/nJr");
 		return "_t/frame";
+	}
+	
+	public boolean estaNominadoEnEsePremio(boolean esJuego, Long idNom) {
+		Gala g  = repoGala.findTopByOrderByIdDesc();
+		boolean check = false;
+		if (esJuego) {
+			Nominacion_Juego NJ = repoNJ.getOne(idNom);
+			Collection<Premio_Juego> premiosJ = g.getPremiosJ();
+			
+			HashSet<Long> listadoPJ = new HashSet<>();
+			for (Premio_Juego PJ : premiosJ) {
+			listadoPJ.add(PJ.getId());
+			}
+			check = listadoPJ.contains(NJ.getPremio().getId());
+			
+		} else {
+			Nominacion_Participante NP = repoNP.getOne(idNom);
+			Collection<Premio_Participante> premiosP = g.getPremiosP();
+			
+			HashSet<Long> listadoPP = new HashSet<>();
+			for (Premio_Participante PP : premiosP) {
+				listadoPP.add(PP.getId());
+			}
+			check = listadoPP.contains(NP.getPremio().getId());
+		}
+		
+		return check;
 	}
 }

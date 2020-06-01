@@ -13,4 +13,5 @@ public interface NominacionJuegoRepository extends JpaRepository<Nominacion_Jueg
 
 	public List<Nominacion_Juego> findByPremioId(Long idPremio);
 	public Nominacion_Juego getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc(String nombre,Long id);
+	public Nominacion_Juego getBy
 }

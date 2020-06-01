@@ -10,7 +10,7 @@ import org.tfgdp2.com.domain.Gala;
 public interface GalaRepository extends JpaRepository<Gala, Long> {
 
 	public Long deleteGalaById (Long id);
-	
+	public Gala findTopByOrderByIdDesc();
 	public Gala findTopByOrderByEdicionDesc();
 	public List<Gala> findByOrderByEdicionDesc();
 	public Gala getByActivoTrue();
