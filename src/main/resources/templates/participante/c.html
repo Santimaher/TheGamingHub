@@ -1,32 +1,33 @@
 <div class="container">
 		<div class="col m12">
-			<h3>Nuevo Participante</h3>
+			<h3 class="center">Nuevo Participante</h3>
 		</div>
 	<br>
 		<br>
 	<div class="row">
-		<form method="post"  enctype="multipart/form-data" onsubmit="return vfP()" name="partForm" action="https://thegaminghub.herokuapp.com/participante/c" class="col s12">
+		<form method="post" class="form" enctype="multipart/form-data" onsubmit="return vfP()" name="partForm" action="https://thegaminghub.herokuapp.com/participante/c" class="col s12">
 
 				<div class="input-field col s6">
-						<input name="nombre" type="text" placeholder="Nombre">
+				<label for="nombre">Nombre</label>
+					<input name="nombre" type="text" class="validate">
 				</div>
 
 
 				<div class="input-field col s6">
-				
-					<input type="text" name="apellido" class="validate" placeholder="Apellidos">
+				<label for="apellido">Apellidos</label>
+					<input type="text" name="apellido" class="validate">
 				</div>
 
 
 			<div class="input-field col s12">
-			
-				<input type="text" name="bio" class="validate" placeholder="Biografía">
+			<label for="bio">Biografía</label>
+				<input type="text" name="bio" class="validate">
 
 			</div>
 
 			<div class="input-field col s12">
-			
-				<input type="text" name="teaser" class="" placeholder="Teaser">
+			<label for="teaser">Teaser</label>
+				<input type="text" name="teaser" class="">
 
 			</div>
 
@@ -63,11 +64,14 @@
 	</form>
 			<br>
 		<br>
+		<div class="row">
+		<div class="col separacion">
 			<a href="/">
-
 				<button class="btn waves-effect waves-light purple">
 				Home <i class="material-icons left">home</i>
 				</button>
 			</a>
+			</div>
+			</div>
 	</div>
 	</div>
