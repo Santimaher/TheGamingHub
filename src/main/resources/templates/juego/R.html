@@ -98,7 +98,7 @@
 	<ul class="pagination">    
     <li class="waves-effect" th:if="${antes.size() != 0}" th:each="ia:${antes}"><a th:href="|https://thegaminghub.herokuapp.com/juego/r/${ia}|" th:text="${ia}"></a></li>
     <li class="waves-effect active"><a th:href="|https://thegaminghub.herokuapp.com/juego/r/${durante}|" th:text="${durante}"></a></li>
-    <li class="waves-effect" th:each="id:${despues}"><a href="|https://thegaminghub.herokuapp.com/juego/r/${id}|" th:text="${id}"></a></li>
+    <li class="waves-effect" th:each="ide:${despues}"><a th:href="|https://thegaminghub.herokuapp.com/juego/r/${ide}|" th:text="${ide}"></a></li>
    
   </ul>
   

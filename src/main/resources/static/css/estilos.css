@@ -60,6 +60,9 @@ input
 }
 
 legend{
+	font-family: 'Poiret One', cursive;
+          color:white !important;
+   
 	font-size: 20px !important;
 }
 fieldset{
@@ -205,22 +208,22 @@ height: 80% !important;
 	font-size: 24px;
 }
 label{
-	font-family: 'Poiret One', cursive;
+	font-family: 'Poiret One', cursive !important;
           color:white !important;
-          font-size: 20px;
+          font-size: 20px !important;
 }
 option{
-	font-family: 'Poiret One', cursive;
+	font-family: 'Poiret One', cursive !important;
           color:white !important;
-          font-size: 20px;
+          font-size: 20px !important;
 }
 span{
-	font-family: 'Poiret One', cursive;
+	font-family: 'Poiret One', cursive !important;
           color:white !important;
-          font-size: 20px;
+          font-size: 20px !important;
 }
 select{
-	font-family: 'Poiret One', cursive;
+	font-family: 'Poiret One', cursive !important;
           color:white !important;
-          font-size: 20px;
+          font-size: 20px !important;
 }
