@@ -84,7 +84,7 @@
 				<input type="hidden" name="idJuego" th:value="${idJuego}">
 					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
 					<input type="hidden" name="id" th:value="${entrada?.pertenece.id}" />
-					<button th:text="|Ver respuestas(${entrada.respuestas.size()})|"onclick="submit()" class="waves-effect waves-light btn separacion purple">
+					<button th:text="|Respuestas(${entrada.respuestas.size()})|"onclick="submit()" class="waves-effect waves-light btn separacion purple">
 						
 					</button>
 				</form>
