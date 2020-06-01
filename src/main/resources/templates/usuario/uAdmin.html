@@ -10,29 +10,25 @@
 		<input type="hidden" name="id" th:value="${usuario.id}">
 		
 		<div class="input-field col s12">
-			
-			<input type="text"  name="nombre"  th:value="${usuario.nombre}" placeholder="Nombre">
+			<label for="nombre">Nombre</label>
+			<input type="text"  name="nombre"  th:value="${usuario.nombre}">
 		</div>
 		
 		<div class="input-field col s12">
-			<input type="text" name="loginname" th:value="${usuario.loginname}" placeholder="Nombre de usuario">
+		<label for="loginname">Nombre de usuario</label>
+			<input type="text" name="loginname" th:value="${usuario.loginname}">
 		</div>
 		
 		<div class="input-field col s12">
-			
-			<input type="text" name="email" th:value="${usuario.email}" placeholder="Email">
+			<label for="email">Correo electrónico</label>
+			<input type="text" name="email" th:value="${usuario.email}">
 		</div>
 		
-	
+		<div class="col m12">
+				<div class="center">
 		<input class="btn waves-effect waves-light purple" type="submit" value="Actualizar"  name="action">
-			
-		
-			
-			<a href="/">
-				<button class="btn waves-effect waves-light purple">
-				Home <i class="material-icons left">home</i>
-				</button>
-			</a>
+			</div>
+			</div>
 	</form>
 	</div>
 </div>
