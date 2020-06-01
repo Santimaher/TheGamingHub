@@ -93,7 +93,7 @@
 					<div th:each="voto:${entrada.votos}">
 						<img th:if="${voto.votante.id}==${session.usuario.id} and ${voto.voto=='dislike'}" src="/img/like1.png" height="20" width="20">
 						<img th:if="${voto.votante.id}==${session.usuario.id} and ${voto.voto=='like'}" src="/img/like2.png" height="20" width="20">
-						<img th:if="${!#lists.contains(entrada.votos, session.usuario.id)}" src="/img/like1.png" height="20" width="20">
+						<img th:if="${voto.votante.id==1}" src="/img/like1.png" height="20" width="20">
 				    </div>
 				    </button>
 					<button th:if="${session.usuario==null}"onclick="submit()" class="waves-effect waves-light btn separacion purple">
@@ -109,7 +109,7 @@
 					<div th:each="voto:${entrada.votos}">
 						<img th:if="${voto.votante.id}==${session.usuario.id} and ${voto.voto=='dislike'}" src="/img/dislike2.png" height="20" width="20">
 						<img th:if="${voto.votante.id}==${session.usuario.id} and ${voto.voto=='like'}" src="/img/dislike1.png" height="20" width="20">
-						<img th:if="${!#lists.contains(entrada.votos.votante.id, session.usuario.id)}" src="/img/dislike1.png" height="20" width="20">
+						<img th:if="${voto.votante.id==1}" src="/img/dislike1.png" height="20" width="20">
 				    </div>
 				    </button>
 					<button th:if="${session.usuario==null}"onclick="submit()" class="waves-effect waves-light btn separacion purple">
