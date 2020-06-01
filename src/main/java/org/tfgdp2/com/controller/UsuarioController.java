@@ -103,8 +103,8 @@ public class UsuarioController {
 
 	}
 	@PostMapping("uAdminPost")
-	public String uAdminPost(@RequestParam("nombre") String nombreusuario, @RequestParam("loginname") String log,
-			@RequestParam("id") Long id, @RequestParam("email") String email, HttpSession s) throws DangerException {
+	public void uAdminPost(@RequestParam("nombre") String nombreusuario, @RequestParam("loginname") String log,
+			@RequestParam("id") Long id, @RequestParam("email") String email, HttpSession s) throws DangerException, InfoException {
 		
 		try {
 			H.isRolOK("admin", s);
@@ -118,7 +118,7 @@ public class UsuarioController {
 		} catch (Exception e) {
 			PRG.error("Error al editar " + nombreusuario, "/usuario/r");
 		}
-		return "redirect:usuario/r";
+		PRG.info("Usuario actualizado correctamente", "usuario/r");
 	}
 
 	@PostMapping("d")
