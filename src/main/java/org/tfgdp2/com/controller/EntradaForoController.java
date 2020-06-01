@@ -63,7 +63,7 @@ public class EntradaForoController {
 		return "_t/frame";
 	}
 	@GetMapping("r")
-	public String leer(@RequestParam("idForo") Long id, ModelMap m,@RequestParam(value = "filtro", required = false) String filtro,@RequestParam(value = "tipo", required = false) String tipo) {
+	public String leer(HttpSession s,@RequestParam("idForo") Long id, ModelMap m,@RequestParam(value = "filtro", required = false) String filtro,@RequestParam(value = "tipo", required = false) String tipo) {
 		
 		filtro = (filtro == null) ? "" : filtro;
 		tipo = (tipo == null) ? "normal" : tipo;
