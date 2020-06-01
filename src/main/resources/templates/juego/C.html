@@ -33,7 +33,7 @@
 	<input type="text" id="teaserJ" name="teaser">
 	</div>
 	
-	<fieldset>
+	<fieldset class="separacion">
 		<legend>Categorias</legend>
 			<span th:each="categoria:${categorias}" >				
 				<label th:for="|cat-${categoria.id}|">
@@ -43,7 +43,7 @@
 			</span>
 	</fieldset>	
 	
-	<fieldset>
+	<fieldset class="separacion">
 		<legend>Plataformas seleccionadas</legend>
 			<div  name="seleccionadas" id="selec"></div>
 			<div>

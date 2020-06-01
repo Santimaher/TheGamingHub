@@ -1,6 +1,6 @@
 <div class="container">
 		<div class="col m12">
-			<h3>Nuevo Participante</h3>
+			<h3 class="center">Nuevo Participante</h3>
 		</div>
 	<br>
 		<br>
@@ -8,24 +8,25 @@
 		<form method="post"  enctype="multipart/form-data" onsubmit="return vfP()" name="partForm" action="https://thegaminghub.herokuapp.com/participante/c" class="col s12">
 
 				<div class="input-field col s6">
+				<label for="nombre">Nombre</label>
 						<input name="nombre" type="text" placeholder="Nombre">
 				</div>
 
 
 				<div class="input-field col s6">
-				
+					<label for="apellido">Apellidos</label>
 					<input type="text" name="apellido" class="validate" placeholder="Apellidos">
 				</div>
 
 
 			<div class="input-field col s12">
-			
+				<label for="bio">Biografía</label>
 				<input type="text" name="bio" class="validate" placeholder="Biografía">
 
 			</div>
 
 			<div class="input-field col s12">
-			
+				<label for="teaser">Teaser</label>
 				<input type="text" name="teaser" class="" placeholder="Teaser">
 
 			</div>
