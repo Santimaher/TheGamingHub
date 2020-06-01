@@ -167,7 +167,7 @@ td.is-selected,
 }
 
 .select-dropdown, dropdown-trigger{
-	background-color: #607d8b !important;
+	font-size: 24px !important;
     color: black !important
 }
 
