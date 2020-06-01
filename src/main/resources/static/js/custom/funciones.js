@@ -11,7 +11,7 @@ function buscar() {
 			boton.append(texto);
 			boton.type="button";
 			boton.setAttribute("onclick",'anadir("'+consola.nombre+'",'+consola.id+')');
-			boton.setAttribute("class",'btn waves-effect waves-light purple letrasChip');
+			boton.setAttribute("class",'btn waves-effect waves-light purple');
 			document.getElementById('exp').append(boton);
 			
 		
@@ -49,7 +49,7 @@ function anadir(nombre,id){
 	
 	else{
 		var divo = document.createElement("div");	
-		divo.classList.add("chip");
+		divo.classList.add("chip letrasChip");
 		var contTexto = document.createElement("span");
 		contTexto.setAttribute("name","consolas");
 		var texto2 = document.createTextNode(nombre);
