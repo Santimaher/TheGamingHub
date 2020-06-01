@@ -73,10 +73,25 @@ public class JuegoController {
 		int aguja = pageid;
 		ArrayList<Integer> dosAntes = new ArrayList<>();
 		ArrayList<Integer> dosDespues = new ArrayList<>();
-		for (int i = 1; i < 3; i++) {
-			dosAntes.add(aguja-i);
-			dosDespues.add(aguja+i);
+		if (aguja==1) {
+			for (int i = 2; i < 6; i++) {
+				dosDespues.add(i);
+			}
+			
 		}
+		else if (aguja==2) {
+			for (int i = 3; i < 6; i++) {
+				dosAntes.add(1);
+				dosDespues.add(i);
+			}
+		}
+		else {
+			for (int i = 1; i < 3; i++) {
+				dosAntes.add(aguja-i);
+				dosDespues.add(aguja+i);
+			}
+		}
+		
 		
 		
 		List<Juego> juegos = repoJuego.findByIdBetween(pl, fl);
