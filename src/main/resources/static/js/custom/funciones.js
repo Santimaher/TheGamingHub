@@ -49,8 +49,7 @@ function anadir(nombre,id){
 	
 	else{
 		var divo = document.createElement("div");	
-		divo.classList.add("chip");
-		divo.classList.add("letrasChip");
+		divo.setAttribute("class"," chip purple white-text")
 		var contTexto = document.createElement("span");
 		contTexto.setAttribute("name","consolas");
 		var texto2 = document.createTextNode(nombre);
