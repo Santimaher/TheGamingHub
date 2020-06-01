@@ -25,7 +25,7 @@
 				</form>
 				<form action="/participante/d" method="post">
 					<input type="hidden" name="id" th:value="${p.id}" />
-					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple" th:onsubmit="|return confirmarBorrado('Nominado: ${p.nombre}')|">
 						<i class="material-icons left">delete</i>
 					</button>
 				</form>

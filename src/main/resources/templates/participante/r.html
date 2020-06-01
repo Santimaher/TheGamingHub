@@ -27,9 +27,9 @@
 						<i class="material-icons left">edit</i>
 					</button>
 				</form>
-				<form action="https://thegaminghub.herokuapp.com/participante/d" method="post">
+				<form action="https://thegaminghub.herokuapp.com/participante/d" method="post" th:onsubmit="|return confirmarBorrado('Participante: ${p.nombre}')|">
 					<input type="hidden" name="id" th:value="${p.id}" />
-					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple" >
 						<i class="material-icons left">delete</i>
 					</button>
 				</form>

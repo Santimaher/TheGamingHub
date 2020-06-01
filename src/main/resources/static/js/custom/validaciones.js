@@ -1,3 +1,6 @@
+function confirmarBorrado(x) {
+	return confirm("¿Estas seguro de que desea borrar este elemento : "+x+"?");
+}
 function validarN_Partic() {
 	 var valido=false;
 	 var n=document.partForm.nombre.value;

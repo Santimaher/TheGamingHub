@@ -1,0 +1,40 @@
+<div class="container">
+<h1>Listado de premios</h1>
+	<table class="table table-striped">
+	<tr>
+		<th>Premios para participantes</th>
+
+	</tr>
+		<tr th:each="pParticipante:${premioPartipantes}">
+		<td th:text="${pParticipante.nombrePremio}"></td>
+		<td class="row">
+				<form action="/premio/dP" method="post" th:onsubmit="|return confirmarBorrado('Premio: ${pParticipante.nombrePremio}')|">
+					<input type="hidden" name="id" th:value="${pParticipante.id}" />
+					<button onclick="submit()">
+						<img src="/img/delete.png" height="20" width="20">
+					</button>
+				</form>
+		</td>
+	</tr>
+	<tr>
+		<th>Premios para juegos</th>
+
+	</tr>
+
+	<tr th:each="pJuego:${premioJuegos}">
+		<td th:text="${pJuego.nombrePremio}"></td>
+
+		<td class="row">
+				<form action="/premio/dJ" method="post" th:onsubmit="|return confirmarBorrado('Premio: ${pJuego.nombrePremio}')|">
+					<input type="hidden" name="id" th:value="${pJuego.id}" />
+					<button onclick="submit()">
+						<img src="/img/delete.png" height="20" width="20">
+					</button>
+				</form>
+		</td>
+	</tr>
+	</table>
+	<a href="/premio/c">
+		<button>Crear</button>
+	</a>
+</div>

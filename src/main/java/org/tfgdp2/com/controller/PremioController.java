@@ -123,6 +123,22 @@ public class PremioController {
 		return "_t/frame";
 		
 	}
+	
+	@GetMapping("rAdmin")
+	public String rAdmin(ModelMap m,HttpSession s) throws DangerException {
+		try {
+		H.isRolOK("admin", s);
+		m.put("pj", repoPremioJuego.findAll());
+		m.put("pp", repoPremioPar.findAll());
+		m.put("view", "premio/rAdmin");
+		
+		}
+	 catch (NullPointerException e) {
+		PRG.error("Inicie sesion para votar", "/login");
+	}
+		return "_t/frame";
+		
+	}
 
 	@PostMapping("dP")
 	public String deleteP(@RequestParam("id") Long id,HttpSession s) throws DangerException {

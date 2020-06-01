@@ -61,7 +61,7 @@
 						</div>
 						<div class="col s4" th:if="${session.usuario?.rol=='admin'}">
 							<form action="https://thegaminghub.herokuapp.com/juego/d"
-								method="post">
+								method="post" th:onsubmit="|return confirmarBorrado('Juego: ${juego.nombre}')|">
 								<input type="hidden" name="id" th:value="${juego.id}" />
 								<button onclick="submit()"
 									class=" btn-floating waves-effect waves-light btn purple btn-large">
@@ -94,13 +94,12 @@
 			</div>
 		</div>
 	</div>
-	
-	<ul class="pagination">    
-    <li class="waves-effect" th:if="${antes.size() != 0}" th:each="ia:${antes}"><a th:href="|https://thegaminghub.herokuapp.com/juego/r/${ia}|" th:text="${ia}"></a></li>
-    <li class="waves-effect active"><a th:href="|https://thegaminghub.herokuapp.com/juego/r/${durante}|" th:text="${durante}"></a></li>
-    <li class="waves-effect" th:each="ide:${despues}"><a th:href="|https://thegaminghub.herokuapp.com/juego/r/${ide}|" th:text="${ide}"></a></li>
-   
-  </ul>
-  
+	<div class="center">
+		<ul class="pagination">    
+    		<li class="waves-effect" th:if="${antes.size() != 0}" th:each="ia:${antes}"><a th:href="|https://thegaminghub.herokuapp.com/juego/r/${ia}|" th:text="${ia}"></a></li>
+    		<li class="waves-effect active"><a th:href="|https://thegaminghub.herokuapp.com/juego/r/${durante}|" th:text="${durante}"></a></li>
+    		<li class="waves-effect" th:each="ide:${despues}"><a th:href="|https://thegaminghub.herokuapp.com/juego/r/${ide}|" th:text="${ide}"></a></li>   
+  		</ul>
+  </div>
   
 </div>
