@@ -152,8 +152,8 @@ public class JuegoController {
 		m.put("juego", juego);
 		m.put("plataformas", consolas);
 		m.put("categorias", repoCategoriaJ.findAll());
-		m.put("view", "/juego/U");
-		return "/_t/frame";
+		m.put("view", "juego/U");
+		return "_t/frame";
 	}
 
 	@PostMapping("u")

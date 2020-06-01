@@ -36,7 +36,7 @@ public class PlataformaController {
 	@GetMapping("c")
 	public String cGet(ModelMap m,HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
-		m.put("view", "plataforma/c");
+		m.put("view", "plataforma/C");
 		return "_t/frame";
 	}
 
