@@ -207,4 +207,8 @@ function validarN_ParticU()	{
 																return false;
 																}
 														
-														    }    
+														    }
+									function confirmarBorrado(x) {
+										var res = confirm("¿Estas seguro de que desea borrar este elemento : "+x+"?");
+										return res
+									}									
