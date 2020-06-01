@@ -39,7 +39,7 @@
 					</button>
 				</form>
 				<br/>
-				<form action="https://thegaminghub.herokuapp.com/gala/d" method="post" th:onsubmit="@{return confirmarBorrado('Gala ${gala.edicion}')}">
+				<form action="https://thegaminghub.herokuapp.com/gala/d" method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento : Gala:> ${gala.edicion} ? ')|">
 					<input type="hidden" name="id" th:value="${gala.id}" />
 					<button onclick="submit()" class="btn waves-effect waves-light purple">
 						<i class="material-icons left">delete</i>
