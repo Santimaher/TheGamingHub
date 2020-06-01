@@ -29,11 +29,7 @@ public class Juego {
 
 	private String nombre;
 
-	private double precio;
-
 	private LocalDate fechaLanzamiento;
-
-	private Integer stock;
 
 	private String desarrolladora;
 
@@ -92,23 +88,6 @@ public class Juego {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
-
-	public Integer getStock() {
-		return stock;
-	}
-
-	public void setStock(Integer stock) {
-		this.stock = stock;
-	}
-
 	public String getDesarrolladora() {
 		return desarrolladora;
 	}

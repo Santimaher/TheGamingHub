@@ -92,8 +92,7 @@ public class JuegoController {
 	}
 
 	@PostMapping("c")
-	public void cPost(@RequestParam("nombre") String nombre, @RequestParam("precio") Double precio,
-			@RequestParam("stock") Integer stock, @RequestParam("desarrolladora") String desarrolladora,
+	public void cPost(@RequestParam("nombre") String nombre, @RequestParam("desarrolladora") String desarrolladora,
 			@RequestParam("imgJ") MultipartFile img, @RequestParam("teaser") String teaser,
 			@RequestParam(value = "idPlataforma[]") List<Long> idsPlataforma,
 			@RequestParam(value = "idCat[]") List<Long> idsCat,
@@ -104,8 +103,6 @@ public class JuegoController {
 			H.isRolOK("admin", s);
 			Juego j = new Juego();
 			j.setNombre(nombre);
-			j.setPrecio(precio);
-			j.setStock(stock);
 			j.setDesarrolladora(desarrolladora);
 			j.setImg(H.blobCreator(img));
 			j.setTeaser(teaser);
@@ -158,7 +155,6 @@ public class JuegoController {
 
 	@PostMapping("u")
 	public void uPost(@RequestParam("id") Long id, @RequestParam("nombre") String nombre,
-			@RequestParam("precio") Double precio, @RequestParam("stock") Integer stock,
 			@RequestParam("desarrolladora") String desarrolladora,
 			@RequestParam("imgJ") MultipartFile img, @RequestParam("teaser") String teaser,
 			@RequestParam(value = "idPlataforma[]") List<Long> idsPlataforma,
@@ -169,8 +165,6 @@ public class JuegoController {
 			H.isRolOK("admin", s);
 			Juego j = repoJuego.getOne(id);
 			j.setNombre(nombre);
-			j.setPrecio(precio);
-			j.setStock(stock);
 			j.setDesarrolladora(desarrolladora);			
 			j.setImg(H.blobCreator(img));
 			j.setTeaser(teaser);
