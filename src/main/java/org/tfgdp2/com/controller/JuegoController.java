@@ -70,6 +70,15 @@ public class JuegoController {
 			pl=(long) principio;
 			fl = (long) fin;
 		}
+		int aguja = pageid;
+		ArrayList<Integer> dosAntes = new ArrayList<>();
+		ArrayList<Integer> dosDespues = new ArrayList<>();
+		for (int i = 1; i < 3; i++) {
+			dosAntes.add(aguja-i);
+			dosDespues.add(aguja+i);
+		}
+		
+		
 		List<Juego> juegos = repoJuego.findByIdBetween(pl, fl);
 		switch(tipo) 
 		{
@@ -79,6 +88,9 @@ public class JuegoController {
 		}
 		m.put("view", "juego/R");
 		m.put("filtro", filtro);
+		m.put("antes", dosAntes);
+		m.put("durante", aguja);
+		m.put("despues", dosDespues);
 		m.put("tipo", tipo);
 		return "_t/frame";
 	}

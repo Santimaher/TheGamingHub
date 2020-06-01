@@ -96,30 +96,10 @@
 	</div>
 	
 	<ul class="pagination">    
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/1">1</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/2">2</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/3">3</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/4">4</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/5">5</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/6">6</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/7">7</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/8">8</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/9">9</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/10">10</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/11">11</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/12">12</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/13">13</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/14">14</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/15">15</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/16">16</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/17">17</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/18">18</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/19">19</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/20">20</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/21">21</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/22">22</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/23">23</a></li>
-    <li class="waves-effect"><a href="https://thegaminghub.herokuapp.com/juego/r/24">24</a></li>
+    <li class="waves-effect" th:each="ia:${antes}"><a th:href="|https://thegaminghub.herokuapp.com/juego/r/${ia}|" th:text="${ia}"></a></li>
+    <li class="waves-effect active"><a th:href="|https://thegaminghub.herokuapp.com/juego/r/${durante}|" th:text="${durante}"></a></li>
+    <li class="waves-effect" th:each="id:${despues}"><a href="https://thegaminghub.herokuapp.com/juego/r/${id}" th:text="${id}"></a></li>
+   
   </ul>
   
   
