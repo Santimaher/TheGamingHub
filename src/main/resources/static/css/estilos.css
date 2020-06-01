@@ -212,7 +212,8 @@ height: 80% !important;
 	font-size: 15px !important;
 }
 .letrasChip{
-	color:black !important;
+	background-color: purple !important;
+	color: black !important;
 	font-size: 10px !important;
 }
 label{
