@@ -211,6 +211,10 @@ height: 80% !important;
 	color:white !important;
 	font-size: 15px !important;
 }
+.letrasChip{
+	color:black !important;
+	font-size: 10px !important;
+}
 label{
 	font-family: 'Poiret One', cursive !important;
           color: white !important;
