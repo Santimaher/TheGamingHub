@@ -90,7 +90,7 @@
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
 					<button th:if="${session.usuario!=null}" onclick="submit()" class="waves-effect waves-light btn separacion purple">
-					<div id="like">
+					<div class="like">
 						<img th:each="voto:${entrada.votos}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='dislike'}" src="/img/like1.png" height="20" width="20">
 						<img th:each="voto:${entrada.votos}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='like'}" src="/img/like2.png" height="20" width="20">
 				    </div>
@@ -105,7 +105,7 @@
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
 						<button th:if="${session.usuario!=null}" onclick="submit()" class="waves-effect waves-light btn separacion purple">
-					<div id="dislike">
+					<div class="dislike">
 						<img  th:each="voto:${entrada.votos}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='dislike'}" src="/img/dislike2.png" height="20" width="20">
 						<img  th:each="voto:${entrada.votos}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='like'}" src="/img/dislike1.png" height="20" width="20">
 				    </div>
@@ -143,16 +143,18 @@
 </div>
 <script>
 window.onload=function(){
-	if(document.getElementById("like").children.length==0){
+	for(x of document.getElementsByClassName("like")){
+	if(x.children.length==0){
 		document.getElementById("like").innerHTML="<img src='/img/like1.png' height='20' width='20'>";
 		
 		
 	}
-	if(document.getElementById("dislike").children.length==0){
-		document.getElementById("dislike").innerHTML="<img src='/img/dislike1.png' height='20' width='20'>";
-		
-		
-	}	
+	}
+	for(y of document.getElementsByClassName("dislike")){
+		if(y.children.length==0){
+			y.innerHTML="<img src='/img/dislike1.png' height='20' width='20'>";
+		}
+		}
 }
 	
 
