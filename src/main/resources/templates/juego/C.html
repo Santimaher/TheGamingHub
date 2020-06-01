@@ -38,7 +38,7 @@
 			<span th:each="categoria:${categorias}" >				
 				<label th:for="|cat-${categoria.id}|">
 					<input type="checkbox" th:id="|cat-${categoria.id}|" class="indeterminate-checkbox" th:name="idCat[]" th:value="${categoria.id}"/>
-					<span th:text="${categoria.nombre}"></span>
+					<span th:text="${categoria.nombre}" class="letrasForm"></span>
 				</label>
 			</span>
 	</fieldset>	
@@ -47,7 +47,7 @@
 		<legend>Plataformas seleccionadas</legend>
 			<div  name="seleccionadas" id="selec"></div>
 			<div>
-            <select onchange="buscar()" name="selector" id="busca">
+            <select onchange="buscar()" name="selector" id="busca" class="letrasForm">
                 <option value="">Elegir</option>
                 <option value="Sony">Sony</option>
                 <option value="Microsoft">Microsoft</option>
