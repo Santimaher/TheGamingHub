@@ -55,7 +55,7 @@ public class Categoria_ParticipanteController {
 		H.isRolOK("admin", s);
 		m.put("categoria", repoCategoria_Participante.getOne(idCategoria));
 		m.put("view", "categoriaParticipante/u");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 	
 	@PostMapping("u")
