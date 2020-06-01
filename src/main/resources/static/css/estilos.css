@@ -166,7 +166,11 @@ td.is-selected,
     color: black !important
 }
 
-div#datepicker-title-cn.datepicker-controls{
+select-wrapper select-month{
+	background-color: #607d8b !important;
+    color: black !important
+}
+select-wrapper select-year{
 	background-color: #607d8b !important;
     color: black !important
 }
