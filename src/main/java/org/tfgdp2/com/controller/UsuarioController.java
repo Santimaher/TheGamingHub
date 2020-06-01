@@ -90,7 +90,7 @@ public class UsuarioController {
 			usuarioRepo.save(usuario);
 
 		} catch (Exception e) {
-			PRG.error("Error al editar " + nombreusuario, "/usuario/r");
+			PRG.error("Error al editar " + nombreusuario, "usuario/r");
 		}
 		return "redirect:usuario/r";
 	}
@@ -116,7 +116,7 @@ public class UsuarioController {
 			usuarioRepo.save(usuario);
 
 		} catch (Exception e) {
-			PRG.error("Error al editar " + nombreusuario, "/usuario/r");
+			PRG.error("Error al editar " + nombreusuario, "usuario/r");
 		}
 		PRG.info("Usuario actualizado correctamente", "usuario/r");
 	}
