@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.tfgdp2.com.domain.Plataforma;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
@@ -41,14 +42,14 @@ public class PlataformaController {
 	}
 
 	@PostMapping("c")
-	public void crearPost(ModelMap m, @RequestParam("nombre") String nombre, @RequestParam("imagen") String imagen,
+	public void crearPost(ModelMap m, @RequestParam("nombre") String nombre, @RequestParam("imagen") MultipartFile imagen,
 			HttpSession s) throws DangerException, InfoException {
 		
 		try {
 			H.isRolOK("admin", s);
 			Plataforma plataforma = new Plataforma();
 			plataforma.setNombre(nombre);
-			plataforma.setImg(imagen);
+			plataforma.setImg(H.blobCreator(imagen));
 			repoPlataforma.save(plataforma);
 		} catch (Exception e) {
 			PRG.error("Plataforma " + nombre + " duplicado", "plataforma/c");
@@ -65,14 +66,14 @@ public class PlataformaController {
 	}
 
 	@PostMapping("u")
-	public void uPost(@RequestParam("nombre") String nombrePlataforma,@RequestParam("imagen") String imagen, @RequestParam("id") Long idPlataforma, HttpSession s)
+	public void uPost(@RequestParam("nombre") String nombrePlataforma,@RequestParam("imagen") MultipartFile imagen, @RequestParam("id") Long idPlataforma, HttpSession s)
 			throws DangerException, InfoException {
 		
 		try {
 			H.isRolOK("admin", s);
 			Plataforma p = repoPlataforma.getOne(idPlataforma);
 			p.setNombre(nombrePlataforma);
-			p.setImg(imagen);
+			p.setImg(H.blobCreator(imagen));
 			repoPlataforma.save(p);
 			
 		} catch (Exception e) {

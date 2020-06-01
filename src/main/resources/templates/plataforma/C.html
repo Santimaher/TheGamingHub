@@ -1,29 +1,43 @@
 <div class="container">
-<div class="col m12">
-			<h3>Nueva Plataforma</h3>
-		</div>
-		
-		<div class="row">
-			<form method="post" action="https://thegaminghub.herokuapp.com/plataforma/c">
-			  <div class="input-field col s12">
-				<label for="nombrePl">Nombre de la Plataforma</label>
-				<input type="text" id="nombreEq" name="nombre">
-			  </div>	
-			  <div class="input-field col s12"> 
-				<label for="imgPl">Imagen de la Plataforma</label>
-				<input type="text" id="imgPl" name="imagen">
+	<div class="col m12">
+		<h3 class="center">Nueva Plataforma</h3>
+	</div>
+
+	<div class="row">
+		<form method="post"
+			action="https://thegaminghub.herokuapp.com/plataforma/c" enctype="multipart/form-data">
+
+			<div class="input-field col s12">
+				<label for="nombre">Nombre de la Plataforma</label> <input
+					type="text" id="nombreEq" name="nombre">
 			</div>
-	
-	<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
-			Crear <i class="material-icons left">send</i>
-			</button>
-			
+
+			<div class="file-field input-field col s12">
+				<div class="btn waves-effect waves-dark">
+					<span>Imagen Plataforma</span> <input type="file" id="imgPl"
+						name="imagen">
+				</div>
+			</div>
+
+			<div class="col m12">
+				<div class="center">
+					<button class="btn waves-effect waves-light purple" type="submit"
+						onclick="submit()" name="action">
+						Crear <i class="material-icons left">send</i>
+					</button>
+				</div>
+			</div>
+
+		</form>
+	</div>
+	<div class="col m12">
+		<div class="center">
 			<a href="/">
 				<button class="btn waves-effect waves-light purple">
-				Home <i class="material-icons left">home</i>
+					Home <i class="material-icons left">home</i>
 				</button>
 			</a>
-	</form>
+		</div>
 	</div>
 
 </div>

@@ -1,5 +1,6 @@
 package org.tfgdp2.com.domain;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -22,7 +24,8 @@ public class Plataforma {
 	
 	private String familia;
 	
-	private String img;
+	@Lob
+	private Blob img;
 	
 	@ManyToMany(mappedBy = "plataformas")
 	private Collection<Juego> juegos;
@@ -50,11 +53,11 @@ public class Plataforma {
 		this.nombre = nombre;
 	}
 
-	public String getImg() {
+	public Blob getImg() {
 		return img;
 	}
 
-	public void setImg(String img) {
+	public void setImg(Blob img) {
 		this.img = img;
 	}
 

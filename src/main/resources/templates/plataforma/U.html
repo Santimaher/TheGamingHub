@@ -7,17 +7,19 @@
 
 		<div class="row">
 			<form method="post"
-				action="https://thegaminghub.herokuapp.com/plataforma/u">
+				action="https://thegaminghub.herokuapp.com/plataforma/u" enctype="multipart/form-data">
 				<div class="input-field col s12">
 					<input type="hidden" th:value="${plataforma.id}" name="id">
 					<label for="nombrePl">Nombre de la Plataforma</label> <input
 						th:value="${plataforma.nombre}" type="text" id="nombreEq"
 						name="nombre"></div>
-
-					<div class="input-field col s12">
-						<label for="imgPl">Imagen de la Plataforma</label> <input
-							th:value="${plataforma.img}" type="text" id="imgPl" name="imagen">
-					</div>
+						
+					<div class="file-field input-field col s12">
+				<div class="btn waves-effect waves-dark">
+					<span>Imagen Plataforma</span> <input type="file" id="imgPl"
+						name="imagen">
+				</div>
+			</div>
 					
 					<div class="col m12">
 					<div class="center">
