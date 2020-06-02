@@ -12,7 +12,7 @@
       <div class=" fondo-carta card black darken-1 z-depth-3">
         <div class=" card-content white-text">
           <span class="card-title" th:text="|${entrada.titulo}|" ></span>
-          <span  th:text="|${entrada.comentario}|" ></span><br/><br/>
+          <span th:if="${entrada.comentario!=null}" th:text="|${entrada.comentario}|" ></span><br/><br/>
           <span th:text="${entrada.escribe.loginname}"></span><i th:if="${entrada.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
           <span th:if="${entrada.img!=null}"><img th:src="|data:image/png;base64,${entrada.img}|" width="100%" height="100%"></span>
           <p th:text="${entrada.fechaPublicacion}"></p>
