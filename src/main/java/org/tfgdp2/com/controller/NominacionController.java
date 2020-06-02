@@ -88,7 +88,12 @@ public class NominacionController {
 	}
 	
 	@GetMapping("nominarJuego")
-	public String nominarJuego(ModelMap m) {
+	public String nominarJuego(ModelMap m,HttpSession s) throws DangerException {
+		try {
+			H.isRolOK("jurado", s);
+		} catch (DangerException e) {
+			PRG.error("Rol inadecuado","/");
+		}
 		m.put("juegos",repoJuego.findAll());
 		m.put("premioJ", repoPremioJ.findAll());
 		m.put("view", "nominacion/nominarJuego");
@@ -96,9 +101,10 @@ public class NominacionController {
 	}
 	
 	@PostMapping("nominarJuego")
-	public void nominarJpost(@RequestParam("id") Long idJuego,@RequestParam("premio") Long idPremio) throws DangerException, InfoException{
+	public void nominarJpost(HttpSession s,@RequestParam("id") Long idJuego,@RequestParam("premio") Long idPremio) throws DangerException, InfoException{
 		Juego j = repoJuego.getOne(idJuego);
 		try {
+			H.isRolOK("jurado", s);
 		Premio_Juego pr = repoPremioJ.getOne(idPremio);
 		j.setEstaNominado(true);
 		Nominacion_Juego nj = new Nominacion_Juego();
@@ -112,7 +118,7 @@ public class NominacionController {
 		catch (Exception e) {
 			PRG.error("El juego no se pudo nominar");
 		}
-		PRG.info("Juego nominado correctamente.");
+		PRG.info("Juego nominado correctamente.","nominacion/nominarJuego");
 	}
 	
 	@GetMapping("npr")
