@@ -198,7 +198,6 @@ public class GalaController {
 		m.put("MejorJuegoDeEstrategia",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego de Estrategia", galas.get(0).getId()));
 		m.put("MejorJuegoDeLucha",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego de Lucha ", galas.get(0).getId()));
         m.put("MejorJuegoDeRol",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego de rol" , galas.get(0).getId()));
-
 		m.put("MejorJuegoFamiliar",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego Familiar", galas.get(0).getId()));
 		m.put("MejorJuegoIndie",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego Indie", galas.get(0).getId()));
 		m.put("MejorJuegoMultijugador",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego Multijugador", galas.get(0).getId()));
@@ -206,18 +205,19 @@ public class GalaController {
 		m.put("MejorJuegoVR",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego VR", galas.get(0).getId()));
 		m.put("MejorNarrativa",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Narrativa", galas.get(0).getId()));
 		m.put("MejorComunidad",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Soporte a la Comunidad", galas.get(0).getId()));
+		
 		m.put("MejorActor",repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor actor", galas.get(0).getId()));
 		m.put("MejorActorDeDoblaje",repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor actor de doblaje", galas.get(0).getId()));
-		m.put("MejorAnfitrionEsports",repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor anfitrión de eSports", galas.get(0).getId()));
+		m.put("MejorAnfitrionEsports",repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor anfitrion de eSports", galas.get(0).getId()));
 		m.put("MejorCreadorDeContenido",repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor creador de contenido", galas.get(0).getId()));
 		m.put("MejorDesarrolladora",repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor desarrolladora", galas.get(0).getId()));
-		m.put("MejorDireccion",repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor dirección", galas.get(0).getId()));
-		m.put("MejorDireccionArtistica",repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor dirección Artística", galas.get(0).getId()));
+		m.put("MejorDireccion",repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor direccion", galas.get(0).getId()));
+//		m.put("MejorDireccionArtistica",repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor dirección Artistica", galas.get(0).getId()));
 		m.put("MejorEntrenador",repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor entrenador de eSports", galas.get(0).getId()));
 		m.put("MejorEquipo",repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor equipo de eSports", galas.get(0).getId()));
 		m.put("MejorGuionista",repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor guionista", galas.get(0).getId()));
 		m.put("MejorJugador",repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor jugador de eSports", galas.get(0).getId()));
-		m.put("MejorProduccion",repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor producción audiovisual", galas.get(0).getId()));
+		m.put("MejorProduccion",repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor produccion audiovisual", galas.get(0).getId()));
 		
 		
 		m.put("view","gala/galaActiva");
