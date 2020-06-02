@@ -56,6 +56,7 @@ function restaFechas(f1,f2){
 	class="container">
 	<p th:if="${session.usuario==null}">Para poder votar tienes que <a href="https://thegaminghub.herokuapp.com/login">iniciar sesion</a></p>
 	<h3>Gala concluida</h3>
+	<h4>Premios videojuegos</h4>
 	<p th:text="|${JuegoDeMayorImpacto.premio.nombrePremio}: ${JuegoDeMayorImpacto.nombre} con ${JuegoDeMayorImpacto.cantidadVotos} votos|"></p>
 	<p th:text="|${JuegoDelAnio.premio.nombrePremio}: ${JuegoDelAnio.nombre} con ${JuegoDelAnio.cantidadVotos} votos|"></p>
 	<p th:text="|${MejorBandaSonora.premio.nombrePremio}: ${MejorBandaSonora.nombre} con ${MejorBandaSonora.cantidadVotos} votos|"></p>
@@ -74,9 +75,19 @@ function restaFechas(f1,f2){
 	<p th:text="|${MejorJuegoVR.premio.nombrePremio}: ${MejorJuegoVR.nombre} con ${MejorJuegoVR.cantidadVotos} votos|"></p>
 	<p th:text="|${MejorNarrativa.premio.nombrePremio}: ${MejorNarrativa.nombre} con ${MejorNarrativa.cantidadVotos} votos|"></p>
 	<p th:text="|${MejorComunidad.premio.nombrePremio}: ${MejorComunidad.nombre} con ${MejorComunidad.cantidadVotos} votos|"></p>
-		
-	
-	
+		<h4>Premios participantes</h4>
+	<p th:text="|${MejorActor.premio.nombrePremio}: ${MejorActor.nombre} con ${MejorActor.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorActorDeDoblaje.premio.nombrePremio}: ${MejorActorDeDoblaje.nombre} con ${MejorActorDeDoblaje.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorAnfitrionEsports.premio.nombrePremio}: ${MejorAnfitrionEsports.nombre} con ${MejorAnfitrionEsports.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorCreadorDeContenido.premio.nombrePremio}: ${MejorCreadorDeContenido.nombre} con ${MejorCreadorDeContenido.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorDesarrolladora.premio.nombrePremio}: ${MejorDesarrolladora.nombre} con ${MejorDesarrolladora.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorDireccion.premio.nombrePremio}: ${MejorDireccion.nombre} con ${MejorDireccion.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorDireccionArtistica.premio.nombrePremio}: ${MejorDireccionArtistica.nombre} con ${MejorDireccionArtistica.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorEntrenador.premio.nombrePremio}: ${MejorEntrenador.nombre} con ${MejorEntrenador.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorEquipo.premio.nombrePremio}: ${MejorEquipo.nombre} con ${MejorEquipo.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorGuionista.premio.nombrePremio}: ${MejorGuionista.nombre} con ${MejorGuionista.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorJugador.premio.nombrePremio}: ${MejorJugador.nombre} con ${MejorJugador.cantidadVotos} votos|"></p>
+	<p th:text="|${MejorProduccion.premio.nombrePremio}: ${MejorProduccion.nombre} con ${MejorProduccion.cantidadVotos} votos|"></p>
 	
 	<form action="https://thegaminghub.herokuapp.com/gala/r">
 		<button class="btn waves-effect waves-light purple" onclick="submit()">Ver
