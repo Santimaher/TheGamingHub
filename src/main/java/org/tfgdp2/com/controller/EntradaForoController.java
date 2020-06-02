@@ -159,7 +159,7 @@ public class EntradaForoController {
 	}
 	
 	@PostMapping("cCi")
-	public void cPostCi(@RequestParam("imagen") MultipartFile img,@RequestParam("titulo") String titulo,@RequestParam("ide") Long id,ModelMap m,HttpSession s) throws DangerException, InfoException{
+	public void cPostCi(@RequestParam("img") MultipartFile img,@RequestParam("titulo") String titulo,@RequestParam("ide") Long id,ModelMap m,HttpSession s) throws DangerException, InfoException{
 		try {
 			H.isRolOK("auth", s);
 			EntradaForo entrada = new EntradaForo();
