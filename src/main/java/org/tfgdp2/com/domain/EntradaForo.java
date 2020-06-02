@@ -1,7 +1,9 @@
 package org.tfgdp2.com.domain;
 
 import java.sql.Blob;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Base64;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -120,8 +122,9 @@ public class EntradaForo {
 	public void setMensajePadre(EntradaForo mensajePadre) {
 		this.mensajePadre = mensajePadre;
 	}
-	public Blob getImg() {
-		return img;
+	public String getImg() throws SQLException {
+		String bytes = Base64.getEncoder().encodeToString(this.img.getBytes(1l, (int)this.img.length()));
+		return bytes;
 	}
 	public void setImg(Blob img) {
 		this.img = img;
