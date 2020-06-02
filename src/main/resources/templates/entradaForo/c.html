@@ -10,12 +10,10 @@
 			</ul>
 		</div>
 		<div id="test1" class="col s12">
-			<form method="post"
-				action="https://thegaminghub.herokuapp.com/entradaForo/c"
-				class="form" enctype="multipart/form-data">
-				<input type="hidden" name="id" th:value="${id}" /> <label
-					for="titulo">Titulo</label> <input type="text" name="titulo"
-					id="titulo" data-length="30" /> <br> <label for="comentario">Post</label>
+			<form method="post"	action="https://thegaminghub.herokuapp.com/entradaForo/c" class="form" enctype="multipart/form-data">
+				<input type="hidden" name="ide" th:value="${id}" /> 
+				<label	for="titulo">Titulo</label>
+				 <input type="text" name="titulo" id="titulo" data-length="30" /> <br> <label for="comentario">Post</label>
 				<textarea name="comentario" cols="30" rows="5" min="1"
 					id="comentario"></textarea>
 				<br>
@@ -29,7 +27,7 @@
 			<form method="post"
 				action="https://thegaminghub.herokuapp.com/entradaForo/c"
 				class="form" enctype="multipart/form-data">
-				<input type="hidden" name="id" th:value="${id}" /> <label
+				<input type="hidden" name="ide" th:value="${id}" /> <label
 					for="titulo">Titulo</label> <input type="text" name="titulo"
 					id="titulo" /> <br>
 				<div class="file-field input-field col s12 m4 l4 xl4">

@@ -137,7 +137,7 @@ public class EntradaForoController {
 		return "_t/frame";
 	}
 	@PostMapping("c")
-	public void cPost(@RequestParam(value="imagen", required=false) MultipartFile img,@RequestParam("titulo") String titulo,@RequestParam("id") Long id,@RequestParam(value="comentario", required=false) String comentario,ModelMap m,HttpSession s) throws DangerException, InfoException{
+	public void cPost(@RequestParam(value="imagen", required=false) MultipartFile img,@RequestParam("titulo") String titulo,@RequestParam("ide") Long id,@RequestParam(value="comentario", required=false) String comentario,ModelMap m,HttpSession s) throws DangerException, InfoException{
 		try {
 			H.isRolOK("auth", s);
 			EntradaForo entrada = new EntradaForo();
