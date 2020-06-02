@@ -1,8 +1,7 @@
 <div class="container">
-	<h1>Nueva entrada al foro</h1>	
+	<h1>Nueva entrada al foro</h1>
 	<div class="row">
-	<form method="post"	action="https://thegaminghub.herokuapp.com/entradaForo/c" class="form" enctype="multipart/form-data">
-		<input type="hidden" name="ide" th:value="${id}" /> 
+
 		<div class="col s12">
 			<ul class="tabs">
 				<li class="tab col s6 purple "><a href="#test1"
@@ -11,39 +10,46 @@
 					class="white-text">Post con Imagen</a></li>
 			</ul>
 		</div>
-		
-		
-		<div id="test1" class="col s12">
-			
-				
-				<label	for="titulo">Titulo</label>
-				 <input type="text" name="titulo" id="titulo" data-length="30" /> <br> <label for="comentario">Post</label>
-				<textarea name="comentario" cols="30" rows="5" min="1" id="comentario"></textarea>
-				<br>
 
-				
-		
+
+		<div id="test1" class="col s12">
+			<form method="post"
+				action="https://thegaminghub.herokuapp.com/entradaForo/cSi"
+				class="form" enctype="multipart/form-data">
+				<input type="hidden" name="ide" th:value="${id}" /> <label
+					for="titulo">Titulo</label> <input type="text" name="titulo"
+					id="titulo" data-length="30" /> <br> <label for="comentario">Post</label>
+				<textarea name="comentario" cols="30" rows="5" min="1"
+					id="comentario"></textarea>
+				<br>
+				<button class="waves-effect waves-light btn separacion"
+					onclick="submit()">Enviar</button>
+
+			</form>
 
 		</div>
-		
-		
+
+
 		<div id="test2" class="col s12">
-				 <label
+			<form method="post"
+				action="https://thegaminghub.herokuapp.com/entradaForo/cCi"
+				class="form" enctype="multipart/form-data">
+				<input type="hidden" name="ide" th:value="${id}" /> <label
 					for="titulo">Titulo</label> <input type="text" name="titulo"
 					id="titulo" /> <br>
 				<div class="file-field input-field col s12 m4 l4 xl4">
-				<div class="btn waves-effect waves-dark">
-					<span>Imagen</span> <input type="file" name="img">
+					<div class="btn waves-effect waves-dark">
+						<span>Imagen</span> <input type="file" name="img">
+					</div>
 				</div>
-			</div>
 				<br>
-
-				
-		
-		</div>
-		<button class="waves-effect waves-light btn separacion"
+				<button class="waves-effect waves-light btn separacion"
 					onclick="submit()">Enviar</button>
-		</form>
+			</form>
+
+
+		</div>
+
 	</div>
 
 	<a href="/"><button class="waves-effect waves-light btn separacion">Cancelar</button></a>

@@ -136,12 +136,33 @@ public class EntradaForoController {
 		m.put("id", id);
 		return "_t/frame";
 	}
-	@PostMapping("c")
-	public void cPost(@RequestParam(value="imagen", required=false) MultipartFile img,@RequestParam("titulo") String titulo,@RequestParam("ide") Long id,@RequestParam(value="comentario", required=false) String comentario,ModelMap m,HttpSession s) throws DangerException, InfoException{
+	@PostMapping("cSi")
+	public void cPostSi(@RequestParam("titulo") String titulo,@RequestParam("ide") Long id,@RequestParam("comentario") String comentario,ModelMap m,HttpSession s) throws DangerException, InfoException{
 		try {
 			H.isRolOK("auth", s);
 			EntradaForo entrada = new EntradaForo();
 			entrada.setComentario(comentario);
+			entrada.setTitulo(titulo);
+			entrada.setMensajePadre(null);
+			Foro f=repoForo.getOne(id);
+			entrada.setPertenece(f);
+			f.getPertenecen().add(entrada);
+			Usuario u=(Usuario) s.getAttribute("usuario");
+			u.getEntradas().add(entrada);
+			entrada.setEscribe(u);
+			repoEntrada.save(entrada);
+		}catch(Exception e) {
+			PRG.error("Error al crear la entrada  "+ e.getMessage()+"////"+id, "entradaForo/c",id);
+		}	
+
+		PRG.info("Entrada del foro creada correctamente", "entradaForo/r", id);
+	}
+	
+	@PostMapping("cCi")
+	public void cPostCi(@RequestParam("imagen") MultipartFile img,@RequestParam("titulo") String titulo,@RequestParam("ide") Long id,ModelMap m,HttpSession s) throws DangerException, InfoException{
+		try {
+			H.isRolOK("auth", s);
+			EntradaForo entrada = new EntradaForo();
 			entrada.setTitulo(titulo);
 			entrada.setMensajePadre(null);
 			entrada.setImg(H.blobCreator(img));
@@ -155,8 +176,7 @@ public class EntradaForoController {
 		}catch(Exception e) {
 			PRG.error("Error al crear la entrada  "+ e.getMessage()+"////"+id, "entradaForo/c",id);
 		}	
-
-		PRG.info("Entrada del foro creada correctamente", "entradaForo/r",id);
+		PRG.info("Entrada del foro creada correctamente", "entradaForo/r", id);
 	}
 	@GetMapping("u")
 	public String update(ModelMap m, @RequestParam("id") Long idEntrada,HttpSession s) throws DangerException {
