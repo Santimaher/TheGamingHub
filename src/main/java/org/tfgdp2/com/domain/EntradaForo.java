@@ -1,5 +1,6 @@
 package org.tfgdp2.com.domain;
 
+import java.sql.Blob;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
@@ -12,6 +13,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -21,8 +23,10 @@ public class EntradaForo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private int ranking;
+	private String titulo;
 	private String comentario;
-	private String img;
+	@Lob
+	private Blob img;
 	private Date fechaPublicacion;
 	@ManyToOne
 	private Usuario escribe;
@@ -116,12 +120,20 @@ public class EntradaForo {
 	public void setMensajePadre(EntradaForo mensajePadre) {
 		this.mensajePadre = mensajePadre;
 	}
-	public String getImg() {
+	public Blob getImg() {
 		return img;
 	}
-	public void setImg(String img) {
+	public void setImg(Blob img) {
 		this.img = img;
 	}
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	
+	
 
 	
 }

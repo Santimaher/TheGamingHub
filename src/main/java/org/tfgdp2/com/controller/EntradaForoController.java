@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.tfgdp2.com.domain.EntradaForo;
 import org.tfgdp2.com.domain.Foro;
 import org.tfgdp2.com.domain.Usuario;
@@ -103,13 +104,13 @@ public class EntradaForoController {
 		return "_t/frame";
 	}
 	@PostMapping("responder")
-	public void responderPost(@RequestParam("imagen") String img,@RequestParam("idForo") Long idForo,@RequestParam("idEntrada") Long idEntrada,@RequestParam("comentario") String comentario,ModelMap m,HttpSession s) throws DangerException, InfoException{
+	public void responderPost(@RequestParam(value="imagen", required=false) MultipartFile img,@RequestParam("titulo") String titulo,@RequestParam("idForo") Long idForo,@RequestParam("idEntrada") Long idEntrada,@RequestParam("comentario") String comentario,ModelMap m,HttpSession s) throws DangerException, InfoException{
 		try {
 			H.isRolOK("auth", s);
 			EntradaForo entrada = new EntradaForo();
 			entrada.setComentario(comentario);
-			img=img.length()>0?img:null;
-			entrada.setImg(img);
+			entrada.setTitulo(titulo);
+			entrada.setImg(H.blobCreator(img));
 			Foro f=repoForo.getOne(idForo);
 			entrada.setPertenece(f);
 			f.getPertenecen().add(entrada);
@@ -136,14 +137,14 @@ public class EntradaForoController {
 		return "_t/frame";
 	}
 	@PostMapping("c")
-	public void cPost(@RequestParam("imagen") String img,@RequestParam("id") Long id,@RequestParam("comentario") String comentario,ModelMap m,HttpSession s) throws DangerException, InfoException{
+	public void cPost(@RequestParam(value="imagen", required=false) MultipartFile img,@RequestParam("titulo") String titulo,@RequestParam("id") Long id,@RequestParam("comentario") String comentario,ModelMap m,HttpSession s) throws DangerException, InfoException{
 		try {
 			H.isRolOK("auth", s);
 			EntradaForo entrada = new EntradaForo();
 			entrada.setComentario(comentario);
+			entrada.setTitulo(titulo);
 			entrada.setMensajePadre(null);
-			img=img.length()>0?img:null;
-			entrada.setImg(img);
+			entrada.setImg(H.blobCreator(img));
 			Foro f=repoForo.getOne(id);
 			entrada.setPertenece(f);
 			f.getPertenecen().add(entrada);
