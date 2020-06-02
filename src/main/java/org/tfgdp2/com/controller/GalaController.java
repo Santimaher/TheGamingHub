@@ -197,9 +197,7 @@ public class GalaController {
 		m.put("MejorJuegoDeEsports",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego de eSports", galas.get(0).getId()));
 		m.put("MejorJuegoDeEstrategia",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego de Estrategia", galas.get(0).getId()));
 		m.put("MejorJuegoDeLucha",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego de Lucha ", galas.get(0).getId()));
-
- m.put("MejorJuegoDeRol",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego de rol" , galas.get(0).getId()));
-
+        m.put("MejorJuegoDeRol",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego de rol" , galas.get(0).getId()));
 		m.put("MejorJuegoFamiliar",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego Familiar", galas.get(0).getId()));
 		m.put("MejorJuegoIndie",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego Indie", galas.get(0).getId()));
 		m.put("MejorJuegoMultijugador",repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc("Mejor Juego Multijugador", galas.get(0).getId()));
