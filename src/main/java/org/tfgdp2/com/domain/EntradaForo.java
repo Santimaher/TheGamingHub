@@ -123,7 +123,13 @@ public class EntradaForo {
 		this.mensajePadre = mensajePadre;
 	}
 	public String getImg() throws SQLException {
-		String bytes = Base64.getEncoder().encodeToString(this.img.getBytes(1l, (int)this.img.length()));
+		String bytes="";
+		if(this.img == null) {
+			bytes=null;
+		}
+		else {
+		 bytes = Base64.getEncoder().encodeToString(this.img.getBytes(1l, (int)this.img.length()));
+		}
 		return bytes;
 	}
 	public void setImg(Blob img) {
