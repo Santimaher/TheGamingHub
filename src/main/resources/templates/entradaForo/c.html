@@ -9,13 +9,14 @@
 					class="white-text">Post con Imagen</a></li>
 			</ul>
 		</div>
+		
+		
 		<div id="test1" class="col s12">
 			<form method="post"	action="https://thegaminghub.herokuapp.com/entradaForo/c" class="form" enctype="multipart/form-data">
 				<input type="hidden" name="ide" th:value="${id}" /> 
 				<label	for="titulo">Titulo</label>
 				 <input type="text" name="titulo" id="titulo" data-length="30" /> <br> <label for="comentario">Post</label>
-				<textarea name="comentario" cols="30" rows="5" min="1"
-					id="comentario"></textarea>
+				<textarea name="comentario" cols="30" rows="5" min="1" id="comentario"></textarea>
 				<br>
 
 				<button class="waves-effect waves-light btn separacion"
@@ -23,16 +24,16 @@
 			</form>
 
 		</div>
+		
+		
 		<div id="test2" class="col s12">
-			<form method="post"
-				action="https://thegaminghub.herokuapp.com/entradaForo/c"
-				class="form" enctype="multipart/form-data">
+			<form method="post"	action="https://thegaminghub.herokuapp.com/entradaForo/c"	class="form" enctype="multipart/form-data">
 				<input type="hidden" name="ide" th:value="${id}" /> <label
 					for="titulo">Titulo</label> <input type="text" name="titulo"
 					id="titulo" /> <br>
 				<div class="file-field input-field col s12 m4 l4 xl4">
 				<div class="btn waves-effect waves-dark">
-					<span>Imagen a subir</span> <input type="file" name="img">
+					<span>Imagen</span> <input type="file" name="img">
 				</div>
 			</div>
 				<br>
@@ -41,6 +42,8 @@
 					onclick="submit()">Enviar</button>
 			</form>
 		</div>
+		
+		
 	</div>
 
 	<a href="/"><button class="waves-effect waves-light btn separacion">Cancelar</button></a>
