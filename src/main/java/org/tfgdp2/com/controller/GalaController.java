@@ -70,8 +70,7 @@ public class GalaController {
 			HttpSession s) throws DangerException, InfoException {
 		
 		try {
-			List<Premio_Juego> premiosJ = repoPremioJ.findAll();
-			List<Premio_Participante> premiosP = repoPremioP.findAll();
+
 			Gala g = new Gala();
 			g.setEdicion(edicion);
 			g.setInicio(inicio);
@@ -79,16 +78,16 @@ public class GalaController {
 			g.setActivo(false);
 			
 			 for (String P : PremiosP) {
-			 Premio_Participante ppN=new Premio_Participante(P+"("+g.getFin().getMonth().toString()+g.getFin().getYear()+")");
+			 Premio_Participante ppN=new Premio_Participante(P+")");
 			 ppN.setTiene(g);
 			 repoPremioP.save(ppN);
 			 g.getPremiosP().add(ppN);  }
 			  
 			 for (String J : PremiosJ) {
-				Premio_Juego pjN=new Premio_Juego(J+"("+g.getFin().getMonth().toString()+g.getFin().getYear()+")");
-				pjN.setTiene(g);
-				repoPremioJ.save(pjN);
-				 g.getPremiosJ().add(pjN);  }
+			 Premio_Juego pjN=new Premio_Juego(J+"()");
+			 pjN.setTiene(g);
+			 repoPremioJ.save(pjN);
+			 g.getPremiosJ().add(pjN);  }
 			 
 			repoGala.save(g);
 			
