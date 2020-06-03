@@ -9,8 +9,8 @@
 					<input type="hidden" name="idForo" th:value="${id}">
 					</div>
 					
-					<select name="tipo" class="white-text">
-					<optgroup label="Campo de busqueda">
+					<select name="tipo" class="">
+					<optgroup label="Campo de busqueda" style="color:white !important;">
 					<option th:selected="${tipo=='Comentario'}">Comentario</option>
 					<option th:selected="${tipo=='LoginName'}">LoginName</option>
 					</optgroup>

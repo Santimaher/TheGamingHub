@@ -15,14 +15,14 @@
 					th:value="${juego.desarrolladora}">
 			</div>
 
-			<div class="file-field input-field col s12" th:if="${juego.id} <= 181 ">
+			<div class="file-field input-field col s12" th:if="${juego.id} <= 180 ">
 				<div class="btn waves-effect waves-dark purple">
 					<span>Imagen</span> <input type="text" id="imgPre" name="imgPre" th:value="${juego.imgPre}"
 						class="">
 				</div>
 			</div>
 			
-			<div class="file-field input-field col s12" th:if="${juego.id} > 181">
+			<div class="file-field input-field col s12" th:if="${juego.id} > 180">
 				<div class="btn waves-effect waves-dark purple">
 					<span>Imagen</span> <input type="file" id="imgJ" name="imgJ"
 						class="">
