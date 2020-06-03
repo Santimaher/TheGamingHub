@@ -51,7 +51,7 @@ public class JuegoController {
 	
 	
 	@GetMapping(value="r/{pageid}")
-	public String read(ModelMap m,@PathVariable int pageid,@RequestParam(value = "filtro", required = false) String filtro,@RequestParam(value = "tipo", required = false) String tipo) {
+	public String read(ModelMap m,@PathVariable int pageid,@RequestParam(value = "filtro", required = false) String filtro,@RequestParam(value = "tipo", required = false) String tipo,HttpSession s) {
 		filtro = (filtro == null) ? "" : filtro;
 		tipo = (tipo == null) ? "normal" : tipo;
 		int principio = 0;
@@ -101,6 +101,8 @@ public class JuegoController {
 		case "Plataforma": m.put("juegos", repoJuego.findByPlataformasNombreStartsWithIgnoreCase(filtro)); break;
 		case "normal": m.put("juegos",juegos); break;
 		}
+		s.setAttribute("pageid", pageid);
+		m.put("pageid", pageid);
 		m.put("view", "juego/R");
 		m.put("filtro", filtro);
 		m.put("antes", dosAntes);
@@ -127,6 +129,7 @@ public class JuegoController {
 			throws DangerException, InfoException {
 		
 		try {
+			s.getAttribute("pageid");
 			H.isRolOK("admin", s);
 			Juego j = new Juego();
 			j.setNombre(nombre);
@@ -160,7 +163,7 @@ public class JuegoController {
 			PRG.error("Juego " + nombre + " duplicado", "juego/c");
 		
 		}
-		PRG.info("Juego " + nombre + " creado correctamente", "juego/r/1");
+		PRG.info("Juego " + nombre + " creado correctamente", "juego/r/"+s.getAttribute("pageid"));
 
 	}
 
@@ -225,7 +228,7 @@ public class JuegoController {
 		} catch (Exception e) {
 			PRG.error("Error al actualizar " + nombre , "juego/c");
 		}
-		PRG.info("Juego " + nombre + " actualizado correctamente", "juego/r/1");
+		PRG.info("Juego " + nombre + " actualizado correctamente", "juego/r/"+s.getAttribute("pageid"));
 
 	}
 	
@@ -242,7 +245,7 @@ public class JuegoController {
 			PRG.error("Error al borrar el Juego"+e.getMessage(), "juego/r/1");
 		}
 
-		PRG.info("Juego borrado correctamente", "juego/r/1");
+		PRG.info("Juego borrado correctamente", "juego/r/"+s.getAttribute("pageid"));
 
 	}
 	
