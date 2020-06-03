@@ -5,23 +5,25 @@
 				<div class="col s12 m4 l12 xl12">
 				<form method="get">
 				<div class="row">
-					<div class="input-field col s6">
+					<div class="input-field col s4">
 					<input type="text" name="filtro" th:value="${filtro}" placeholder="Buscar entrada en el foro"/>
 					<input type="hidden" name="idForo" th:value="${id}">
 					</div>
 					
-					<div class="input-field col s6">
+					<div class="input-field col s4">
 					<select name="tipo" class="">
-					<optgroup label="Campo de busqueda" style="color:white !important;">
+					<optgroup label="Elegir" style="color:white !important;">
 					<option th:selected="${tipo=='Comentario'}" style="color:white !important;">Comentario</option>
 					<option th:selected="${tipo=='LoginName'}" style="color:white !important;">LoginName</option>
 					</optgroup>
 					</select>
 					</div>
-					</div>
+					<div class="col s4">
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
 						<i class="material-icons ">search</i>
+						</
 					</button>
+					</div>
 				</form>
 				</div>
 				</div>
@@ -51,7 +53,7 @@
 				<legend>Acciones:</legend>
 				<div class="row">
 				<div class="col s12 m12 l12 xl12">
-<form action="https://thegaminghub.herokuapp.com/entradaForo/c" method="get">
+			<form action="https://thegaminghub.herokuapp.com/entradaForo/c" method="get">
 					<input type="hidden" name="id" th:value="${id}" />
 					<input type="hidden" name="idJuego" th:value="${idJuego}">
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
