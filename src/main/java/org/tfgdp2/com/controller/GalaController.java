@@ -75,12 +75,12 @@ public class GalaController {
 			g.setActivo(false);
 			for (Premio_Participante Premio_Participante : premiosP) {
 				g.getPremiosP().add(Premio_Participante);
-				Premio_Participante.getTiene().add(g);
+				Premio_Participante.setTiene(g);
 			}
 			
 			for (Premio_Juego Premio_Juego : premiosJ) {
 				g.getPremiosJ().add(Premio_Juego);
-				Premio_Juego.getTiene().add(g);
+				Premio_Juego.setTiene(g);
 			}
 			repoGala.save(g);
 			

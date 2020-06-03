@@ -24,8 +24,8 @@ public class Premio_Juego {
 	@OneToMany(mappedBy = "premio")
 	private Collection<Nominacion_Juego> premiados;
 
-	@ManyToMany
-	private Collection<Gala> tiene;
+	@ManyToOne
+	private Gala tiene;
 
 	// =====================================
 
@@ -66,11 +66,11 @@ public class Premio_Juego {
 		this.premiados = premiados;
 	}
 
-	public Collection<Gala> getTiene() {
+	public Gala getTiene() {
 		return tiene;
 	}
 
-	public void setTiene(Collection<Gala> tiene) {
+	public void setTiene(Gala tiene) {
 		this.tiene = tiene;
 	}
 

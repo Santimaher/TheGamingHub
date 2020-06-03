@@ -31,10 +31,10 @@ public class Gala {
 	@Column(unique = true)
 	private LocalDate fin;
 	
-	@ManyToMany(mappedBy = "tiene")
+	@OneToMany(mappedBy = "tiene")
 	private Collection<Premio_Participante> premiosP;
 	
-	@ManyToMany(mappedBy = "tiene")
+	@OneToMany(mappedBy = "tiene")
 	private Collection<Premio_Juego> premiosJ;
 	
 	//------------CONSTRUCTOR----------------
