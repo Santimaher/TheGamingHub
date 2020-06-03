@@ -49,36 +49,43 @@
 				</div>
 				</div>
 				</fieldset>
-				<fieldset>
-				<legend>Acciones:</legend>
+				
+				
+				
 				<div class="row">
-				<div class="col s12 m12 l12 xl12">
-			<form action="https://thegaminghub.herokuapp.com/entradaForo/c" method="get">
+				<div class="col s4 m4 l4 xl4">
+			 <form action="https://thegaminghub.herokuapp.com/entradaForo/c" method="get">
 					<input type="hidden" name="id" th:value="${id}" />
 					<input type="hidden" name="idJuego" th:value="${idJuego}">
-					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
+					<button onclick="submit()" class="waves-effect waves-light btn separacion purple large">
 						Escribir comentario
 					</button>
 				</form>
 				</div>
-				<div class="col s12 m12 l12 xl12">
+				<div class="col s4 m4 l4 xl4">
 				<form action="https://thegaminghub.herokuapp.com/entradaForo/rPropio" method="get">
 					<input type="hidden" name="id" th:value="${id}" />
-					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
+					<button onclick="submit()" class="waves-effect waves-light btn separacion purple large">
 						Mis comentarios en este foro
 					</button>
 				</form>
 				</div>
-				<div class="col s12 m12 l12 xl12">
+				<div class="col s4 m4 l4 xl4">
 				<form action="https://thegaminghub.herokuapp.com/foro/r" method="get">
 					<input type="hidden" name="id" th:value="${idJuego}">
-					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
+					<button onclick="submit()" class="waves-effect waves-light btn separacion purple large">
 						Menu subforos
 					</button>
 				</form>
 				</div>
-				</div>
-				</fieldset>
+				
+		</div>
+				
+				
+				
+				
+				
+				
 <div th:each="entrada:${entradas}">	
   <div class="row">
     <div class="col s12 m6">
