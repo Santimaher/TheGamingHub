@@ -66,10 +66,9 @@
 							<span name="consolas" th:text="${consola.nombre}"></span> <i class="close material-icons">close</i> <input type="hidden" name="idPlataforma[]" th:value="${consola.id}"/>
 						</div>
 					</div>
-				</fieldset>
-			</fieldset>	
+				</fieldset>			
 				<select onchange="buscar()" name="selector" id="busca">
-					<option value="">Elegir</option>
+					<option  value="">Elegir</option>
 					<option value="Sony">Sony</option>
 					<option value="Microsoft">Microsoft</option>
 					<option value="Nintendo">Nintendo</option>
@@ -78,6 +77,7 @@
 					<option value="SNK">SNK</option>
 					<option value="Atari">Atari</option>		
 				</select>
+				</fieldset>	
 		</form>
 	</div>
 	<div name="expositor" id="exp"></div>
