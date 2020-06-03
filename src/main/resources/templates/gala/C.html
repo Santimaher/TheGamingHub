@@ -23,16 +23,16 @@
 	   <fieldset>
 	    <legend>Premios disponibles Juegos</legend>
 	     <span th:each="premioJ:${premiosJ}">
-	      <label th:for="|J${premioJ.id}|" th:text="premioJ.nombrePremio"></label> 
-	      <input id="|J${premioJ.id}|" type="checkbox" name="premiosJ[]" value="premioJ.id">
+	      <label th:for="|J${premioJ.id}|" th:text="${premioJ.nombrePremio}"></label> 
+	      <input th:id="|J${premioJ.id}|" type="checkbox" name="premiosJ[]" th:value="${premioJ.id}">
 	     </span>
 	   </fieldset>
 	   
 	   <fieldset>
 	    <legend>Premios disponibles Participante</legend>
 	     <span th:each="premioP:${premiosP}">
-	      <label th:for="|P${premioP.id}|" th:text="premioP.nombrePremio"></label> 
-	      <input id="|J${premioP.id}|" type="checkbox" name="premiosP[]" value="premioP.id">
+	      <label th:for="|P${premioP.id}|" th:text="${premioP.nombrePremio}"></label> 
+	      <input th:id="|J${premioP.id}|" type="checkbox" name="premiosP[]" th:value="${premioP.id}">
 	     </span>
 	   </fieldset>
 	<button  class="btn waves-effect waves-light purple"  onclick="submit()">
