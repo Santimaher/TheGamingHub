@@ -242,6 +242,10 @@ select{
           font-size: 20px !important;
 }
 .select-dropdown, dropdown-trigger{
-	color : black !important;
+	color : white !important;
 	font-size: 15px !important
+}
+.datepicker-calendar-container{
+	background-color: black !important;
+	color : white !important;
 }
