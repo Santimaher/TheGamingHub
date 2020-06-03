@@ -243,7 +243,7 @@ select{
 }
 .select-dropdown, dropdown-trigger{
 	color : white !important;
-	font-size: 15px !important
+	font-size: 17px !important
 }
 .datepicker-calendar-container{
 	background-color: black !important;
@@ -259,6 +259,6 @@ select{
 .datepicker-done{
 	color: white !important;
 }
-.datepicker-day-button{
+.is-today{
 	color: white !important;
 }
