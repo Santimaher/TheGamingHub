@@ -36,7 +36,7 @@
 	    <legend>Premios disponibles Participante</legend>
 	     <span th:each="premioP:${premiosP}">
 	      <label th:for="|P${premioP.id}|"> 
-	      <input th:id="|J${premioP.id}|" type="checkbox" name="premiosP[]" th:value="${premioP.id}">
+	      <input th:id="|P${premioP.id}|" type="checkbox" name="premiosP[]" th:value="${premioP.id}">
 	      <span th:text="${premioP.nombrePremio}"></span>
 	      </label> 
 	     
