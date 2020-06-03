@@ -80,8 +80,9 @@ public class JuegoController {
 			
 		}
 		else if (aguja==2) {
+			dosAntes.add(1);
 			for (int i = 3; i < 6; i++) {
-				dosAntes.add(1);
+				
 				dosDespues.add(i);
 			}
 		}
@@ -198,7 +199,7 @@ public class JuegoController {
 			Juego j = repoJuego.getOne(id);
 			j.setNombre(nombre);
 			j.setDesarrolladora(desarrolladora);
-			if (id <= 210) {
+			if (id <= 181) {
 				j.setImgPre(imgPre);
 			} else {
 				j.setImg(H.blobCreator(img));
