@@ -62,12 +62,12 @@
 					Plataformas seleccionadas
 					<div name="seleccionadas" id="selec"
 						th:each="consola:${plataformas}">
-						<div class="chip">
+						<div class="chip purple white-text">
 							<span name="consolas" th:text="${consola.nombre}"></span> <i class="close material-icons">close</i> <input type="hidden" name="idPlataforma[]" th:value="${consola.id}"/>
 						</div>
 					</div>
 				</fieldset>			
-				<select onchange="buscar()"  name="selector" id="busca">
+				<select onchange="buscar()" class="purple " name="selector" id="busca">
 					<option class="white-text" value="">Elegir</option>
 					<option class="white-text" value="Sony">Sony</option>
 					<option class="white-text" value="Microsoft">Microsoft</option>
