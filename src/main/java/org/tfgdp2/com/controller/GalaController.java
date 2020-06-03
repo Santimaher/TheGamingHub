@@ -89,7 +89,7 @@ public class GalaController {
 			repoGala.save(g);
 			
 		} catch (Exception e) {
-			PRG.error("Gala " + edicion + " duplicada", "gala/c");
+			PRG.error("Gala " + edicion + " duplicada"+e.getMessage(), "gala/c");
 		}
 		PRG.info("Gala " + edicion + " creada correctamente", "gala/r");
 	}
