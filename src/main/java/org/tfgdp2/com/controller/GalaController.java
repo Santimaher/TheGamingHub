@@ -63,8 +63,8 @@ public class GalaController {
 			@RequestParam("edicion") String edicion,
 			@RequestParam("inicio")
 			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inicio,
-			@RequestParam(value = "premiosP[]") List<Long> idsPremiosP,
-			@RequestParam(value = "premiosJ[]") List<Long> idsPremiosJ,
+			@RequestParam(value = "premiosP[]") List<String> PremiosP,
+			@RequestParam(value = "premiosJ[]") List<String> PremiosJ,
 			@RequestParam("fin")
 			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fin,
 			HttpSession s) throws DangerException, InfoException {
@@ -78,13 +78,13 @@ public class GalaController {
 			g.setFin(fin);
 			g.setActivo(false);
 			
-			 for (Long idP : idsPremiosP) {
-			 Premio_Participante pp=repoPremioP.getOne(idP);
-			 g.getPremiosP().add(pp); pp.setTiene(g); }
+			 for (String P : PremiosP) {
+			 Premio_Participante ppN=new Premio_Participante(P+"("+g.getFin().getMonth().toString()+g.getFin().getYear()+")");
+			 g.getPremiosP().add(ppN); ppN.setTiene(g); }
 			  
-			 for (Long idJ : idsPremiosJ) {
-				 Premio_Juego pj=repoPremioJ.getOne(idJ);
-				 g.getPremiosJ().add(pj); pj.setTiene(g); }
+			 for (String J : PremiosJ) {
+				Premio_Juego pjN=new Premio_Juego(J+"("+g.getFin().getMonth().toString()+g.getFin().getYear()+")");
+				 g.getPremiosJ().add(pjN); pjN.setTiene(g); }
 			 
 			repoGala.save(g);
 			
