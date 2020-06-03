@@ -76,7 +76,7 @@ public class GalaController {
 			g.setInicio(inicio);
 			g.setFin(fin);
 			g.setActivo(false);
-			
+			repoGala.save(g);
 			 for (String P : PremiosP) {
 			 Premio_Participante ppN=new Premio_Participante(P+")");
 			 ppN.setTiene(g);
