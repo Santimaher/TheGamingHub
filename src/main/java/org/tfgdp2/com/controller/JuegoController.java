@@ -183,7 +183,9 @@ public class JuegoController {
 	@PostMapping("u")
 	public void uPost(@RequestParam("id") Long id, @RequestParam("nombre") String nombre,
 			@RequestParam("desarrolladora") String desarrolladora,
-			@RequestParam("imgJ") MultipartFile img, @RequestParam("teaser") String teaser,
+			@RequestParam(value="imgJ" , required = false) MultipartFile img,
+			@RequestParam(value="imgPre" , required = false) String imgPre,
+			@RequestParam("teaser") String teaser,
 			@RequestParam(value = "idPlataforma[]") List<Long> idsPlataforma,
 			@RequestParam(value = "idCat[]") List<Long> idsCat,
 			@RequestParam("flan") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate flan, HttpSession s)
@@ -192,8 +194,13 @@ public class JuegoController {
 			H.isRolOK("admin", s);
 			Juego j = repoJuego.getOne(id);
 			j.setNombre(nombre);
-			j.setDesarrolladora(desarrolladora);			
-			j.setImg(H.blobCreator(img));
+			j.setDesarrolladora(desarrolladora);
+			if (id <= 210) {
+				j.setImgPre(imgPre);
+			} else {
+				j.setImg(H.blobCreator(img));
+			}
+			
 			j.setTeaser(teaser);
 			j.setFechaLanzamiento(flan);
 			
