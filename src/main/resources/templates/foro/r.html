@@ -1,10 +1,17 @@
 <div class="container">
-	<h1 th:text="|Subforos del juego ${juego.nombre}|"></h1>
-	<div th:each="foro:${foros}">
+
+	<div class="row">
+	<h1 th:text="|Foros del juego ${juego.nombre}|" class="center"></h1>
+	</div>
+	<div class="row">
+	
+	<div th:each="foro:${foros}" class="col s3 m3 xl3 l3">
+	
 	<form action="https://thegaminghub.herokuapp.com/entradaForo/r">
-	<button onclick="submit()" class="waves-effect waves-light btn separacion purple" th:text="${foro.tipo}"></button>
+	<button onclick="submit()" class="waves-effect waves-light btn separacion purple large" th:text="${foro.tipo}"></button>
 	<input  name="idForo" type="hidden" th:value="${foro.id}">
 	</form>
+	</div>
 	</div>
 	
 </div>
