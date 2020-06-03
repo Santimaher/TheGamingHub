@@ -164,7 +164,7 @@ public class JuegoController {
 			PRG.error("Juego " + nombre + " duplicado", "juego/c");
 		
 		}
-		PRG.info("Juego " + nombre + " creado correctamente", "juego/r/"+s.getAttribute("pageid"));
+		PRG.info("Juego " + nombre + " creado correctamente", "juego/r/1");
 
 	}
 

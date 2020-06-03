@@ -5,11 +5,9 @@
 
 	<form method="get">
 		<input type="text" name="filtro" th:value="${filtro}"
-<<<<<<< HEAD
-			placeholder="Buscar juego" /> <select name="tipo" class="white-text">
-=======
+
 			placeholder="Buscar juego" /> <select class="white-text" name="tipo">
->>>>>>> branch 'master' of https://github.com/Santimaher/TheGamingHub
+
 			<optgroup label="Campo de busqueda">
 				<option th:selected="${tipo=='Nombre'}">Nombre</option>
 				<option th:selected="${tipo=='Plataforma'}">Plataforma</option>
