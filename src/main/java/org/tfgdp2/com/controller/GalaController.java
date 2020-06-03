@@ -78,13 +78,13 @@ public class GalaController {
 			g.setActivo(false);
 			repoGala.save(g);
 			 for (String P : PremiosP) {
-			 Premio_Participante ppN=new Premio_Participante(P+")");
+			 Premio_Participante ppN=new Premio_Participante(P+"("+g.getFin().getMonth()+" "+g.getFin().getYear()+")");
 			 ppN.setTiene(g);
 			 repoPremioP.save(ppN);
 			 g.getPremiosP().add(ppN);  }
 			  
 			 for (String J : PremiosJ) {
-			 Premio_Juego pjN=new Premio_Juego(J+"()");
+			 Premio_Juego pjN=new Premio_Juego(J+"("+g.getFin().getMonth()+" "+g.getFin().getYear()+")");
 			 pjN.setTiene(g);
 			 repoPremioJ.save(pjN);
 			 g.getPremiosJ().add(pjN);  }
