@@ -54,6 +54,8 @@ public class GalaController {
 	public String cGet(ModelMap m,HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);		
 		m.put("view", "gala/C");
+		m.put("premiosJ",repoPremioJ.findAll());
+		m.put("premiosP",repoPremioP.findAll());
 		return "_t/frame";
 	}
 	@PostMapping("c")
@@ -61,6 +63,8 @@ public class GalaController {
 			@RequestParam("edicion") String edicion,
 			@RequestParam("inicio")
 			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inicio,
+			@RequestParam(value = "premiosP[]") List<Long> idsPremiosP,
+			@RequestParam(value = "premiosJ[]") List<Long> idsPremiosJ,
 			@RequestParam("fin")
 			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fin,
 			HttpSession s) throws DangerException, InfoException {
@@ -73,15 +77,15 @@ public class GalaController {
 			g.setInicio(inicio);
 			g.setFin(fin);
 			g.setActivo(false);
-			for (Premio_Participante Premio_Participante : premiosP) {
-				g.getPremiosP().add(Premio_Participante);
-				Premio_Participante.setTiene(g);
-			}
 			
-			for (Premio_Juego Premio_Juego : premiosJ) {
-				g.getPremiosJ().add(Premio_Juego);
-				Premio_Juego.setTiene(g);
-			}
+			 for (Long idP : idsPremiosP) {
+			 Premio_Participante pp=repoPremioP.getOne(idP);
+			 g.getPremiosP().add(pp); pp.setTiene(g); }
+			  
+			 for (Long idJ : idsPremiosJ) {
+				 Premio_Participante pj=repoPremioP.getOne(idJ);
+				 g.getPremiosP().add(pj); pj.setTiene(g); }
+			 
 			repoGala.save(g);
 			
 		} catch (Exception e) {
