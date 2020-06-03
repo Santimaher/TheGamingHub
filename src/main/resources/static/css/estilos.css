@@ -251,3 +251,11 @@ select{
 .datepicker-row{
 	color: white !important;
 }
+
+.datepicker-cancel{
+	color: white !important;
+}
+
+.datepicker-done{
+	color: white !important;
+}
