@@ -248,6 +248,6 @@ select{
 .datepicker-calendar-container{
 	background-color: black !important;
 }
-.datepicker-day-button{
+.datepicker-row{
 	color: white !important;
 }
