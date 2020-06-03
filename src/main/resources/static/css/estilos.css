@@ -243,4 +243,5 @@ select{
 }
 .select-dropdown, dropdown-trigger{
 	color : black !important;
+	font-size: 15px !important
 }
