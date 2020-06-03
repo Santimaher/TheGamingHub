@@ -82,13 +82,13 @@
 					
 					<fieldset>
 					<legend>Plataformas disponibles</legend>
-						<div th:each="plataforma:${juego.plataformas}" class="chip" th:text="${plataforma.nombre}"></div>
+						<div th:each="plataforma:${juego.plataformas}" class="chip purple white-text" th:text="${plataforma.nombre}"></div>
 					</fieldset>
 					
 					
 					<fieldset>
 					<legend>Categorias</legend>
-						<div th:each="categoria:${juego.pertenece}" class="chip" th:text="${categoria.nombre}"></div>
+						<div th:each="categoria:${juego.pertenece}" class="chip purple white-text" th:text="${categoria.nombre}"></div>
 					</fieldset>
 					
 					<button th:data-target="|modal${juego.id}|"
