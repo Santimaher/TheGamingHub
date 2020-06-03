@@ -4,16 +4,20 @@
 <p th:if="${session.usuario==null}">Debes haber iniciado sesion para dar me gusta o no me gusta, comentar y para leer mensajes propio escritos en este foro <a href="https://thegaminghub.herokuapp.com/login">Iniciar sesion</a></p>
 				<div class="col s12 m4 l12 xl12">
 				<form method="get">
+					<div class="input-field col s12">
 					<input type="text" name="filtro" th:value="${filtro}" placeholder="Buscar entrada en el foro"/>
-					<input type="hidden" name="idForo" th:value="${id}" />
-					<select name="tipo">
+					<input type="hidden" name="idForo" th:value="${id}">
+					</div>
+					
+					<select name="tipo" class="white-text">
 					<optgroup label="Campo de busqueda">
 					<option th:selected="${tipo=='Comentario'}">Comentario</option>
 					<option th:selected="${tipo=='LoginName'}">LoginName</option>
 					</optgroup>
 					</select>
+					
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
-						Buscar
+						<i class="material-icons ">search</i>
 					</button>
 				</form>
 				</div>

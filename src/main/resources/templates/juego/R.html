@@ -5,14 +5,13 @@
 
 	<form method="get">
 		<input type="text" name="filtro" th:value="${filtro}"
-			placeholder="Buscar juego" /> <select name="tipo">
+			placeholder="Buscar juego" /> <select name="tipo" class="white-text">
 			<optgroup label="Campo de busqueda">
 				<option th:selected="${tipo=='Nombre'}">Nombre</option>
 				<option th:selected="${tipo=='Plataforma'}">Plataforma</option>
 			</optgroup>
 		</select>
-		<button onclick="submit()"
-			class="waves-effect waves-light btn separacion purple">
+		<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
 			Buscar</button>
 	</form>
 	
