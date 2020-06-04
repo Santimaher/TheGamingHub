@@ -18,7 +18,7 @@
 	<h3>Gala activa</h3>
 	<h5 id="crono"></h5>
     <ul>
-    <li th:each="pj:${pjs}" th:utext="|${${#strings.replace(pj.nombrePremio,' ','')}.premio.nombrePremio}: ${${#strings.replace(pj.nombrePremio,' ','')}.nombre} con ${${#strings.replace(pj.nombrePremio,' ','')}.cantidadVotos} votos|"></li>
+    <li th:each="pj:${pjs}" th:utext="|${#strings.replace(pj.nombrePremio,' ','').premio.nombrePremio}: ${#strings.replace(pj.nombrePremio,' ','').nombre} con ${#strings.replace(pj.nombrePremio,' ','').cantidadVotos} votos|"></li>
     </ul>
 	<form action="https://thegaminghub.herokuapp.com/premio/r">
 		<button class="btn waves-effect waves-light purple separacion" onclick="submit()">Votar para los premios</button>
