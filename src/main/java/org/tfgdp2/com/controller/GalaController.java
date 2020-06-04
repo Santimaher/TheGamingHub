@@ -195,7 +195,7 @@ public class GalaController {
 		List<Premio_Participante> pps = (List<Premio_Participante>) gala.getPremiosP();
 		
 		for (Premio_Participante premio_Participante : pps) {
-			m.put(premio_Participante.getNombrePremio().replace(" ", ""),
+			m.put(premio_Participante.getNombrePremio(),
 					repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc(
 							premio_Participante.getNombrePremio(), gala.getId()));
 
