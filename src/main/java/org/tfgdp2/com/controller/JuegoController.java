@@ -88,8 +88,11 @@ public class JuegoController {
 		}
 		else {
 			for (int i = 1; i < 3; i++) {
-				dosAntes.add(aguja-i);
+				
 				dosDespues.add(aguja+i);
+			}
+			for (int i = 3; i > 0; i--) {
+				dosAntes.add(aguja-i);
 			}
 		}
 		

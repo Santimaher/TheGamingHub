@@ -17,8 +17,13 @@
 		th:utext="${#temporals.format(fecha, 'dd-MM-yyyy')}" id="ff"></span>
 	<h3>Gala activa</h3>
 	<h5 id="crono"></h5>
+	<h4>Ganadores de la especialidad: Juegos</h4>
     <ul>
     <li th:each="ganadorJ:${ganadoresJ}" th:text="|${ganadorJ.premio.nombrePremio}: ${ganadorJ.nombre} con ${ganadorJ.cantidadVotos} votos|"></li>
+    </ul>
+    <h4>Ganadores de la especialidad: Participantes</h4>
+    <ul>
+    <li th:each="ganadorP:${ganadoresP}" th:text="|${ganadorP.premio.nombrePremio}: ${ganadorP.nombre} con ${ganadorP.cantidadVotos} votos|"></li>
     </ul>
 	<form action="https://thegaminghub.herokuapp.com/premio/r">
 		<button class="btn waves-effect waves-light purple separacion" onclick="submit()">Votar para los premios</button>
