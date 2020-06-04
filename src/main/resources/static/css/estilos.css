@@ -42,10 +42,11 @@ body {
 	
 }
 .cuerpo-pagina{
-	background-image:url("/img/axiom-pattern.png");
-    background-color:black;
-	background-attachment:fixed;
-	color:rgb(255,255,255);
+	
+    background-color:#0f0b12;
+/*     background-image:url("/img/axiom-pattern.png"); */
+/* 	background-attachment:fixed; */
+/* 	color:rgb(255,255,255); */
 }
 nav{
 background-color:rgb(0,0,0) !important;
