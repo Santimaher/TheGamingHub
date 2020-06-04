@@ -2,6 +2,7 @@ package org.tfgdp2.com.domain;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +24,7 @@ public class Premio_Participante {
 	private String nombrePremio;
 
 	@OneToMany(mappedBy = "premio")
-	private Collection<Nominacion_Participante> premiados;
+	private List<Nominacion_Participante> premiados;
 
 	@ManyToOne
 	private Gala tiene;
@@ -64,7 +65,7 @@ public class Premio_Participante {
 		return premiados;
 	}
 
-	public void setPremiados(Collection<Nominacion_Participante> premiados) {
+	public void setPremiados(List<Nominacion_Participante> premiados) {
 		this.premiados = premiados;
 	}
 
