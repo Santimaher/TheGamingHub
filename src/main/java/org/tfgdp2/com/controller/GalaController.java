@@ -2,13 +2,11 @@ package org.tfgdp2.com.controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
+
 import java.util.Comparator;
-import java.util.Date;
+
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+
 
 import javax.servlet.http.HttpSession;
 
@@ -20,11 +18,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.tfgdp2.com.domain.Foro;
+
 import org.tfgdp2.com.domain.Gala;
 import org.tfgdp2.com.domain.Nominacion_Juego;
 import org.tfgdp2.com.domain.Nominacion_Participante;
-import org.tfgdp2.com.domain.Plataforma;
 import org.tfgdp2.com.domain.Premio_Juego;
 import org.tfgdp2.com.domain.Premio_Participante;
 import org.tfgdp2.com.exception.DangerException;
