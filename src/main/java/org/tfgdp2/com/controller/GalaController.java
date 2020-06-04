@@ -73,8 +73,6 @@ public class GalaController {
 	public String cGet(ModelMap m, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
 		m.put("view", "gala/C");
-		m.put("premiosJ", repoPremioJ.findAll());
-		m.put("premiosP", repoPremioP.findAll());
 		return "_t/frame";
 	}
 
