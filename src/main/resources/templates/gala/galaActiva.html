@@ -18,7 +18,7 @@
 	<h3>Gala activa</h3>
 	<h5 id="crono"></h5>
     <ul>
-    <li th:each="ganadorJ:${ganadoresJ}" th:text="|${ganadorJ.premio.nombrePremio}: ${ganadorJ.nombre} con ${ganadorJ.votos} votos|"></li>
+    <li th:each="ganadorJ:${ganadoresJ}" th:text="|${ganadorJ.premio.nombrePremio}: ${ganadorJ.nombre} con ${ganadorJ.cantidadVotos} votos|"></li>
     </ul>
 	<form action="https://thegaminghub.herokuapp.com/premio/r">
 		<button class="btn waves-effect waves-light purple separacion" onclick="submit()">Votar para los premios</button>
