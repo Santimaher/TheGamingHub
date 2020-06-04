@@ -60,9 +60,10 @@ public class GalaController {
 	public String read2(ModelMap m) {
 		m.put("galas", repoGala.findAll());
 		m.put("FechaAc",LocalDate.now());
-		m.put("byCantidadVotosJ", Comparator.comparingInt(Nominacion_Juego::getCantidadVotos));
-		m.put("byCantidadVotosP", Comparator.comparingInt(Nominacion_Participante::getCantidadVotos));
+		m.addAttribute("byCantidadVotosJ", Comparator.comparingInt(Nominacion_Juego::getCantidadVotos));
+		m.addAttribute("byCantidadVotosP", Comparator.comparingInt(Nominacion_Participante::getCantidadVotos));
 		m.put("view", "gala/r2");
+		
 		return "_t/frame";
 	}
 
