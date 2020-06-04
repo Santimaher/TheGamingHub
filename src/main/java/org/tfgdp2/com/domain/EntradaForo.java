@@ -88,7 +88,7 @@ public class EntradaForo {
 		return fechaPublicacion;
 	}
 	public void setFechaPublicacion(LocalDate fechaPublicacion) {
-		this.fechaPublicacion = fechaPublicacion;
+		this.fechaPublicacion = fechaPublicacion.plusDays(1);
 	}
 	public Usuario getEscribe() {
 		return escribe;
