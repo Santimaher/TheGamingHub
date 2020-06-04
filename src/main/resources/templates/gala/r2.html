@@ -7,7 +7,9 @@
           <li th:each="premioJ:${gala.premiosJ}">
             <div class="collapsible-header"  th:text="${premioJ.nombrePremio}"></div>
             <div class="collapsible-body">
-            <span th:each="premiadosJ,stat: ${#lists.sort(premioJ.premiados,byCantidadVotosJ)}" th:text="${stat.first}?'|Ganador ${premiadoJ.nombre} con ${premiadoJ.cantidadVotos}|':'|${premiadoJ.nombre} con ${premiadoJ.cantidadVotos}|'"></span>
+            <div th:each="premiadosJ,stat: ${#lists.sort(premioJ.premiados,byCantidadVotosJ)}">
+            <span  th:text="${stat.first}?'|Ganador ${premiadoJ.nombre} con ${premiadoJ.cantidadVotos}|':'|${premiadoJ.nombre} con ${premiadoJ.cantidadVotos}|'"></span>
+            </div>            
             </div>
           </li>
        </ul>
@@ -15,7 +17,9 @@
           <li th:each="premioP:${gala.premiosP}" >
             <div class="collapsible-header" th:text="${premioP.nombrePremio}"></div>
             <div class="collapsible-body">
-            <span th:each="premiadosP,stat: ${#lists.sort(premioP.premiados,byCantidadVotosP)}" th:text="${stat.first}?'|Ganador ${premiadoP.nombre} con ${premiadoP.cantidadVotos}|':'|${premiadoP.nombre} con ${premiadoP.cantidadVotos}|'"></span>
+            <div th:each="premiadosP,stat: ${#lists.sort(premioP.premiados,byCantidadVotosP)}">
+            <span  th:text="${stat.first}?'|Ganador ${premiadoP.nombre} con ${premiadoP.cantidadVotos}|':'|${premiadoP.nombre} con ${premiadoP.cantidadVotos}|'"></span>
+            </div>
             </div>
           </li>
        </ul>
