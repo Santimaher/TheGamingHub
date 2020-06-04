@@ -3,6 +3,7 @@ package org.tfgdp2.com.controller;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -55,6 +56,16 @@ public class GalaController {
 	public String read(ModelMap m) {
 		m.put("galas", repoGala.findAll());
 		m.put("view", "gala/r");
+		return "_t/frame";
+	}
+	
+	@GetMapping("r2")
+	public String read2(ModelMap m) {
+		m.put("galas", repoGala.findAll());
+		m.put("FechaAc",LocalDate.now());
+		m.addAttribute("byCantidadVotosJ", Comparator.comparing(Nominacion_Juego::getCantidadVotos));
+		m.addAttribute("byCantidadVotosP", Comparator.comparing(Nominacion_Participante::getCantidadVotos));
+		m.put("view", "gala/r2");
 		return "_t/frame";
 	}
 

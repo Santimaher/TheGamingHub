@@ -112,8 +112,6 @@ public class PremioController {
 		try {
 		Gala g  = repoGala.getByActivoTrue();
 		m.put("gala",g );
-		m.put("pj", repoPremioJuego.findByTiene_id(g.getId()));
-		m.put("pp", repoPremioPar.findByTiene_id(g.getId()));
 		m.put("view", "premio/r");
 		
 		}

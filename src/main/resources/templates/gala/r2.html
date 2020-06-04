@@ -1,0 +1,25 @@
+<div class="container">
+<ul class="collapsible">
+   <li th:each="gala:${galas}" th:if="${gala.fin}<=${fechaAc}" >
+     <div class="collapsible-header" th:text="|Gala ${gala.edicion}|"></div>
+     <div class="collapsible-body">
+       <ul class="collapsible">
+          <li th:each="premioJ:${galas.premiosJ}">
+            <div class="collapsible-header"  th:text="${premioJ.nombrePremio}"></div>
+            <div class="collapsible-body">
+            <span th:each="premiadosJ,stat: ${#lists.sort(premioJ.premiados,byCantidadVotosJ)}" th:text="${stat.index==0}?'|Ganador ${premiadoJ.nombre} con ${premiadoJ.cantidadVotos}|':'|${premiadoJ.nombre} con ${premiadoJ.cantidadVotos}|'"></span>
+            </div>
+          </li>
+       </ul>
+       <ul class="collapsible">
+          <li th:each="premioP:${galas.premiosP}" >
+            <div class="collapsible-header" th:text="${premioP.nombrePremio}"></div>
+            <div class="collapsible-body">
+            <span th:each="premiadosP,stat: ${#lists.sort(premioP.premiados,byCantidadVotosP)}" th:text="${stat.index==0}?'|Ganador ${premiadoP.nombre} con ${premiadoP.cantidadVotos}|':'|${premiadoP.nombre} con ${premiadoP.cantidadVotos}|'"></span>
+            </div>
+          </li>
+       </ul>
+     </div>
+    </li>
+ </ul>
+</div>
