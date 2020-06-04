@@ -1,6 +1,7 @@
 package org.tfgdp2.com.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.tfgdp2.com.domain.Foro;
 import org.tfgdp2.com.domain.Gala;
+import org.tfgdp2.com.domain.Nominacion_Juego;
+import org.tfgdp2.com.domain.Nominacion_Participante;
 import org.tfgdp2.com.domain.Plataforma;
 import org.tfgdp2.com.domain.Premio_Juego;
 import org.tfgdp2.com.domain.Premio_Participante;
@@ -194,19 +197,19 @@ public class GalaController {
 		List<Premio_Juego> pjs = (List<Premio_Juego>) gala.getPremiosJ();
 		List<Premio_Participante> pps = (List<Premio_Participante>) gala.getPremiosP();
 		
+		List<Nominacion_Juego> ganadoresJ=new ArrayList<Nominacion_Juego>();
+		List<Nominacion_Participante> ganadoresP=new ArrayList<Nominacion_Participante>();
+		
 		for (Premio_Participante premio_Participante : pps) {
-			m.put(premio_Participante.getNombrePremio(),
-					repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc(
-							premio_Participante.getNombrePremio(), gala.getId()));
+		ganadoresP.add(repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc(premio_Participante.getNombrePremio(), gala.getId()));
 
 		}
 		for (Premio_Juego premio_Juego : pjs) {
-			m.put(premio_Juego.getNombrePremio().replace(" ", ""),
-					repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc(
-							premio_Juego.getNombrePremio(), gala.getId()));
+		ganadoresJ.add(repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc(premio_Juego.getNombrePremio(), gala.getId()));
+
 		}
-        m.put("pjs", pjs);
-        m.put("pps", pps);
+		m.put("ganadoresJ", ganadoresJ);
+		m.put("ganadoresP", ganadoresP);
 		m.put("fecha", gala.getFin());
 		m.put("estado", gala.getActivo());
 		m.put("fechaActual", LocalDate.now());
