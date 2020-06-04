@@ -29,7 +29,7 @@ public class EntradaForo {
 	private String comentario;
 	@Lob
 	private Blob img;
-	private LocalDate fechaPublicacion;
+	private Date fechaPublicacion;
 	@ManyToOne
 	private Usuario escribe;
     @ManyToOne
@@ -45,12 +45,12 @@ public class EntradaForo {
 	public EntradaForo(String comentar) {
 		this.ranking=0;
 		this.comentario=comentar;
-		this.fechaPublicacion=LocalDate.now();
+		this.fechaPublicacion=new Date();
 		this.votos=new HashSet<>();
 	}
 	public EntradaForo() {
 		this.ranking=0;
-		this.fechaPublicacion=LocalDate.now();
+		this.fechaPublicacion=new Date();
 	}
 
 	public Collection<Votacion_Foro> getVotos() {
@@ -84,11 +84,11 @@ public class EntradaForo {
 	}
 
 	
-	public LocalDate getFechaPublicacion() {
+	public Date getFechaPublicacion() {
 		return fechaPublicacion;
 	}
-	public void setFechaPublicacion(LocalDate fechaPublicacion) {
-		this.fechaPublicacion = fechaPublicacion.plusDays(1);
+	public void setFechaPublicacion(Date fechaPublicacion) {
+		this.fechaPublicacion = fechaPublicacion;
 	}
 	public Usuario getEscribe() {
 		return escribe;
