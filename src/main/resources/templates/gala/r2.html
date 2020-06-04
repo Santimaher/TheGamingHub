@@ -7,7 +7,7 @@
           <li th:each="premioJ:${gala.premiosJ}">
             <div class="collapsible-header"  th:text="${premioJ.nombrePremio}"></div>
             <div class="collapsible-body">
-            <div th:each="premiados: ${premioJ.premiados}">
+            <div th:each="premiadoJ: ${premioJ.premiados}">
             <span  th:text="|${premiadoJ.nombre} con ${premiadoJ.cantidadVotos}|"></span>
             </div>            
             </div>
