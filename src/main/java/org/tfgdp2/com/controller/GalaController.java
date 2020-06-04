@@ -86,7 +86,9 @@ public class GalaController {
 
 			Gala g = new Gala();
 			g.setEdicion(edicion);
+			inicio=inicio.plusDays(1);
 			g.setInicio(inicio);
+			fin=fin.plusDays(1);
 			g.setFin(fin);
 			g.setActivo(false);
 			repoGala.save(g);
