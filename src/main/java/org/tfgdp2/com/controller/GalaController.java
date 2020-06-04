@@ -202,7 +202,7 @@ public class GalaController {
 	@GetMapping("GA")
 	public String GalaActual(ModelMap m, HttpSession s) {
 
-		Gala gala = repoGala.findTopByOrderByEdicionDesc();
+		Gala gala = repoGala.findTopByOrderByIdDesc();
 		List<Premio_Juego> pjs = (List<Premio_Juego>) gala.getPremiosJ();
 		List<Premio_Participante> pps = (List<Premio_Participante>) gala.getPremiosP();
 		

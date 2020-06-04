@@ -111,7 +111,7 @@ public class PremioController {
 	public String r(ModelMap m) throws DangerException {
 		try {
 		Gala g  = repoGala.getByActivoTrue();
-		m.put("gala",g );
+		m.put("gala",g);
 		m.put("view", "premio/r");
 		
 		}
