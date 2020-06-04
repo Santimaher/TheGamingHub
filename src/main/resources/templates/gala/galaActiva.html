@@ -17,18 +17,9 @@
 		th:utext="${#temporals.format(fecha, 'dd-MM-yyyy')}" id="ff"></span>
 	<h3>Gala activa</h3>
 	<h5 id="crono"></h5>
-	<p th:text="|${MejorActor.premio.nombrePremio}: ${MejorActor.nombre} con ${MejorActor.cantidadVotos} votos|"></p>
-	<p th:text="|${MejorActorDeDoblaje.premio.nombrePremio}: ${MejorActorDeDoblaje.nombre} con ${MejorActorDeDoblaje.cantidadVotos} votos|"></p>
-	<p th:text="|${MejorAnfitrionEsports.premio.nombrePremio}: ${MejorAnfitrionEsports.nombre} con ${MejorAnfitrionEsports.cantidadVotos} votos|"></p>
-	<p th:text="|${MejorCreadorDeContenido.premio.nombrePremio}: ${MejorCreadorDeContenido.nombre} con ${MejorCreadorDeContenido.cantidadVotos} votos|"></p>
-	<p th:text="|${MejorDesarrolladora.premio.nombrePremio}: ${MejorDesarrolladora.nombre} con ${MejorDesarrolladora.cantidadVotos} votos|"></p>
-	<p th:text="|${MejorDireccion.premio.nombrePremio}: ${MejorDireccion.nombre} con ${MejorDireccion.cantidadVotos} votos|"></p>
-	<p th:text="|${MejorDireccionArtistica.premio.nombrePremio}: ${MejorDireccionArtistica.nombre} con ${MejorDireccionArtistica.cantidadVotos} votos|"></p>
-	<p th:text="|${MejorEntrenador.premio.nombrePremio}: ${MejorEntrenador.nombre} con ${MejorEntrenador.cantidadVotos} votos|"></p>
-	<p th:text="|${MejorEquipo.premio.nombrePremio}: ${MejorEquipo.nombre} con ${MejorEquipo.cantidadVotos} votos|"></p>
-	<p th:text="|${MejorGuionista.premio.nombrePremio}: ${MejorGuionista.nombre} con ${MejorGuionista.cantidadVotos} votos|"></p>
-	<p th:text="|${MejorJugador.premio.nombrePremio}: ${MejorJugador.nombre} con ${MejorJugador.cantidadVotos} votos|"></p>
-	<p th:text="|${MejorProduccion.premio.nombrePremio}: ${MejorProduccion.nombre} con ${MejorProduccion.cantidadVotos} votos|"></p>
+    <ul>
+    <li th:each="pj:${pjs}" th:utext="|${${#strings.replace(pj.nombrePremio,' ','')}.premio.nombrePremio}: ${${#strings.replace(pj.nombrePremio,' ','')}.nombre} con ${${#strings.replace(pj.nombrePremio,' ','')}.cantidadVotos} votos|"></li>
+    </ul>
 	<form action="https://thegaminghub.herokuapp.com/premio/r">
 		<button class="btn waves-effect waves-light purple separacion" onclick="submit()">Votar para los premios</button>
 	</form>
