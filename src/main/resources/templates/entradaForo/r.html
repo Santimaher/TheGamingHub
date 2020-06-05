@@ -127,8 +127,8 @@
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
 						<button th:if="${session.usuario!=null}" onclick="submit()" class="waves-effect waves-light btn separacion purple">
 					<div class="dislike">
-						<img  th:each="voto:${entrada.votos}" th:if="${voto.votante.id}==${session.usuario.id} and ${voto.voto=='dislike'}" src="/img/dislike2.png" height="20" width="20">
-						<img  th:each="voto:${entrada.votos}" th:if="${voto.votante.id}==${session.usuario.id} and ${voto.voto=='like'}" src="/img/dislike1.png" height="20" width="20">
+						<img  th:each="voto:${votaciones}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='dislike'}" src="/img/dislike2.png" height="20" width="20">
+						<img  th:each="voto:${votaciones}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='like'}" src="/img/dislike1.png" height="20" width="20">
 				    </div> 
 				    
 				    </button>
@@ -163,7 +163,7 @@
   </div>
   </div>
 </div>
-<!-- <script>
+<script>
 function reloj(){
 	for(x of document.getElementsByClassName("like")){
 	if(x.children.length==0){
@@ -184,4 +184,4 @@ window.onload=function()
 	}
 	
 
-</script> -->
+</script>
