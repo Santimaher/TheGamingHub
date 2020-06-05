@@ -1,7 +1,7 @@
 <div class="container">
 	<h1>Responder</h1>
 	<div class="row">
-	<form method="post"	action="/entradaForo/responder"		class="form" enctype="multipart/form-data">
+	
 		<div class="col s12">
 			<ul class="tabs">
 				<li class="tab col s6 purple white-text"><a href="#test1">Post</a></li>
@@ -10,6 +10,7 @@
 			</ul>
 		</div>
 		<div id="test1" class="col s12">
+		<form method="post"	action="/entradaForo/responderSI"		class="form" enctype="multipart/form-data">
 				<input type="hidden" name="idForo" th:value="${idForo}" /> <input
 					type="hidden" name="idEntrada" th:value="${idEntrada}" /> <label
 					for="titulo">Titulo</label> <input type="text" name="titulo"
@@ -20,10 +21,10 @@
 				<button class="btn waves-effect waves-light purple separacion"
 					onclick="submit()">Enviar</button>
 			
-
+		</form>
 		</div>
 		<div id="test2" class="col s12">
-			
+		<form method="post"	action="/entradaForo/responderCI"		class="form" enctype="multipart/form-data">	
 				<input type="hidden" name="idForo" th:value="${idForo}" /> <input
 					type="hidden" name="idEntrada" th:value="${idEntrada}" /> <label
 					for="titulo">Titulo</label> <input type="text" name="titulo"
@@ -37,9 +38,9 @@
 
 				<button class="btn waves-effect waves-light purple separacion"
 					onclick="submit()">Enviar</button>
-		
-		</div>
 		</form>
+		</div>
+		
 	</div>
 
 	<a href="/">

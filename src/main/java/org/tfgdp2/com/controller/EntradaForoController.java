@@ -103,14 +103,39 @@ public class EntradaForoController {
 		m.put("idForo", idForo);
 		return "_t/frame";
 	}
-	@PostMapping("responder")
-	public void responderPost(@RequestParam(value="imagen", required=false) MultipartFile img,@RequestParam("titulo") String titulo,@RequestParam("idForo") Long idForo,@RequestParam("idEntrada") Long idEntrada,@RequestParam("comentario") String comentario,ModelMap m,HttpSession s) throws DangerException, InfoException{
+	@PostMapping("responderSI")
+	public void responderPostSI(@RequestParam("titulo") String titulo,@RequestParam("idForo") Long idForo,@RequestParam("idEntrada") Long idEntrada,@RequestParam("comentario") String comentario,ModelMap m,HttpSession s) throws DangerException, InfoException{
 		try {
 			H.isRolOK("auth", s);
 			EntradaForo entrada = new EntradaForo();
 			entrada.setComentario(comentario);
 			entrada.setTitulo(titulo);
+			Foro f=repoForo.getOne(idForo);
+			entrada.setPertenece(f);
+			f.getPertenecen().add(entrada);
+			Usuario u=(Usuario) s.getAttribute("usuario");
+			u.getEntradas().add(entrada);
+			entrada.setEscribe(u);
+			EntradaForo e=repoEntrada.getOne(idEntrada);
+			e.getRespuestas().add(entrada);
+			entrada.setMensajePadre(e);
+			repoEntrada.save(entrada);
+			repoEntrada.save(e);
+			
+		}catch(Exception ex) {
+			PRG.error("Error al crear la entrada "+ex.getMessage(),"entradaForo/c");
+		}	
+
+		PRG.info("Entrada del foro creada correctamente", "entradaForo/r",idForo);
+	}
+	
+	@PostMapping("responderCI")
+	public void responderPostCI(@RequestParam("img") MultipartFile img,@RequestParam("titulo") String titulo,@RequestParam("idForo") Long idForo,@RequestParam("idEntrada") Long idEntrada,ModelMap m,HttpSession s) throws DangerException, InfoException{
+		try {
+			H.isRolOK("auth", s);
+			EntradaForo entrada = new EntradaForo();
 			entrada.setImg(H.blobCreator(img));
+			entrada.setTitulo(titulo);
 			Foro f=repoForo.getOne(idForo);
 			entrada.setPertenece(f);
 			f.getPertenecen().add(entrada);
