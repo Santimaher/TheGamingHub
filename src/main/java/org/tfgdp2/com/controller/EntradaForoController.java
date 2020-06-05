@@ -72,6 +72,7 @@ public class EntradaForoController {
 		m.put("id",id);
 		m.put("idJuego", repoForo.getOne(id).getJuego().getId());
 		m.put("filtro", filtro);
+		m.put("votaciones", repoVotacion.findAll());
 		m.put("tipo", tipo);
 		switch(tipo) 
 		{
