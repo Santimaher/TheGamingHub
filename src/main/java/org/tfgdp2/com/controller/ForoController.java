@@ -1,6 +1,8 @@
 package org.tfgdp2.com.controller;
 
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +30,12 @@ public class ForoController {
 	
 	@GetMapping("r")
 	public String read(ModelMap m,@RequestParam("id") Long id) {
+		ArrayList<String> imgs = new ArrayList<>();
+		imgs.add("/img/fan.art.jpg");
+		imgs.add("/img/debug.jpg");
+		imgs.add("/img/meme.jpg");
+		imgs.add("/img/misc.jpg");
+		m.put("imgs", imgs);
 		m.put("juego", repoJuego.getOne(id));
 		m.put("foros", repoForo.findAllByJuego_id(id));
 		m.put("view", "foro/r");
