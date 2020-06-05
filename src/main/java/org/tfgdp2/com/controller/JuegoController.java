@@ -155,7 +155,7 @@ public class JuegoController {
 			}
 			repoJuego.save(j);
 			
-			ArrayList<String> tipos = new ArrayList<>(Arrays.asList("Fan Art","Debug","Memes","Misc"));
+			ArrayList<String> tipos = new ArrayList<>(Arrays.asList("Fan Art","Debug","Memes","Miscelaneo"));
 			for (String tipo : tipos) {
 				Foro f = new Foro(tipo);
 				f.setJuego(j);
