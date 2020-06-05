@@ -41,6 +41,7 @@ public class EntradaForoController {
 	public String leerPropio(@RequestParam("id") Long id, ModelMap m,HttpSession s) throws DangerException {
 		m.put("view","entradaForo/rPropio");
 		m.put("id",id);
+		m.put("votaciones", repoVotacion.findAll());
 		m.put("idJuego", repoForo.getOne(id).getJuego().getId());
 		try {
 			
@@ -60,6 +61,7 @@ public class EntradaForoController {
 		m.put("id",id);
 		m.put("idJuego", repoForo.getOne(id).getJuego().getId());
 		m.put("MensajeFijado",repoEntrada.getOne(idEntrada));
+		m.put("votaciones", repoVotacion.findAll());
 		m.put("entradas",repoEntrada.findByMensajePadreIdOrderByRankingDesc(idEntrada));
 		return "_t/frame";
 	}
