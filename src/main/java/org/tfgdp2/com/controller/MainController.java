@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -66,12 +67,10 @@ public class MainController {
 	}
 	@GetMapping("/danger")
 	public String danger(ModelMap m) {
-		
+		String in = "admin";
+		String pass = (new BCryptPasswordEncoder()).encode(in);
 		m.put("view", "anonymous/danger.html");
-		Gala g  = repoGala.getByActivoTrue();
-		m.put("gala",g );
-		m.put("pj", repoPremioJ.findByTiene_id(g.getId()));
-		m.put("pp", repoPremioP.findByTiene_id(g.getId()));
+		m.put("pass", pass);
 		return "_t/frame";
 	}
 	
