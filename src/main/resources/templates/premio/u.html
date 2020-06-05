@@ -1,6 +1,6 @@
 <div class="container">
-	<div class="col m12">
-	<h1>Editar premio</h1>
+	<div class="row">
+		<h4 class="center">Editar premio</h4>
 	</div>
 
 	<div class="row">
@@ -12,14 +12,13 @@
 			<label for="nombreN">Nombre de la Nominación</label>
 			<input th:value="${nominacion.nombre}" type="text" id="nombreN" name="nombre">
 		</div>
-	<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
+		<div class="row">
+		<div class="center">
+			<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
 			Crear <i class="material-icons left">send</i>
 		</button>
-			<a href="/">
-		<button class="btn waves-effect waves-light purple">
-			Cancelar
-		</button>
-		</a>
+		</div>
+	</div>
 	</form>
 	</div>
 
