@@ -129,7 +129,6 @@
 					<div class="dislike">
 						<img  th:each="voto:${entrada.votos}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='dislike'}" src="/img/dislike2.png" height="20" width="20">
 						<img  th:each="voto:${entrada.votos}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='like'}" src="/img/dislike1.png" height="20" width="20">
-				         
 				    </div> 
 				    
 				    </button>
