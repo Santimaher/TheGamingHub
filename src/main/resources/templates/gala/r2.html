@@ -1,12 +1,12 @@
 <div class="container">
 <ul class="collapsible">
    <li th:each="gala:${galas}" th:if="${gala.fin}<=${FechaAc}" >
-     <div class="collapsible-header" class="black fondo-carta" th:text="|Gala ${gala.edicion}|"></div>
-     <div class="collapsible-body" class="black">
+     <div class="collapsible-header black fondo-carta"  th:text="|Gala ${gala.edicion}|"></div>
+     <div class="collapsible-body black">
        <ul class="collapsible">
           <li th:each="premioJ:${gala.premiosJ}">
-            <div class="collapsible-header" class="black fondo-carta"  th:text="${premioJ.nombrePremio}"></div>
-            <div class="collapsible-body" class="black">
+            <div class="collapsible-header black fondo-carta"  th:text="${premioJ.nombrePremio}"></div>
+            <div class="collapsible-body black">
             <div th:each="premiadoJ: ${premioJ.premiados}">
             <span  th:text="|${premiadoJ.nombre} con ${premiadoJ.cantidadVotos}|"></span>
             </div>            
@@ -15,8 +15,8 @@
        </ul>
        <ul class="collapsible">
           <li th:each="premioP:${gala.premiosP}" >
-            <div class="collapsible-header" class="black fondo-carta" th:text="${premioP.nombrePremio}"></div>
-            <div class="collapsible-body" class="black">
+            <div class="collapsible-header black fondo-carta" th:text="${premioP.nombrePremio}"></div>
+            <div class="collapsible-body black">
             <div th:each="premiadoP: ${premioP.premiados}">
             <span  th:text="|${premiadoP.nombre} con ${premiadoP.cantidadVotos}|"></span>
             </div>
