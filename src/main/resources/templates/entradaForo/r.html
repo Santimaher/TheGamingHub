@@ -163,7 +163,9 @@
   </div>
 </div>
 <script>
-window.onload=function(){
+window.onload=function()
+{
+	setTimeOut(function(){
 	for(x of document.getElementsByClassName("like")){
 	if(x.children.length==0){
 		x.innerHTML="<img src='/img/like1.png' height='20' width='20'>";
@@ -176,7 +178,8 @@ window.onload=function(){
 			y.innerHTML="<img src='/img/dislike1.png' height='20' width='20'>";
 		}
 		}
-}
+},1000);}
+	}
 	
 
 </script>
