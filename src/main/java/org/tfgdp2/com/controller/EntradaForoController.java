@@ -123,8 +123,8 @@ public class EntradaForoController {
 			repoEntrada.save(entrada);
 			repoEntrada.save(e);
 			
-		}catch(Exception e) {
-			PRG.error("Error al crear la entrada "+e.getMessage(),"entradaForo/c");
+		}catch(Exception ex) {
+			PRG.error("Error al crear la entrada "+ex.getMessage(),"entradaForo/c");
 		}	
 
 		PRG.info("Entrada del foro creada correctamente", "entradaForo/r",idForo);
