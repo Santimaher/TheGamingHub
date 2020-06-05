@@ -28,7 +28,7 @@
           <p th:if="${MensajeFijado.comentario!=null}" th:text="|${MensajeFijado.comentario}|"></p>
           <span th:if="${MensajeFijado.img!=null}"><img th:src="|data:image/png;base64,${MensajeFijado.img}|" width="100%" height="100%"></span>
           <p th:text="${MensajeFijado.fechaPublicacion}"></p>
-          <span th:text="|${MensajeFijado.ranking}|"></span><img src="/img/like.svg" width="25px" height="25px">
+          <span th:text="|${MensajeFijado.ranking}|"></span><img src="/img/like1.png" width="25px" height="25px">
         </div>
         <div class="card-action">
         </div>
@@ -47,7 +47,7 @@
           <span th:text="${entrada.escribe.loginname}"></span><i th:if="${entrada.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
           <span th:if="${entrada.img!=null}"><img th:src="|data:image/png;base64,${entrada.img}|" width="100%" height="100%"></span>
           <p th:text="${entrada.fechaPublicacion}"></p>
-          <span th:text="|${entrada.ranking}|"></span><img src="/img/like.svg" width="25px" height="25px">
+          <span th:text="|${entrada.ranking}|"></span><img src="/img/like1.png" width="25px" height="25px">
         </div>
         <div class="card-action grey darken-4">
         <div class="row">
@@ -55,8 +55,14 @@
           <form action="https://thegaminghub.herokuapp.com/entradaForo/likeR" method="get">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
-					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
-						<img src="/img/like.svg" height="20" width="20">
+					<button th:if="${session.usuario!=null}" onclick="submit()" class="waves-effect waves-light btn separacion purple">
+				 	<div class="like">
+						<img  th:each="voto:${votaciones}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='dislike'}" src="/img/like1.png" height="20" width="20">
+						<img th:each="voto:${votaciones}"  th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='like'}" src="/img/like2.png" height="20" width="20">
+				    </div>
+				    </button>
+					<button th:if="${session.usuario==null}"onclick="submit()" class="waves-effect waves-light btn separacion purple">
+					<img  src="/img/like1.png" height="20" width="20">
 					</button>
 				</form>
 				</div>
@@ -64,8 +70,15 @@
           <form action="https://thegaminghub.herokuapp.com/entradaForo/dislikeR" method="get">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
-					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
-						<img src="/img/dislike.png" height="20" width="20">
+					<button th:if="${session.usuario!=null}" onclick="submit()" class="waves-effect waves-light btn separacion purple">
+					<div class="dislike">
+						<img  th:each="voto:${votaciones}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='dislike'}" src="/img/dislike2.png" height="20" width="20">
+						<img  th:each="voto:${votaciones}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='like'}" src="/img/dislike1.png" height="20" width="20">
+				    </div> 
+				    
+				    </button>
+					<button th:if="${session.usuario==null}"onclick="submit()" class="waves-effect waves-light btn separacion purple">
+					<img  src="/img/dislike1.png" height="20" width="20">
 					</button>
 				</form>
 				</div>
