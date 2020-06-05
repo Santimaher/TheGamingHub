@@ -11,7 +11,10 @@
     <div class="col s12 m7">
       <div class="card">
         <div class="card-image">
-          <img src="">
+          <img th:if="${foro.nombre == 'Fan Art' }" src="/img/fan-art.jpg">
+          <img th:if="${foro.nombre == 'Debug' }" src="/img/debug.jpg">
+          <img th:if="${foro.nombre == 'Memes' }" src="/img/meme.jpg">
+          <img th:if="${foro.nombre == 'Miscelaneo' }" src="/img/misc.jpg">
           <span class="card-title" th:text="${foro.tipo}"></span>
         </div>
         <div class="card-action">
