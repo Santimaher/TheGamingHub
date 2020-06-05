@@ -7,10 +7,24 @@
 	
 	<div th:each="foro:${foros}" class="col s3 m3 xl3 l3">
 	
-	<form action="https://thegaminghub.herokuapp.com/entradaForo/r">
-	<button onclick="submit()" class="waves-effect waves-light btn separacion purple large" th:text="${foro.tipo}"></button>
-	<input  name="idForo" type="hidden" th:value="${foro.id}">
-	</form>
+	  <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img src="">
+          <span class="card-title" th:text="${foro.tipo}"></span>
+        </div>
+        <div class="card-action">
+         <form action="https://thegaminghub.herokuapp.com/entradaForo/r">
+			<button onclick="submit()" class="waves-effect waves-light btn separacion purple large">
+			<i class="large material-icons">arrow_forward</i>
+			</button>
+		   <input  name="idForo" type="hidden" th:value="${foro.id}">
+		</form>
+        </div>
+      </div>
+    </div>
+  </div>
 	</div>
 	</div>
 	
