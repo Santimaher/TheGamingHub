@@ -31,7 +31,7 @@ public class ForoController {
 	@GetMapping("r")
 	public String read(ModelMap m,@RequestParam("id") Long id) {
 		ArrayList<String> imgs = new ArrayList<>();
-		imgs.add("/img/fan.art.jpg");
+		imgs.add("/img/fan-art.jpg");
 		imgs.add("/img/debug.jpg");
 		imgs.add("/img/meme.jpg");
 		imgs.add("/img/misc.jpg");

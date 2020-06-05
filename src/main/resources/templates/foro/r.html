@@ -5,13 +5,13 @@
 	</div>
 	<div class="row">
 	
-	<div th:each="foro:${foros}" class="col s3 m3 xl3 l3">
+	<div th:each="foro,stat:${foros}" class="col s3 m3 xl3 l3">
 	
 	  <div class="row">
     <div class="col s12 m7">
       <div class="card">
         <div class="card-image">
-          <img th:each="img:${imgs}" th:src="${img}"/>
+          <img  th:src="${imgs[${stat.index]}"/>
           <span class="card-title" th:text="${foro.tipo}"></span>
         </div>
         <div class="card-action">
