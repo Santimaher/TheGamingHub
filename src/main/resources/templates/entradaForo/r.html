@@ -98,7 +98,13 @@
         
           <span class="card-title" th:text="|${entrada.titulo}|" ></span>
           <span  th:text="|${entrada.comentario}|" ></span><br/><br/>
-          <p th:each="voto:${entrada.votos}" th:text="|Id entrada guardado en el voto ${voto.votado.id}, Id de la entrada ${entrada.id}, Id del usuario guardado en el voto ${voto.votante.id}, Id de session ${session.usuario.id}, voto ${voto.voto} |"></p>
+          <div th:each="voto:${entrada.votos}">
+          <span th:text="|Id entrada guardado en el voto ${voto.votado.id}|"></span>
+          <span th:text="|Id de la entrada ${entrada.id}|"></span>
+          <span th:text="|Id del usuario guardado en el voto ${voto.votante.id}|"></span>
+          <span th:text="| Id de session ${session.usuario.id}|"></span>
+          <span th:text="|voto ${voto.voto}|"></span>
+          </div>
           <span th:text="${entrada.escribe.loginname}"></span><i th:if="${entrada.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
           <span th:if="${entrada.img!=null}" ><img th:src="|data:image/png;base64,${entrada.img}|" width="100%" height="100%" style="margin:10px !important;"></span>
           <p th:utext="${#dates.format(entrada.fechaPublicacion, 'dd-MM-yyyy HH:mm')}"></p>
