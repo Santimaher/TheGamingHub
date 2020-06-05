@@ -99,11 +99,11 @@
           <span class="card-title" th:text="|${entrada.titulo}|" ></span>
           <span  th:text="|${entrada.comentario}|" ></span><br/><br/>
           <div th:each="voto:${entrada.votos}">
-          <span th:text="|Id entrada guardado en el voto ${voto.votado.id}|"></span>
-          <span th:text="|Id de la entrada ${entrada.id}|"></span>
-          <span th:text="|Id del usuario guardado en el voto ${voto.votante.id}|"></span>
-          <span th:text="| Id de session ${session.usuario.id}|"></span>
-          <span th:text="|voto ${voto.voto}|"></span>
+          <p th:text="|Id entrada guardado en el voto ${voto.votado.id}|"></p>
+          <p th:text="|Id de la entrada ${entrada.id}|"></p>
+          <p th:text="|Id del usuario guardado en el voto ${voto.votante.id}|"></p>
+          <p th:text="| Id de session ${session.usuario.id}|"></p>
+          <p th:text="|voto ${voto.voto}|"></p>
           </div>
           <span th:text="${entrada.escribe.loginname}"></span><i th:if="${entrada.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
           <span th:if="${entrada.img!=null}" ><img th:src="|data:image/png;base64,${entrada.img}|" width="100%" height="100%" style="margin:10px !important;"></span>
@@ -118,10 +118,10 @@
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
 					<button th:if="${session.usuario!=null}" onclick="submit()" class="waves-effect waves-light btn separacion purple">
-					<div class="like">
+				<!-- 	<div class="like">
 						<img th:each="voto:${entrada.votos}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='dislike'}" src="/img/like1.png" height="20" width="20">
 						<img th:each="voto:${entrada.votos}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='like'}" src="/img/like2.png" height="20" width="20">
-				    </div>
+				    </div> -->
 				    </button>
 					<button th:if="${session.usuario==null}"onclick="submit()" class="waves-effect waves-light btn separacion purple">
 					<img  src="/img/like1.png" height="20" width="20">
@@ -133,11 +133,11 @@
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
 						<button th:if="${session.usuario!=null}" onclick="submit()" class="waves-effect waves-light btn separacion purple">
-					<div class="dislike">
+					<!-- <div class="dislike">
 						<img  th:each="voto:${entrada.votos}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='dislike'}" src="/img/dislike2.png" height="20" width="20">
 						<img  th:each="voto:${entrada.votos}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='like'}" src="/img/dislike1.png" height="20" width="20">
 				         
-				    </div>
+				    </div> -->
 				    
 				    </button>
 					<button th:if="${session.usuario==null}"onclick="submit()" class="waves-effect waves-light btn separacion purple">
