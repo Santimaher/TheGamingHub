@@ -12,36 +12,35 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Categoria_Juego {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(unique = true)
 	private String nombre;
-	
-	@ManyToMany (mappedBy="pertenece")
+
+	@ManyToMany(mappedBy = "pertenece")
 	private Collection<Juego> juegos;
 
-	//=================================================
-	
+	// =================================================
+
 	public Categoria_Juego(String nombre) {
 		super();
 		this.nombre = nombre;
 		this.juegos = new ArrayList<Juego>();
 	}
-	
+
 	public Categoria_Juego() {
 		super();
 		this.juegos = new ArrayList<Juego>();
 	}
-	
-	//=================================================
-	
+
+	// =================================================
+
 	public Long getId() {
 		return id;
 	}
 
-	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -60,5 +59,5 @@ public class Categoria_Juego {
 
 	public void setJuegos(Collection<Juego> juegos) {
 		this.juegos = juegos;
-	}	
+	}
 }

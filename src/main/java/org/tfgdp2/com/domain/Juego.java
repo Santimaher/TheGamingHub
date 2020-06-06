@@ -7,18 +7,13 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Collection;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
-import org.springframework.beans.factory.annotation.Value;
 
 @Entity
 public class Juego {
@@ -35,41 +30,35 @@ public class Juego {
 
 	@Lob
 	private Blob img;
-	
+
 	private String imgPre;
 
 	private String teaser;
-	
-	
-	
+
 	private Boolean estaNominado;
-
-
 
 	@ManyToMany
 	private Collection<Plataforma> plataformas;
-	
+
 	@ManyToMany
 	private Collection<Categoria_Juego> pertenece;
-	
+
 	@ManyToMany
 	private Collection<Nominacion_Juego> nominado;
 
-
 	@OneToMany(mappedBy = "juego")
 	private Collection<Foro> foro;
-	
-	
+
 	// ------------------CONSTRUCTOR-------------------------------//
 
 	public Juego() {
 		super();
 		this.plataformas = new ArrayList<>();
 		this.foro = new ArrayList<>();
-		this.nominado =  new ArrayList<>();
-		this.pertenece=new ArrayList<>();
-		this.estaNominado=false;
-		
+		this.nominado = new ArrayList<>();
+		this.pertenece = new ArrayList<>();
+		this.estaNominado = false;
+
 	}
 	// -----------------------GETTERS Y SETTERS--------------------------//
 
@@ -88,6 +77,7 @@ public class Juego {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getDesarrolladora() {
 		return desarrolladora;
 	}
@@ -95,7 +85,7 @@ public class Juego {
 	public void setDesarrolladora(String desarrolladora) {
 		this.desarrolladora = desarrolladora;
 	}
-	
+
 	public Boolean getEstaNominado() {
 		return estaNominado;
 	}
@@ -135,7 +125,7 @@ public class Juego {
 	public void setForo(Collection<Foro> foro) {
 		this.foro = foro;
 	}
-	
+
 	public Collection<Categoria_Juego> getPertenece() {
 		return pertenece;
 	}
@@ -153,9 +143,9 @@ public class Juego {
 	}
 
 	public String getImg() throws SQLException {
-		String bytes = Base64.getEncoder().encodeToString(this.img.getBytes(1l, (int)this.img.length()));
+		String bytes = Base64.getEncoder().encodeToString(this.img.getBytes(1l, (int) this.img.length()));
 		return bytes;
-		
+
 	}
 
 	public void setImg(Blob img) {
@@ -169,7 +159,5 @@ public class Juego {
 	public void setImgPre(String imgPre) {
 		this.imgPre = imgPre;
 	}
-	
-	
-	
+
 }

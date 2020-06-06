@@ -16,30 +16,30 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Plataforma {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(unique = true)
 	private String nombre;
-	
+
 	private String familia;
-	
+
 	private String imgPre;
-	
+
 	@Lob
 	private Blob img;
-	
+
 	@ManyToMany(mappedBy = "plataformas")
 	private Collection<Juego> juegos;
-	//-----------------------------CONSTRUCTOR---------------------------//
+	// -----------------------------CONSTRUCTOR---------------------------//
 
 	public Plataforma() {
 		super();
 		this.juegos = new ArrayList<>();
 	}
-	//------------------------GETTERS Y SETTERS----------------------//
+	// ------------------------GETTERS Y SETTERS----------------------//
 
 	public Long getId() {
 		return id;
@@ -58,7 +58,7 @@ public class Plataforma {
 	}
 
 	public String getImg() throws SQLException {
-		String bytes = Base64.getEncoder().encodeToString(this.img.getBytes(1l, (int)this.img.length()));
+		String bytes = Base64.getEncoder().encodeToString(this.img.getBytes(1l, (int) this.img.length()));
 		return bytes;
 	}
 
@@ -89,10 +89,5 @@ public class Plataforma {
 	public void setImgPre(String imgPre) {
 		this.imgPre = imgPre;
 	}
-
-	
-	
-	
-	
 
 }

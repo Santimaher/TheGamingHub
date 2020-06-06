@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -76,7 +75,5 @@ public class Premio_Participante {
 	public void setTiene(Gala tiene) {
 		this.tiene = tiene;
 	}
-
-	
 
 }

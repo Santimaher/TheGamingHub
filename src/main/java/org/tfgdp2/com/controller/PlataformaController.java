@@ -3,7 +3,6 @@ package org.tfgdp2.com.controller;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -35,16 +34,16 @@ public class PlataformaController {
 	}
 
 	@GetMapping("c")
-	public String cGet(ModelMap m,HttpSession s) throws DangerException {
+	public String cGet(ModelMap m, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
 		m.put("view", "plataforma/C");
 		return "_t/frame";
 	}
 
 	@PostMapping("c")
-	public void crearPost(ModelMap m, @RequestParam("nombre") String nombre, @RequestParam("imagen") MultipartFile imagen,
-			HttpSession s) throws DangerException, InfoException {
-		
+	public void crearPost(ModelMap m, @RequestParam("nombre") String nombre,
+			@RequestParam("imagen") MultipartFile imagen, HttpSession s) throws DangerException, InfoException {
+
 		try {
 			H.isRolOK("admin", s);
 			Plataforma plataforma = new Plataforma();
@@ -56,7 +55,7 @@ public class PlataformaController {
 		}
 		PRG.info("Plataforma " + nombre + " creada correctamente", "plataforma/r");
 	}
-	
+
 	@GetMapping("u")
 	public String uGet(@RequestParam("id") Long idPlataforma, ModelMap m, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
@@ -66,25 +65,25 @@ public class PlataformaController {
 	}
 
 	@PostMapping("u")
-	public void uPost(@RequestParam("nombre") String nombrePlataforma,@RequestParam("imagen") MultipartFile imagen, @RequestParam("id") Long idPlataforma, HttpSession s)
-			throws DangerException, InfoException {
-		
+	public void uPost(@RequestParam("nombre") String nombrePlataforma, @RequestParam("imagen") MultipartFile imagen,
+			@RequestParam("id") Long idPlataforma, HttpSession s) throws DangerException, InfoException {
+
 		try {
 			H.isRolOK("admin", s);
 			Plataforma p = repoPlataforma.getOne(idPlataforma);
 			p.setNombre(nombrePlataforma);
 			p.setImg(H.blobCreator(imagen));
 			repoPlataforma.save(p);
-			
+
 		} catch (Exception e) {
 			PRG.error("Plataforma " + nombrePlataforma + " duplicada", "plataforma/r");
 		}
 		PRG.info("Plataforma " + nombrePlataforma + " actualizada correctamente", "plataforma/r");
 	}
-	
+
 	@PostMapping("d")
-	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {	
-		
+	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {
+
 		try {
 			H.isRolOK("admin", s);
 			repoPlataforma.delete(repoPlataforma.getOne(id));

@@ -23,116 +23,111 @@ import org.springframework.ui.ModelMap;
 @Controller
 @RequestMapping(value = "/participante")
 public class ParticipanteController {
-	
+
 	@Autowired
 	private ParticipanteRepository repoParticipante;
-	
+
 	@Autowired
 	private Categoria_ParticipanteRepository repoCategoriaP;
-	
+
 	@GetMapping("c")
-	public String crearGet(ModelMap m,HttpSession s) throws DangerException {
-		
-	try {
-		H.isRolOK("admin", s);
-		m.put("categorias", repoCategoriaP.findAll());
-		m.put("view", "participante/c");
-		
-	}catch(Exception e) {
-		m.put("view", "home");	
-	}
-	return "_t/frame";
-	}
-	
-	@PostMapping("c")
-	public String crearPost(@RequestParam("nombre") String nombre,@RequestParam("apellido") String apellido,
-			@RequestParam("img") MultipartFile imgFile,
-			@RequestParam("bio")String bio,
-			@RequestParam("teaser") String teaser,
-			@RequestParam(value = "idCat") Long idCat,
-			HttpSession s) throws DangerException  {
-		
+	public String crearGet(ModelMap m, HttpSession s) throws DangerException {
+
 		try {
 			H.isRolOK("admin", s);
-			
-			//=============================C
-			
-			Participante participante = new Participante(nombre,apellido,bio,teaser);
-			
-		
+			m.put("categorias", repoCategoriaP.findAll());
+			m.put("view", "participante/c");
+
+		} catch (Exception e) {
+			m.put("view", "home");
+		}
+		return "_t/frame";
+	}
+
+	@PostMapping("c")
+	public String crearPost(@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,
+			@RequestParam("img") MultipartFile imgFile, @RequestParam("bio") String bio,
+			@RequestParam("teaser") String teaser, @RequestParam(value = "idCat") Long idCat, HttpSession s)
+			throws DangerException {
+
+		try {
+			H.isRolOK("admin", s);
+
+			// =============================C
+
+			Participante participante = new Participante(nombre, apellido, bio, teaser);
+
 			participante.setImg(H.blobCreator(imgFile));
-			
-			//===================CATEGORIA
-			
+
+			// ===================CATEGORIA
+
 			Categoria_Participante cat = repoCategoriaP.getOne(idCat);
 			cat.getParticipantes().add(participante);
-			
+
 			participante.setPertenece(cat);
 
-			//==================================================
-			
-			repoParticipante.save(participante);			
-			
-		}catch(Exception e) {
-			PRG.error("Error al crear el participante "+e.getMessage()+"", "/participante/c");
+			// ==================================================
+
+			repoParticipante.save(participante);
+
+		} catch (Exception e) {
+			PRG.error("Error al crear el participante " + e.getMessage() + "", "/participante/c");
 		}
-		
+
 		return "redirect:/participante/r";
 	}
+
 	@GetMapping("r")
-	public String read(ModelMap m){
-		m.put("participantes",repoParticipante.findAll());
+	public String read(ModelMap m) {
+		m.put("participantes", repoParticipante.findAll());
 		m.put("view", "participante/r");
-		return"_t/frame";
+		return "_t/frame";
 	}
-	
+
 	@PostMapping("d")
-	public String delete(@RequestParam("id") Long id,HttpSession s) throws DangerException {
-		
+	public String delete(@RequestParam("id") Long id, HttpSession s) throws DangerException {
+
 		try {
 			H.isRolOK("admin", s);
 			Participante p = repoParticipante.getOne(id);
 			repoParticipante.delete(p);
-			
-		}catch(Exception e) {
-			PRG.error("Error al crear el participante","/participante/r");
+
+		} catch (Exception e) {
+			PRG.error("Error al crear el participante", "/participante/r");
 		}
 		return "redirect:/participante/r";
 	}
-	
+
 	@GetMapping("u")
-	public String update(ModelMap m,@RequestParam("id") Long id,HttpSession s) throws DangerException {
+	public String update(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
 		m.put("categorias", repoCategoriaP.findAll());
 		m.put("participante", repoParticipante.getOne(id));
-		m.put("view","participante/u");
+		m.put("view", "participante/u");
 		return "_t/frame";
 	}
-	
+
 	@PostMapping("u")
-	public void updatePost(@RequestParam("id") Long idParticipante,
-			@RequestParam("nombre") String nombre,
-			@RequestParam("apellido") String apellido,
-			@RequestParam("img") MultipartFile imgFile,
-			@RequestParam("bio")String bio,
-			@RequestParam("teaser") String teaser,
-			HttpSession s) throws DangerException, InfoException {
-		
+	public void updatePost(@RequestParam("id") Long idParticipante, @RequestParam("nombre") String nombre,
+			@RequestParam("apellido") String apellido, @RequestParam("img") MultipartFile imgFile,
+			@RequestParam("bio") String bio, @RequestParam("teaser") String teaser, HttpSession s)
+			throws DangerException, InfoException {
+
 		try {
 			H.isRolOK("admin", s);
-				Participante participante = repoParticipante.getOne(idParticipante);
-        
-        		participante.setNombre(nombre);
-        		participante.setApellido(apellido);
-        		participante.setBio(bio);
-        		participante.setTeaser(teaser);
-        		participante.setImg(H.blobCreator(imgFile));
-			
+			Participante participante = repoParticipante.getOne(idParticipante);
+
+			participante.setNombre(nombre);
+			participante.setApellido(apellido);
+			participante.setBio(bio);
+			participante.setTeaser(teaser);
+			participante.setImg(H.blobCreator(imgFile));
+
 			repoParticipante.save(participante);
-		}catch(Exception e) {
-			PRG.error("Error al actualizar " +" // "+e.getMessage(),"participante/r" );
+		} catch (Exception e) {
+			PRG.error("Error al actualizar " + " // " + e.getMessage(), "participante/r");
 		}
 		PRG.info("Participante actualizado correctamente", "/participante/r");
 	}
-	
+
 }

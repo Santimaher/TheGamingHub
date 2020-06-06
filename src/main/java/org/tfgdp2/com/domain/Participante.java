@@ -17,53 +17,47 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Participante {
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String nombre;
-	
+
 	private String apellido;
-	
+
 	private String bio;
-	
+
 	private String teaser;
-	
+
 	@Lob
 	private Blob img;
-	
-	
 
 	private Boolean estaNominado;
-	
-	
 
 	@ManyToMany
-	private Collection <Nominacion_Participante> nominado;
+	private Collection<Nominacion_Participante> nominado;
 
 	@ManyToOne
 	private Categoria_Participante pertenece;
-	
-	//=========================
+
+	// =========================
 	public Participante() {
 		super();
 		this.nominado = new ArrayList<>();
 	}
-	
+
 	public Participante(String nombre, String apellido, String bio, String teaser) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.bio = bio;
 		this.teaser = teaser;
-		this.estaNominado=false;
-		
+		this.estaNominado = false;
+
 		this.nominado = new ArrayList<>();
-		
+
 	}
-	
 
-
-	//==============================
+	// ==============================
 	public Long getId() {
 		return id;
 	}
@@ -104,10 +98,8 @@ public class Participante {
 		this.teaser = teaser;
 	}
 
-
-
 	public String getImg() throws SQLException {
-		String bytes = Base64.getEncoder().encodeToString(this.img.getBytes(1l, (int)this.img.length()));
+		String bytes = Base64.getEncoder().encodeToString(this.img.getBytes(1l, (int) this.img.length()));
 		return bytes;
 	}
 
@@ -139,8 +131,4 @@ public class Participante {
 		this.pertenece = pertenece;
 	}
 
-
-
-
-	
 }

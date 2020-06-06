@@ -32,12 +32,12 @@ public class UsuarioController {
 	}
 
 	@PostMapping("c")
-	public String crearPost(@RequestParam("nombre") String nombreusuario,@RequestParam("img") MultipartFile img, @RequestParam("loginname") String log,
-			@RequestParam("pass") String pass, @RequestParam("email") String email, HttpSession s)
-			throws DangerException {
+	public String crearPost(@RequestParam("nombre") String nombreusuario, @RequestParam("img") MultipartFile img,
+			@RequestParam("loginname") String log, @RequestParam("pass") String pass,
+			@RequestParam("email") String email, HttpSession s) throws DangerException {
 
 		try {
-			 
+
 			Usuario usuario = new Usuario();
 			usuario.setNombre(nombreusuario);
 			usuario.setLoginname(log);
@@ -49,7 +49,7 @@ public class UsuarioController {
 			usuarioRepo.save(usuario);
 
 		} catch (Exception e) {
-			PRG.error("Error al crear " + nombreusuario+"##"+e.getMessage(), "usuario/r");
+			PRG.error("Error al crear " + nombreusuario + "##" + e.getMessage(), "usuario/r");
 		}
 		return "redirect:/info";
 	}
@@ -63,23 +63,24 @@ public class UsuarioController {
 		return "_t/frame";
 	}
 
-	
 	@GetMapping("uUsuario")
 	public String uUsuario(ModelMap m, HttpSession s) throws DangerException {
 		H.isRolOK("auth", s);
-		Usuario usu=(Usuario) s.getAttribute("usuario");
+		Usuario usu = (Usuario) s.getAttribute("usuario");
 		m.put("usuario", usuarioRepo.getOne(usu.getId()));
 		m.put("view", "usuario/uUsuario");
 		return "_t/frame";
 
 	}
+
 	@PostMapping("uUsuarioPost")
-	public String uUsuarioPost(@RequestParam("nombre") String nombreusuario,@RequestParam("img") MultipartFile img, @RequestParam("loginname") String log,
-			@RequestParam("id") Long id, @RequestParam("email") String email, HttpSession s) throws DangerException {
-		
+	public String uUsuarioPost(@RequestParam("nombre") String nombreusuario, @RequestParam("img") MultipartFile img,
+			@RequestParam("loginname") String log, @RequestParam("id") Long id, @RequestParam("email") String email,
+			HttpSession s) throws DangerException {
+
 		try {
 			H.isRolOK("auth", s);
-			Usuario usuario = usuarioRepo.getOne(id);			
+			Usuario usuario = usuarioRepo.getOne(id);
 			usuario.setNombre(nombreusuario);
 			usuario.setLoginname(log);
 			usuario.setEmail(email);
@@ -92,6 +93,7 @@ public class UsuarioController {
 		}
 		return "redirect:usuario/r";
 	}
+
 	@PostMapping("uAdmin")
 	public String uAdmin(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
@@ -100,10 +102,12 @@ public class UsuarioController {
 		return "_t/frame";
 
 	}
+
 	@PostMapping("uAdminPost")
 	public void uAdminPost(@RequestParam("nombre") String nombreusuario, @RequestParam("loginname") String log,
-			@RequestParam("id") Long id, @RequestParam("email") String email, HttpSession s) throws DangerException, InfoException {
-		
+			@RequestParam("id") Long id, @RequestParam("email") String email, HttpSession s)
+			throws DangerException, InfoException {
+
 		try {
 			H.isRolOK("admin", s);
 			Usuario usuario = usuarioRepo.getOne(id);
@@ -131,9 +135,10 @@ public class UsuarioController {
 		}
 		PRG.info("Usuario borrado correctamente", "usuario/r");
 	}
+
 	@PostMapping("cambiarRol")
 	public String cambiarRol(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
-		 H.isRolOK("admin", s);
+		H.isRolOK("admin", s);
 		m.put("usuario", usuarioRepo.getOne(id));
 		m.put("view", "usuario/cambiarRol");
 		return "_t/frame";
@@ -141,15 +146,15 @@ public class UsuarioController {
 	}
 
 	@PostMapping("cambiarRolPost")
-	public String cambiarRolPost(@RequestParam("rol") String rol,
-			@RequestParam("id") Long id, HttpSession s) throws DangerException {
-		String nombre="";
+	public String cambiarRolPost(@RequestParam("rol") String rol, @RequestParam("id") Long id, HttpSession s)
+			throws DangerException {
+		String nombre = "";
 
 		try {
-           H.isRolOK("admin", s);
+			H.isRolOK("admin", s);
 			Usuario usuario = usuarioRepo.getOne(id);
 			usuario.setRol(rol);
-            nombre=usuario.getNombre();
+			nombre = usuario.getNombre();
 			usuarioRepo.save(usuario);
 
 		} catch (Exception e) {

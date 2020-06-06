@@ -2,7 +2,6 @@ package org.tfgdp2.com.domain;
 
 import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Collection;
 import java.util.HashSet;
@@ -15,11 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -53,13 +49,11 @@ public class Usuario {
 //this.votaciones=new ArrayList<>;
 //this.entradas=new ArrayList<>;
 //this.facturas=new ArrayList<>;
-	
-	
 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy = "votacionesP")
 	private Collection<Nominacion_Participante> votadosP;
-	
+
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy = "votacionesJ")
 	private Collection<Nominacion_Juego> votadosJ;
@@ -123,7 +117,8 @@ public class Usuario {
 	}
 
 	public void setPassword(String password) {
-		this.password = (new BCryptPasswordEncoder()).encode(password); ;
+		this.password = (new BCryptPasswordEncoder()).encode(password);
+		;
 	}
 
 	public String getRol() {
@@ -165,6 +160,7 @@ public class Usuario {
 	public void setImg(String img) {
 		this.img = img;
 	}
+
 	public Collection<Votacion_Foro> getVotos() {
 		return votos;
 	}
@@ -174,15 +170,13 @@ public class Usuario {
 	}
 
 	public String getImgUP() throws SQLException {
-		String bytes = Base64.getEncoder().encodeToString(this.imgUP.getBytes(1l, (int)this.imgUP.length()));
+		String bytes = Base64.getEncoder().encodeToString(this.imgUP.getBytes(1l, (int) this.imgUP.length()));
 		return bytes;
 	}
 
 	public void setImgUP(Blob imgUP) {
 		this.imgUP = imgUP;
 	}
-	
-	
 
 //
 //	public Collection<Votacion_Participante> getVotadosP() {

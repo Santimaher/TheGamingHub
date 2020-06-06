@@ -47,12 +47,12 @@ public class PremioController {
 
 	@Autowired
 	private NominacionJuegoRepository repoNJ;
-	
+
 	@Autowired
 	private UsuarioRepository repoUsu;
 
 	@GetMapping("c")
-	public String cGet(ModelMap m,HttpSession s) throws DangerException{
+	public String cGet(ModelMap m, HttpSession s) throws DangerException {
 		try {
 			H.isRolOK("admin", s);
 			m.put("view", "premio/c");
@@ -63,9 +63,8 @@ public class PremioController {
 	}
 
 	@PostMapping("c")
-	public void cPost(@RequestParam("nombre") String nombre,
-			@RequestParam("tipo") String tipo,
-			HttpSession s) throws DangerException, InfoException {
+	public void cPost(@RequestParam("nombre") String nombre, @RequestParam("tipo") String tipo, HttpSession s)
+			throws DangerException, InfoException {
 
 		if (tipo.equals("participante")) {
 			try {
@@ -96,36 +95,34 @@ public class PremioController {
 	@GetMapping("r")
 	public String r(ModelMap m) throws DangerException {
 		try {
-		Gala g  = repoGala.getByActivoTrue();
-		m.put("gala",g);
-		m.put("view", "premio/r");
-		
+			Gala g = repoGala.getByActivoTrue();
+			m.put("gala", g);
+			m.put("view", "premio/r");
+
+		} catch (NullPointerException e) {
+			PRG.error("Inicie sesion para votar", "/login");
 		}
-	 catch (NullPointerException e) {
-		PRG.error("Inicie sesion para votar", "/login");
-	}
 		return "_t/frame";
-		
+
 	}
-	
+
 	@GetMapping("rAdmin")
-	public String rAdmin(ModelMap m,HttpSession s) throws DangerException {
+	public String rAdmin(ModelMap m, HttpSession s) throws DangerException {
 		try {
-		H.isRolOK("admin", s);
-		m.put("pj", repoPremioJuego.findAll());
-		m.put("pp", repoPremioPar.findAll());
-		m.put("view", "premio/rAdmin");
-		
+			H.isRolOK("admin", s);
+			m.put("pj", repoPremioJuego.findAll());
+			m.put("pp", repoPremioPar.findAll());
+			m.put("view", "premio/rAdmin");
+
+		} catch (NullPointerException e) {
+			PRG.error("Inicie sesion para votar", "/login");
 		}
-	 catch (NullPointerException e) {
-		PRG.error("Inicie sesion para votar", "/login");
-	}
 		return "_t/frame";
-		
+
 	}
 
 	@PostMapping("dP")
-	public void deleteP(@RequestParam("id") Long id,HttpSession s) throws DangerException, InfoException {
+	public void deleteP(@RequestParam("id") Long id, HttpSession s) throws DangerException, InfoException {
 		try {
 			H.isRolOK("admin", s);
 			Premio_Participante n = repoPremioPar.getOne(id);
@@ -138,7 +135,7 @@ public class PremioController {
 	}
 
 	@PostMapping("dJ")
-	public void deleteJ(@RequestParam("id") Long id,HttpSession s) throws DangerException, InfoException {
+	public void deleteJ(@RequestParam("id") Long id, HttpSession s) throws DangerException, InfoException {
 		try {
 			H.isRolOK("admin", s);
 			Premio_Juego njuego = repoPremioJuego.getOne(id);
@@ -151,54 +148,54 @@ public class PremioController {
 	}
 
 	@GetMapping("addVotoP")
-	public String addVotoP(ModelMap m, @RequestParam("id") Long id,HttpSession s) throws DangerException {
+	public String addVotoP(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
 		String vista = null;
-		Gala g=repoGala.findTopByOrderByEdicionDesc();
+		Gala g = repoGala.findTopByOrderByEdicionDesc();
 		try {
-			Usuario usu = (Usuario) s.getAttribute("usuario");	
-		if (haVotado(usu.getId(), id, false)) {
-			PRG.error("Ya ha votado en este premio", "/premio/r");
-			if (g.getActivo()==true) {
-				PRG.error("La gala no esta activa", "premio/r");
-				if (g.getFin().isAfter(LocalDate.now())) {
-					PRG.error("El tiempo de votacion ha excedido", "premio/r");
+			Usuario usu = (Usuario) s.getAttribute("usuario");
+			if (haVotado(usu.getId(), id, false)) {
+				PRG.error("Ya ha votado en este premio", "/premio/r");
+				if (g.getActivo() == true) {
+					PRG.error("La gala no esta activa", "premio/r");
+					if (g.getFin().isAfter(LocalDate.now())) {
+						PRG.error("El tiempo de votacion ha excedido", "premio/r");
+					}
 				}
+			} else {
+				m.put("premio", repoPremioPar.getOne(id));
+				m.put("nominados", repoNP.findByPremioId(id));
+				m.put("view", "premio/addVotoP");
+				vista = "_t/frame";
 			}
-		} else {
-			m.put("premio", repoPremioPar.getOne(id));
-			m.put("nominados", repoNP.findByPremioId(id));
-			m.put("view", "premio/addVotoP");
-			vista =  "_t/frame";
-		}
 		} catch (NullPointerException e) {
 			PRG.error("Inicie sesion para votar", "/login");
 		}
-		
+
 		return vista;
-		
-	}	
+
+	}
 
 	@GetMapping("addVotoJ")
-	public String addVotoJ(ModelMap m, @RequestParam("id") Long id,HttpSession s) throws DangerException {
+	public String addVotoJ(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
 		String vista = null;
-		Gala g=repoGala.findTopByOrderByEdicionDesc();
+		Gala g = repoGala.findTopByOrderByEdicionDesc();
 		try {
 			Usuario usu = (Usuario) s.getAttribute("usuario");
-		if (haVotado(usu.getId(), id, true) ) {
-			PRG.error("Ya ha votado en este premio", "premio/r");
-			if (g.getActivo()==true) {
-				PRG.error("La gala no esta activa", "premio/r");
-				if (g.getFin().isAfter(LocalDate.now())) {
-					PRG.error("El tiempo de votacion ha excedido", "premio/r");
+			if (haVotado(usu.getId(), id, true)) {
+				PRG.error("Ya ha votado en este premio", "premio/r");
+				if (g.getActivo() == true) {
+					PRG.error("La gala no esta activa", "premio/r");
+					if (g.getFin().isAfter(LocalDate.now())) {
+						PRG.error("El tiempo de votacion ha excedido", "premio/r");
+					}
 				}
+
+			} else {
+				m.put("premio", repoPremioJuego.getOne(id));
+				m.put("nominados", repoNJ.findByPremioId(id));
+				m.put("view", "premio/addVotoJ");
+				vista = "_t/frame";
 			}
-			
-		} else {
-			m.put("premio", repoPremioJuego.getOne(id));
-			m.put("nominados", repoNJ.findByPremioId(id));
-			m.put("view", "premio/addVotoJ");
-			vista= "_t/frame";
-		}
 		} catch (NullPointerException e) {
 			PRG.error("Inicie sesion para votar", "login");
 		}
@@ -209,18 +206,18 @@ public class PremioController {
 	public void addVotoJPost(@RequestParam("id") Long idNominado, HttpSession s) throws DangerException, InfoException {
 		Usuario u = (Usuario) s.getAttribute("usuario");
 		Nominacion_Juego nj = repoNJ.getOne(idNominado);
-		try {			
+		try {
 			nj.setCantidadVotos(nj.getCantidadVotos() + 1);
 			u.getVotadosJ().add(nj);
 			nj.getVotacionesJ().add(u);
 			repoNJ.save(nj);
 		} catch (Exception e) {
-			PRG.info("Fallo al guardar su voto","premio/r");
+			PRG.info("Fallo al guardar su voto", "premio/r");
 		}
 
-		PRG.info("Su voto ha sido guardado","premio/r");
+		PRG.info("Su voto ha sido guardado", "premio/r");
 	}
-	
+
 	@PostMapping("addVotoP")
 	public void addVotoPost(@RequestParam("id") Long idNominado, HttpSession s) throws DangerException, InfoException {
 		Usuario u = (Usuario) s.getAttribute("usuario");
@@ -231,34 +228,32 @@ public class PremioController {
 			np.getVotacionesP().add(u);
 			repoNP.save(np);
 		} catch (Exception e) {
-			PRG.info("Fallo al guardar su voto","premio/r");
+			PRG.info("Fallo al guardar su voto", "premio/r");
 		}
 
-		PRG.info("Su voto ha sido guardado","premio/r");
+		PRG.info("Su voto ha sido guardado", "premio/r");
 	}
-	
+
 	public boolean haVotado(Long idUsu, Long idPremio, boolean isJuego) {
-		Usuario usu =repoUsu.getOne(idUsu);
+		Usuario usu = repoUsu.getOne(idUsu);
 		boolean check = false;
 		if (isJuego) {
-			Collection<Nominacion_Juego>votados=usu.getVotadosJ();
+			Collection<Nominacion_Juego> votados = usu.getVotadosJ();
 			if (votados.isEmpty()) {
-				check=false;
-			}
-			else {
+				check = false;
+			} else {
 				HashSet<Long> listadoVotados = new HashSet<>();
 				for (Nominacion_Juego votado : votados) {
 					listadoVotados.add(votado.getPremio().getId());
 				}
 				check = listadoVotados.contains(idPremio);
 			}
-			
+
 		} else {
-			Collection<Nominacion_Participante>votados=usu.getVotadosP();
+			Collection<Nominacion_Participante> votados = usu.getVotadosP();
 			if (votados.isEmpty()) {
-				check=false;
-			}
-			else {
+				check = false;
+			} else {
 				HashSet<Long> listadoVotados = new HashSet<>();
 				for (Nominacion_Participante votado : votados) {
 					listadoVotados.add(votado.getPremio().getId());
@@ -266,7 +261,7 @@ public class PremioController {
 				check = listadoVotados.contains(idPremio);
 			}
 		}
-			
+
 		return check;
 	}
 }

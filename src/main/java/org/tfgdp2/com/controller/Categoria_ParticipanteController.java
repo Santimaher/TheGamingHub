@@ -22,34 +22,36 @@ public class Categoria_ParticipanteController {
 
 	@Autowired
 	private Categoria_ParticipanteRepository repoCategoria_Participante;
-	
+
 	@GetMapping("c")
-	public String cGet(ModelMap m, HttpSession s) throws DangerException{
-			H.isRolOK("admin", s);
-			m.put("view", "categoriaParticipante/c");
-			return "_t/frame";
- 		
+	public String cGet(ModelMap m, HttpSession s) throws DangerException {
+		H.isRolOK("admin", s);
+		m.put("view", "categoriaParticipante/c");
+		return "_t/frame";
+
 	}
+
 	@PostMapping("c")
-	public void crearGet(ModelMap m,@RequestParam("nombre") String nombre, HttpSession s) throws DangerException, InfoException {
+	public void crearGet(ModelMap m, @RequestParam("nombre") String nombre, HttpSession s)
+			throws DangerException, InfoException {
 		try {
 			H.isRolOK("admin", s);
 			Categoria_Participante cat = new Categoria_Participante();
 			cat.setNombre(nombre);
 			repoCategoria_Participante.save(cat);
-		}catch(Exception e) {
-			PRG.error("Categoria "+nombre+" duplicada.", "categoriaParticipante/c");
+		} catch (Exception e) {
+			PRG.error("Categoria " + nombre + " duplicada.", "categoriaParticipante/c");
 		}
 		PRG.info("Categoría creada correctamente", "categoriaParticipante/r");
 	}
-	
+
 	@GetMapping("r")
 	public String r(ModelMap m) {
 		m.put("categorias", repoCategoria_Participante.findAll());
-		m.put("view","categoriaParticipante/r");
+		m.put("view", "categoriaParticipante/r");
 		return "_t/frame";
 	}
-	
+
 	@GetMapping("u")
 	public String uGet(@RequestParam("id") Long idCategoria, ModelMap m, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
@@ -57,7 +59,7 @@ public class Categoria_ParticipanteController {
 		m.put("view", "categoriaParticipante/u");
 		return "_t/frame";
 	}
-	
+
 	@PostMapping("u")
 	public void uPost(@RequestParam("nombre") String nombreCategoria, @RequestParam("id") Long idCategoria,
 			HttpSession s) throws DangerException, InfoException {
@@ -88,11 +90,5 @@ public class Categoria_ParticipanteController {
 		PRG.info("Categoria borrada correctamente", "categoriaParticipante/r");
 
 	}
-	
-	
+
 }
-
-
-
-
-
