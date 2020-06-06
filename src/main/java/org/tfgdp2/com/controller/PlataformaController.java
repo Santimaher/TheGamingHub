@@ -89,7 +89,7 @@ public class PlataformaController {
 			H.isRolOK("admin", s);
 			repoPlataforma.delete(repoPlataforma.getOne(id));
 		} catch (Exception e) {
-			PRG.error("Error al borrar la Plataforma", "plataforma/r");
+			PRG.error("Error al borrar la Plataforma" + e.getMessage(), "plataforma/r");
 		}
 
 		PRG.info("Plataforma borrada correctamente", "plataforma/r");
