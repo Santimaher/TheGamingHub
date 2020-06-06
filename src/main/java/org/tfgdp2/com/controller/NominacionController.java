@@ -88,7 +88,7 @@ public class NominacionController {
 	}
 	
 	@GetMapping("nominarJuego")
-	public String nominarJuego(ModelMap m,HttpSession s,@RequestParam("filtro") String filtro) throws DangerException {
+	public String nominarJuego(ModelMap m,HttpSession s,@RequestParam(value = "filtro", required = false) String filtro) throws DangerException {
 		filtro = (filtro == null) ? "" : filtro;
 		try {
 			H.isRolOK("jurado", s);
