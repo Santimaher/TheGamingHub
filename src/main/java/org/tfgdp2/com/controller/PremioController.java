@@ -1,6 +1,5 @@
 package org.tfgdp2.com.controller;
 
-import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -23,10 +22,8 @@ import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.GalaRepository;
-import org.tfgdp2.com.repository.JuegoRepository;
 import org.tfgdp2.com.repository.NominacionJuegoRepository;
 import org.tfgdp2.com.repository.NominacionParticipanteRepository;
-import org.tfgdp2.com.repository.ParticipanteRepository;
 import org.tfgdp2.com.repository.PremioJuegoRepository;
 import org.tfgdp2.com.repository.PremioParticipanteRepository;
 import org.tfgdp2.com.repository.UsuarioRepository;
@@ -36,22 +33,10 @@ import org.tfgdp2.com.repository.UsuarioRepository;
 public class PremioController {
 
 	@Autowired
-	private NominacionJuegoRepository repoNomJuego;
-
-	@Autowired
-	private NominacionParticipanteRepository repoNomPar;
-
-	@Autowired
 	private PremioParticipanteRepository repoPremioPar;
 
 	@Autowired
 	private PremioJuegoRepository repoPremioJuego;
-
-	@Autowired
-	private ParticipanteRepository repoParticipante;
-
-	@Autowired
-	private JuegoRepository repoJuego;
 
 	@Autowired
 	private GalaRepository repoGala;
@@ -167,7 +152,7 @@ public class PremioController {
 	@GetMapping("addVotoP")
 	public String addVotoP(ModelMap m, @RequestParam("id") Long id,HttpSession s) throws DangerException {
 		String vista = null;
-		Gala g = repoGala.findTopByOrderByEdicionDesc();
+		repoGala.findTopByOrderByEdicionDesc();
 		try {
 			Usuario usu = (Usuario) s.getAttribute("usuario");	
 		if (haVotado(usu.getId(), id, false)) {
@@ -195,7 +180,7 @@ public class PremioController {
 	@GetMapping("addVotoJ")
 	public String addVotoJ(ModelMap m, @RequestParam("id") Long id,HttpSession s) throws DangerException {
 		String vista = null;
-		Gala g = repoGala.findTopByOrderByEdicionDesc();
+		repoGala.findTopByOrderByEdicionDesc();
 		try {
 			Usuario usu = (Usuario) s.getAttribute("usuario");
 		if (haVotado(usu.getId(), id, true) ) {

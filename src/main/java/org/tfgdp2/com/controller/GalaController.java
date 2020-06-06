@@ -50,7 +50,8 @@ public class GalaController {
 	NominacionParticipanteRepository repoNParticipante;
 
 	@GetMapping("r")
-	public String read(ModelMap m) {
+	public String read(ModelMap m,HttpSession s) throws DangerException {
+		H.isRolOK("admin", s);
 		m.put("galas", repoGala.findAll());
 		m.put("view", "gala/r");
 		return "_t/frame";
