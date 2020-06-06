@@ -23,10 +23,8 @@ import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.GalaRepository;
-import org.tfgdp2.com.repository.JuegoRepository;
 import org.tfgdp2.com.repository.NominacionJuegoRepository;
 import org.tfgdp2.com.repository.NominacionParticipanteRepository;
-import org.tfgdp2.com.repository.ParticipanteRepository;
 import org.tfgdp2.com.repository.PremioJuegoRepository;
 import org.tfgdp2.com.repository.PremioParticipanteRepository;
 import org.tfgdp2.com.repository.UsuarioRepository;
@@ -36,22 +34,10 @@ import org.tfgdp2.com.repository.UsuarioRepository;
 public class PremioController {
 
 	@Autowired
-	private NominacionJuegoRepository repoNomJuego;
-
-	@Autowired
-	private NominacionParticipanteRepository repoNomPar;
-
-	@Autowired
 	private PremioParticipanteRepository repoPremioPar;
 
 	@Autowired
 	private PremioJuegoRepository repoPremioJuego;
-
-	@Autowired
-	private ParticipanteRepository repoParticipante;
-
-	@Autowired
-	private JuegoRepository repoJuego;
 
 	@Autowired
 	private GalaRepository repoGala;
@@ -139,20 +125,20 @@ public class PremioController {
 	}
 
 	@PostMapping("dP")
-	public String deleteP(@RequestParam("id") Long id,HttpSession s) throws DangerException {
+	public void deleteP(@RequestParam("id") Long id,HttpSession s) throws DangerException, InfoException {
 		try {
 			H.isRolOK("admin", s);
 			Premio_Participante n = repoPremioPar.getOne(id);
 			repoPremioPar.delete(n);
 
 		} catch (Exception e) {
-			PRG.error("Error al eliminar el premio", "premio/r");
+			PRG.error("Error al eliminar el premio", "premio/rAdmin");
 		}
-		return "redirect:premio/r";
+		PRG.info("Premio borrado correctamente", "premio/rAdmin");
 	}
 
 	@PostMapping("dJ")
-	public String deleteJ(@RequestParam("id") Long id,HttpSession s) throws DangerException {
+	public void deleteJ(@RequestParam("id") Long id,HttpSession s) throws DangerException, InfoException {
 		try {
 			H.isRolOK("admin", s);
 			Premio_Juego njuego = repoPremioJuego.getOne(id);
@@ -161,23 +147,23 @@ public class PremioController {
 		} catch (Exception e) {
 			PRG.error("Error al eliminar el premio", "premio/r");
 		}
-		return "redirect:premio/r";
+		PRG.info("Premio borrado correctamente", "premio/r");
 	}
 
 	@GetMapping("addVotoP")
 	public String addVotoP(ModelMap m, @RequestParam("id") Long id,HttpSession s) throws DangerException {
 		String vista = null;
-		Gala g = repoGala.findTopByOrderByEdicionDesc();
+		Gala g=repoGala.findTopByOrderByEdicionDesc();
 		try {
 			Usuario usu = (Usuario) s.getAttribute("usuario");	
 		if (haVotado(usu.getId(), id, false)) {
 			PRG.error("Ya ha votado en este premio", "/premio/r");
-//			if (g.getActivo()==true) {
-//				PRG.error("La gala no esta activa", "premio/r");
-//				if (g.getFin().isAfter(LocalDate.now())) {
-//					PRG.error("El tiempo de votacion ha excedido", "premio/r");
-//				}
-//			}
+			if (g.getActivo()==true) {
+				PRG.error("La gala no esta activa", "premio/r");
+				if (g.getFin().isAfter(LocalDate.now())) {
+					PRG.error("El tiempo de votacion ha excedido", "premio/r");
+				}
+			}
 		} else {
 			m.put("premio", repoPremioPar.getOne(id));
 			m.put("nominados", repoNP.findByPremioId(id));
@@ -195,17 +181,17 @@ public class PremioController {
 	@GetMapping("addVotoJ")
 	public String addVotoJ(ModelMap m, @RequestParam("id") Long id,HttpSession s) throws DangerException {
 		String vista = null;
-		Gala g = repoGala.findTopByOrderByEdicionDesc();
+		Gala g=repoGala.findTopByOrderByEdicionDesc();
 		try {
 			Usuario usu = (Usuario) s.getAttribute("usuario");
 		if (haVotado(usu.getId(), id, true) ) {
 			PRG.error("Ya ha votado en este premio", "premio/r");
-//			if (g.getActivo()==true) {
-//				PRG.error("La gala no esta activa", "premio/r");
-//				if (g.getFin().isAfter(LocalDate.now())) {
-//					PRG.error("El tiempo de votacion ha excedido", "premio/r");
-//				}
-//			}
+			if (g.getActivo()==true) {
+				PRG.error("La gala no esta activa", "premio/r");
+				if (g.getFin().isAfter(LocalDate.now())) {
+					PRG.error("El tiempo de votacion ha excedido", "premio/r");
+				}
+			}
 			
 		} else {
 			m.put("premio", repoPremioJuego.getOne(id));

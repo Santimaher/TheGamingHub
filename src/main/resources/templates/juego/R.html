@@ -16,6 +16,9 @@
 		<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
 			Buscar</button>
 	</form>
+	<form action="https://thegaminghub.herokuapp.com/juego/r/1">
+	<button onclick="submit()" class="waves-effect waves-light btn separacion purple"> Volver lectura normal</button>
+	</form>
 	
 	<div class="row">
 		<div class="col s12 m6 l4 xl4" th:each="juego:${juegos}">
@@ -79,6 +82,7 @@
 					<span class="card-title white-text flow-text "
 						th:text="${juego.nombre}"><i class="material-icons right">close</i></span>
 					<p th:text="|Desarrolladora: ${juego.desarrolladora}|"></p>
+					<p th:text="|Lanzamiento: ${#temporals.format(juego.fechaLanzamiento, 'dd-MM-yyyy')}|"></p>
 					
 					<fieldset>
 					<legend>Plataformas disponibles</legend>

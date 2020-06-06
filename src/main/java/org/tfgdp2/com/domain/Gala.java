@@ -25,10 +25,10 @@ public class Gala {
 	private Boolean activo;
 	
 	private String observaciones;
-	@Column(unique = true)
+	
 	private LocalDate inicio;
 	
-	@Column(unique = true)
+	
 	private LocalDate fin;
 	
 	@OneToMany(mappedBy = "tiene")

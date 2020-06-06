@@ -3,11 +3,11 @@
 		<div class="nav-wrapper">
 			<div class="valign-wrapper s6 m6 l6 xl6" style="float: left">
 				<button
-					class="waves-effect waves-light color-trans btn-floating btn-large "
-					onclick="location.href = '/';">
+					class="waves-effect waves-light color-trans btn-floating btn-large tooltipped"
+					onclick="location.href = '/';" data-position="bottom" data-tooltip="Ir a la pagina de inicio">
 					<img style="margin-top:5px"	src="/img/logo2.png" height="50" width="50" alt="logo"></img>
 				</button>
-				<button data-target="slide-out"	class="waves-effect waves-light btn-floating color-trans btn-large sidenav-trigger">
+				<button data-target="slide-out"	class="waves-effect waves-light btn-floating color-trans btn-large sidenav-trigger tooltipped" data-position="bottom" data-tooltip="Opciones de usuario">
 					<i class="material-icons large">person </i>
 				</button>
 				
@@ -15,7 +15,7 @@
 			<ul class="right s6 m6 l6 xl6">
 			<li>
 			<button data-target="slide-out2"
-					class="waves-effect waves-light btn-floating btn-large color-trans sidenav-trigger">
+					class="waves-effect waves-light btn-floating btn-large color-trans sidenav-trigger tooltipped" data-position="bottom" data-tooltip="Abrir menu de opciones de admin">
 					<i class="material-icons large">menu </i>
 				</button>
 		</div>
@@ -59,7 +59,7 @@
 								</ul>
 							</div>
 					</ul>
-				<li class="center"><button class="waves-effect waves-light btn hoverable purple white-text" onclick="location.href='/foro/r2';" >Foros</button></li>	
+				<li class="center"><button class="waves-effect waves-light btn hoverable purple white-text tooltipped" data-tooltip="Ver los foros activos" data-position="bottom" onclick="location.href='/foro/r2';" >Foros</button></li>	
 				</div>
 			</li>
 		
@@ -157,6 +157,12 @@
 					<li><a
 						class="waves-effect waves-light btn hoverable purple white-text"
 						href="https://thegaminghub.herokuapp.com/gala/r">Listar</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/gala/GA">Gala Activa</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/gala/r2">Historico</a></li>		
 				</ul>		
 				</div>
 			</li>

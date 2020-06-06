@@ -3,22 +3,23 @@
 		<div class="nav-wrapper s4 m4 l4 xl4">
 			<div class="valign-wrapper left" style=" margin-top:5px">			
 				<button
-					class="waves-effect waves-light btn-floating btn-large color-trans"
-					onclick="location.href = '/';">
+					class="waves-effect waves-light btn-floating btn-large color-trans tooltipped"
+					onclick="location.href = '/';" data-position="bottom" data-tooltip="Ir a la pagina de inicio">
 					<img style="margin-top:5px"	src="/img/logo2.png" height="50" width="50" alt="logo"></img>
 				</button>
-				<button data-target="slide-out"	class="waves-effect waves-light btn-floating btn-large sidenav-trigger color-trans">
+				<button data-target="slide-out"	class="waves-effect waves-light btn-floating btn-large sidenav-trigger color-trans tooltipped" data-position="bottom" data-tooltip="Opciones de usuario">
 					<i class="material-icons large">person </i>
 				</button>			
 			</div>
 		
 			<ul class="right s4 m4 l4 xl4">
 
-				<li><a class="waves-effect waves-light btn-floating btn-large color-trans" href="https://thegaminghub.herokuapp.com/juego/r/1" data-target="juego"><img
+				<li><a class="waves-effect waves-light btn-floating btn-large color-trans tooltipped" data-tooltip="Catalogo de juegos" data-position="bottom" href="https://thegaminghub.herokuapp.com/juego/r/1" data-target="juego"><img
 						src="/img/mando.png" height="50" width="50" alt="juegos"></img></a></li>
 				
-				<li><a class="waves-effect waves-light btn-floating btn-large color-trans" href="https://thegaminghub.herokuapp.com/gala/r" data-target="galas"><img style="margin-top:5px"
+				<li><a class="waves-effect waves-light btn-floating btn-large color-trans tooltipped" href="https://thegaminghub.herokuapp.com/gala/GA" data-tooltip="Ir a la gala activa" data-position="bottom" data-target="galas"><img style="margin-top:5px"
 						src="/img/copa.png" height="45" width="45" alt="galas"></img></a></li>
+						<li><button class="waves-effect waves-light btn-floating btn-large color-trans tooltipped" data-tooltip="Ver los foros activos" data-position="bottom" onclick="location.href='/foro/r2';" ><img style="margin-top:5px" src="/img/foro.png" height="45" width="45" alt="galas"></img></button></li>
 			</ul>
 		</div>
 		</div>	
@@ -69,15 +70,14 @@
 						</div>
 						<div class="collapsible-body fondo-geometrico color-trans">
 							<ul>
-								<li><a class="waves-effect waves-light btn hoverable purple white-text"
-									href="https://thegaminghub.herokuapp.com/nominacion/nominarParticipante">Nominar Participantes</a></li>
-								<li><a class="waves-effect waves-light btn hoverable purple white-text"
-									href="https://thegaminghub.herokuapp.com/nominacion/nominarJuego">Nominar Juegos</a></li>
+								<li><a class="waves-effect waves-light btn hoverable purple white-text tooltipped"
+									href="https://thegaminghub.herokuapp.com/nominacion/nominarParticipante" data-position="bottom" data-tooltip="Añadir participantes a los premios">Nominar Participantes</a></li>
+								<li><a class="waves-effect waves-light btn hoverable purple white-text tooltipped"
+									href="https://thegaminghub.herokuapp.com/nominacion/nominarJuego" data-position="bottom" data-tooltip="Añadir juegos a los premios">Nominar Juegos</a></li>
 
 							</ul>
 						</div>
 				</ul></li>
-	<li class="white-text"><a href="/premio/r" class="letrasNav">Premios</a></li>
-	<li><div class="divider"></div></li>
-	<li class="center"><button class="waves-effect waves-light btn hoverable purple white-text" onclick="location.href='/foro/r2';" >Foros</button></li>
+	<li class="white-text"><a href="/premio/r" class="letrasNav tooltipped" data-tooltip="Ir a la vista para inicar la votacion" data-position="bottom">Votar a los premios</a></li>
+	
 </ul>

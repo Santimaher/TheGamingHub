@@ -7,13 +7,15 @@
 	<tr>
 		<th>Nombre</th>
 		<th>Imagen</th>
-		<th>Acciones<th>
+		<th th:if="${session.usuario?.rol=='admin'}">Acciones<th>
 	</tr>
 	<tr th:each="plataforma:${plataformas}">
 		<td th:text="${plataforma.nombre}"></td>
-		<td th:text="${plataforma.img}"></td>
+		<td><img th:if="${plataforma.id} >26 "  th:src="|data:image/png;base64,${plataforma.img}|" width="150px" height="150px">
+			<img th:if="${plataforma.id} <=26 "  th:src="|/img/${plataforma.imgPre}|" width="150px" height="150px">
+		 </td>
 		
-		<td class="row">
+		<td class="row" th:if="${session.usuario?.rol=='admin'}">
 				<form action="https://thegaminghub.herokuapp.com/plataforma/u" method="get">
 					<input type="hidden" name="id"  th:value="${plataforma.id}" />
 					<button onclick="submit()"  class="btn-floating btn-large waves-effect waves-light purple">
@@ -21,8 +23,8 @@
 					</button>
 				</form>
 				<form action="https://thegaminghub.herokuapp.com/plataforma/d" method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?');|">
-					<input type="hidden" name="id" />
-					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple" th:value="${plataforma.id}">
+					<input type="hidden" name="id" th:value="${plataforma.id}"/>
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple" >
 						<i class="material-icons left">delete</i>
 					</button>
 				</form>

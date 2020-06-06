@@ -5,20 +5,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.tfgdp2.com.domain.Categoria_Juego;
 import org.tfgdp2.com.domain.Categoria_Participante;
-import org.tfgdp2.com.domain.Nominacion_Participante;
 import org.tfgdp2.com.domain.Participante;
 import org.tfgdp2.com.exception.DangerException;
 import org.tfgdp2.com.exception.InfoException;
 import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.Categoria_ParticipanteRepository;
-import org.tfgdp2.com.repository.NominacionParticipanteRepository;
 import org.tfgdp2.com.repository.ParticipanteRepository;
-
-import java.io.File;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 

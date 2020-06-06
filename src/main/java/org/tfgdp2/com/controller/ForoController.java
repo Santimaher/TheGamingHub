@@ -7,11 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.tfgdp2.com.repository.EntradaForoRepository;
 import org.tfgdp2.com.repository.ForoRepository;
 import org.tfgdp2.com.repository.JuegoRepository;
 
@@ -23,22 +20,21 @@ public class ForoController {
 	private ForoRepository repoForo;
 	
 	@Autowired
-	private EntradaForoRepository repoEntrada;
-	
-	@Autowired
 	private JuegoRepository repoJuego;
 	
 	@GetMapping("r")
 	public String read(ModelMap m,@RequestParam("id") Long id) {
-		ArrayList<String> imgs = new ArrayList<>();
-		imgs.add("/img/fan-art.jpg");
-		imgs.add("/img/debug.jpg");
-		imgs.add("/img/meme.jpg");
-		imgs.add("/img/misc.jpg");
-		m.put("imgs", imgs);
-		m.put("juego", repoJuego.getOne(id));
-		m.put("foros", repoForo.findAllByJuego_id(id));
-		m.put("view", "foro/r");
+		if(id <= 180) {
+			m.put("juego", repoJuego.getOne((long) 1));
+			m.put("foros", repoForo.findAllByJuego_id((long) 1));
+			m.put("view", "foro/r");
+		}
+		else {
+			m.put("juego", repoJuego.getOne(id));
+			m.put("foros", repoForo.findAllByJuego_id(id));
+			m.put("view", "foro/r");
+		}
+		
 		return "_t/frame";
 	}
 	@GetMapping("r2")

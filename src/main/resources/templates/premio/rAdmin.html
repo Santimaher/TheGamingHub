@@ -8,12 +8,12 @@
 		<th>Premios para participantes</th>
 
 	</tr>
-		<tr th:each="pParticipante:${premioPartipantes}">
+		<tr th:each="pParticipante:${pp}">
 		<td th:text="${pParticipante.nombrePremio}"></td>
 		<td class="row">
-				<form action="/premio/dP" method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?'):|">
+				<form action="/premio/dP" method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?');|">
 					<input type="hidden" name="id" th:value="${pParticipante.id}" />
-					<button onclick="submit()">
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
 						<img src="/img/delete.png" height="20" width="20">
 					</button>
 				</form>
@@ -24,13 +24,13 @@
 
 	</tr>
 
-	<tr th:each="pJuego:${premioJuegos}">
+	<tr th:each="pJuego:${pj}">
 		<td th:text="${pJuego.nombrePremio}"></td>
 
 		<td class="row">
 				<form action="/premio/dJ" method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?');|">
 					<input type="hidden" name="id" th:value="${pJuego.id}" />
-					<button onclick="submit()">
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
 						<img src="/img/delete.png" height="20" width="20">
 					</button>
 				</form>

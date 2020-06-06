@@ -1,8 +1,5 @@
 package org.tfgdp2.com.controller;
 
-import java.net.HttpURLConnection;
-import java.util.Set;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;

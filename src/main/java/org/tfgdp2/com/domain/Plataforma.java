@@ -1,7 +1,9 @@
 package org.tfgdp2.com.domain;
 
 import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -23,6 +25,8 @@ public class Plataforma {
 	private String nombre;
 	
 	private String familia;
+	
+	private String imgPre;
 	
 	@Lob
 	private Blob img;
@@ -53,8 +57,9 @@ public class Plataforma {
 		this.nombre = nombre;
 	}
 
-	public Blob getImg() {
-		return img;
+	public String getImg() throws SQLException {
+		String bytes = Base64.getEncoder().encodeToString(this.img.getBytes(1l, (int)this.img.length()));
+		return bytes;
 	}
 
 	public void setImg(Blob img) {
@@ -75,6 +80,14 @@ public class Plataforma {
 
 	public void setFamilia(String familia) {
 		this.familia = familia;
+	}
+
+	public String getImgPre() {
+		return imgPre;
+	}
+
+	public void setImgPre(String imgPre) {
+		this.imgPre = imgPre;
 	}
 
 	

@@ -61,7 +61,7 @@ public class NominacionController {
 	public String nominarParticipante(ModelMap m,HttpSession s) throws DangerException {
 		H.isRolOK("jurado", s);
 		m.put("participantes", repoParticipante.findAll());
-		m.put("premioP", repoPremioP.findAll());
+		m.put("premioP", repoPremioP.findByTiene_id(repoGala.findTopByOrderByIdDesc().getId()));
 		m.put("view", "nominacion/nominarParticipante");
 		return "_t/frame";
 	}
@@ -88,14 +88,16 @@ public class NominacionController {
 	}
 	
 	@GetMapping("nominarJuego")
-	public String nominarJuego(ModelMap m,HttpSession s) throws DangerException {
+	public String nominarJuego(ModelMap m,HttpSession s,@RequestParam(value = "filtro", required = false) String filtro) throws DangerException {
+		filtro = (filtro == null) ? "" : filtro;
 		try {
 			H.isRolOK("jurado", s);
 		} catch (DangerException e) {
 			PRG.error("Rol inadecuado","/");
 		}
-		m.put("juegos",repoJuego.findAll());
-		m.put("premioJ", repoPremioJ.findAll());
+		m.put("juegos",repoJuego.findByNombreStartsWithIgnoreCase(filtro));
+		m.put("premioJ", repoPremioJ.findByTiene_id(repoGala.findTopByOrderByIdDesc().getId()));
+		m.put("filtro",filtro);
 		m.put("view", "nominacion/nominarJuego");
 		return ("_t/frame");
 	}
