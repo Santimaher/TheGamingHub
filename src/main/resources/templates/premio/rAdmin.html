@@ -8,7 +8,7 @@
 		<th>Premios para participantes</th>
 
 	</tr>
-		<tr th:each="pParticipante:${premioPartipantes}">
+		<tr th:each="pParticipante:${pp}">
 		<td th:text="${pParticipante.nombrePremio}"></td>
 		<td class="row">
 				<form action="/premio/dP" method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?'):|">
@@ -24,7 +24,7 @@
 
 	</tr>
 
-	<tr th:each="pJuego:${premioJuegos}">
+	<tr th:each="pJuego:${pj}">
 		<td th:text="${pJuego.nombrePremio}"></td>
 
 		<td class="row">
