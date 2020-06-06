@@ -85,7 +85,7 @@ public class NominacionController {
 			p.getNominado().add(np);
 			repoNP.save(np);
 		} catch (Exception e) {
-			PRG.error("El partipante no se pudo nominar");
+			PRG.error("Este juego ya esta nominado en este premio", "nominacion/nominarParticipante");
 		}
 		PRG.info("Participante nominado correctamente.", "nominacion/nominarParticipante");
 	}
@@ -127,7 +127,7 @@ public class NominacionController {
 			}
 
 		} catch (Exception e) {
-			PRG.error("El juego no se pudo nominar");
+			PRG.error("Este juego ya esta nominado en este premio", "nominacion/nominarJuego");
 		}
 		PRG.info("Juego nominado correctamente.", "nominacion/nominarJuego");
 	}
