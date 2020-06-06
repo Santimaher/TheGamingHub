@@ -24,15 +24,17 @@ public class ForoController {
 	
 	@GetMapping("r")
 	public String read(ModelMap m,@RequestParam("id") Long id) {
-		ArrayList<String> imgs = new ArrayList<>();
-		imgs.add("/img/fan-art.jpg");
-		imgs.add("/img/debug.jpg");
-		imgs.add("/img/meme.jpg");
-		imgs.add("/img/misc.jpg");
-		m.put("imgs", imgs);
-		m.put("juego", repoJuego.getOne(id));
-		m.put("foros", repoForo.findAllByJuego_id(id));
-		m.put("view", "foro/r");
+		if(id <= 180) {
+			m.put("juego", repoJuego.getOne((long) 1));
+			m.put("foros", repoForo.findAllByJuego_id((long) 1));
+			m.put("view", "foro/r");
+		}
+		else {
+			m.put("juego", repoJuego.getOne(id));
+			m.put("foros", repoForo.findAllByJuego_id(id));
+			m.put("view", "foro/r");
+		}
+		
 		return "_t/frame";
 	}
 	@GetMapping("r2")
