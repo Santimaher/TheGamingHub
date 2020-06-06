@@ -132,9 +132,9 @@ public class PremioController {
 			repoPremioPar.delete(n);
 
 		} catch (Exception e) {
-			PRG.error("Error al eliminar el premio", "premio/r");
+			PRG.error("Error al eliminar el premio", "premio/rAdmin");
 		}
-		PRG.info("Premio borrado correctamente", "premio/r");
+		PRG.info("Premio borrado correctamente", "premio/rAdmin");
 	}
 
 	@PostMapping("dJ")
