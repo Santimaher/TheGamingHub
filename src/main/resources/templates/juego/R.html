@@ -82,6 +82,7 @@
 					<span class="card-title white-text flow-text "
 						th:text="${juego.nombre}"><i class="material-icons right">close</i></span>
 					<p th:text="|Desarrolladora: ${juego.desarrolladora}|"></p>
+					<p th:text="${#temporals.format(juego.fechaLanzamiento, 'dd-MM-yyyy')}"></p>
 					
 					<fieldset>
 					<legend>Plataformas disponibles</legend>
