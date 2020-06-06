@@ -125,7 +125,7 @@ public class PremioController {
 	}
 
 	@PostMapping("dP")
-	public String deleteP(@RequestParam("id") Long id,HttpSession s) throws DangerException {
+	public void deleteP(@RequestParam("id") Long id,HttpSession s) throws DangerException, InfoException {
 		try {
 			H.isRolOK("admin", s);
 			Premio_Participante n = repoPremioPar.getOne(id);
@@ -134,11 +134,11 @@ public class PremioController {
 		} catch (Exception e) {
 			PRG.error("Error al eliminar el premio", "premio/r");
 		}
-		return "redirect:premio/r";
+		PRG.info("Premio borrado correctamente", "premio/r");
 	}
 
 	@PostMapping("dJ")
-	public String deleteJ(@RequestParam("id") Long id,HttpSession s) throws DangerException {
+	public void deleteJ(@RequestParam("id") Long id,HttpSession s) throws DangerException, InfoException {
 		try {
 			H.isRolOK("admin", s);
 			Premio_Juego njuego = repoPremioJuego.getOne(id);
@@ -147,7 +147,7 @@ public class PremioController {
 		} catch (Exception e) {
 			PRG.error("Error al eliminar el premio", "premio/r");
 		}
-		return "redirect:premio/r";
+		PRG.info("Premio borrado correctamente", "premio/r");
 	}
 
 	@GetMapping("addVotoP")
