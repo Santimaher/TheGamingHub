@@ -26,6 +26,8 @@ public class Plataforma {
 	
 	private String familia;
 	
+	private String imgPre;
+	
 	@Lob
 	private Blob img;
 	
@@ -78,6 +80,14 @@ public class Plataforma {
 
 	public void setFamilia(String familia) {
 		this.familia = familia;
+	}
+
+	public String getImgPre() {
+		return imgPre;
+	}
+
+	public void setImgPre(String imgPre) {
+		this.imgPre = imgPre;
 	}
 
 	
