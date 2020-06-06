@@ -149,21 +149,14 @@ public class NominacionController {
 	public boolean estaNominadoEnEsePremio(boolean esJuego, Long idAspirante, Long idPremio) {
 		boolean check = false;
 		if (esJuego) {
-			Juego J = repoJuego.getOne(idAspirante);
-			HashSet<Long> listadoAsp = new HashSet<>();
+			Juego J = repoJuego.getOne(idAspirante);			
+			HashSet<Long> listadoAsp = new HashSet<>();			
 			Collection<Nominacion_Juego> listaNJ = J.getNominado();
 			for (Nominacion_Juego nominacion_Juego : listaNJ) {
 				listadoAsp.add(nominacion_Juego.getPremio().getId());
-			}
-			HashSet<Long> listadoPJ = new HashSet<>();
-			Premio_Juego pjs = repoPremioJ.getOne(idPremio);
-			Collection<Nominacion_Juego> njs = pjs.getPremiados();
-			for (Nominacion_Juego idInd : njs) {
-				listadoPJ.add(idInd.getId());
-			}
-			for (Long long1 : listadoPJ) {
-				check = listadoAsp.contains(long1);
-			}
+			}			
+			check = listadoAsp.contains(idPremio);
+			
 
 		} else {
 			Participante P = repoParticipante.getOne(idAspirante);
@@ -172,15 +165,7 @@ public class NominacionController {
 			for (Nominacion_Participante nominacion_Participante : listaNP) {
 				listadoAsp2.add(nominacion_Participante.getPremio().getId());
 			}
-			HashSet<Long> listadoPP = new HashSet<>();
-			Premio_Participante pps = repoPremioP.getOne(idPremio);
-			Collection<Nominacion_Participante> nps = pps.getPremiados();
-			for (Nominacion_Participante idInd : nps) {
-				listadoPP.add(idInd.getId());
-			}
-			for (Long long1 : listadoPP) {
-				check = listadoAsp2.contains(long1);
-			}
+			check = listadoAsp2.contains(idPremio);
 		}
 
 		return check;
