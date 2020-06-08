@@ -19,7 +19,7 @@
 						Responder
 					</button>
 				</form>
-				<form  th:if="${MensajeFijado.mensajePadre!=null}" action="https://thegaminghub.herokuapp.com/entradaForo/rRespuestas" method="get">
+				<form  th:if="${MensajeFijado.mensajePadre!=null}" action="https://thegaminghub.herokuapp.com/entradaForo/verRespuestas" method="get">
 					<input type="hidden" name="idEntrada" th:value="${MensajeFijado.mensajePadre.id}" />
 					<input type="hidden" name="idForo" th:value="${MensajeFijado.mensajePadre.pertenece.id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
@@ -102,7 +102,7 @@
 				<form action="https://thegaminghub.herokuapp.com/entradaForo/verRespuestas" method="get">
 				<input type="hidden" name="idJuego" th:value="${idJuego}">
 					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
-					<input type="hidden" name="id" th:value="${entrada?.pertenece.id}" />
+					<input type="hidden" name="idForo" th:value="${entrada?.pertenece.id}" />
 					<button th:text="|Respuestas(${entrada.respuestas.size()})|"onclick="submit()" class="waves-effect waves-light btn separacion purple">
 						
 					</button>
