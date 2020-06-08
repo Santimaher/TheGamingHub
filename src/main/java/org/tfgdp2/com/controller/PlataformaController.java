@@ -42,7 +42,7 @@ public class PlataformaController {
 
 	@PostMapping("c")
 	public void crearPost(ModelMap m, @RequestParam("nombre") String nombre,
-			@RequestParam("imagen") MultipartFile imagen, HttpSession s) throws DangerException, InfoException {
+			@RequestParam("img") MultipartFile imagen, HttpSession s) throws DangerException, InfoException {
 
 		try {
 			H.isRolOK("admin", s);

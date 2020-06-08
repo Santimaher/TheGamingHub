@@ -31,7 +31,7 @@
 				<form action="/premio/dJ" method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?');|">
 					<input type="hidden" name="id" th:value="${pJuego.id}" />
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
-						<img src="/img/delete.png" height="20" width="20">
+						<i class="material-icons left">delete</i>
 					</button>
 				</form>
 		</td>

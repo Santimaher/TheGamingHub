@@ -102,7 +102,7 @@
           <span th:if="${entrada.img!=null}" ><img th:src="|data:image/png;base64,${entrada.img}|" width="100%" height="100%" style="margin:10px !important;"></span>
           <p th:utext="${#dates.format(entrada.fechaPublicacion, 'dd-MM-yyyy HH:mm')}"></p>
           
-          <span th:text="|${entrada.ranking}|"></span><img src="/img/like1.png" width="25px" height="25px">
+          <span th:text="|${entrada.ranking}|"></span><img class="separacion-lateral" src="/img/like1.png" width="25px" height="25px">
         </div>
         <div class="card-action grey darken-4">
         <div class="row">

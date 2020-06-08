@@ -73,6 +73,9 @@ fieldset{
 .separacion{
 	margin-bottom: 10px !important;
 }
+.separacion-lateral{
+	margin-left: 10px !important;
+}
 .letra-grande
 {
 	font-size: 20px !important;
