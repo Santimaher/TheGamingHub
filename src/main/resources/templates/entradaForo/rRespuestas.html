@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container content">
 <p th:if="${session.usuario==null}">Debes haber iniciado sesion para dar me gusta o no me gusta, comentar y para leer mensajes propio escritos en este foro <a href="https://thegaminghub.herokuapp.com/login">Iniciar sesion</a></p>
 <form action="https://thegaminghub.herokuapp.com/entradaForo/r" method="get">
 					<input type="hidden" name="idForo" th:value="${MensajeFijado.pertenece.id}">
