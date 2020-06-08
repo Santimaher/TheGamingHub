@@ -33,8 +33,8 @@
         <div class="card-content white-text">
           <span class="card-title" th:text="${MensajeFijado.titulo}"></span>
           <p th:if="${MensajeFijado.comentario!=null}" th:text="|${MensajeFijado.comentario}|"></p>
-           <span th:text="${MensajeFijado.escribe.loginname}"></span> <i th:if="${MensajeFijado.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
           <span th:if="${MensajeFijado.img!=null}"><img th:src="|data:image/png;base64,${MensajeFijado.img}|" width="100%" height="100%"></span>
+          <span th:text="${MensajeFijado.escribe.loginname}"></span> <i th:if="${MensajeFijado.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
           <p th:text="${MensajeFijado.fechaPublicacion}"></p>
           <span th:text="|${MensajeFijado.ranking}|"></span><img  class="separacion-lateral" src="/img/like1.png" width="25px" height="25px">
         </div>
@@ -52,8 +52,9 @@
         <div class=" card-content white-text">
          <span class="card-title" th:text="|${entrada.titulo}|" ></span>
           <span  th:text="|${entrada.comentario}|" ></span><br/><br/>
-          <span th:text="${entrada.escribe.loginname}"></span><i th:if="${entrada.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
+         
           <span th:if="${entrada.img!=null}"><img th:src="|data:image/png;base64,${entrada.img}|" width="100%" height="100%"></span>
+           <span th:text="${entrada.escribe.loginname}"></span><i th:if="${entrada.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
           <p th:text="${entrada.fechaPublicacion}"></p>
           <span th:text="|${entrada.ranking}|"></span><img class="separacion-lateral" src="/img/like1.png" width="25px" height="25px">
         </div>
