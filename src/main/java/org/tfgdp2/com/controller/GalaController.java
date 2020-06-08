@@ -7,7 +7,6 @@ import java.util.Comparator;
 
 import java.util.List;
 
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,21 +49,21 @@ public class GalaController {
 	NominacionParticipanteRepository repoNParticipante;
 
 	@GetMapping("r")
-	public String read(ModelMap m,HttpSession s) throws DangerException {
+	public String read(ModelMap m, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
 		m.put("galas", repoGala.findAll());
 		m.put("view", "gala/r");
 		return "_t/frame";
 	}
-	
+
 	@GetMapping("r2")
 	public String read2(ModelMap m) {
 		m.put("galas", repoGala.findAll());
-		m.put("FechaAc",LocalDate.now());
+		m.put("FechaAc", LocalDate.now());
 		m.addAttribute("byCantidadVotosJ", Comparator.comparingInt(Nominacion_Juego::getCantidadVotos));
 		m.addAttribute("byCantidadVotosP", Comparator.comparingInt(Nominacion_Participante::getCantidadVotos));
 		m.put("view", "gala/r2");
-		
+
 		return "_t/frame";
 	}
 
@@ -87,9 +86,9 @@ public class GalaController {
 
 			Gala g = new Gala();
 			g.setEdicion(edicion);
-			inicio=inicio.plusDays(1);
+			inicio = inicio.plusDays(1);
 			g.setInicio(inicio);
-			fin=fin.plusDays(1);
+			fin = fin.plusDays(1);
 			g.setFin(fin);
 			g.setActivo(false);
 			repoGala.save(g);
@@ -206,16 +205,18 @@ public class GalaController {
 		Gala gala = repoGala.findTopByOrderByIdDesc();
 		List<Premio_Juego> pjs = (List<Premio_Juego>) gala.getPremiosJ();
 		List<Premio_Participante> pps = (List<Premio_Participante>) gala.getPremiosP();
-		
-		List<Nominacion_Juego> ganadoresJ=new ArrayList<Nominacion_Juego>();
-		List<Nominacion_Participante> ganadoresP=new ArrayList<Nominacion_Participante>();
-		
+
+		List<Nominacion_Juego> ganadoresJ = new ArrayList<Nominacion_Juego>();
+		List<Nominacion_Participante> ganadoresP = new ArrayList<Nominacion_Participante>();
+
 		for (Premio_Participante premio_Participante : pps) {
-		ganadoresP.add(repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc(premio_Participante.getNombrePremio(), gala.getId()));
+			ganadoresP.add(repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc(
+					premio_Participante.getNombrePremio(), gala.getId()));
 
 		}
 		for (Premio_Juego premio_Juego : pjs) {
-		ganadoresJ.add(repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc(premio_Juego.getNombrePremio(), gala.getId()));
+			ganadoresJ.add(repoNJuego.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc(
+					premio_Juego.getNombrePremio(), gala.getId()));
 
 		}
 		m.put("ganadoresJ", ganadoresJ);
@@ -224,7 +225,6 @@ public class GalaController {
 		m.put("estado", gala.getActivo());
 		m.put("fechaActual", LocalDate.now());
 		m.put("fechaDePremio", gala.getFin().plusDays(5));
-		
 
 		m.put("view", "gala/galaActiva");
 		return "_t/frame";

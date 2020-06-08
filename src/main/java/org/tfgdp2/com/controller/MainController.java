@@ -2,7 +2,6 @@ package org.tfgdp2.com.controller;
 
 import javax.servlet.http.HttpSession;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -55,12 +54,13 @@ public class MainController {
 	private PremioParticipanteRepository repoPremioP;
 	@Autowired
 	private UsuarioRepository usuarioRepo;
-	
+
 	@GetMapping("/")
 	public String principio(ModelMap m) {
 		m.put("view", "home.html");
 		return "_t/frame";
 	}
+
 	@GetMapping("/danger")
 	public String danger(ModelMap m) {
 		String in = "admin";
@@ -69,21 +69,12 @@ public class MainController {
 		m.put("pass", pass);
 		return "_t/frame";
 	}
-	
+
 	@PostMapping("/danger")
 	public void subirPost(@RequestParam("img") MultipartFile img, HttpSession s) throws DangerException, InfoException {
-		Usuario u = usuarioRepo.getByLoginname("admin");
-		try {
-			H.subirImagen(u, img);
-		} catch (Exception e) {
-			PRG.error("Error al subir imagen"+e.getMessage(), "danger");
-		
-		}
-		PRG.info("Imagen subida", "danger");
-		
+
 	}
-	
-	
+
 	@GetMapping("/info")
 	public String info(HttpSession s, ModelMap m) {
 
@@ -93,8 +84,7 @@ public class MainController {
 		String link = s.getAttribute("_link") != null ? (String) s.getAttribute("_link") : "/";
 		String idForo = s.getAttribute("_idForo") != null ? (String) s.getAttribute("_idForo") : "";
 		String idEntrada = s.getAttribute("_idEntrada") != null ? (String) s.getAttribute("_idEntrada") : "";
-		
-		
+
 		s.removeAttribute("_mensaje");
 		s.removeAttribute("_severity");
 		s.removeAttribute("_link");
@@ -103,26 +93,27 @@ public class MainController {
 
 		m.put("mensaje", mensaje);
 		m.put("severity", severity);
-		m.put("link",link);
-		m.put("idForo",idForo);
+		m.put("link", link);
+		m.put("idForo", idForo);
 		m.put("idEntrada", idEntrada);
-
 
 		m.put("view", "_t/info");
 		return "_t/frame";
 	}
+
 	@GetMapping("/login")
-	public String login(ModelMap m,HttpSession s) throws DangerException {
-		
+	public String login(ModelMap m, HttpSession s) throws DangerException {
+
 		m.put("view", "anonymous/login");
 		return "_t/frame";
 	}
+
 	@PostMapping("/login")
 	public String login(@RequestParam("loginname") String loginname, @RequestParam("password") String password,
 			ModelMap m, HttpSession s) throws DangerException {
 		String view = "/";
 		try {
-			Usuario usu = usuarioRepo.getByLoginnameOrEmail(loginname,loginname);
+			Usuario usu = usuarioRepo.getByLoginnameOrEmail(loginname, loginname);
 			if (!(new BCryptPasswordEncoder()).matches(password, usu.getPassword())) {
 				throw new Exception();
 			}
@@ -134,34 +125,36 @@ public class MainController {
 
 		return "redirect:" + view;
 	}
+
 	@GetMapping("/logout")
 	public String logout(HttpSession s) throws DangerException {
 		s.invalidate();
 		return "redirect:/";
 	}
+
 	@GetMapping("/registro")
-	public String registro() 
-	{
+	public String registro() {
 		return "redirect:usuario/c";
-		
+
 	}
 
 	@GetMapping("/cambioContrasenia")
-	public String cambioContrasenia(ModelMap m,HttpSession s) 
-	{
-		m.put("usuario",s.getAttribute("usuario"));
+	public String cambioContrasenia(ModelMap m, HttpSession s) {
+		m.put("usuario", s.getAttribute("usuario"));
 		m.put("view", "usuario/cambiarContrasenia");
 		return "_t/frame";
-		
+
 	}
+
 	@PostMapping("/cambioContrasenia")
-	public String cambioContrasenia(ModelMap m,HttpSession s,@RequestParam("id")Long id,@RequestParam("passwordAc")String actual,@RequestParam("passwordNu")String nueva ) throws DangerException 
-	{
-		Usuario usu=null;
+	public String cambioContrasenia(ModelMap m, HttpSession s, @RequestParam("id") Long id,
+			@RequestParam("passwordAc") String actual, @RequestParam("passwordNu") String nueva)
+			throws DangerException {
+		Usuario usu = null;
 		try {
-			
+
 			H.isRolOK("auth", s);
-			 usu = usuarioRepo.getOne(id);
+			usu = usuarioRepo.getOne(id);
 			if (!(new BCryptPasswordEncoder()).matches(actual, usu.getPassword())) {
 				throw new Exception();
 			}
@@ -169,14 +162,10 @@ public class MainController {
 			usuarioRepo.save(usu);
 
 		} catch (Exception e) {
-			PRG.error("Error al editar la contraseña de " + usu.getNombre() , "usuario/r");
+			PRG.error("Error al editar la contraseña de " + usu.getNombre(), "usuario/r");
 		}
 		return "redirect:usuario/r";
 	}
-		
-	
-
-	
 
 	@GetMapping("/init")
 	public String initGet(ModelMap m) throws DangerException {
@@ -186,7 +175,7 @@ public class MainController {
 		m.put("view", "anonymous/init");
 		return "_t/frame";
 	}
-	
+
 	@PostMapping("/init")
 	public String initPost(@RequestParam("password") String password, ModelMap m) throws DangerException {
 		if (usuarioRepo.getByLoginname("admin") != null) {
@@ -194,7 +183,7 @@ public class MainController {
 		}
 		BCryptPasswordEncoder bpe = new BCryptPasswordEncoder();
 		if (!bpe.matches(password, bpe.encode("admin"))) { // Password harcoded
-			PRG.error("Contraseña incorrecta","/init");
+			PRG.error("Contraseña incorrecta", "/init");
 		}
 		repoCategoriaJ.deleteAll();
 		repoEntradaF.deleteAll();
@@ -208,7 +197,7 @@ public class MainController {
 		repoPremioJ.deleteAll();
 		repoPremioP.deleteAll();
 		usuarioRepo.deleteAll();
-		usuarioRepo.save(new Usuario("admin", "admin",bpe.encode("admin"), "admin"));
+		usuarioRepo.save(new Usuario("admin", "admin", bpe.encode("admin"), "admin"));
 		return "redirect:/";
 	}
 

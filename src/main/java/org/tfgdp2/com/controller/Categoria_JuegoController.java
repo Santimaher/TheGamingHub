@@ -18,15 +18,12 @@ import org.tfgdp2.com.helper.H;
 import org.tfgdp2.com.helper.PRG;
 import org.tfgdp2.com.repository.Categoria_JuegoRepository;
 
-
 @Controller
 @RequestMapping(value = "/categoria")
 public class Categoria_JuegoController {
 
 	@Autowired
 	private Categoria_JuegoRepository repoCategoria_Juego;
-	
-	
 
 	@GetMapping("r")
 	public String read(ModelMap m) {
@@ -37,7 +34,7 @@ public class Categoria_JuegoController {
 	}
 
 	@GetMapping("c")
-	public String cGet(ModelMap m,HttpSession s) throws DangerException {
+	public String cGet(ModelMap m, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
 		m.put("view", "categoria/C");
 		return "_t/frame";

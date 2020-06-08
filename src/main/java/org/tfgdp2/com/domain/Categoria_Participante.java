@@ -10,36 +10,33 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
 @Entity
 public class Categoria_Participante {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(unique = true)
 	private String nombre;
-	
-	@OneToMany(mappedBy="pertenece")
+
+	@OneToMany(mappedBy = "pertenece")
 	private Collection<Participante> participantes;
 
-	//===========================
-	  
+	// ===========================
+
 	public Categoria_Participante() {
 		super();
-		this.participantes =  new ArrayList<Participante>();
+		this.participantes = new ArrayList<Participante>();
 	}
-	
-	
+
 	public Categoria_Participante(String nombre) {
 		super();
 		this.nombre = nombre;
-		this.participantes =  new ArrayList<Participante>();
+		this.participantes = new ArrayList<Participante>();
 	}
-	
-	
-	//=====================================
+
+	// =====================================
 	public Long getId() {
 		return id;
 	}
@@ -63,5 +60,5 @@ public class Categoria_Participante {
 	public void setParticipantes(Collection<Participante> participantes) {
 		this.participantes = participantes;
 	}
-	
+
 }

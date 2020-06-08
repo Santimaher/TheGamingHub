@@ -43,62 +43,63 @@ public class JuegoController {
 	private ForoRepository repoForo;
 	@Autowired
 	private Categoria_JuegoRepository repoCategoriaJ;
-	
-	
-	@GetMapping(value="r/{pageid}")
-	public String read(ModelMap m,@PathVariable int pageid,@RequestParam(value = "filtro", required = false) String filtro,@RequestParam(value = "tipo", required = false) String tipo,HttpSession s) {
+
+	@GetMapping(value = "r/{pageid}")
+	public String read(ModelMap m, @PathVariable int pageid,
+			@RequestParam(value = "filtro", required = false) String filtro,
+			@RequestParam(value = "tipo", required = false) String tipo, HttpSession s) {
 		filtro = (filtro == null) ? "" : filtro;
 		tipo = (tipo == null) ? "normal" : tipo;
 		int principio = 0;
 		int fin = 0;
 		Long pl = 0L;
 		Long fl = 0L;
-		if(pageid == 1) {
-			principio=1;
-			fin=10;
-			pl=(long) principio;
+		if (pageid == 1) {
+			principio = 1;
+			fin = 10;
+			pl = (long) principio;
 			fl = (long) fin;
-		}
-		else {
-			principio = (pageid*10)-9;
-			fin = principio+9;
-			pl=(long) principio;
+		} else {
+			principio = (pageid * 10) - 9;
+			fin = principio + 9;
+			pl = (long) principio;
 			fl = (long) fin;
 		}
 		int aguja = pageid;
 		ArrayList<Integer> dosAntes = new ArrayList<>();
 		ArrayList<Integer> dosDespues = new ArrayList<>();
-		if (aguja==1) {
+		if (aguja == 1) {
 			for (int i = 2; i < 6; i++) {
 				dosDespues.add(i);
 			}
-			
-		}
-		else if (aguja==2) {
+
+		} else if (aguja == 2) {
 			dosAntes.add(1);
 			for (int i = 3; i < 6; i++) {
-				
+
 				dosDespues.add(i);
 			}
-		}
-		else {
+		} else {
 			for (int i = 1; i < 3; i++) {
-				
-				dosDespues.add(aguja+i);
+
+				dosDespues.add(aguja + i);
 			}
 			for (int i = 3; i > 0; i--) {
-				dosAntes.add(aguja-i);
+				dosAntes.add(aguja - i);
 			}
 		}
-		
-		
-		
+
 		List<Juego> juegos = repoJuego.findByIdBetween(pl, fl);
-		switch(tipo) 
-		{
-		case "Nombre": m.put("juegos", repoJuego.findByNombreStartsWithIgnoreCase(filtro)); break;
-		case "Plataforma": m.put("juegos", repoJuego.findByPlataformasNombreStartsWithIgnoreCase(filtro)); break;
-		case "normal": m.put("juegos",juegos); break;
+		switch (tipo) {
+		case "Nombre":
+			m.put("juegos", repoJuego.findByNombreStartsWithIgnoreCase(filtro));
+			break;
+		case "Plataforma":
+			m.put("juegos", repoJuego.findByPlataformasNombreStartsWithIgnoreCase(filtro));
+			break;
+		case "normal":
+			m.put("juegos", juegos);
+			break;
 		}
 		s.setAttribute("pageid", pageid);
 		m.put("pageid", pageid);
@@ -112,7 +113,7 @@ public class JuegoController {
 	}
 
 	@GetMapping("c")
-	public String cGet(ModelMap m,HttpSession s) throws DangerException {
+	public String cGet(ModelMap m, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
 		m.put("categorias", repoCategoriaJ.findAll());
 		m.put("view", "juego/C");
@@ -126,7 +127,7 @@ public class JuegoController {
 			@RequestParam(value = "idCat[]") List<Long> idsCat,
 			@RequestParam("flan") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate flan, HttpSession s)
 			throws DangerException, InfoException {
-		
+
 		try {
 			s.getAttribute("pageid");
 			H.isRolOK("admin", s);
@@ -142,25 +143,25 @@ public class JuegoController {
 				pl.getJuegos().add(j);
 				j.getPlataformas().add(pl);
 			}
-			
+
 			for (Long id : idsCat) {
 				Categoria_Juego cat = repoCategoriaJ.getOne(id);
 				cat.getJuegos().add(j);
 				j.getPertenece().add(cat);
 			}
 			repoJuego.save(j);
-			
-			ArrayList<String> tipos = new ArrayList<>(Arrays.asList("Fan Art","Debug","Memes","Miscelaneo"));
+
+			ArrayList<String> tipos = new ArrayList<>(Arrays.asList("Fan Art", "Debug", "Memes", "Miscelaneo"));
 			for (String tipo : tipos) {
 				Foro f = new Foro(tipo);
 				f.setJuego(j);
 				j.getForo().add(f);
 				repoForo.save(f);
 			}
-						
+
 		} catch (Exception e) {
 			PRG.error("Juego " + nombre + " duplicado", "juego/c");
-		
+
 		}
 		PRG.info("Juego " + nombre + " creado correctamente", "juego/r/1");
 
@@ -170,7 +171,7 @@ public class JuegoController {
 	public String ueGet(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
 		H.isRolOK("admin", s);
 		Juego juego = repoJuego.getOne(id);
-		HashSet<Plataforma> consolas =  new HashSet<>();
+		HashSet<Plataforma> consolas = new HashSet<>();
 		Collection<Plataforma> colCon = juego.getPlataformas();
 		for (Plataforma plataforma : colCon) {
 			consolas.add(plataforma);
@@ -185,9 +186,8 @@ public class JuegoController {
 	@PostMapping("u")
 	public void uPost(@RequestParam("id") Long id, @RequestParam("nombre") String nombre,
 			@RequestParam("desarrolladora") String desarrolladora,
-			@RequestParam(value="imgJ" , required = false) MultipartFile img,
-			@RequestParam(value="imgPre" , required = false) String imgPre,
-			@RequestParam("teaser") String teaser,
+			@RequestParam(value = "imgJ", required = false) MultipartFile img,
+			@RequestParam(value = "imgPre", required = false) String imgPre, @RequestParam("teaser") String teaser,
 			@RequestParam(value = "idPlataforma[]") List<Long> idsPlataforma,
 			@RequestParam(value = "idCat[]") List<Long> idsCat,
 			@RequestParam("flan") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate flan, HttpSession s)
@@ -202,10 +202,9 @@ public class JuegoController {
 			} else {
 				j.setImg(H.blobCreator(img));
 			}
-			
+
 			j.setTeaser(teaser);
 			j.setFechaLanzamiento(flan);
-			
 
 			List<Plataforma> plataformasNew = new ArrayList<Plataforma>();
 			for (Long idPl : idsPlataforma) {
@@ -214,7 +213,7 @@ public class JuegoController {
 				plataformasNew.add(pl);
 			}
 			j.setPlataformas(plataformasNew);
-			
+
 			List<Categoria_Juego> categoriasNew = new ArrayList<Categoria_Juego>();
 			for (Long idCat : idsCat) {
 				Categoria_Juego cat = repoCategoriaJ.getOne(idCat);
@@ -222,17 +221,17 @@ public class JuegoController {
 				categoriasNew.add(cat);
 			}
 			j.setPertenece(categoriasNew);
-			
+
 			repoJuego.save(j);
 		} catch (Exception e) {
-			PRG.error("Error al actualizar " + nombre , "juego/c");
+			PRG.error("Error al actualizar " + nombre, "juego/c");
 		}
-		PRG.info("Juego " + nombre + " actualizado correctamente", "juego/r/"+s.getAttribute("pageid"));
+		PRG.info("Juego " + nombre + " actualizado correctamente", "juego/r/" + s.getAttribute("pageid"));
 
 	}
-	
+
 	@PostMapping("d")
-	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {		
+	public void dPost(@RequestParam("id") Long id, ModelMap m, HttpSession s) throws DangerException, InfoException {
 		try {
 			H.isRolOK("admin", s);
 			List<Foro> forosAsociados = repoForo.findAllByJuego_id(id);
@@ -241,13 +240,11 @@ public class JuegoController {
 			}
 			repoJuego.deleteById(id);
 		} catch (Exception e) {
-			PRG.error("Error al borrar el Juego"+e.getMessage(), "juego/r/1");
+			PRG.error("Error al borrar el Juego" + e.getMessage(), "juego/r/1");
 		}
 
-		PRG.info("Juego borrado correctamente", "juego/r/"+s.getAttribute("pageid"));
+		PRG.info("Juego borrado correctamente", "juego/r/" + s.getAttribute("pageid"));
 
 	}
-	
-	
 
 }
