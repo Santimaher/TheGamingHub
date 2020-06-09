@@ -157,12 +157,13 @@ public class UsuarioController {
 				H.isRolOK("auth", s);
 				s.invalidate();
 				usuarioRepo.delete(usu);
+				PRG.info("Usuario borrado con exito", "/");
 			}
 		} catch (Exception e) {
 			PRG.error("El borrado de usuario no tuvo exito", "/");
 		}
 
-		PRG.info("Usuario borrado con exito", "/");
+		
 	}
 
 	@PostMapping("cambiarRol")
