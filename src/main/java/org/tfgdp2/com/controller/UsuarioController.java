@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -134,6 +135,33 @@ public class UsuarioController {
 			PRG.error("Error al borrar " + u.getNombre(), "usuario/r");
 		}
 		PRG.info("Usuario borrado correctamente", "usuario/r");
+	}
+	@PostMapping("dUsu")
+	public String dUsu(@RequestParam("id") Long id, HttpSession s,ModelMap m) throws DangerException, InfoException {
+
+		try {
+			H.isRolOK("auth", s);
+		    m.put("view", "usuario/comproBorrado");
+		    m.put("usuario", usuarioRepo.getOne(id));
+		} catch (Exception e) {
+			PRG.error("Rol inadecuado");
+		}
+		return "_t/frame";
+	}
+	@PostMapping("dUsuPost")
+	public void dUsuPost(@RequestParam("password") String password,@RequestParam("id") Long id,
+			ModelMap m, HttpSession s) throws DangerException, InfoException {
+		try {
+			Usuario usu = usuarioRepo.getOne(id);
+			if (!(new BCryptPasswordEncoder()).matches(password, usu.getPassword())) {
+				H.isRolOK("auth", s);
+				usuarioRepo.delete(usu);
+			}
+		} catch (Exception e) {
+			PRG.error("El borrado de usuario no tuvo exito", "/");
+		}
+
+		PRG.info("Usuario borrado con exito", "/");
 	}
 
 	@PostMapping("cambiarRol")

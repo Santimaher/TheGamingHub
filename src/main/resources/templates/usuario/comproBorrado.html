@@ -1,0 +1,21 @@
+<div class="container">
+
+	<h1 class="center">Borrar Usuario</h1>
+	<form action ="https://thegaminghub.herokuapp.com/usuario/dUsuPost" class="form" method="post">
+
+	   <input type="hidden" name="id" th:value="${usuario.id}">
+		<div class="input-field col s12">
+			<label for="password" class="etiqueta">Contraseña</label> <input
+				type="password" name="password">
+		</div>
+		<div class="col m12">
+			<div class="center">
+				<button class="btn waves-effect waves-light purple" type="submit"
+					onsubmit="return comprobar()" name="action">
+					Borrar usuario <i class="material-icons left">chevron_right</i>
+				</button>
+			</div>
+		</div>
+		<br />
+	</form>
+</div>
