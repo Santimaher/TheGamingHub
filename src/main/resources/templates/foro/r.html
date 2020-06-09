@@ -1,37 +1,6 @@
 <div class="container content">
-
-<!-- 	<div class="row"> -->
-<!-- 	<h4 th:if="${juego.id} <= 180 " th:text="|Foros de juegos retro|" class="center"></h4> -->
-<!-- 	<h4 th:if="${juego.id} > 180 " th:text="|Foros del juego ${juego.nombre}|" class="center"></h4> -->
-<!-- 	</div> -->
-<!-- 	<div class="row"> -->
-	
-<!-- 	<div th:each="foro,stat:${foros}" class="col s3 m3 xl3 l3"> -->
-	
-<!-- 	  <div class="row"> -->
-<!--     <div class="col s12 m7"> -->
-<!--       <div class="card"> -->
-<!--         <div class="card-content white-text fondo-carta black"> -->
-<!--           <span class="card-title" th:text="${foro.tipo}"></span> -->
-<!--         </div> -->
-<!--         <div class="card-action white-text fondo-carta black"> -->
-<!--          <form action="https://thegaminghub.herokuapp.com/entradaForo/r"> -->
-<!-- 			<button onclick="submit()" class="waves-effect waves-light btn separacion purple large"> -->
-<!-- 			<i class="large material-icons">arrow_forward</i> -->
-<!-- 			</button> -->
-<!-- 		   <input  name="idForo" type="hidden" th:value="${foro.id}"> -->
-<!-- 		</form> -->
-<!--         </div> -->
-<!--       </div> -->
-<!--     </div> -->
-<!--   </div> -->
-<!-- 	</div> -->
-<!-- 	</div> -->
-	
-
-
- <div class="row">
-		 <div class="card">
+ <div class="row separacion" >
+		 <div class="card black">
     <div class="card-tabs">
       <ul class="tabs tabs-fixed-width">
         <li class="tab" th:each="foro,stat:${foros}">
@@ -45,7 +14,7 @@
       <div th:id="${foro.id}" th:each="foro,stat:${foros}">
     		 <form action="https://thegaminghub.herokuapp.com/entradaForo/r">
 			<button onclick="submit()" class="waves-effect waves-light btn separacion purple large">
-			<i class="large material-icons">arrow_forward</i>
+			Acceder al foro<i class="large material-icons">arrow_forward</i>
 			</button>
 		   <input  name="idForo" type="hidden" th:value="${foro.id}">
 		</form> 
