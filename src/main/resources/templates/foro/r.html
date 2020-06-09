@@ -2,7 +2,7 @@
  <div class="row separacion" >
 		 <div class="card black">
     <div class="card-tabs">
-      <ul class="tabs tabs-fixed-width">
+      <ul class="tabs tabs-fixed-width white-text black">
         <li class="tab" th:each="foro,stat:${foros}">
         <a th:href="|#${foro.id}|" th:text="${foro.tipo}"></a>
         </li>
@@ -10,7 +10,7 @@
       
       </ul>
     </div>
-    <div class="card-content grey lighten-4 center">
+    <div class="card-content black center">
       <div th:id="${foro.id}" th:each="foro,stat:${foros}">
     		 <form action="https://thegaminghub.herokuapp.com/entradaForo/r">
 			<button onclick="submit()" class="waves-effect waves-light btn separacion purple large">
