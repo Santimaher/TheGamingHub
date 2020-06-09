@@ -38,14 +38,14 @@
     <div class="card-tabs">
       <ul class="tabs tabs-fixed-width" th:each="foro,stat:${foros}">
         <li class="tab">
-        <a th:href="|#${foro.tipo}|" th:text="${foro.tipo}"></a>
+        <a th:href="|#${foro.id}|" th:text="${foro.tipo}"></a>
         </li>
        
       
       </ul>
     </div>
     <div class="card-content grey lighten-4 center">
-      <div th:id="${foro.tipo}" th:each="foro,stat:${foros}">
+      <div th:id="${foro.id}" th:each="foro,stat:${foros}">
     		 <form action="https://thegaminghub.herokuapp.com/entradaForo/r">
 			<button onclick="submit()" class="waves-effect waves-light btn separacion purple large">
 			<i class="large material-icons">arrow_forward</i>
