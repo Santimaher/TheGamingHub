@@ -153,8 +153,9 @@ public class UsuarioController {
 			ModelMap m, HttpSession s) throws DangerException, InfoException {
 		try {
 			Usuario usu = usuarioRepo.getOne(id);
-			if (!(new BCryptPasswordEncoder()).matches(password, usu.getPassword())) {
+			if ((new BCryptPasswordEncoder()).matches(password, usu.getPassword())) {
 				H.isRolOK("auth", s);
+				s.invalidate();
 				usuarioRepo.delete(usu);
 			}
 		} catch (Exception e) {
