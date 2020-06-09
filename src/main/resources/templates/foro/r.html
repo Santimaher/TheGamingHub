@@ -1,9 +1,9 @@
 <div class="container content">
- <div class="row separacion" >
-		 <div class="card black">
+ <div class="row separacion" style="margin-top:150px;" >
+		 <div class="card ">
     <div class="card-tabs">
-      <ul class="tabs tabs-fixed-width white-text black">
-        <li class="tab" th:each="foro,stat:${foros}">
+      <ul class="tabs tabs-fixed-width black ">
+        <li class="tab white-text" th:each="foro,stat:${foros}">
         <a th:href="|#${foro.id}|" th:text="${foro.tipo}"></a>
         </li>
        
@@ -14,7 +14,7 @@
       <div th:id="${foro.id}" th:each="foro,stat:${foros}">
     		 <form action="https://thegaminghub.herokuapp.com/entradaForo/r">
 			<button onclick="submit()" class="waves-effect waves-light btn separacion purple large">
-			Acceder al foro<i class="large material-icons">arrow_forward</i>
+			Acceder al foro
 			</button>
 		   <input  name="idForo" type="hidden" th:value="${foro.id}">
 		</form> 
