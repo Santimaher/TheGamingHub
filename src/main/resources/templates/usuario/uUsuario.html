@@ -42,7 +42,7 @@
 		<div class="center">
 			<a href="/cambioContrasenia"
 				class="hoverable btn waves-effect waves-light purple"> Cambiar
-				Contraseña <i class="material-icons left">chevron_right</i>
+				Contraseña 
 			</a>
 			
 		</div>
@@ -53,10 +53,10 @@
 		
 
 	</form>
-	<div class="center">
+	<div class="center separacion">
 	<form action="https://thegaminghub.herokuapp.com/usuario/dUsu" method="post">
 								<input type="hidden" name="id" th:value="${session.usuario.id}">
-								<button class="waves-effect waves-light btn hoverable red white-text" onclick="submit()">Borrar perfil</button>
+								<button class="waves-effect waves-light btn hoverable red white-text" onclick="submit()">Borrar perfil <i class="material-icons left">chevron_right</i></button>
 								
 		    </form>
 		     </div>
