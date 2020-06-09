@@ -1,6 +1,6 @@
 
 <div th:if="${fecha}<${fechaActual} or ${estado}==false"
-	class="container">
+	class="container content">
 	<p th:if="${session.usuario==null}">Para poder votar tienes que <a href="https://thegaminghub.herokuapp.com/login">iniciar sesion</a></p>
 	<h3>Ninguna gala activa</h3>
 	<form action="https://thegaminghub.herokuapp.com/gala/r2">
