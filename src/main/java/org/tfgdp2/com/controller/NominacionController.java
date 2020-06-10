@@ -60,6 +60,7 @@ public class NominacionController {
 		H.isRolOK("jurado", s);
 		m.put("participantes", repoParticipante.findAll());
 		m.put("premioP", repoPremioP.findByTiene_id(repoGala.findTopByOrderByIdDesc().getId()));
+		m.put("gala",repoGala.findTopByOrderByIdDesc());
 		m.put("view", "nominacion/nominarParticipante");
 		return "_t/frame";
 	}
@@ -102,6 +103,7 @@ public class NominacionController {
 		m.put("juegos", repoJuego.findByNombreStartsWithIgnoreCase(filtro));
 		m.put("premioJ", repoPremioJ.findByTiene_id(repoGala.findTopByOrderByIdDesc().getId()));
 		m.put("filtro", filtro);
+		m.put("gala",repoGala.findTopByOrderByIdDesc());
 		m.put("view", "nominacion/nominarJuego");
 		return ("_t/frame");
 	}
