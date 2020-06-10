@@ -15,7 +15,7 @@
 	<p th:if="${session.usuario==null}">Para poder votar tienes que <a href="https://thegaminghub.herokuapp.com/login">iniciar sesion</a></p>
 	<span style="display: none"
 		th:utext="${#temporals.format(fecha, 'dd-MM-yyyy')}" id="ff"></span>
-	<h3>Gala activa</h3>
+	<h3 class="center">Gala en curso. Las votaciones cerrarán en:</h3>
 	<h5 id="crono"></h5>
 	
 	<form action="https://thegaminghub.herokuapp.com/premio/r">
