@@ -218,10 +218,10 @@ public class PremioController {
 			nj.getVotacionesJ().add(u);
 			repoNJ.save(nj);
 		} catch (Exception e) {
-			PRG.info("Fallo al guardar su voto", "premio/r");
+			PRG.info("Fallo al guardar su voto", "gala/GA");
 		}
 
-		PRG.info("Su voto ha sido guardado", "premio/r");
+		PRG.info("Su voto ha sido guardado", "gala/GA");
 	}
 
 	@PostMapping("addVotoP")
@@ -234,10 +234,10 @@ public class PremioController {
 			np.getVotacionesP().add(u);
 			repoNP.save(np);
 		} catch (Exception e) {
-			PRG.info("Fallo al guardar su voto", "premio/r");
+			PRG.info("Fallo al guardar su voto", "gala/GA");
 		}
 
-		PRG.info("Su voto ha sido guardado", "premio/r");
+		PRG.info("Su voto ha sido guardado", "gala/GA");
 	}
 
 	public boolean haVotado(Long idUsu, Long idPremio, boolean isJuego) {
