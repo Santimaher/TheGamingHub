@@ -26,6 +26,11 @@ body {
 	display: inline;
 }
 
+.rellenar{
+	height: 100%;
+	width: 100%;
+}
+
 .botonesIzq{
 	float: left;
 }

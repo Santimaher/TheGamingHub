@@ -15,10 +15,10 @@
 						<form action="https://thegaminghub.herokuapp.com/entradaForo/r"
 							class="linea">
 							<button onclick="submit()"
-								class="waves-effect waves-light btn separacion purple"
+								class="waves-effect waves-light btn separacion purple rellenar"
 								th:if="${fanart.juego.id} <= 180 " th:text="Retro"></button>
 							<button onclick="submit()"
-								class="waves-effect waves-light btn separacion purple"
+								class="waves-effect waves-light btn separacion purple rellenar"
 								th:if="${fanart.juego.id} > 180 "
 								th:text="${fanart.juego.nombre}"></button>
 							<input name="idForo" type="hidden" th:value="${fanart.id}">
@@ -35,10 +35,10 @@
 						<form action="https://thegaminghub.herokuapp.com/entradaForo/r"
 							class="linea">
 							<button onclick="submit()"
-								class="waves-effect waves-light btn separacion purple"
+								class="waves-effect waves-light btn separacion purple rellenar"
 								th:if="${debug.juego.id} <= 180 " th:text="Retro"></button>
 							<button onclick="submit()"
-								class="waves-effect waves-light btn separacion purple"
+								class="waves-effect waves-light btn separacion purple rellenar"
 								th:if="${debug.juego.id} > 180 " th:text="${debug.juego.nombre}"></button>
 							<input name="idForo" type="hidden" th:value="${debug.id}">
 						</form>
@@ -55,10 +55,10 @@
 							class="linea">
 
 							<button onclick="submit()"
-								class="waves-effect waves-light btn separacion purple"
+								class="waves-effect waves-light btn separacion purple rellenar"
 								th:if="${meme.juego.id} <= 180 " th:text="Retro"></button>
 							<button onclick="submit()"
-								class="waves-effect waves-light btn separacion purple"
+								class="waves-effect waves-light btn separacion purple rellenar"
 								th:if="${meme.juego.id} > 180 " th:text="${meme.juego.nombre}"></button>
 							<input name="idForo" type="hidden" th:value="${meme.id}">
 						</form>
@@ -76,10 +76,10 @@
 							class="linea">
 
 							<button onclick="submit()"
-								class="waves-effect waves-light btn separacion purple"
+								class="waves-effect waves-light btn separacion purple rellenar"
 								th:if="${misc.juego.id} <= 180 " th:text="Retro"></button>
 							<button onclick="submit()"
-								class="waves-effect waves-light btn separacion purple"
+								class="waves-effect waves-light btn separacion purple rellenar"
 								th:if="${misc.juego.id} > 180 " th:text="${misc.juego.nombre}"></button>
 							<input name="idForo" type="hidden" th:value="${misc.id}">
 						</form>
