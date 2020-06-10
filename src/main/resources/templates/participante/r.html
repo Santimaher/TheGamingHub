@@ -9,6 +9,7 @@
 			<th>Biografía</th>
 			<th>Teaser</th>
 			<th>Imagen</th>
+			<th>Opciones</th>
 		</tr>
 
 		<tr th:each="p:${participantes}">
@@ -20,19 +21,25 @@
 			<td><img th:src="|data:image/png;base64,${p.img}|" height="40" width="40"/></td>
 			
 
-			<td class="row">
+			<td>
+			<div class="row">
+			<div class="col s6 m6 l6 xl6">
 				<form action="https://thegaminghub.herokuapp.com/participante/u" method="get">
 					<input type="hidden" name="id" th:value="${p.id}" />
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
 						<i class="material-icons left">edit</i>
 					</button>
 				</form>
+				</div>
+				<div class="col s6 m6 l6 xl6">
 				<form action="https://thegaminghub.herokuapp.com/participante/d" method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?');|">
 					<input type="hidden" name="id" th:value="${p.id}" />
-					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple" >
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light pink" >
 						<i class="material-icons left">delete</i>
 					</button>
 				</form>
+				</div>
+				</div>
 			</td>
 		</tr>
 
