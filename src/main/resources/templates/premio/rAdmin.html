@@ -1,15 +1,14 @@
 <div class="container content">
 			<div class="row">
-				<h1>Listado de premios</h1>
+				<h1 class="center">Listado de premios</h1>
 			</div>
 			
 			
-			
-	<table class="hightlight striped">
-	<tr>
-		<th>Premios para participantes</th>
+			<div class="row">
+				<h5 class="center">Premios para participantes</h5>
+			</div>
+	<table class="striped">
 
-	</tr>
 		<tr th:each="pParticipante:${pp}">
 		<td th:text="${pParticipante.nombrePremio}">
 		<div class="row">
@@ -24,9 +23,11 @@
 	</tr>
 
 	</table>
-	<table class="hightlight striped">
-		<th>Premios para juegos</th>
-
+	
+		<div class="row">
+				<h5 class="center">Premios para juegos</h5>
+			</div>
+	<table class="striped">
 		<tr th:each="pJuego:${pj}">
 		<td th:text="${pJuego.nombrePremio}">
 				<div class="row">
@@ -41,8 +42,8 @@
 	</tr>
 	</table>
 	
-	<div class="col m12">
-		<div class="center">
+	<div class="row separacion">
+		<div class="col center">
 			<a href="/premio/c" class="btn waves-effect waves-light purple">
 				Crear	
 			</a>
