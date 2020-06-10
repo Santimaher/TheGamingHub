@@ -93,13 +93,19 @@ public class PremioController {
 	}
 
 	@GetMapping("r")
-	public String r(ModelMap m) throws DangerException {
+	public String r(ModelMap m) throws DangerException, InfoException {
 		try {
-			Gala g = repoGala.getByActivoTrue();
-			m.put("gala", g);
-			m.put("view", "premio/r");
+			if (repoGala.getByActivoTrue() == null) {
+				PRG.info("Ahora mismo no hay galas activas, vuelva mas tarde", "/");
+			}
+			else {
+				Gala g = repoGala.getByActivoTrue();
+				m.put("gala", g);
+				m.put("view", "premio/r");
+			}
+			
 
-		} catch (Exception e) {
+		} catch (NullPointerException e) {
 			PRG.error("Inicie sesion para votar", "/login");
 		}
 		return "_t/frame";
