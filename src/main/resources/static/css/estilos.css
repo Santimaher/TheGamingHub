@@ -18,6 +18,9 @@ body {
 	flex-shrink:0;
 	margin-top:200px;
 }
+.bloque{
+	display: block;
+}
 
 .botonesIzq{
 	float: left;
