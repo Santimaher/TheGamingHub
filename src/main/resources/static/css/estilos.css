@@ -22,6 +22,10 @@ body {
 	display: block;
 }
 
+.linea{
+	display: inline;
+}
+
 .botonesIzq{
 	float: left;
 }

@@ -11,9 +11,9 @@
 				Art</div>
 			<div class="collapsible-body black">
 				<div class="row">
-					<div th:each="fanart:${fanarts}" class="s12 m4 l4">
+					<div th:each="fanart:${fanarts}" class="s12 m4 l4 linea">
 						<form action="https://thegaminghub.herokuapp.com/entradaForo/r"
-							style="display: inline;">
+							class="linea">
 							<button onclick="submit()"
 								class="waves-effect waves-light btn separacion purple"
 								th:if="${fanart.juego.id} <= 180 " th:text="Retro"></button>
@@ -31,9 +31,9 @@
 			<div class="collapsible-header black fondo-carta center bloque">Debug</div>
 			<div class="collapsible-body black">
 				<div class="row">
-					<div th:each="debug:${debugs}" class="s12 m4 l4">
+					<div th:each="debug:${debugs}" class="s12 m4 l4 linea">
 						<form action="https://thegaminghub.herokuapp.com/entradaForo/r"
-							style="display: inline;">
+							class="linea">
 							<button onclick="submit()"
 								class="waves-effect waves-light btn separacion purple"
 								th:if="${debug.juego.id} <= 180 " th:text="Retro"></button>
@@ -44,15 +44,15 @@
 						</form>
 					</div>
 				</div>
-			</div>	
+			</div>
 		</li>
 		<li>
 			<div class="collapsible-header black fondo-carta center bloque">Memes</div>
 			<div class="collapsible-body black">
 				<div class="row">
-					<div th:each="meme:${memes}" class="s12 m4 l4">
+					<div th:each="meme:${memes}" class="s12 m4 l4 linea">
 						<form action="https://thegaminghub.herokuapp.com/entradaForo/r"
-							style="display: inline;">
+							class="linea">
 
 							<button onclick="submit()"
 								class="waves-effect waves-light btn separacion purple"
@@ -64,16 +64,16 @@
 						</form>
 					</div>
 				</div>
-			</div>	
+			</div>
 		</li>
 		<li>
 			<div class="collapsible-header black fondo-carta center bloque">Miscelaneo</div>
 			<div class="collapsible-body black">
 				<div class="row">
-					<div th:each="misc:${miscs}" class="s12 m4 l4">
+					<div th:each="misc:${miscs}" class="s12 m4 l4 linea">
 
 						<form action="https://thegaminghub.herokuapp.com/entradaForo/r"
-							style="display: inline;">
+							class="linea">
 
 							<button onclick="submit()"
 								class="waves-effect waves-light btn separacion purple"
@@ -85,7 +85,7 @@
 						</form>
 					</div>
 				</div>
-			</div>	
+			</div>
 		</li>
 	</ul>
 
