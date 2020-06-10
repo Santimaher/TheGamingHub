@@ -26,8 +26,6 @@ public class Participante {
 
 	private String bio;
 
-	private String teaser;
-
 	@Lob
 	private Blob img;
 
@@ -45,12 +43,11 @@ public class Participante {
 		this.nominado = new ArrayList<>();
 	}
 
-	public Participante(String nombre, String apellido, String bio, String teaser) {
+	public Participante(String nombre, String apellido, String bio) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.bio = bio;
-		this.teaser = teaser;
 		this.estaNominado = false;
 
 		this.nominado = new ArrayList<>();
@@ -88,14 +85,6 @@ public class Participante {
 
 	public void setBio(String bio) {
 		this.bio = bio;
-	}
-
-	public String getTeaser() {
-		return teaser;
-	}
-
-	public void setTeaser(String teaser) {
-		this.teaser = teaser;
 	}
 
 	public String getImg() throws SQLException {

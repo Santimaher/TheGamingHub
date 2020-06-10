@@ -47,7 +47,7 @@ public class ParticipanteController {
 	@PostMapping("c")
 	public String crearPost(@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,
 			@RequestParam("img") MultipartFile imgFile, @RequestParam("bio") String bio,
-			@RequestParam("teaser") String teaser, @RequestParam(value = "idCat") Long idCat, HttpSession s)
+			 @RequestParam(value = "idCat") Long idCat, HttpSession s)
 			throws DangerException {
 
 		try {
@@ -55,7 +55,7 @@ public class ParticipanteController {
 
 			// =============================C
 
-			Participante participante = new Participante(nombre, apellido, bio, teaser);
+			Participante participante = new Participante(nombre, apellido, bio);
 
 			participante.setImg(H.blobCreator(imgFile));
 
@@ -120,7 +120,6 @@ public class ParticipanteController {
 			participante.setNombre(nombre);
 			participante.setApellido(apellido);
 			participante.setBio(bio);
-			participante.setTeaser(teaser);
 			participante.setImg(H.blobCreator(imgFile));
 
 			repoParticipante.save(participante);
