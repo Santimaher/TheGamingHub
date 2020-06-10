@@ -39,14 +39,14 @@
 			<div th:each="premio:${gala.premiosP}" class="linea col s12 m6 l4 xl4">
       		<form action="https://thegaminghub.herokuapp.com/premio/addVotoP" method="get" class="linea">
       		<input type="hidden" name="id" th:value="${premio.id}"/>
-      		<button class="btn-large waves-effect waves-light purple darken-4 separacion tooltipped" data-position="bottom" data-tooltip="Vota aqui!!" th:text="${premio.nombrePremio}" onclick="submit()"></button>
+      		<button class="btn-large waves-effect waves-light purple darken-4 separacion tooltipped" data-position="bottom" data-tooltip="Vota aqui !!" th:text="${premio.nombrePremio}" onclick="submit()"></button>
       		</form>
       		</div>
       		
       		<div th:each="premio:${gala.premiosJ}" class="linea col s12 m6 l4 xl4">
       		<form action="https://thegaminghub.herokuapp.com/premio/addVotoJ" method="get" class="linea">
       		<input type="hidden" name="id" th:value="${premio.id}"/>
-      		<button class="btn-large waves-effect waves-light purple separacion tooltipped" data-position="bottom" data-tooltip="Vota aqui!!" onclick="submit()" th:text="${premio.nombrePremio}"></button>
+      		<button class="btn-large waves-effect waves-light purple separacion tooltipped" data-position="bottom" data-tooltip="Vota aqui !!" onclick="submit()" th:text="${premio.nombrePremio}"></button>
       		</form>
       		</div>
 		</div>
