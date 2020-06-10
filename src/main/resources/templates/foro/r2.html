@@ -7,13 +7,13 @@
 	</div>
 	<ul class="collapsible">
 		<li>
-			<div class="collapsible-header black fondo-carta center">Fan
-				Art</div>
+			<div class="collapsible-header black fondo-carta "><span class="center">Fan
+				Art</span></div>
 			<div class="collapsible-body black">
 				<div th:each="fanart:${fanarts}">
 					<form action="https://thegaminghub.herokuapp.com/entradaForo/r">
 					<div class="row">
-							<div class="col s4 m4 l4 xl4">
+							<div class=" s4 m4 l4 xl4">
 						<button onclick="submit()"
 							class="waves-effect waves-light btn separacion purple"
 							th:if="${fanart.juego.id} <= 180 " th:text="Retro"></button>
@@ -29,12 +29,12 @@
 			</div>
 		</li>
 		<li>
-			<div class="collapsible-header black fondo-carta center">Debug</div>
+			<div class="collapsible-header black fondo-carta center"><span class="center">Debug</span></div>
 			<div class="collapsible-body black">
 				<div th:each="debug:${debugs}">
 					<form action="https://thegaminghub.herokuapp.com/entradaForo/r">
 					<div class="row">
-							<div class="col s4 m4 l4 xl4">
+							<div class=" s4 m4 l4 xl4">
 						<button onclick="submit()"
 							class="waves-effect waves-light btn separacion purple"
 							th:if="${debug.juego.id} <= 180 " th:text="Retro"></button>
@@ -49,12 +49,12 @@
 			</div>
 		</li>
 		<li>
-			<div class="collapsible-header black fondo-carta center">Memes</div>
+			<div class="collapsible-header black fondo-carta center"><span class="center">Memes</span></div>
 			<div class="collapsible-body black">
 				<div th:each="meme:${memes}">
 					<form action="https://thegaminghub.herokuapp.com/entradaForo/r">
 						<div class="row">
-							<div class="col s4 m4 l4 xl4">
+							<div class=" s4 m4 l4 xl4">
 							<button onclick="submit()"
 								class="waves-effect waves-light btn separacion purple"
 								th:if="${meme.juego.id} <= 180 " th:text="Retro"></button>
@@ -69,12 +69,12 @@
 			</div>
 		</li>
 		<li>
-			<div class="collapsible-header black fondo-carta center">Miscelaneo</div>
+			<div class="collapsible-header black fondo-carta center"><span class="center">Miscelaneo</span></div>
 			<div class="collapsible-body black">
 				<div th:each="misc:${miscs}">
 					<form action="https://thegaminghub.herokuapp.com/entradaForo/r">
 					<div class="row">
-							<div class="col s4 m4 l4 xl4">
+							<div class="s4 m4 l4 xl4">
 						<button onclick="submit()"
 							class="waves-effect waves-light btn separacion purple"
 							th:if="${misc.juego.id} <= 180 " th:text="Retro"></button>
