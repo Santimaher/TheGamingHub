@@ -25,13 +25,12 @@
 					<select name="premio">
 						<option th:each="premio:${premioJ}" th:value="${premio.id}" th:text="${premio.nombrePremio}"></option>
 					</select>
-					<br/>
 					<button onclick="submit()" class="btn btn-large waves-effect waves-light purple">
 						Nominar
 					</button>
 				</form>
 			</div>
-			<div col m6>
+			<div class="col m6">
 				<form action="/juego/d" method="post">
 					<input type="hidden" name="id" th:value="${j.id}" />
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?');|">
