@@ -68,7 +68,8 @@ public class EntradaForoController {
 	@GetMapping("r")
 	public String leer(HttpSession s, @RequestParam("idForo") Long id, ModelMap m,
 			@RequestParam(value = "filtro", required = false) String filtro,
-			@RequestParam(value = "tipo", required = false) String tipo) {
+			@RequestParam(value = "tipo", required = false) String tipo,
+			@RequestParam(value = "sort", required = false) String sort) {
 
 		filtro = (filtro == null) ? "" : filtro;
 		tipo = (tipo == null) ? "normal" : tipo;
