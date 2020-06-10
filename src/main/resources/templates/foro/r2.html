@@ -13,18 +13,16 @@
 			<div class="collapsible-body black">
 				<div th:each="fanart:${fanarts}">
 					<form action="https://thegaminghub.herokuapp.com/entradaForo/r">
-						<div class="row">
-
+					<input name="idForo" type="hidden" th:value="${fanart.id}">
+						
 							<button onclick="submit()"
-								class="waves-effect waves-light btn separacion purple  s4 m4 l4 xl4"
+								class="waves-effect waves-light btn separacion purple s4 m4 l4 xl4"
 								th:if="${fanart.juego.id} <= 180 " th:text="Retro"></button>
 							<button onclick="submit()"
-								class="waves-effect waves-light btn separacion purple  s4 m4 l4 xl4"
+								class="waves-effect waves-light btn separacion purple s4 m4 l4 xl4"
 								th:if="${fanart.juego.id} > 180 "
-								th:text="${fanart.juego.nombre}"></button>
-							<input name="idForo" type="hidden" th:value="${fanart.id}">
-
-						</div>
+								th:text="${fanart.juego.nombre}"></button>							
+						
 					</form>
 				</div>
 			</div>
