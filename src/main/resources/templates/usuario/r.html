@@ -11,6 +11,7 @@
 			<th>LoginName</th>
 			<th>Email</th>
 			<th>Rol</th>
+			<th>Opciones</th>
 		</tr>
 
 		<tr th:each="usuario:${usuarios}">
@@ -22,10 +23,11 @@
 			
 			
 
-			<td class="row">
-				<form action="https://thegaminghub.herokuapp.com/usuario/uAdmin" method="post">
-					<input type="hidden" name="id" th:value="${usuario.id}" />
-					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
+	<td>
+	<div class="row">
+		<form action="https://thegaminghub.herokuapp.com/usuario/uAdmin" method="post">
+			<input type="hidden" name="id" th:value="${usuario.id}" />
+				<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
 						<i class="material-icons left">edit</i>
 					</button>
 				</form>
@@ -35,14 +37,16 @@
 						<i class="material-icons left">delete</i>
 					</button>
 				</form>
-			</td>
-			<td class="row">
+			
+			
 				<form action="https://thegaminghub.herokuapp.com/usuario/cambiarRol" method="post">
 					<input type="hidden" name="id" th:value="${usuario.id}" />
 					<button class="btn waves-effect waves-light purple" onclick="submit()">
 						Cambiar Rol (Solo admin);
 					</button>
 				</form>
+		</div>
+				</td>	
 		</tr>
 
 	</table>
