@@ -15,7 +15,8 @@
 			<img th:if="${plataforma.id} <=26 "  th:src="|/img/${plataforma.imgPre}|" width="150px" height="150px">
 		 </td>
 		
-		<td class="row" th:if="${session.usuario?.rol=='admin'}">
+		<td th:if="${session.usuario?.rol=='admin'}">
+		<div class="row">
 		<div class="col m6">
 				<form action="https://thegaminghub.herokuapp.com/plataforma/u" method="get">
 					<input type="hidden" name="id"  th:value="${plataforma.id}" />
@@ -29,6 +30,7 @@
 						<i class="material-icons left">delete</i>
 					</button>
 				</form>
+		</div>
 		</div>
 		</td>
 	</tr>
