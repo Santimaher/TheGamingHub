@@ -210,6 +210,10 @@ public class GalaController {
 
 		List<Nominacion_Juego> ganadoresJ = new ArrayList<Nominacion_Juego>();
 		List<Nominacion_Participante> ganadoresP = new ArrayList<Nominacion_Participante>();
+		
+		Gala g = repoGala.getByActivoTrue();
+		m.put("gala", g);
+		
 
 		for (Premio_Participante premio_Participante : pps) {
 			ganadoresP.add(repoNParticipante.getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc(

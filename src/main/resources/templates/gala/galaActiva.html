@@ -21,13 +21,52 @@
 	<h3 class="center">Gala en curso. Las votaciones cerrarán en:</h3>
 	<h5 id="crono" class="center"></h5>
 	
-	<form action="https://thegaminghub.herokuapp.com/premio/r">
+	<form action="https://thegaminghub.herokuapp.com/premio/r" th:if="${session.usuario!=null}">
 		<button class="btn waves-effect waves-light purple separacion" onclick="submit()">Votar para los premios</button>
 	</form>
 	<form action="https://thegaminghub.herokuapp.com/gala/r2">
 		<button class="btn waves-effect waves-light purple" onclick="submit()">Ver
 			pasadas ediciones</button>
 	</form>
+	
+	<div>
+	
+	
+		<div class="row">
+			<h4 class="center" th:text="|Fase de votacion de la Gala ${gala.edicion}|"></h4>
+		</div>
+	<ul class="collapsible">
+    <li>
+      <div class="collapsible-header black fondo-carta"><i class="material-icons">people_outline</i>Participantes</div>
+      <div class="collapsible-body black">
+      	<ul> 
+      		<li th:each="premio:${gala.premiosP}">
+      		<form action="https://thegaminghub.herokuapp.com/premio/addVotoP" method="get">
+      		<input type="hidden" name="id" th:value="${premio.id}"/>
+      		<button class="btn-large waves-effect waves-light purple separacion" th:text="${premio.nombrePremio}" onclick="submit()"></button>
+      		</form>
+      		</li>
+      	</ul>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header fondo-carta black"><i class="material-icons">nature</i>Juegos</div>
+      <div class="collapsible-body black">
+      	<ul>
+      		<li th:each="premio:${gala.premiosJ}">
+      		<form action="https://thegaminghub.herokuapp.com/premio/addVotoJ" method="get">
+      		<input type="hidden" name="id" th:value="${premio.id}"/>
+      		<button class="btn-large waves-effect waves-light purple separacion" onclick="submit()" th:text="${premio.nombrePremio}"></button>
+      		</form>
+      		</li>
+      	</ul>
+      </div>
+    </li>
+    </ul>
+	
+	
+	</div>
+	
 </div>
 <script type="text/javascript" th:if="${fecha}>${fechaActual} and ${estado}==true">
 function restaFechas(f1,f2){
