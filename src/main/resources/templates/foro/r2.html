@@ -11,8 +11,7 @@
 				Art</div>
 			<div class="collapsible-body black">
 				<div class="row">
-					<div th:each="fanart:${fanarts}" class="linea">
-						<div class="col s12 m4 l4">
+					<div th:each="fanart:${fanarts}" class="linea col s12 m4 l4">
 							<form action="https://thegaminghub.herokuapp.com/entradaForo/r"
 								class="linea">
 								<button onclick="submit()"
@@ -27,14 +26,14 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			
 		</li>
 		<li>
 			<div class="collapsible-header black fondo-carta center bloque">Debug</div>
 			<div class="collapsible-body black">
 				<div class="row">
-					<div th:each="debug:${debugs}" class="s12 m4 l4 linea">
-						<div class=" col s12 m4 l4">
+					<div th:each="debug:${debugs}" class="col s12 m4 l4 linea">
+						
 							<form action="https://thegaminghub.herokuapp.com/entradaForo/r"
 								class="linea">
 								<button onclick="submit()"
@@ -49,14 +48,14 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			
 		</li>
 		<li>
 			<div class="collapsible-header black fondo-carta center bloque">Memes</div>
 			<div class="collapsible-body black">
 				<div class="row">
-					<div th:each="meme:${memes}" class="s12 m4 l4 linea">
-						<div class="col s12 m4 l4">
+					<div th:each="meme:${memes}" class="col s12 m4 l4 linea">
+						
 							<form action="https://thegaminghub.herokuapp.com/entradaForo/r"
 								class="linea">
 								<button onclick="submit()"
@@ -67,7 +66,7 @@
 									th:if="${meme.juego.id} > 180 " th:text="${meme.juego.nombre}"></button>
 								<input name="idForo" type="hidden" th:value="${meme.id}">
 							</form>
-						</div>
+					
 					</div>
 				</div>
 			</div>
@@ -76,8 +75,8 @@
 			<div class="collapsible-header black fondo-carta center bloque">Miscelaneo</div>
 			<div class="collapsible-body black">
 				<div class="row">
-					<div th:each="misc:${miscs}" class="s12 m4 l4 linea">
-						<div class="col s12 m4 l4">
+					<div th:each="misc:${miscs}" class="col s12 m4 l4 linea">
+						
 							<form action="https://thegaminghub.herokuapp.com/entradaForo/r"
 								class="linea">
 								<button onclick="submit()"
@@ -88,7 +87,7 @@
 									th:if="${misc.juego.id} > 180 " th:text="${misc.juego.nombre}"></button>
 								<input name="idForo" type="hidden" th:value="${misc.id}">
 							</form>
-						</div>
+					
 					</div>
 				</div>
 			</div>
