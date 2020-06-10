@@ -1,61 +1,93 @@
 <div class="container content">
-<div class="row">
-	<div class="col s12">
-	<h1 class="center">Foros disponibles</h1>
-	<p class="center"> Elija entre las distintas temáticas </p>
+	<div class="row">
+		<div class="col s12">
+			<h1 class="center">Foros disponibles</h1>
+			<p class="center">Elija entre las distintas temáticas</p>
+		</div>
 	</div>
-</div>
-<ul class="collapsible">
-    <li>
-      <div class="collapsible-header black fondo-carta">Fan Art</div>
-      <div class="collapsible-body black">
-      <div th:each="fanart:${fanarts}">
-      <form action="https://thegaminghub.herokuapp.com/entradaForo/r">
-	<button onclick="submit()" class="waves-effect waves-light btn separacion purple" th:if="${fanart.juego.id} <= 180 " th:text="Retro"></button>
-	<button onclick="submit()" class="waves-effect waves-light btn separacion purple" th:if="${fanart.juego.id} > 180 " th:text="${fanart.juego.nombre}"></button>
-	<input  name="idForo" type="hidden" th:value="${fanart.id}">
-	</form>
-	</div>
-	</div>
-    </li>
-    <li>
-      <div class="collapsible-header black fondo-carta">Debug</div>
-      <div class="collapsible-body black">
-      <div th:each="debug:${debugs}">
-      <form action="https://thegaminghub.herokuapp.com/entradaForo/r">
-	<button onclick="submit()" class="waves-effect waves-light btn separacion purple" th:if="${debug.juego.id} <= 180 " th:text="Retro"></button>
-	<button onclick="submit()" class="waves-effect waves-light btn separacion purple" th:if="${debug.juego.id} > 180 " th:text="${debug.juego.nombre}"></button>
-	<input  name="idForo" type="hidden" th:value="${debug.id}">
-	</form>
-	</div>
-	</div>
-    </li>
-    <li>
-      <div class="collapsible-header black fondo-carta">Memes</div>
-      <div class="collapsible-body black">
-      <div th:each="meme:${memes}">
-      <form action="https://thegaminghub.herokuapp.com/entradaForo/r">
+	<ul class="collapsible">
+		<li>
+			<div class="collapsible-header black fondo-carta center">Fan
+				Art</div>
+			<div class="collapsible-body black">
+				<div th:each="fanart:${fanarts}">
+					<form action="https://thegaminghub.herokuapp.com/entradaForo/r">
+					<div class="row">
+							<div class="col s4 m4 l4 xl4">
+						<button onclick="submit()"
+							class="waves-effect waves-light btn separacion purple"
+							th:if="${fanart.juego.id} <= 180 " th:text="Retro"></button>
+						<button onclick="submit()"
+							class="waves-effect waves-light btn separacion purple"
+							th:if="${fanart.juego.id} > 180 "
+							th:text="${fanart.juego.nombre}"></button>
+						<input name="idForo" type="hidden" th:value="${fanart.id}">
+						</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="collapsible-header black fondo-carta center">Debug</div>
+			<div class="collapsible-body black">
+				<div th:each="debug:${debugs}">
+					<form action="https://thegaminghub.herokuapp.com/entradaForo/r">
+					<div class="row">
+							<div class="col s4 m4 l4 xl4">
+						<button onclick="submit()"
+							class="waves-effect waves-light btn separacion purple"
+							th:if="${debug.juego.id} <= 180 " th:text="Retro"></button>
+						<button onclick="submit()"
+							class="waves-effect waves-light btn separacion purple"
+							th:if="${debug.juego.id} > 180 " th:text="${debug.juego.nombre}"></button>
+						<input name="idForo" type="hidden" th:value="${debug.id}">
+						</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="collapsible-header black fondo-carta center">Memes</div>
+			<div class="collapsible-body black">
+				<div th:each="meme:${memes}">
+					<form action="https://thegaminghub.herokuapp.com/entradaForo/r">
+						<div class="row">
+							<div class="col s4 m4 l4 xl4">
+							<button onclick="submit()"
+								class="waves-effect waves-light btn separacion purple"
+								th:if="${meme.juego.id} <= 180 " th:text="Retro"></button>
+							<button onclick="submit()"
+								class="waves-effect waves-light btn separacion purple"
+								th:if="${meme.juego.id} > 180 " th:text="${meme.juego.nombre}"></button>						
+						<input name="idForo" type="hidden" th:value="${meme.id}">
+						</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="collapsible-header black fondo-carta center">Miscelaneo</div>
+			<div class="collapsible-body black">
+				<div th:each="misc:${miscs}">
+					<form action="https://thegaminghub.herokuapp.com/entradaForo/r">
+					<div class="row">
+							<div class="col s4 m4 l4 xl4">
+						<button onclick="submit()"
+							class="waves-effect waves-light btn separacion purple"
+							th:if="${misc.juego.id} <= 180 " th:text="Retro"></button>
+						<button onclick="submit()"
+							class="waves-effect waves-light btn separacion purple"
+							th:if="${misc.juego.id} > 180 " th:text="${misc.juego.nombre}"></button>
+						<input name="idForo" type="hidden" th:value="${misc.id}">
+						</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</li>
+	</ul>
 
-		<button onclick="submit()" class="waves-effect waves-light btn separacion purple" th:if="${meme.juego.id} <= 180 " th:text="Retro"></button>
-	<button onclick="submit()" class="waves-effect waves-light btn separacion purple" th:if="${meme.juego.id} > 180 " th:text="${meme.juego.nombre}"></button>
-	<input  name="idForo" type="hidden" th:value="${meme.id}">
-	</form>
-	</div>
-	</div>
-    </li>
-    <li>
-      <div class="collapsible-header black fondo-carta">Miscelaneo</div>
-      <div class="collapsible-body black">
-      <div th:each="misc:${miscs}">
-      <form action="https://thegaminghub.herokuapp.com/entradaForo/r">
-
-		<button onclick="submit()" class="waves-effect waves-light btn separacion purple" th:if="${misc.juego.id} <= 180 " th:text="Retro"></button>
-	<button onclick="submit()" class="waves-effect waves-light btn separacion purple" th:if="${misc.juego.id} > 180 " th:text="${misc.juego.nombre}"></button>
-	<input  name="idForo" type="hidden" th:value="${misc.id}">
-	</form>
-	</div>
-	</div>
-    </li>
-  </ul>
-	
 </div>
