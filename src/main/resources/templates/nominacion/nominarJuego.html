@@ -25,7 +25,7 @@
 					<select name="premio">
 						<option th:each="premio:${premioJ}" th:value="${premio.id}" th:text="${premio.nombrePremio}"></option>
 					</select>
-					
+					<br/>
 					<button onclick="submit()" class="btn btn-large waves-effect waves-light purple">
 						Nominar
 					</button>
