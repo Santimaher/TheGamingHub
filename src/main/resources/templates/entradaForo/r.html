@@ -89,8 +89,8 @@
 				
 				
 				
-				
-<div th:each="entrada:${entradas}" class="center">	
+<div class="center">			
+<div th:each="entrada:${entradas}" >	
   <div class="row">
     <div class="col s12 m6">
       <div class=" fondo-carta card black darken-1 z-depth-3">
@@ -163,6 +163,7 @@
   </div>
   </div>
 </div>
+</div>	
 <script>
 function reloj(){
 	for(x of document.getElementsByClassName("like")){
