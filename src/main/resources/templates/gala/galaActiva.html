@@ -3,10 +3,13 @@
 	class="container content">
 	<p th:if="${session.usuario==null}">Para poder votar tienes que <a href="https://thegaminghub.herokuapp.com/login">iniciar sesion</a></p>
 	<h3 class="center">Actualmente no hay ninguna gala en curso</h3>
-	<form action="https://thegaminghub.herokuapp.com/gala/r2">
+	<div class="divider"></div>
+	<div class="center">
+		<form action="https://thegaminghub.herokuapp.com/gala/r2">
 		<button class="btn waves-effect waves-light purple" onclick="submit()">Ver
 			pasadas ediciones</button>
 	</form>
+	</div>
 </div>
 
 
