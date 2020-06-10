@@ -1,7 +1,8 @@
 <div class="container content">
 <div class="row">
 		<div class="col s12">
-			<h1 class="center" th:text="|Foros disponibles del juego: ${juego.nombre}|"></h1>
+			<h1 class="center" th:if="${juego.id} <= 180 " th:text="|Foros disponibles de los juego Retro|"></h1>
+			<h1 class="center" th:if="${juego.id} > 180 " th:text="|Foros disponibles del juego: ${juego.nombre}|"></h1>
 		</div>
 	</div>
  <div class="row separacion" style="margin-top:150px;" >
