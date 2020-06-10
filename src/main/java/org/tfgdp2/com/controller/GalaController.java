@@ -149,6 +149,7 @@ public class GalaController {
 				g.setActivo(true);
 
 			}
+			g.setFin(g.getFin().plusDays(1));
 			repoGala.save(g);
 
 		} catch (Exception e) {
