@@ -24,27 +24,31 @@
 			
 
 	<td>
-	<div class="col">
+	<div class="row">
+	<div class="col m4">
 		<form action="https://thegaminghub.herokuapp.com/usuario/uAdmin" method="post">
 			<input type="hidden" name="id" th:value="${usuario.id}" />
 				<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
 						<i class="material-icons left">edit</i>
 					</button>
 				</form>
+				</div>
+				<div class="col m4">
 				<form action="https://thegaminghub.herokuapp.com/usuario/d" method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ? ');|">
 					<input type="hidden" name="id" th:value="${usuario.id}" />
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light pink">
 						<i class="material-icons left">delete</i>
 					</button>
 				</form>
-			
-			
+			</div>
+			<div class="col m4">
 				<form action="https://thegaminghub.herokuapp.com/usuario/cambiarRol" method="post">
 					<input type="hidden" name="id" th:value="${usuario.id}" />
 					<button class="btn waves-effect waves-light purple" onclick="submit()">
 						Cambiar Rol (Solo admin);
 					</button>
 				</form>
+				</div>
 		</div>
 				</td>	
 		</tr>
