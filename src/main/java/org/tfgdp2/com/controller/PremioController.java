@@ -99,7 +99,7 @@ public class PremioController {
 			m.put("gala", g);
 			m.put("view", "premio/r");
 
-		} catch (NullPointerException e) {
+		} catch (Exception e) {
 			PRG.error("Inicie sesion para votar", "/login");
 		}
 		return "_t/frame";
