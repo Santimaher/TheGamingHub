@@ -18,7 +18,7 @@
 		<tr th:each="j:${juegos}">
 		<td th:text="${j.nombre}" ></td>
 			<td class="row">
-			<div class="col m6">
+			<div class="col m6 push-m2">
 				<form action="/nominacion/nominarJuego" method="POST">
 					<input type="hidden" name="id" th:value="${j.id}" />
 					
@@ -30,7 +30,7 @@
 					</button>
 				</form>
 			</div>
-			<div class="col m6">
+			<div class="col m6 pull-m2">
 				<form action="/juego/d" method="post">
 					<input type="hidden" name="id" th:value="${j.id}" />
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?');|">
