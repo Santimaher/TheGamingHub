@@ -85,7 +85,7 @@ public class JuegoController {
 				dosDespues.add(aguja + i);
 			}
 			for (int i = 3; i > 1; i--) {
-				dosAntes.add(aguja - i);
+				dosAntes.add(aguja - (i-1));
 			}
 		}
 
