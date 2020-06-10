@@ -16,7 +16,7 @@
 				</form>
 				<form action="https://thegaminghub.herokuapp.com/categoria/d" method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento:?');|">
 					<input type="hidden" name="id" th:value="${categoria.id}" />
-					<button onclick="submit()"  class="btn-floating btn-large waves-effect waves-light purple">
+					<button onclick="submit()"  class="btn-floating btn-large waves-effect waves-light pink">
 						<i class="material-icons left">delete</i>
 					</button>
 				</form>
