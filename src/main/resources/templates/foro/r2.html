@@ -10,16 +10,16 @@
 			<div class="collapsible-header black fondo-carta s12 m12 l12 xl12">
 				<span class="center">Fan Art</span>
 			</div>
-			<div class="collapsible-body black">
+			<div class="collapsible-body black s4 m4 l4 xl4">
 				<div th:each="fanart:${fanarts}">
 					<form action="https://thegaminghub.herokuapp.com/entradaForo/r">
 					<input name="idForo" type="hidden" th:value="${fanart.id}">
 						
 							<button onclick="submit()"
-								class="waves-effect waves-light btn separacion purple s4 m4 l4 xl4"
+								class="waves-effect waves-light btn separacion purple botonesIzq"
 								th:if="${fanart.juego.id} <= 180 " th:text="Retro"></button>
 							<button onclick="submit()"
-								class="waves-effect waves-light btn separacion purple s4 m4 l4 xl4"
+								class="waves-effect waves-light btn separacion purple botonesIzq "
 								th:if="${fanart.juego.id} > 180 "
 								th:text="${fanart.juego.nombre}"></button>							
 						
@@ -36,10 +36,10 @@
 					<form action="https://thegaminghub.herokuapp.com/entradaForo/r">
 						<div class="row">
 							<button onclick="submit()"
-								class="waves-effect waves-light btn separacion purple  s4 m4 l4 xl4"
+								class="waves-effect waves-light btn separacion purple  s4 m4 l4 xl4 botonesIzq"
 								th:if="${debug.juego.id} <= 180 " th:text="Retro"></button>
 							<button onclick="submit()"
-								class="waves-effect waves-light btn separacion purple  s4 m4 l4 xl4"
+								class="waves-effect waves-light btn separacion purple  s4 m4 l4 xl4 botonesIzq"
 								th:if="${debug.juego.id} > 180 " th:text="${debug.juego.nombre}"></button>
 							<input name="idForo" type="hidden" th:value="${debug.id}">
 						</div>

@@ -19,6 +19,9 @@ body {
 	margin-top:200px;
 }
 
+.botonesIzq{
+	float: left;
+}
 .animation-wrapper {
   width: 50%;
   padding-bottom: 50%;
