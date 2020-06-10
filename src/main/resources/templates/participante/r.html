@@ -7,7 +7,6 @@
 			<th>Nombre</th>
 			<th>Apellido</th>
 			<th>Biografía</th>
-			<th>Teaser</th>
 			<th>Imagen</th>
 			<th>Opciones</th>
 		</tr>
@@ -16,7 +15,6 @@
 
 			<td th:text="${p.nombre}"></td>
 			<td th:text="${p.apellido}"></td>
-			<td th:text="${p.bio}"></td>
 			<td th:text="${p.teaser}"></td>
 			<td><img th:src="|data:image/png;base64,${p.img}|" height="40" width="40"/></td>
 			
