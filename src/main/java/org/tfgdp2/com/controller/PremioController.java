@@ -96,7 +96,7 @@ public class PremioController {
 	public String r(ModelMap m) throws DangerException, InfoException {
 		try {
 			if (repoGala.getByActivoTrue() == null) {
-				PRG.info("Ahora mismo no hay galas activas, vuelva mas tarde", "/");
+				PRG.info("Ahora mismo no hay galas en curso, vuelva mas tarde", "/");
 			}
 			else {
 				Gala g = repoGala.getByActivoTrue();
