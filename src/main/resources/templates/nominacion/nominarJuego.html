@@ -18,24 +18,27 @@
 		<tr th:each="j:${juegos}">
 		<td th:text="${j.nombre}" ></td>
 			<td class="row">
-			
-				<form action="/nominacion/nominarJuego" method="POST">
+			<div class="col m6">
+				<form action="/nominacion/nominarJuego" method="POST" class="linea">
 					<input type="hidden" name="id" th:value="${j.id}" />
 					
 					<select name="premio">
 						<option th:each="premio:${premioJ}" th:value="${premio.id}" th:text="${premio.nombrePremio}"></option>
 					</select>
 					
-					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
+					<button onclick="submit()" class="btn btn-large waves-effect waves-light purple">
 						Nominar
 					</button>
 				</form>
+				</div>
+			<div class="col m6">
 				<form action="/juego/d" method="post">
 					<input type="hidden" name="id" th:value="${j.id}" />
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?');|">
 						<i class="material-icons left">delete</i>
 					</button>
 				</form>
+				</div>
 			</td>
 		</tr>
 
