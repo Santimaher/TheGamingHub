@@ -157,6 +157,7 @@ public class UsuarioController {
 				H.isRolOK("auth", s);
 				s.invalidate();
 				usu.getEntradas().clear();
+				usuarioRepo.save(usu);
 				usuarioRepo.delete(usu);
 				
 			}
