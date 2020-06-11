@@ -41,11 +41,11 @@
 							<div class="col s12 center">
 								<form
 									action="https://thegaminghub.herokuapp.com/premio/addVotoJ"
-									method="post">
+									method="post" onsubmit="return confirm('Los cambios no se pueden revertir. Quiere continuar?')">
 									<input type="hidden" name="id" th:value="${n.id}" /> <input
 										type="hidden" name="idPremio" th:value="${premio.id}">
 									<button onclick="submit()"
-										class="btn-floating btn-large waves-effect waves-light purple">
+										class="btn-floating btn-large waves-effect waves-light purple tooltipped" data-tooltip="Guardar su voto" data-position="bottom">
 										<i class="material-icons left">add</i>
 									</button>
 								</form>
