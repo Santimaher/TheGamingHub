@@ -10,7 +10,9 @@
 		</tr>
 
 		<tr th:each="p:${participantes}">
-		<td th:text="${p.nombre}" class="center"></td>
+		<td  class="center">
+			<h4 th:text="${p.nombre}"></h4>
+		</td>
 			<td class="row">
 			<div class="col m9">
 				<form action="/nominacion/nominarParticipante" method="post" class="linea">

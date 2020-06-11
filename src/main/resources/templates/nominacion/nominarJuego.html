@@ -16,7 +16,9 @@
 		</tr>
 
 		<tr th:each="j:${juegos}" >
-		<td th:text="${j.nombre}" class="center"></td>
+		<td  class="center"> 
+			<h4 th:text="${j.nombre}"></h4>
+		</td>
 			<td class="row">
 			<div class="col m9">
 				<form action="/nominacion/nominarJuego" method="POST" class="linea">
