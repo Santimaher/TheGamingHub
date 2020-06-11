@@ -23,15 +23,12 @@
 			pasadas ediciones</button>
 	</form>
 	</div>
+	<div>
 	<span style="display: none"
 		th:utext="${#temporals.format(fecha, 'dd-MM-yyyy')}" id="ff"></span>
 	<h3 class="center">Gala en curso. Las votaciones cerrarán en:</h3>
 	<h5 id="crono" class="center"></h5>
-	
-<!-- 	<form action="https://thegaminghub.herokuapp.com/premio/r" th:if="${session.usuario!=null}"> -->
-<!-- 		<button class="btn waves-effect waves-light purple separacion" onclick="submit()">Votar para los premios</button> -->
-<!-- 	</form> -->
-	
+	</div>
 	
 	<div th:if="${session.usuario!=null}">
 	
