@@ -5,12 +5,12 @@
 	
 	<table class="striped">
 		<tr>
-			<th>Nombre</th>
+			<th class="center">Nombre</th>
 			<th></th>
 		</tr>
 
 		<tr th:each="p:${participantes}">
-		<td th:text="${p.nombre}"></td>
+		<td th:text="${p.nombre}" class="center"></td>
 			<td class="row">
 			<div class="col m9">
 				<form action="/nominacion/nominarParticipante" method="post" class="linea">
