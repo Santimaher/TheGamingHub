@@ -10,7 +10,8 @@
 	<table >
 
 		<tr th:each="pParticipante:${pp}">
-		<td th:text="${pParticipante.nombrePremio}">
+		<td class="center">
+		<h5 th:text="${pParticipante.nombrePremio}"></h5>
 		<div class="row">
 				<form action="/premio/dP" method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?');|">
 					<input type="hidden" name="id" th:value="${pParticipante.id}" />
@@ -27,9 +28,9 @@
 		<div class="row">
 				<h5 class="center">Premios para juegos</h5>
 			</div>
-	<table class="striped">
+	<table>
 		<tr th:each="pJuego:${pj}">
-		<td >
+		<td>
 		<h5 th:text="${pJuego.nombrePremio}" class="center"></h5>
 				<div class="row">
 				<form action="/premio/dJ" method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?');|">
