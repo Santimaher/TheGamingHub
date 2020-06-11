@@ -3,7 +3,7 @@
 			<h4 class="center" th:text="|Nominar Participantes para Gala ${gala.edicion}|"></h4>
 		</div>
 	
-	<table class="striped">
+	<table>
 		<tr>
 			<th class="center">Nombre</th>
 			<th></th>
@@ -11,7 +11,7 @@
 
 		<tr th:each="p:${participantes}">
 		<td  class="center">
-			<h4 th:text="${p.nombre}"></h4>
+			<h5 th:text="${p.nombre}"></h5>
 		</td>
 			<td class="row">
 			<div class="col m9">
