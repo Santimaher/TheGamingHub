@@ -4,18 +4,22 @@
 		</div>
 	<table class="highlight">
 		<tr>
-			<th>Nombre</th>
-			<th>Apellido</th>
-			<th>Biografía</th>
-			<th>Imagen</th>
-			<th>Opciones</th>
+			<th class= "center">Nombre</th>
+			<th class= "center">Apellido</th>
+			<th class= "center">Biografía</th>
+			<th class= "center">Imagen</th>
+			<th class= "center">Opciones</th>
 		</tr>
 
 		<tr th:each="p:${participantes}">
 
-			<td th:text="${p.nombre}"></td>
-			<td th:text="${p.apellido}"></td>
-			<td th:text="${p.bio}"></td>
+			<td class="center">
+				<h5 th:text="${p.nombre}"></h5>
+			</td>
+			<td >
+				<h5 th:text="${p.apellido}"></h5>
+			</td>
+			<td th:text="${p.bio}" class="center"></td>
 			<td><img th:src="|data:image/png;base64,${p.img}|" height="40" width="40"/></td>
 			
 

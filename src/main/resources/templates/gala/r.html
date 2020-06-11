@@ -4,22 +4,24 @@
 		</div>
 	<table class="highlight striped">
 		<tr>
-			<th>Edicion</th>
-			<th>Fecha de Inicio</th>
-			<th>Fecha Fin</th>			
-			<th>Observacion</th>
-			<th>Gala activa?</th>
-			<th>Opciones</th>
+			<th class= "center">Edicion</th>
+			<th class= "center">Fecha de Inicio</th>
+			<th class= "center">Fecha Fin</th>			
+			<th class= "center">Observacion</th>
+			<th class= "center">Gala activa?</th>
+			<th class= "center">Opciones</th>
 		<tr>
 		<tr th:each="gala:${galas}">
-			<td th:text="${gala.edicion}"></td>
-			<td th:text="${gala.inicio}"></td>
-			<td th:text="${gala.fin}"></td>
-			<td th:text="${gala.observaciones}"></td>
-			<td th:text="${gala.activo} ? 'Activada':'Desactivada'"></td>
+			<td >
+				<h5 th:text="|Edicion ${gala.edicion}|"></h5>
+			</td>
+			<td th:text="${gala.inicio}" class= "center"></td>
+			<td th:text="${gala.fin}" class= "center"></td>
+			<td th:text="${gala.observaciones}" class= "center"></td>
+			<td th:text="${gala.activo} ? 'Activada':'Desactivada'" class= "center"></td>
 			<td>
 			<div class="row">
-				<div class="col m3">
+				<div class="col s12 m3 center">
 				<form action="https://thegaminghub.herokuapp.com/gala/observacion" method="get">
 					<input type="hidden" name="id" th:value="${gala.id}" />
 					<button onclick="submit()" class="btn waves-effect waves-light purple">
@@ -27,7 +29,7 @@
 					</button>
 				</form>
 				</div>
-				<div class="col m3">
+				<div class="col s12 m3 center">
 				<form action="https://thegaminghub.herokuapp.com/gala/activar" method="post">
 					<input type="hidden" name="id" th:value="${gala.id}" />
 					<button onclick="submit()" class="btn waves-effect waves-light purple">
@@ -35,7 +37,7 @@
 					</button>
 				</form>
 				</div>
-				<div class="col m3">
+				<div class="col s12 m3 center">
 				<form action="https://thegaminghub.herokuapp.com/gala/u" method="get">
 					<input type="hidden" name="id" th:value="${gala.id}" />
 					<button onclick="submit()" class="btn waves-effect waves-light purple">
@@ -43,7 +45,7 @@
 					</button>
 				</form>
 				</div>
-				<div class="col m3">
+				<div class="col s12 m3 center">
 				<form action="https://thegaminghub.herokuapp.com/gala/d" method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ? ');|">
 					<input type="hidden" name="id" th:value="${gala.id}" />
 					<button onclick="submit()" class="btn waves-effect waves-light pink">

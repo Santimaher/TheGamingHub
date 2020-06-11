@@ -5,21 +5,21 @@
 		</div>
 </div>
 	
-	<table class="striped">
+	<table>
 		<tr>
-			<th>Nombre</th>
-			<th>LoginName</th>
-			<th>Email</th>
-			<th>Rol</th>
-			<th>Opciones</th>
+			<th class= "center">Nombre</th>
+			<th class= "center">LoginName</th>
+			<th class= "center">Email</th>
+			<th class= "center">Rol</th>
+			<th class= "center">Opciones</th>
 		</tr>
 
 		<tr th:each="usuario:${usuarios}">
 			
-			<td th:text="${usuario.nombre}"></td>
-			<td th:text="${usuario.loginname}"></td>
-			<td th:text="${usuario.email}"></td>
-			<td th:text="${usuario.rol}"></td>
+			<td th:text="${usuario.nombre}" class="center"></td>
+			<td th:text="${usuario.loginname}" class="center"></td>
+			<td th:text="${usuario.email}" class="center"></td>
+			<td th:text="${usuario.rol}" class="center"></td>
 			
 			
 
