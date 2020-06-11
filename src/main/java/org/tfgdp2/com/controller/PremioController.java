@@ -148,9 +148,9 @@ public class PremioController {
 			repoPremioJuego.delete(njuego);
 
 		} catch (Exception e) {
-			PRG.error("Error al eliminar el premio", "premio/r");
+			PRG.error("Error al eliminar el premio", "premio/rAdmin");
 		}
-		PRG.info("Premio borrado correctamente", "premio/r");
+		PRG.info("Premio borrado correctamente", "premio/rAdmin");
 	}
 
 	@GetMapping("addVotoP")
@@ -160,11 +160,11 @@ public class PremioController {
 		try {
 			Usuario usu = (Usuario) s.getAttribute("usuario");
 			if (haVotado(usu.getId(), id, false)) {
-				PRG.error("Ya ha votado en este premio", "/premio/r");
+				PRG.error("Ya ha votado en este premio", "gala/GA");
 				if (g.getActivo() == true) {
-					PRG.error("La gala no esta activa", "premio/r");
+					PRG.error("La gala no esta activa", "gala/GA");
 					if (g.getFin().isAfter(LocalDate.now())) {
-						PRG.error("El tiempo de votacion ha excedido", "premio/r");
+						PRG.error("El tiempo de votacion ha excedido", "gala/GA");
 					}
 				}
 			} else {
@@ -188,11 +188,11 @@ public class PremioController {
 		try {
 			Usuario usu = (Usuario) s.getAttribute("usuario");
 			if (haVotado(usu.getId(), id, true)) {
-				PRG.error("Ya ha votado en este premio", "premio/r");
+				PRG.error("Ya ha votado en este premio", "gala/GA");
 				if (g.getActivo() == true) {
-					PRG.error("La gala no esta activa", "premio/r");
+					PRG.error("La gala no esta activa", "gala/GA");
 					if (g.getFin().isAfter(LocalDate.now())) {
-						PRG.error("El tiempo de votacion ha excedido", "premio/r");
+						PRG.error("El tiempo de votacion ha excedido", "gala/GA");
 					}
 				}
 
