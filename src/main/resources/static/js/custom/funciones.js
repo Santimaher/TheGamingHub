@@ -22,7 +22,14 @@ function clear(){
 	document.getElementById('exp').innerHTML = "";
 }		
 	
-
+function confirmar(){
+	if(confirm('¿Estas seguro de que desea borrar este elemento:?')){
+		return true;
+	}
+	else{
+		return false
+	}
+}
 
 
 function getJSON() {
