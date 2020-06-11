@@ -16,7 +16,7 @@
 		<h5 th:text="${pParticipante.nombrePremio}"></h5>
 		</div>
 		<div class="col s6 m6 l6 xl6 center">
-				<form action="/premio/dP" method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?');|">
+				<form action="/premio/dP" method="post" >
 					<input type="hidden" name="id" th:value="${pParticipante.id}" />
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light pink">
 						<i class="material-icons left">delete</i>

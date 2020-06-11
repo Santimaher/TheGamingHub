@@ -79,7 +79,7 @@
 				</form>
 				</div>
 				<div class="col s12 m6 l5 xl5">
-				<form action="https://thegaminghub.herokuapp.com/entradaForo/d" method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ? ');|">
+				<form action="https://thegaminghub.herokuapp.com/entradaForo/d" method="post">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
 						<i class="material-icons left">delete</i>

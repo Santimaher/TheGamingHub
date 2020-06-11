@@ -29,7 +29,7 @@
 			<div class="col m3" style="margin-top: 50px;">	
 				<form action="/participante/d" method="post">
 					<input type="hidden" name="id" th:value="${p.id}" />
-					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?');|">
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple" >
 						<i class="material-icons left">delete</i>
 					</button>
 				</form>

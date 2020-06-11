@@ -68,7 +68,7 @@
 						</div>
 						<div class="col s4" th:if="${session.usuario?.rol=='admin'}">
 							<form action="https://thegaminghub.herokuapp.com/juego/d"
-								method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?');|">
+								method="post">
 								<input type="hidden" name="id" th:value="${juego.id}" />
 								<button onclick="submit()"
 									class=" btn-floating waves-effect waves-light btn pink btn-large">
