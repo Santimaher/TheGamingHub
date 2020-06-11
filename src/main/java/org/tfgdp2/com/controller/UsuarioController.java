@@ -156,6 +156,7 @@ public class UsuarioController {
 			if ((new BCryptPasswordEncoder()).matches(password, usu.getPassword())) {
 				H.isRolOK("auth", s);
 				s.invalidate();
+				usu.getEntradas().clear();
 				usuarioRepo.delete(usu);
 				
 			}
