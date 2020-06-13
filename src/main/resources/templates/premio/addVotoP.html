@@ -5,17 +5,6 @@
 	</div>
 	<div th:each="n:${nominados}">
 	<div class="col s12 m6 l4 xl4">
-	<div th:id="|modal${n.id}|" class="modal s12 m12 l12 xl12 fondo-carta black modales">
-		<div style="height:94%" class="modal-content ">
-		<div class="modal-footer fondo-carta black">
-		<h4 th:text="|Trailer del juego:${n.nombre}|" class="purple-text left"></h4>
-		<a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons right">close</i></a>
-			</div>
-				<div style="height:100% ; width:80%">
-				<iframe width="95%" height="90%" th:src="${n.participantes[0].teaser}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				</div>
-			</div>
-	</div>	
 		<div class="card grey darken-3 white-text">
 			<div class="card-image waves-effect waves-block waves-light">
 				<img class="activator" th:src="|data:image/png;base64,${n.participantes[0].img}|" width="150px" height="500px">
@@ -27,7 +16,7 @@
 				</span>
 				<div class="row">
 					<div class="col s12 center">
-						<form action="https://thegaminghub.herokuapp.com/premio/addVotoP" method="post" onsubmit="return confirm('Los cambios no se pueden revertir. Quiere continuar?')">
+						<form action="https://thegaminghub.herokuapp.com/premio/addVotoP" method="post">
 							<input type="hidden" name="id" th:value="${n.id}" />
 							<input type="hidden" name="idPremio" th:value="${premio.id}">
 							<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple tooltipped" data-tooltip="Guardar su voto" data-position="bottom">
@@ -41,9 +30,8 @@
 				<span class="card-title white-text flow-text "th:text="|${n.participantes[0].nombre} ${n.participantes[0].apellido}|">
 					<i class="material-icons right">close</i>
 				</span>
-				<p th:text="|Desarrolladora: ${n.participantes[0].bio}|">
-				</p>				
-				<button th:data-target="|modal${n.id}|" class="btn modal-trigger purple">Trailer</button>
+				<p th:text="|Biografia: ${n.participantes[0].bio}|">
+				</p>
 			</div>
 		</div>
 		
