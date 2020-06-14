@@ -48,6 +48,7 @@ public class EntradaForo {
 	public EntradaForo() {
 		this.ranking = 0;
 		this.fechaPublicacion = new Date();
+		
 	}
 
 	public Collection<Votacion_Foro> getVotos() {
