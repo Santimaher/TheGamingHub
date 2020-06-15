@@ -7,8 +7,8 @@
           <li th:each="premioJ:${gala.premiosJ}" class="active">
             <div class="collapsible-header black fondo-carta"  th:text="${premioJ.nombrePremio}"></div>
             <div class="collapsible-body black">
-            <div th:each="premiadoJ: ${premioJ.premiados}">
-            <span  th:text="|${premiadoJ.nombre} con ${premiadoJ.cantidadVotos} votos|"></span>
+            <div th:each="nominadoJ:${nominadosJ}">
+            <span  th:if="${nominadoJ.premio.id}==premioJ.id" th:text="|${nominadoJ.nombre} con ${nominadoJ.cantidadVotos} votos|"></span>
             </div>            
             </div>
           </li>
@@ -17,9 +17,9 @@
           <li th:each="premioP:${gala.premiosP}" class="active">
             <div class="collapsible-header black fondo-carta" th:text="${premioP.nombrePremio}"></div>
             <div class="collapsible-body black">
-            <div th:each="premiadoP: ${premioP.premiados}">
-            <span  th:text="|${premiadoP.nombre} con ${premiadoP.cantidadVotos} votos|"></span>
-            </div>
+             <div th:each="nominadoP:${nominadosP}">
+            <span  th:if="${nominadoP.premio.id}==premioP.id" th:text="|${nominadoP.nombre} con ${nominadoP.cantidadVotos} votos|"></span>
+            </div> 
             </div>
           </li>
        </ul>
