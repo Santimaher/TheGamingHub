@@ -1,14 +1,24 @@
 <div class="container content">
-	<h1>Editar entrada de foro</h1>
-
+<div class="row">
+	<h5 class="center">Editar entrada de foro</h5>
+</div>
 	<form method="post" action="https://thegaminghub.herokuapp.com/entradaForo/u" class="form">
 			<input type="hidden" th:value="${entrada.id}" name="idEntrada">
-		Comentario <input th:value="${entrada.comentario}" type="text" name="comentario" class="form-item"> <br>
-		<input type="submit"><br>
+			
+			<div class="input-field col s12 m12 l12 xl12">
+		<label for="comentario">Comentario</label>
+			  <input th:value="${entrada.comentario}" type="text" name="comentario">
+		</div>
+			
+		
+		<div class="row">
+		<div class="col s12 m12 l12 xl12">
+					<input class="btn waves-effect waves-light purple " type="submit"
+				 name="action" value="Editar">
+				</div>
+				</div>
 	</form>
 	
-		<a href="/">
-		<button>Cancelar</button>
-	</a>
+		
 	
 </div>
