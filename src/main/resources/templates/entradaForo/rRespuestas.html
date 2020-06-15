@@ -1,17 +1,24 @@
 <div class="container content">
 <p th:if="${session.usuario==null}">Debes haber iniciado sesion para dar me gusta o no me gusta, comentar y para leer mensajes propio escritos en este foro <a href="https://thegaminghub.herokuapp.com/login">Iniciar sesion</a></p>
-<form action="https://thegaminghub.herokuapp.com/entradaForo/r" method="get">
+
+	<div class="row">
+	<div class="col 3">
+		<form action="https://thegaminghub.herokuapp.com/entradaForo/r" method="get">
 					<input type="hidden" name="idForo" th:value="${MensajeFijado.pertenece.id}">
 					<button th:text="|Volver a (${MensajeFijado.pertenece.tipo})|" onclick="submit()" class="waves-effect waves-light btn separacion purple">
 						
 					</button>
 				</form>
-<form action="/foro/r" method="get">
+				</div>
+				<div class="col 3">
+					<form action="/foro/r" method="get">
 					<input type="hidden" name="id" th:value="${idJuego}">
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
 						Menu
 					</button>
 				</form>
+				</div>
+				<div class="col 3">
 				<form action="https://thegaminghub.herokuapp.com/entradaForo/responder" method="get">
 					<input type="hidden" name="idEntrada" th:value="${MensajeFijado.id}" />
 					<input type="hidden" name="idForo" th:value="${MensajeFijado.pertenece.id}" />
@@ -19,6 +26,8 @@
 						Responder
 					</button>
 				</form>
+				</div>
+				<div class="col 3">
 				<form  th:if="${MensajeFijado.mensajePadre!=null}" action="https://thegaminghub.herokuapp.com/entradaForo/verRespuestas" method="get">
 					<input type="hidden" name="idEntrada" th:value="${MensajeFijado.mensajePadre.id}" />
 					<input type="hidden" name="idForo" th:value="${MensajeFijado.mensajePadre.pertenece.id}" />
@@ -26,7 +35,8 @@
 						Volver
 					</button>
 				</form>
-
+				</div>
+</div>
   <div class="row">
     <div class="col s12 m6">
       <div class="card black fondo-carta darken-1">
