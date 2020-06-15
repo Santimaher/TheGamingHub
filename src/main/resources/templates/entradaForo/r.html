@@ -108,7 +108,7 @@
         </div>
         <div class="card-action grey darken-4">
         <div class="row">
-        <div class="col s12 m6 l2 xl2" th:if="${session.usuario==null}">
+        <div class="col s12 m6 l2 xl2" th:if="${session.usuario!=null}">
           <form action="https://thegaminghub.herokuapp.com/entradaForo/like" method="get">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
@@ -123,7 +123,7 @@
 					</button>
 				</form>
 				</div>
-		<div class="col s12 m6 l2 xl2" th:if="${session.usuario==null}">
+		<div class="col s12 m6 l2 xl2" th:if="${session.usuario!=null}">
           <form action="https://thegaminghub.herokuapp.com/entradaForo/dislike" method="get">
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
@@ -139,7 +139,7 @@
 					</button>
 				</form>
 				</div>
-		<div class="col s12 m6 l3 xl3" th:if="${session.usuario==null}">
+		<div class="col s12 m6 l3 xl3" th:if="${session.usuario!=null}">
 				<form action="https://thegaminghub.herokuapp.com/entradaForo/responder" method="get">
 					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
