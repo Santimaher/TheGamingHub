@@ -100,7 +100,7 @@ public class ParticipanteController {
 
 	@GetMapping("u")
 	public String update(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
-//		H.isRolOK("admin", s);
+       H.isRolOK("admin", s);
 		m.put("categorias", repoCategoriaP.findAll());
 		m.put("participante", repoParticipante.getOne(id));
 		m.put("view", "participante/u");
@@ -124,7 +124,7 @@ public class ParticipanteController {
 
 			repoParticipante.save(participante);
 		} catch (Exception e) {
-			PRG.error("Error al actualizar " + " // " + e.getMessage(), "participante/r");
+			PRG.error("Error al actualizar", "participante/r");
 		}
 		PRG.info("Participante actualizado correctamente", "/participante/r");
 	}
