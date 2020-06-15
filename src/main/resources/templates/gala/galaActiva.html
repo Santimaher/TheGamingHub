@@ -3,7 +3,7 @@
 	class="container content">
 	<p th:if="${session.usuario==null}">Para poder votar tienes que <a href="https://thegaminghub.herokuapp.com/login">iniciar sesion</a></p>
 	<div class="right">
-		<form action="https://thegaminghub.herokuapp.com/gala/r2">
+		<form action="http://localhost:8080/gala/r2">
 		<button class="btn waves-effect waves-light purple" onclick="submit()">Ver
 			pasadas ediciones</button>
 	</form>
@@ -18,7 +18,7 @@
 	class="container content">
 	<p th:if="${session.usuario==null}">Para poder votar tienes que <a href="https://thegaminghub.herokuapp.com/login">iniciar sesion</a></p>
 	<div class="right">
-	<form action="https://thegaminghub.herokuapp.com/gala/r2">
+	<form action="http://localhost:8080/gala/r2">
 		<button class="btn waves-effect waves-light purple" onclick="submit()">Ver
 			pasadas ediciones</button>
 	</form>
@@ -38,14 +38,14 @@
 		</div>
 		<div class="row">
 			<div th:each="premio:${gala.premiosP}" class="linea col s12 m6 l4 xl4">
-      		<form action="https://thegaminghub.herokuapp.com/premio/addVotoP" method="get" class="linea">
+      		<form action="http://localhost:8080/premio/addVotoP" method="get" class="linea">
       		<input type="hidden" name="id" th:value="${premio.id}"/>
       		<button class="btn-large waves-effect waves-light purple darken-4 separacion tooltipped" data-position="bottom" data-tooltip="Vota aqui !!" th:text="${premio.nombrePremio}" onclick="submit()"></button>
       		</form>
       		</div>
       		
       		<div th:each="premio:${gala.premiosJ}" class="linea col s12 m6 l4 xl4">
-      		<form action="https://thegaminghub.herokuapp.com/premio/addVotoJ" method="get" class="linea">
+      		<form action="http://localhost:8080/premio/addVotoJ" method="get" class="linea">
       		<input type="hidden" name="id" th:value="${premio.id}"/>
       		<button class="btn-large waves-effect waves-light purple separacion tooltipped" data-position="bottom" data-tooltip="Vota aqui !!" onclick="submit()" th:text="${premio.nombrePremio}"></button>
       		</form>
@@ -85,7 +85,7 @@ function restaFechas(f1,f2){
 
 <div th:if="${fecha}<${fechaActual} and ${fechaDePremio}>${fechaActual}"
 	class="container">
-	<p th:if="${session.usuario==null}">Para poder votar tienes que <a href="https://thegaminghub.herokuapp.com/login">iniciar sesion</a></p>
+	<p th:if="${session.usuario==null}">Para poder votar tienes que <a href="http://localhost:8080/login">iniciar sesion</a></p>
 	<h3>Gala concluida</h3>
 	
 	<h4>Ganadores de la especialidad: Juegos</h4>
@@ -97,7 +97,7 @@ function restaFechas(f1,f2){
     <li th:each="ganadorP:${ganadoresP}" th:text="|${ganadorP.premio.nombrePremio}: ${ganadorP.nombre} con ${ganadorP.cantidadVotos} votos|"></li>
     </ul>
     
-	<form action="https://thegaminghub.herokuapp.com/gala/r2">
+	<form action="http://localhost:8080/gala/r2">
 		<button class="btn waves-effect waves-light purple" onclick="submit()">Ver
 			pasadas ediciones</button>
 	</form>

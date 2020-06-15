@@ -3,7 +3,7 @@
 			<h1 class="center">Cambiar contraseña</h1>
 		</div>
 		<div class="row">
-	<form method="post" action="https://thegaminghub.herokuapp.com/cambioContrasenia" onsubmit="return validarUpdate_Pwd();" name="passForm" class="form">
+	<form method="post" action="http://localhost:8080/cambioContrasenia" onsubmit="return validarUpdate_Pwd();" name="passForm" class="form">
 		<input type="hidden" name="id" th:value="${usuario.id}">
 	     
 	     <div class="input-field col s12">
