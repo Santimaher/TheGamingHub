@@ -30,18 +30,7 @@
 						<input class="file-path validate" type="text">
 					</div>
 				</div>
-			</div>	
-		
-		<div class="file-field input-field col s12">
-		
-		<label for="idNominacion[]" >Nominación</label>
-		<select name="idNominacion[]">
-			<option th:each="nominacion:${nominaciones}" th:text="${nominacion.nombre}" th:value="${nominacion.id}" th:selected="${participante.nominado.id==nominacion.id}"></option>
-		</select>
-		<br>
-		<input type="hidden" name="id" th:value="${participante.id}"/>
-		
-		</div>
+			</div>
 		
 		
 		<input class="btn waves-effect waves-light purple" type="submit" value="Actualizar" name="action">
