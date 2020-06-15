@@ -108,8 +108,13 @@
         </div>
         <div class="card-action grey darken-4">
         <div class="row">
+<<<<<<< HEAD
         <div class="col s12 m6 l2 xl2">
           <form action="http://localhost:8080/entradaForo/like" method="get">
+=======
+        <div class="col s12 m6 l2 xl2" th:if="${session.usuario!=null}">
+          <form action="https://thegaminghub.herokuapp.com/entradaForo/like" method="get">
+>>>>>>> branch 'master' of https://github.com/Santimaher/TheGamingHub.git
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
 					<button th:if="${session.usuario!=null}" onclick="submit()" class="waves-effect waves-light btn separacion purple">
@@ -123,8 +128,13 @@
 					</button>
 				</form>
 				</div>
+<<<<<<< HEAD
 		<div class="col s12 m6 l2 xl2">
           <form action="http://localhost:8080/entradaForo/dislike" method="get">
+=======
+		<div class="col s12 m6 l2 xl2" th:if="${session.usuario!=null}">
+          <form action="https://thegaminghub.herokuapp.com/entradaForo/dislike" method="get">
+>>>>>>> branch 'master' of https://github.com/Santimaher/TheGamingHub.git
 					<input type="hidden" name="id" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
 						<button th:if="${session.usuario!=null}" onclick="submit()" class="waves-effect waves-light btn separacion purple">
@@ -139,8 +149,13 @@
 					</button>
 				</form>
 				</div>
+<<<<<<< HEAD
 		<div class="col s12 m6 l3 xl3">
 				<form action="http://localhost:8080/entradaForo/responder" method="get">
+=======
+		<div class="col s12 m6 l3 xl3" th:if="${session.usuario!=null}">
+				<form action="https://thegaminghub.herokuapp.com/entradaForo/responder" method="get">
+>>>>>>> branch 'master' of https://github.com/Santimaher/TheGamingHub.git
 					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
 					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
 					<button onclick="submit()" class="waves-effect waves-light btn separacion purple" >
