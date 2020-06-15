@@ -3,7 +3,7 @@
 <div class="row">
 <p th:if="${session.usuario==null}">Debes haber iniciado sesion para dar me gusta o no me gusta, comentar y para leer mensajes propio escritos en este foro <a href="https://thegaminghub.herokuapp.com/login">Iniciar sesion</a></p>
 				<fieldset>
-				<legend>Barra de busqueda de comentario</legend>
+				<legend>Barra de búsqueda de comentario</legend>
 				<div class="col s12 m4 l12 xl12">
 				<form method="get">
 				<div class="row">
@@ -15,7 +15,7 @@
 					<div class="input-field col s4">
 					<select name="tipo" class="">
 					<optgroup label="Elegir" style="color:white !important;">
-					<option th:selected="${tipo=='Comentario'}" style="color:white !important;">Comentario</option>
+					<option th:selected="${tipo=='Comentario'}" style="color:white !important;">Comentarios</option>
 					<option th:selected="${tipo=='LoginName'}" style="color:white !important;">LoginName</option>
 					</optgroup>
 					</select>
