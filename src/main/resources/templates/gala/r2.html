@@ -2,7 +2,7 @@
 <ul class="collapsible">
    <li th:each="gala:${galas}" th:if="${gala.fin}<=${FechaAc}" class="active">
      <div class="collapsible-header black fondo-carta"  th:text="|Gala ${gala.edicion}|"></div>
-     <div class="collapsible-body black">
+     <div class="collapsible-body grey lighten-1">
        <ul class="collapsible">
           <li th:each="premioJ:${gala.premiosJ}" class="active">
             <div class="collapsible-header black fondo-carta"  th:text="${premioJ.nombrePremio}"></div>
