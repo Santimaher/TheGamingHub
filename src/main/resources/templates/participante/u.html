@@ -7,6 +7,7 @@
 		</div>
 		<div class="row">
 	<form method="post" enctype="multipart/form-data" onsubmit="return vfPu()" name="partFormu" action="https://thegaminghub.herokuapp.com/participante/u" class="form">
+		<input type="hidden" th:value="${participante.id}" name="id">
 		<div class="input-field col s6">
 		<label for="nombre">Nombre</label>
 			<input name="nombre" type="text" class="validate"  placeholder="Nombre" th:value="${participante.nombre}"> 	
@@ -26,16 +27,20 @@
 					<div class="btn waves-effect waves-light purple ">
 						<span>Imagen a subir</span> <input type="file" name="img">
 					</div>
+					<div class="file-path-wrapper">
+       				 <input class="file-path validate" type="text">
+      				</div>
 				</div>
 			</div>
 		
-		
+		<div class="row">
+		<div class="col 6">
 		<input class="btn waves-effect waves-light purple" type="submit" value="Actualizar" name="action">
-			
-		<br>
+			</div>
+	
 	</form>
-	<div class="row">
-		<div class="center">
+	
+		<div class="col 6">
 			<a href="https://thegaminghub.herokuapp.com/participante/r">
 				<button class="btn waves-effect waves-light purple">
 				Atras <i class="material-icons left">arrow_back</i>
