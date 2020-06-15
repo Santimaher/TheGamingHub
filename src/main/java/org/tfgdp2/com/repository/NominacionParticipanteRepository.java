@@ -13,5 +13,5 @@ public interface NominacionParticipanteRepository extends JpaRepository<Nominaci
 	public List<Nominacion_Participante> findByPremioId(Long idPremio);
 
 	public Nominacion_Participante getTopByPremioNombrePremioAndPremioTieneIdOrderByCantidadVotosDesc(String nombre,Long id);
-	public List<Nominacion_Participante> findAllOrderByCantidadVotos();
+	public List<Nominacion_Participante> findByOrderByCantidadVotosDesc();
 }
