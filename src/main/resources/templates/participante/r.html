@@ -36,7 +36,7 @@
 				<div class="col s6 m6 l6 xl6">
 				<form action="https://thegaminghub.herokuapp.com/participante/d" method="post" >
 					<input type="hidden" name="id" th:value="${p.id}" />
-					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light pink" >
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light pink tooltipped" data-position="bottom" data-tooltip="Cuidado se borrara este elemento al pulsar el boton" >
 						<i class="material-icons left">delete</i>
 					</button>
 				</form>

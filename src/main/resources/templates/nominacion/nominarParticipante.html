@@ -29,7 +29,7 @@
 			<div class="col m3" style="margin-top: 50px;">	
 				<form action="/participante/d" method="post">
 					<input type="hidden" name="id" th:value="${p.id}" />
-					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple" >
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple tooltipped" data-position="bottom" data-tooltip="Cuidado se borrara este elemento al pulsar el boton" >
 						<i class="material-icons left">delete</i>
 					</button>
 				</form>
