@@ -110,7 +110,7 @@ public class ParticipanteController {
 	@PostMapping("u")
 	public void updatePost(@RequestParam("id") Long idParticipante, @RequestParam("nombre") String nombre,
 			@RequestParam("apellido") String apellido, @RequestParam("img") MultipartFile imgFile,
-			@RequestParam("bio") String bio, @RequestParam("teaser") String teaser, HttpSession s)
+			@RequestParam("bio") String bio,  HttpSession s)
 			throws DangerException, InfoException {
 
 		try {
