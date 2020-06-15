@@ -100,7 +100,7 @@ public class ParticipanteController {
 
 	@GetMapping("u")
 	public String update(ModelMap m, @RequestParam("id") Long id, HttpSession s) throws DangerException {
-		H.isRolOK("admin", s);
+//		H.isRolOK("admin", s);
 		m.put("categorias", repoCategoriaP.findAll());
 		m.put("participante", repoParticipante.getOne(id));
 		m.put("view", "participante/u");
