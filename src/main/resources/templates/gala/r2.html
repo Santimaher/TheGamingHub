@@ -8,7 +8,7 @@
             <div class="collapsible-header black fondo-carta"  th:text="${premioJ.nombrePremio}"></div>
             <div class="collapsible-body black">
             <div th:each="nominadoJ:${nominadosJ}">
-            <span  th:if="${nominadoJ.premio.id}==premioJ.id" th:text="|${nominadoJ.nombre} con ${nominadoJ.cantidadVotos} votos|"></span>
+            <span  th:if="${nominadoJ.premio.id}==${premioJ.id}" th:text="|${nominadoJ.nombre} con ${nominadoJ.cantidadVotos} votos|"></span>
             </div>            
             </div>
           </li>
@@ -18,7 +18,7 @@
             <div class="collapsible-header black fondo-carta" th:text="${premioP.nombrePremio}"></div>
             <div class="collapsible-body black">
              <div th:each="nominadoP:${nominadosP}">
-            <span  th:if="${nominadoP.premio.id}==premioP.id" th:text="|${nominadoP.nombre} con ${nominadoP.cantidadVotos} votos|"></span>
+            <span  th:if="${nominadoP.premio.id}==${premioP.id}" th:text="|${nominadoP.nombre} con ${nominadoP.cantidadVotos} votos|"></span>
             </div> 
             </div>
           </li>
