@@ -1,0 +1,34 @@
+<div class="container content">
+<div class="row">
+		<div class="col s12">
+			<h1 class="center" th:if="${juego.id} <= 180 " th:text="|Foros disponibles de los juego Retro|"></h1>
+			<h1 class="center" th:if="${juego.id} > 180 " th:text="|Foros disponibles del juego: ${juego.nombre}|"></h1>
+		</div>
+	</div>
+ <div class="row separacion" style="margin-top:150px;" >
+		 <div class="card ">
+    <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width black ">
+        <li class="tab " th:each="foro,stat:${foros}">
+        <a th:href="|#${foro.id}|" class="white-text" th:text="${foro.tipo}"></a>
+        </li>
+       
+      
+      </ul>
+    </div>
+    <div class="card-content fondo-carta black center">
+      <div th:id="${foro.id}" th:each="foro,stat:${foros}">
+    		 <form action="https://thegaminghub.herokuapp.com/entradaForo/r">
+			<button onclick="submit()" class="waves-effect waves-light btn separacion purple large">
+			Acceder al foro
+			</button>
+		   <input  name="idForo" type="hidden" th:value="${foro.id}">
+		</form> 
+	      </div>
+	    
+	    
+	   </div>
+    </div>
+  </div>
+  
+  </div>

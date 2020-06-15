@@ -1,0 +1,188 @@
+<nav>
+	<nav class="fondo-carta black">
+		<div class="nav-wrapper">
+			<div class="valign-wrapper s4 m4 l4 xl4 left">
+				<button
+					class="waves-effect waves-light color-trans btn-floating btn-large tooltipped"
+					onclick="location.href = '/';" data-position="bottom" data-tooltip="Ir a la pagina de inicio">
+					<img style="margin-top:5px"	src="/img/logo2.png" height="50" width="50" alt="logo"></img>
+				</button>
+				<button data-target="slide-out"	class="waves-effect waves-light btn-floating color-trans btn-large sidenav-trigger tooltipped" data-position="bottom" data-tooltip="Opciones de usuario">
+					<i class="material-icons large">person </i>
+				</button>	
+			</div>
+			
+			
+				<span class="s4 m4 l4 xl4">The Gaming Hub</span>
+			
+			
+			<ul class="s4 m4 l4 xl4 right">
+			<li>
+			<button data-target="slide-out2"
+					class="waves-effect waves-light btn-floating btn-large color-trans sidenav-trigger tooltipped" data-position="bottom" data-tooltip="Abrir menu de opciones de admin">
+					<i class="material-icons large">menu </i>
+				</button>
+				</li>
+				</ul>
+				
+		</div>
+	</nav>
+</nav>
+
+
+
+	<ul id="slide-out" class="sidenav fondo-geometrico black white-text">
+		<li><div class="user-view">
+				<div class="col-12" th:if="${session.usuario == null}">
+					<a class="waves-effect waves-light btn hoverable purple white-text"
+						href="/registro">Registro</a> <a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="/login">Login</a>
+				</div>
+				<div class="chip purple white-text ">
+				<img  th:src="|data:image/png;base64,${session.usuario.imgUP}|"alt="Contact Person">					
+					<span th:text="${session.usuario.nombre}"></span> <i th:if="${session.usuario.rol=='admin'}" class="material-icons iPropio"> verified_user</i>    
+				</div>
+					<ul class="collapsible letrasNav ">
+						<li>
+							<div class="collapsible-header letrasNav">
+								<i class="material-icons">brightness_7</i> Opciones
+							</div>
+							<div class="collapsible-body fondo-geometrico color-trans">
+								<ul>
+									<li><a
+										class="waves-effect waves-light btn hoverable purple white-text"
+										href="/logout">Logout</a></li>
+									<li><a
+										class="waves-effect waves-light btn hoverable purple white-text"
+										href="/usuario/uUsuario">Ajustes de usuario</a></li>
+
+								</ul>
+							</div>
+					</ul>
+				<li class="center"><button class="waves-effect waves-light btn hoverable purple white-text tooltipped" data-tooltip="Ver los foros activos" data-position="bottom" onclick="location.href='/foro/r2';" >Foros</button></li>	
+				</div>
+			</li>
+		
+	</ul>
+	
+		<ul id="slide-out2" class="sidenav sidenav2 fondo-geometrico black letrasNav" style="color: white">
+		<li>
+		<ul class="collapsible letrasNav">
+			<li>
+				<div class="collapsible-header ">Juego</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/juego/c">Crear</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/juego/r/1">Listar</a></li>
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header ">Participantes</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable  purple white-text"
+						href="https://thegaminghub.herokuapp.com/participante/c">Crear</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable  purple white-text"
+						href="https://thegaminghub.herokuapp.com/participante/r">Listar</a></li>
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header ">Usuarios</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/usuario/c">Crear</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/usuario/r">Listar</a></li>
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header">Cat. Participante</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/categoriaParticipante/c">Crear</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/categoriaParticipante/r">Listar</a></li>
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header white-text">Cat. Juego</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/categoria/c">Crear</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/categoria/r">Listar</a></li>
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header white-text">Plataformas</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/plataforma/c">Crear</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/plataforma/r">Listar</a></li>
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header white-text">Galas</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/gala/c">Crear</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/gala/r">Listar</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/gala/GA">Gala Activa</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/gala/r2">Historico</a></li>		
+				</ul>		
+				</div>
+			</li>
+			<li>
+				<div class="collapsible-header white-text">Premios</div>
+				<div class="collapsible-body fondo-geometrico color-trans">
+				<ul>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/premio/c">Crear</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/premio/r">Votaciones</a></li>
+					<li><a
+						class="waves-effect waves-light btn hoverable purple white-text"
+						href="https://thegaminghub.herokuapp.com/premio/rAdmin">Administar Premios</a></li>	
+				</ul>		
+				</div>
+			</li>
+		</ul>
+		</li>
+	</ul>
+	

@@ -1,0 +1,86 @@
+<div class="container content">
+	<div class="col m12">
+			<h1 class="center">Nuevo Juego</h1>
+		</div>
+		
+		<div class="row">
+	<form method="post" enctype="multipart/form-data" action="https://thegaminghub.herokuapp.com/juego/c">
+	
+	<div class="input-field col s12">
+	<label for="nombreJ">Nombre</label>
+	<input type="text" id="nombreJ" name="nombre">
+	</div>
+		
+	<div class="input-field col s12">
+	<label for="desaJ">Desarrolladora del Juego</label>
+	<input type="text" id="desaJ" name="desarrolladora">
+	</div>
+	
+	
+	<div class="file-field input-field col s12">
+				<div class="file-field input-field">
+					<div class="btn waves-effect waves-light purple ">
+						<span>Imagen a subir</span> <input type="file" name="imgJ">
+					</div>
+					<div class="file-path-wrapper">
+						<input class="file-path validate" type="text">
+					</div>
+				</div>
+				<br/>
+	<div class="col s12">	
+	<label for="flan">Fecha de lanzamiento</label>
+	<input type="text" id="flan" name="flan" class="datepicker">
+	</div>
+	
+	<div class="input-field col s12">	
+	<label for="teaserJ">Teaser del Juego</label>
+	<input type="text" id="teaserJ" name="teaser">
+	</div>
+	
+	<fieldset class="separacion">
+		<legend>Categorias</legend>
+			<span th:each="categoria:${categorias}" >				
+				<label th:for="|cat-${categoria.id}|">
+					<input type="checkbox" th:id="|cat-${categoria.id}|" class="indeterminate-checkbox" th:name="idCat[]" th:value="${categoria.id}"/>
+					<span th:text="${categoria.nombre}" class="letrasForm"></span>
+				</label>
+			</span>
+	</fieldset>	
+	
+	<fieldset class="separacion">
+		<legend>Plataformas seleccionadas</legend>
+			<div  name="seleccionadas" id="selec"></div>
+			<div>
+            <select onchange="buscar()" name="selector" id="busca" >
+                <option value="" style="color:white !important;">Elegir</option>
+                <option value="Sony" >Sony</option>
+                <option value="Microsoft" >Microsoft</option>
+                <option value="Nintendo" > Nintendo</option>
+                <option value="PC" >PC</option>
+                <option value="Sega">Sega</option>
+                <option value="SNK">SNK</option>
+                <option value="Atari">Atari</option>
+            </select>
+			</div>
+			<div name="expositor" id="exp" class="">
+				
+			</div>
+	</fieldset>
+	
+	
+	
+	
+	<div class="col m12">
+	<div class="center">
+	<button class="btn waves-effect waves-light purple"  onclick="submit()" name="action">
+			Crear <i class="material-icons left">send</i>
+			</button>
+			</div>
+	</div>
+			
+		
+	</form>
+	
+		
+	</div>
+</div>

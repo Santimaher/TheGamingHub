@@ -1,0 +1,37 @@
+<div class="container content">
+<div class="col m12">
+			<h1>Editar Gala</h1>
+		</div>
+
+	<div class="row">
+	<form method="post" action="/gala/u">
+	
+	<input type="hidden" name="id" th:value="${gala.id}">
+	
+	<div class="input-field col s12">
+	<label for="edcionG">Edicion de la Gala</label>
+	<input th:value="${gala.edicion}" type="text" id="edicionG" name="edicion">
+	</div>
+	
+	<div class="col s12">
+	<label for="f-ini">Fecha de inicio</label>
+	<input th:value="${gala.inicio}" type="date" id="f-ini" name="inicio">
+	</div>
+
+	<div class="col s12">
+	<label for="f-fin">Fecha Fin</label>
+	<input th:value="${gala.fin}" type="date" id="f-fin" name="fin">
+	</div>
+	
+	<button class="btn waves-effect waves-light purple" onclick="submit()" name="action">
+			Actualizar <i class="material-icons left">send</i>
+		</button>
+		<a href="/">
+		<button class="btn waves-effect waves-light purple">
+			Cancelar
+		</button>
+		</a>
+	</form>
+	</div>
+
+</div>

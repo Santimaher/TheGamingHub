@@ -1,0 +1,34 @@
+<div class="container content">
+	
+	<div class="row">
+	<div class="col m12">
+			<h1 class="center">Editar usuario</h1>
+		</div>
+		</div>
+		<div class="row">
+		<form method="post" action="https://thegaminghub.herokuapp.com/usuario/uAdminPost" class="form" name="userform" onclick="return vformupdateUser();">
+		<input type="hidden" name="id" th:value="${usuario.id}">
+		
+		<div class="input-field col s12">
+			<label for="nombre">Nombre</label>
+			<input type="text"  name="nombre"  th:value="${usuario.nombre}">
+		</div>
+		
+		<div class="input-field col s12">
+		<label for="loginname">Nombre de usuario</label>
+			<input type="text" name="loginname" th:value="${usuario.loginname}">
+		</div>
+		
+		<div class="input-field col s12">
+			<label for="email">Correo electrónico</label>
+			<input type="text" name="email" th:value="${usuario.email}">
+		</div>
+		
+		<div class="col m12">
+				<div class="center">
+		<input class="btn waves-effect waves-light pink" type="submit" value="Actualizar"  name="action">
+			</div>
+			</div>
+	</form>
+	</div>
+</div>

@@ -1,0 +1,101 @@
+<div class="container content">
+	<h1>Editar Juego</h1>
+	<div class="row">
+		<form method="post" action="https://thegaminghub.herokuapp.com/juego/u">
+			<input type="hidden" th:value="${juego.id}" name="id">
+
+			<div class="input-field col s12">
+				<label for="nombreJ">Nombre</label> <input type="text" id="nombreJ"
+					name="nombre" th:value="${juego.nombre}">
+			</div>
+
+			<div class="input-field col s12">
+				<label for="desaJ">Desarrolladora del Juego</label> <input
+					type="text" id="desaJ" name="desarrolladora"
+					th:value="${juego.desarrolladora}">
+			</div>
+
+			<div class="file-field input-field col s12" th:if="${juego.id} <= 180 ">
+				<div class="btn waves-effect waves-dark purple">
+					<span>Imagen</span> <input type="text" id="imgPre" name="imgPre" th:value="${juego.imgPre}"
+						class="">
+				</div>
+			</div>
+			
+			<div class="file-field input-field col s12" th:if="${juego.id} > 180">
+				<div class="file-field input-field">
+					<div class="btn waves-effect waves-light purple ">
+						<span>Imagen a subir</span> <input type="file" name="imgJ">
+					</div>
+					<div class="file-path-wrapper">
+						<input class="file-path validate" type="text">
+					</div>
+				</div>
+			</div>
+
+			<br>
+			<br>
+
+			<div class="col s12">
+				<label for="flan">Fecha de lanzamiento</label> <input type="text"
+					id="flan" name="flan" class="datepicker" style="color: 'black'"
+					th:value="${juego.fechaLanzamiento}">
+			</div>
+
+
+			<div class="input-field col s12">
+				<label for="teaserJ">Teaser del Juego</label> <input type="text"
+					id="teaserJ" name="teaser" th:value="${juego.teaser}">
+			</div>
+
+			<fieldset>
+				<legend>Categorias</legend>
+				<span th:each="categoria:${categorias}"> <label
+					th:for="|cat-${categoria.id}|"> <input type="checkbox"
+						th:id="|cat-${categoria.id}|" class="indeterminate-checkbox"
+						th:name="idCat[]" th:value="${categoria.id}"
+						th:checked="${juego.pertenece.contains(categoria)}" /> <span
+						th:text="${categoria.nombre}"></span>
+				</label>
+				</span>
+			</fieldset>
+
+			<fieldset>
+				<legend>Plataformas disponibles</legend>
+				<fieldset>
+					Plataformas seleccionadas
+					<div name="seleccionadas" id="selec"
+						th:each="consola:${plataformas}">
+						<div class="chip purple white-text">
+							<span name="consolas" th:text="${consola.nombre}"></span> <i class="close material-icons">close</i> <input type="hidden" name="idPlataforma[]" th:value="${consola.id}"/>
+						</div>
+					</div>
+				</fieldset>
+				<div class="input-field white-text">	
+				<select onchange="buscar()" class="white" name="selector" id="busca">
+					<option value="">Elegir</option>
+					<option value="Sony">Sony</option>
+					<option value="Microsoft">Microsoft</option>
+					<option value="Nintendo">Nintendo</option>
+					<option value="PC">PC</option>
+					<option value="Sega">Sega</option>
+					<option value="SNK">SNK</option>
+					<option value="Atari">Atari</option>		
+				</select>
+				</div>
+	
+	<div name="expositor" id="exp"></div>
+	</fieldset>	
+	<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
+		Actualizar<i class="material-icons left">send</i>
+	</button>
+		</form>
+		</div>
+	
+	<a href="/">
+		<button class="btn waves-effect waves-light purple">
+			Home <i class="material-icons left">home</i>
+		</button>
+	</a>
+
+</div>

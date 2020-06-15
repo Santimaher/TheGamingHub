@@ -1,0 +1,40 @@
+<div class="container content">
+	<div class="col m12">
+			<h1>Plataformas</h1>
+		</div>
+
+	<table class="highlight">
+	<tr>
+		<th class="center">Nombre</th>
+		<th class="center">Imagen</th>
+		<th class="center" th:if="${session.usuario?.rol=='admin'}">Acciones<th>
+	</tr>
+	<tr th:each="plataforma:${plataformas}">
+		<td class="center"><h5 th:text="${plataforma.nombre}"></h5></td>
+		<td class="center"><img th:if="${plataforma.id} >26 "  th:src="|data:image/png;base64,${plataforma.img}|" width="150px" height="150px">
+			<img th:if="${plataforma.id} <=26 "  th:src="|/img/${plataforma.imgPre}|" width="150px" height="150px">
+		 </td>
+		
+		<td class="center" th:if="${session.usuario?.rol=='admin'}">
+		<div class="row">
+		<div class="col m6">
+				<form action="https://thegaminghub.herokuapp.com/plataforma/u" method="get">
+					<input type="hidden" name="id"  th:value="${plataforma.id}" />
+					<button onclick="submit()"  class="btn-floating btn-large waves-effect waves-light purple">
+						<i class="material-icons left">edit</i>
+					</button>
+				</form>
+		</div>
+		<div class="col m6">		
+				<form action="https://thegaminghub.herokuapp.com/plataforma/d" method="post" >
+					<input type="hidden" name="id" th:value="${plataforma.id}"/>
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light pink tooltipped" data-position="bottom" data-tooltip="Cuidado se borrara este elemento al pulsar el boton" >
+						<i class="material-icons left">delete</i>
+					</button>
+				</form>
+		</div>
+		</div>
+		</td>
+	</tr>
+	</table>
+</div>

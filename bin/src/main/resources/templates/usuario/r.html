@@ -1,0 +1,67 @@
+<div class="container content">
+<div class="row">
+	<div class="col m12">
+			<h1 class="center">Lista de usuarios</h1>
+		</div>
+</div>
+	
+	<table>
+		<tr>
+			<th class= "center">Nombre</th>
+			<th class= "center">LoginName</th>
+			<th class= "center">Email</th>
+			<th class= "center">Rol</th>
+			<th class= "center">Opciones</th>
+		</tr>
+
+		<tr th:each="usuario:${usuarios}">
+			
+			<td th:text="${usuario.nombre}" class="center"></td>
+			<td th:text="${usuario.loginname}" class="center"></td>
+			<td th:text="${usuario.email}" class="center"></td>
+			<td th:text="${usuario.rol}" class="center"></td>
+			
+			
+
+	<td>
+	<div class="row">
+	<div class="col m4">
+		<form action="https://thegaminghub.herokuapp.com/usuario/uAdmin" method="post">
+			<input type="hidden" name="id" th:value="${usuario.id}" />
+				<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
+						<i class="material-icons left">edit</i>
+					</button>
+				</form>
+				</div>
+				<div class="col m4">
+				<form action="https://thegaminghub.herokuapp.com/usuario/d" method="post" >
+					<input type="hidden" name="id" th:value="${usuario.id}" />
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light pink tooltipped" data-position="bottom" data-tooltip="Cuidado se borrara este elemento al pulsar el boton">
+						<i class="material-icons left">delete</i>
+					</button>
+				</form>
+			</div>
+			<div class="col m4">
+				<form action="https://thegaminghub.herokuapp.com/usuario/cambiarRol" method="post">
+					<input type="hidden" name="id" th:value="${usuario.id}" />
+					<button class="btn waves-effect waves-light pink" onclick="submit()">
+						Rol 
+					</button>
+				</form>
+				</div>
+		</div>
+				</td>	
+		</tr>
+
+	</table>
+	<div class="row">
+	<div class="center">
+	<a href="https://thegaminghub.herokuapp.com/usuario/c">
+		<button class="btn waves-effect waves-light purple">
+				Registrarse <i class="material-icons left">send</i>
+				</button>
+	</a>
+	</div>
+    </div>
+    
+</div>

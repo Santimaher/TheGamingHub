@@ -1,0 +1,20 @@
+<div class="container content">
+	<div class="row">
+		<div class="col s6">
+			<h2>Nueva Categoria</h2>
+		</div>
+	</div>
+	<form method="post" action="https://thegaminghub.herokuapp.com/categoria/c">
+		<div class="row">
+			<div class="input-field col s6 center">
+				<label for="nombreCat" style="font-size: 20px">Nombre de la
+					Categoria</label> <input type="text" id="nombreCat" name="nombre">
+			</div>
+		</div>
+		<br>
+		<button class="btn waves-effect waves-light purple center" type="submit"
+			onclick="submit()" name="action">
+			Crear <i class="material-icons left">send</i>
+		</button>
+	</form>
+</div>

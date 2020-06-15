@@ -1,0 +1,113 @@
+<div class="container content">
+	<div class="col m12">
+	<h5 class="center">ACCEDE AL FORO A TRAVÉS DE CADA JUEGO</h5>
+	</div>
+
+	<form method="get">
+		<input type="text" name="filtro" th:value="${filtro}"
+
+			placeholder="Buscar juego" /> <select class="white-text" name="tipo">
+
+			<optgroup label="Campo de busqueda">
+				<option th:selected="${tipo=='Nombre'}">Nombre</option>
+				<option th:selected="${tipo=='Plataforma'}">Plataforma</option>
+			</optgroup>
+		</select>
+		<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
+			Buscar</button>
+	</form>
+	<form action="https://thegaminghub.herokuapp.com/juego/r/1">
+	<button onclick="submit()" class="waves-effect waves-light btn separacion purple"> Volver pagina inicial</button>
+	</form>
+	
+	<div class="row">
+		<div class="col s12 m6 l4 xl4" th:each="juego:${juegos}">
+			<div th:id="|modal${juego.id}|" class="modal s12 m12 l12 xl12 fondo-carta black modales">
+				<div style="height:94%" class="modal-content ">
+				<div class="modal-footer fondo-carta black">
+				<h4  th:text="|Trailer del juego:${juego.nombre}|"
+						class="white-text left "></h4>
+					<a href="#!" class="modal-close waves-effect waves-green right"><i class="material-icons right">close</i></a>
+				</div>
+					<div style="height:100% ; width:80%">
+					<iframe width="95%" height="90%" th:src="${juego.teaser}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div>
+				</div>
+				
+			</div>
+			<div class="card grey darken-3 white-text">
+				<div class="card-image waves-effect waves-block waves-light">
+					<img class="activator" th:if="${juego.id} <= 180 " th:src="|/img/cover/${juego.imgPre}|"
+						width="150px" height="500px">
+					<img class="activator" th:if="${juego.id} > 180" th:src="|data:image/png;base64,${juego.img}|"
+						width="150px" height="500px">
+				</div>
+				<div class="fondo-carta card-content black  white-text ">
+					<span
+						class=" letra-pequena card-title activator  white-text text-darken-4"
+						th:text="${juego.nombre}"><i class="material-icons right">more_vert</i></span>
+					<div class="row">
+						<div class="col s4">
+							<form action="https://thegaminghub.herokuapp.com/foro/r"
+								method="get">
+								<input type="hidden" name="id" th:value="${juego.id}" />
+								<button onclick="submit()"
+									class=" btn-floating waves-effect waves-light btn separacion purple btn-large">
+									Foro</button>
+							</form>
+						</div>
+						<div class="col s4" th:if="${session.usuario?.rol=='admin'}">
+							<form action="https://thegaminghub.herokuapp.com/juego/u"
+								method="get">
+								<input type="hidden" name="id" th:value="${juego.id}" />
+								<button onclick="submit()"
+									class="btn-floating waves-effect waves-light btn separacion purple btn-large">
+									<i class="material-icons left">edit</i>
+								</button>
+							</form>
+						</div>
+						<div class="col s4" th:if="${session.usuario?.rol=='admin'}">
+							<form action="https://thegaminghub.herokuapp.com/juego/d"
+								method="post">
+								<input type="hidden" name="id" th:value="${juego.id}" />
+								<button onclick="submit()"
+									class=" btn-floating waves-effect waves-light btn pink btn-large tooltipped" data-position="bottom" data-tooltip="Cuidado se borrara este elemento al pulsar el boton">
+									<i class="material-icons left">delete</i>
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="fondo-carta card-reveal black white-text letra-grande">
+					<span class="card-title white-text flow-text "
+						th:text="${juego.nombre}"><i class="material-icons right">close</i></span>
+					<p th:text="|Desarrolladora: ${juego.desarrolladora}|"></p>
+					<p th:text="|Lanzamiento: ${#temporals.format(juego.fechaLanzamiento, 'dd-MM-yyyy')}|"></p>
+					
+					<fieldset>
+					<legend>Plataformas disponibles</legend>
+						<div th:each="plataforma:${juego.plataformas}" class="chip purple white-text" th:text="${plataforma.nombre}"></div>
+					</fieldset>
+					
+					
+					<fieldset>
+					<legend>Categorias</legend>
+						<div th:each="categoria:${juego.pertenece}" class="chip purple white-text" th:text="${categoria.nombre}"></div>
+					</fieldset>
+					
+					<button th:data-target="|modal${juego.id}|"
+						class="btn modal-trigger purple">Trailer</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="center">
+		<ul class="pagination">    
+    		<li class="waves-effect " th:if="${antes.size() != 0}" th:each="ia:${antes}"><a th:href="|https://thegaminghub.herokuapp.com/juego/r/${ia}|" th:text="${ia}" class="white-text"></a></li>
+    		<li class="waves-effect active "><a th:href="|https://thegaminghub.herokuapp.com/juego/r/${durante}|" th:text="${durante}" class="white-text"></a></li>
+    		<li class="waves-effect " th:each="ide:${despues}"><a th:href="|https://thegaminghub.herokuapp.com/juego/r/${ide}|" th:text="${ide}" class="white-text"></a></li>   
+  		</ul>
+  </div>
+  
+</div>

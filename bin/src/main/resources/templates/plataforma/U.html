@@ -1,0 +1,54 @@
+<div class="container content">
+	<div class="col m12">
+
+		<h1 class="center">Actualizar Plataforma</h1>
+
+	</div>
+
+	<div class="row">
+		<form method="post"
+			action="https://thegaminghub.herokuapp.com/plataforma/u"
+			enctype="multipart/form-data">
+			<div class="input-field col s12">
+				<input type="hidden" th:value="${plataforma.id}" name="id">
+				<label for="nombrePl">Nombre de la Plataforma</label> <input
+					th:value="${plataforma.nombre}" type="text" id="nombreEq"
+					name="nombre">
+			</div>
+
+			<div class="file-field input-field col s12">
+				<div class="file-field input-field">
+					<div class="btn waves-effect waves-light purple ">
+						<span>Imagen a subir</span> <input type="file" name="img">
+					</div>
+					<div class="file-path-wrapper">
+						<input class="file-path validate" type="text">
+					</div>
+				</div>
+			</div>
+
+			<div class="col m12">
+				<div class="center">
+					<button class="btn waves-effect waves-light purple" type="submit"
+						onclick="submit()" name="action">
+						Crear <i class="material-icons left">send</i>
+					</button>
+				</div>
+			</div>
+
+
+
+
+		</form>
+	</div>
+	<div class="col m12">
+		<div class="center">
+			<a href="/">
+				<button class="btn waves-effect waves-light purple">
+					Cancelar</button>
+			</a>
+		</div>
+	</div>
+
+
+</div>

@@ -1,0 +1,27 @@
+<div class="container content">
+	<div class="row">
+		<div class="col s6">
+			<h2>Actualizar Categoria</h2>
+		</div>
+	</div>
+	<div class="row">
+	<form method="post" action="https://thegaminghub.herokuapp.com/categoria/u">
+
+		<input type="hidden" th:value="${categoria.id}" name="id"> 
+		
+		<div class="input-field col s12">
+		<label for="nombreCat">Nombre de la Categoria</label> 
+		<input th:value="${categoria.nombre}" type="text" id="nombreCat" name="nombre">
+		</div>
+		
+		<button class="btn waves-effect waves-light purple" onclick="submit()" name="action">
+			Crear <i class="material-icons left">send</i>
+		</button>
+		<a href="/">
+		<button class="btn waves-effect waves-light purple">
+			Cancelar
+		</button>
+		</a>
+	</form>
+	</div>
+</div>

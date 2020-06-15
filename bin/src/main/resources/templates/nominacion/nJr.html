@@ -1,0 +1,20 @@
+<div class="container content">
+<div class="col m12">
+			<h1>Juegos Nominados</h1>
+		</div>
+	<table class="highlight">
+		<tr>
+			<th>Nombre</th>
+			<th>Premio</th>
+			<th>Votos</th>	
+		<tr>
+		<tr th:each="juegos:${juego}">
+			<td th:text="${juego.nombre}"></td>
+			<td th:text="${juego.premio}"></td>
+			<td th:text="${juego.cantidad_votos}"></td>
+
+			<td>
+
+		</tr>
+	</table>
+</div>

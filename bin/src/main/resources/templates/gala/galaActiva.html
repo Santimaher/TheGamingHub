@@ -1,0 +1,105 @@
+
+<div th:if="${fecha}<${fechaActual} or ${estado}==false"
+	class="container content">
+	<p th:if="${session.usuario==null}">Para poder votar tienes que <a href="https://thegaminghub.herokuapp.com/login">iniciar sesion</a></p>
+	<div class="right">
+		<form action="https://thegaminghub.herokuapp.com/gala/r2">
+		<button class="btn waves-effect waves-light purple" onclick="submit()">Ver
+			pasadas ediciones</button>
+	</form>
+	</div>
+	<h3 class="center">Actualmente no hay ninguna gala en curso</h3>
+	<div class="divider"></div>
+	
+</div>
+
+
+<div th:if="${fecha}>${fechaActual} and ${estado}==true"
+	class="container content">
+	<p th:if="${session.usuario==null}">Para poder votar tienes que <a href="https://thegaminghub.herokuapp.com/login">iniciar sesion</a></p>
+	<div class="right">
+	<form action="https://thegaminghub.herokuapp.com/gala/r2">
+		<button class="btn waves-effect waves-light purple" onclick="submit()">Ver
+			pasadas ediciones</button>
+	</form>
+	</div>
+	<div>
+	<span style="display: none"
+		th:utext="${#temporals.format(fecha, 'dd-MM-yyyy')}" id="ff"></span>
+	<h3 class="center">Gala en curso. Las votaciones cerrarán en:</h3>
+	<h5 id="crono" class="center"></h5>
+	</div>
+	
+	<div th:if="${session.usuario!=null}">
+	
+	
+		<div class="row">
+			<h4 class="center" th:text="|Fase de votacion de la Gala ${gala.edicion}|"></h4>
+		</div>
+		<div class="row">
+			<div th:each="premio:${gala.premiosP}" class="linea col s12 m6 l4 xl4">
+      		<form action="https://thegaminghub.herokuapp.com/premio/addVotoP" method="get" class="linea">
+      		<input type="hidden" name="id" th:value="${premio.id}"/>
+      		<button class="btn-large waves-effect waves-light purple darken-4 separacion tooltipped" data-position="bottom" data-tooltip="Vota aqui !!" th:text="${premio.nombrePremio}" onclick="submit()"></button>
+      		</form>
+      		</div>
+      		
+      		<div th:each="premio:${gala.premiosJ}" class="linea col s12 m6 l4 xl4">
+      		<form action="https://thegaminghub.herokuapp.com/premio/addVotoJ" method="get" class="linea">
+      		<input type="hidden" name="id" th:value="${premio.id}"/>
+      		<button class="btn-large waves-effect waves-light purple separacion tooltipped" data-position="bottom" data-tooltip="Vota aqui !!" onclick="submit()" th:text="${premio.nombrePremio}"></button>
+      		</form>
+      		</div>
+		</div>
+	
+	
+	</div>
+	
+</div>
+<script type="text/javascript" th:if="${fecha}>${fechaActual} and ${estado}==true">
+function restaFechas(f1,f2){
+ var aFecha1 = f1.split('/');
+ var aFecha2 = f2.split('-');
+ var fFecha1 = Date.UTC(aFecha1[2],aFecha1[1]-1,aFecha1[0],aFecha1[3],aFecha1[4],aFecha1[5]);
+ var fFecha2 = Date.UTC(aFecha2[2],aFecha2[1]-1,aFecha2[0]);
+ var dif = fFecha2 - fFecha1;
+ var minutos =Math.floor(((dif % (1000 * 60 * 60))/(1000*60)));
+ var horas =Math.floor(((dif % (1000 * 60 * 60 *24))/(1000*60*60)));
+ var dias =Math.floor(dif / (1000 * 60 * 60 * 24 ));
+ document.getElementById("crono").innerHTML=("Quedan "+dias+" d "+horas+" h "+minutos+" m para la entrega de premios");
+
+ }
+
+    window.onload=function(){
+    	var actual=new Date();
+    	var fechacom=actual.getDate()+"/"+(actual.getMonth()+1)+"/"+actual.getFullYear()+"/"+actual.getHours()+"/"+actual.getMinutes()+"/"+actual.getSeconds();
+    	restaFechas(fechacom,document.getElementById('ff').innerHTML);
+    		setInterval(function(){
+			 actual=new Date();
+			 fechacom=actual.getDate()+"/"+(actual.getMonth()+1)+"/"+actual.getFullYear()+"/"+actual.getHours()+"/"+actual.getMinutes()+"/"+actual.getSeconds();
+			restaFechas(fechacom,document.getElementById('ff').innerHTML);
+			},60000);
+    	
+    }
+</script>
+
+<div th:if="${fecha}<${fechaActual} and ${fechaDePremio}>${fechaActual}"
+	class="container">
+	<p th:if="${session.usuario==null}">Para poder votar tienes que <a href="https://thegaminghub.herokuapp.com/login">iniciar sesion</a></p>
+	<h3>Gala concluida</h3>
+	
+	<h4>Ganadores de la especialidad: Juegos</h4>
+    <ul>
+    <li th:each="ganadorJ:${ganadoresJ}" th:text="|${ganadorJ.premio.nombrePremio}: ${ganadorJ.nombre} con ${ganadorJ.cantidadVotos} votos|"></li>
+    </ul>
+    <h4>Ganadores de la especialidad: Participantes</h4>
+    <ul>
+    <li th:each="ganadorP:${ganadoresP}" th:text="|${ganadorP.premio.nombrePremio}: ${ganadorP.nombre} con ${ganadorP.cantidadVotos} votos|"></li>
+    </ul>
+    
+	<form action="https://thegaminghub.herokuapp.com/gala/r2">
+		<button class="btn waves-effect waves-light purple" onclick="submit()">Ver
+			pasadas ediciones</button>
+	</form>
+</div>
+

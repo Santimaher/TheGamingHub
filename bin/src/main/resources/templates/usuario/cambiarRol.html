@@ -1,0 +1,23 @@
+<div class="container content">
+	<div class="col m12">
+			<h1 class="center">Editar rol</h1>
+		</div>
+		
+	<form method="post" action="https://thegaminghub.herokuapp.com/usuario/cambiarRolPost" class="form">
+		<input type="hidden" name="id" th:value="${usuario.id}">
+			<div class="input-field col s12">
+				<select name="rol">
+				<option value="admin">Admin</option>
+				<option value="auth">Normal</option>
+				<option value="jurado">Jurado</option>
+				</select>
+			</div>	
+			<div class="col m12">
+				<div class="center">
+		<button class="btn waves-effect waves-light purple" type="submit" onclick="submit()" name="action">
+			Cambiar rol <i class="material-icons left">send</i>
+			</button>
+			</div>
+			</div>
+	</form>
+</div>

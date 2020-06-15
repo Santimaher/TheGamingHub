@@ -1,0 +1,61 @@
+<div class="container content">
+<script type="text/javascript">
+	
+				</script>
+	<div class="col m12">
+			<h3 class="center">Editar Participante</h3>
+		</div>
+		<div class="row">
+	<form method="post" class="form" enctype="multipart/form-data" onsubmit="return vfPu()" name="partFormu" action="https://thegaminghub.herokuapp.com/participante/u" class="form">
+		<div class="input-field col s6">
+		<label for="nombre">Nombre</label>
+			<input name="nombre" type="text" class="validate"  placeholder="Nombre" th:value="${participante.nombre}"> 	
+			</div>
+		<div class="input-field col s6">
+		<label for="apellido">Apellidos</label>
+			<input type="text" name="apellido" placeholder="Apellidos" class="validate" th:value="${participante.apellido}"> 
+				</div>
+				
+			<div class="input-field col s12">
+			<label for="bio">Biografía</label>
+				<input type="text" name="bio" placeholder="Biografía" class="validate"  th:value="${participante.bio}">
+			</div>
+			
+			<div class="file-field input-field col s12">
+				<div class="file-field input-field">
+					<div class="btn waves-effect waves-light purple ">
+						<span>Imagen a subir</span> <input type="file" name="img">
+					</div>
+					<div class="file-path-wrapper">
+						<input class="file-path validate" type="text">
+					</div>
+				</div>
+			</div>	
+		
+		<div class="file-field input-field col s12">
+		
+		<label for="idNominacion[]" >Nominación</label>
+		<select name="idNominacion[]">
+			<option th:each="nominacion:${nominaciones}" th:text="${nominacion.nombre}" th:value="${nominacion.id}" th:selected="${participante.nominado.id==nominacion.id}"></option>
+		</select>
+		<br>
+		<input type="hidden" name="id" th:value="${participante.id}"/>
+		
+		</div>
+		
+		
+		<input class="btn waves-effect waves-light purple" type="submit" value="Actualizar" name="action">
+			
+		<br>
+	</form>
+	<div class="row">
+		<div class="center">
+			<a href="https://thegaminghub.herokuapp.com/participante/r">
+				<button class="btn waves-effect waves-light purple">
+				Atras <i class="material-icons left">arrow_back</i>
+				</button>
+			</a>
+			</div>
+			</div>
+	</div>
+</div>

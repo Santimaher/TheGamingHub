@@ -1,0 +1,57 @@
+<div class="container content">
+<form method="get">
+		<input type="text" name="filtro" th:value="${filtro}" placeholder="Buscar juego" /> 
+
+		<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
+			Buscar</button>
+	</form>
+	<div class="row">
+			<h4 class="center" th:text="|Nominar Juegos para Gala ${gala.edicion}|"></h4>
+		</div>
+	
+	<table>
+		<tr>
+			<th class="center">Nombre</th>
+			<th></th>
+		</tr>
+
+		<tr th:each="j:${juegos}" >
+		<td  class="center"> 
+			<h5 th:text="${j.nombre}"></h5>
+		</td>
+			<td class="row">
+			<div class="col m9">
+				<form action="/nominacion/nominarJuego" method="POST" class="linea">
+					<input type="hidden" name="id" th:value="${j.id}" />
+					
+					<select name="premio">
+						<option th:each="premio:${premioJ}" th:value="${premio.id}" th:text="${premio.nombrePremio}"></option>
+					</select>
+					
+					<button onclick="submit()" class="btn btn-large waves-effect waves-light purple">
+						Nominar
+					</button>
+				</form>
+				</div>
+			<div class="col m3" style="margin-top: 50px;">
+				<form action="/juego/d" method="post" class="linea">
+					<input type="hidden" name="id" th:value="${j.id}" />
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple tooltipped" data-position="bottom" data-tooltip="Cuidado se borrara este elemento al pulsar el boton">
+						<i class="material-icons left">delete</i>
+					</button>
+				</form>
+				</div>
+			</td>
+		</tr>
+
+	</table>
+	<div class="row">
+		<div class="center">
+			 <a href="/">
+				<button class="btn waves-effect waves-light purple">
+					Home <i class="material-icons left">home</i>
+				</button>
+			</a>
+		</div>
+	</div>
+</div>

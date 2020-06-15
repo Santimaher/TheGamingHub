@@ -1,0 +1,42 @@
+<div class="container content">
+	<table class="highlight">
+	<tr>
+		<th class= "center">Nombre</th>
+		<th class= "center">Acciones</th>
+	</tr>
+	<tr>
+	<tr th:each="categoria:${categorias}">
+		<td class= "center">
+			<h5 th:text="${categoria.nombre}"></h5>
+		</td>
+		<td>
+		<div class="row">
+		<div class="col s6 m6 l6 xl6">
+				<form action="https://thegaminghub.herokuapp.com/categoriaParticipante/u" method="get">
+					<input type="hidden" name="id" th:value="${categoria.id}" />
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
+						<i class="material-icons left">edit</i>
+					</button>
+				</form>
+				</div>
+				<div class="col s6 m6 l6 xl6">
+				<form action="https://thegaminghub.herokuapp.com/categoriaParticipante/d" method="post">
+					<input type="hidden" name="id" th:value="${categoria.id}" />
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light pink tooltipped" data-position="bottom" data-tooltip="Cuidado se borrara este elemento al pulsar el boton">
+						<i class="material-icons left">delete</i>
+					</button>
+				</form>
+				</div>
+				</div>
+		
+		</td>
+	</tr>
+	</table>
+	
+	<a href="/categoriaParticipante/c">
+		<button class="btn  waves-effect waves-light purple">Crear</button>
+	</a>
+	<a href="/">
+		<button class="btn  waves-effect waves-light purple">Home</button>
+	</a>
+</div>

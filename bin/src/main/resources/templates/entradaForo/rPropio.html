@@ -1,0 +1,119 @@
+<div class="container content">
+				<form action="https://thegaminghub.herokuapp.com/entradaForo/r" method="get">
+					<input type="hidden" name="id" th:value="${idJuego}">
+					<input type="hidden" name="idForo" th:value="${id}">
+					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
+						Menu
+					</button>
+				</form>
+<div th:each="entrada:${entradas}">	
+  <div class="row">
+    <div class="col s12 m6">
+      <div class=" fondo-carta card black darken-1 z-depth-3">
+        <div class=" card-content white-text">
+          <span class="card-title" th:text="|${entrada.titulo}|" ></span>
+          <span th:if="${entrada.comentario!=null}" th:text="|${entrada.comentario}|" ></span><br/><br/>
+          <span th:if="${entrada.img!=null}"><img th:src="|data:image/png;base64,${entrada.img}|" width="100%" height="100%"></span>
+          <span th:text="${entrada.escribe.loginname}"></span><i th:if="${entrada.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
+           <p th:utext="${#dates.format(entrada.fechaPublicacion, 'dd-MM-yyyy')}"></p>
+          
+          <span th:text="|${entrada.ranking}|"></span><img class="separacion-lateral" src="/img/like1.png" width="25px" height="25px">
+        </div>
+        <div class="card-action grey darken-4">
+        <div class="row">
+        <div class="col s12 m6 l2 xl2">
+          <form action="https://thegaminghub.herokuapp.com/entradaForo/like" method="get">
+					<input type="hidden" name="id" th:value="${entrada.id}" />
+					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
+					<button th:if="${session.usuario!=null}" onclick="submit()" class="waves-effect waves-light btn separacion purple">
+				 	<div class="like">
+						<img  th:each="voto:${votaciones}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='dislike'}" src="/img/like1.png" height="20" width="20">
+						<img th:each="voto:${votaciones}"  th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='like'}" src="/img/like2.png" height="20" width="20">
+				    </div>
+				    </button>
+					<button th:if="${session.usuario==null}"onclick="submit()" class="waves-effect waves-light btn separacion purple">
+					<img  src="/img/like1.png" height="20" width="20">
+					</button>
+				</form>
+				</div>
+		<div class="col s12 m6 l2 xl2">
+          <form action="https://thegaminghub.herokuapp.com/entradaForo/dislike" method="get">
+					<input type="hidden" name="id" th:value="${entrada.id}" />
+					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
+					<button th:if="${session.usuario!=null}" onclick="submit()" class="waves-effect waves-light btn separacion purple">
+					<div class="dislike">
+						<img  th:each="voto:${votaciones}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='dislike'}" src="/img/dislike2.png" height="20" width="20">
+						<img  th:each="voto:${votaciones}" th:if="${voto.votado.id}==${entrada.id} and ${voto.votante.id}==${session.usuario.id} and ${voto.voto=='like'}" src="/img/dislike1.png" height="20" width="20">
+				    </div> 
+				    
+				    </button>
+					<button th:if="${session.usuario==null}"onclick="submit()" class="waves-effect waves-light btn separacion purple">
+					<img  src="/img/dislike1.png" height="20" width="20">
+					</button>
+				</form>
+				</div>
+		<div class="col s12 m6 l3 xl3">
+				<form action="https://thegaminghub.herokuapp.com/entradaForo/responder" method="get">
+					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
+					<input type="hidden" name="idForo" th:value="${entrada.pertenece.id}" />
+					<button onclick="submit()" class="waves-effect waves-light btn separacion purple" >
+						Responder
+					</button>
+				</form>
+				</div>
+				<div class="col s12 m6 l5 xl5">
+				<form action="https://thegaminghub.herokuapp.com/entradaForo/verRespuestas" method="get">
+				<input type="hidden" name="idJuego" th:value="${idJuego}">
+					<input type="hidden" name="idEntrada" th:value="${entrada.id}" />
+					<input type="hidden" name="id" th:value="${entrada?.pertenece.id}" />
+					<button th:text="|Ver respuestas(${entrada.respuestas.size()})|"onclick="submit()" class="waves-effect waves-light btn separacion purple">
+					</button>
+				</form>
+				<div class="row">
+				<div class="col s12 m6 l5 xl5">
+				<form action="https://thegaminghub.herokuapp.com/entradaForo/u" method="get">
+					<input type="hidden" name="id" th:value="${entrada.id}" />
+					<button onclick="submit()" class="waves-effect waves-light btn separacion purple">
+						<i class="material-icons left">edit</i>
+					</button>
+				</form>
+				</div>
+				<div class="col s12 m6 l5 xl5">
+				<form action="https://thegaminghub.herokuapp.com/entradaForo/d" method="post">
+					<input type="hidden" name="id" th:value="${entrada.id}" />
+					<button onclick="submit()" class="waves-effect waves-light btn separacion purple tooltipped" data-position="bottom" data-tooltip="Cuidado se borrara este elemento al pulsar el boton">
+						<i class="material-icons left">delete</i>
+					</button>
+				</form>
+				</div>
+				</div>
+				</div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<script>
+function reloj(){
+	for(x of document.getElementsByClassName("like")){
+	if(x.children.length==0){
+		x.innerHTML="<img src='/img/like1.png' height='20' width='20'>";
+		
+		
+	}
+	}
+	for(y of document.getElementsByClassName("dislike")){
+		if(y.children.length==0){
+			y.innerHTML="<img src='/img/dislike1.png' height='20' width='20'>";
+		}
+		}
+	}
+window.onload=function()
+{
+	setTimeout(reloj,500);
+	}
+	
+
+</script>

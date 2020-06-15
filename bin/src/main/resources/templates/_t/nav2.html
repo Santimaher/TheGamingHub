@@ -1,0 +1,66 @@
+	<nav  class="fondo-carta black letrasNav" >
+	<div class="row">	
+		<div class="nav-wrapper s4 m4 l4 xl4">
+			<div class="valign-wrapper left" style=" margin-top:5px">			
+				<button
+					class="waves-effect waves-light btn-floating btn-large color-trans tooltipped"
+					onclick="location.href = '/';" data-position="bottom" data-tooltip="Ir a la pagina de inicio">
+					<img style="margin-top:5px"	src="/img/logo2.png" height="50" width="50" alt="logo"></img>
+				</button>
+				<button data-target="slide-out"
+					class="waves-effect waves-light btn-floating btn-large sidenav-trigger color-trans tooltipped" data-position="bottom" data-tooltip="Opciones de usuario">
+					<i class="material-icons large">person </i>
+				</button>							
+			</div>
+		
+		<span class="s4 m4 l4 xl4">The Gaming Hub</span>
+		
+			<ul class="right s4 m4 l4 xl4">
+
+				<li><a class="waves-effect waves-light btn-floating btn-large color-trans tooltipped" data-tooltip="Ver catalogo de juegos" data-position="bottom" href="https://thegaminghub.herokuapp.com/juego/r/1" data-target="juego"><img
+						src="/img/mando.png" height="50" width="50" alt="juegos"></img></a></li>
+				
+				<li><a class="waves-effect waves-light btn-floating btn-large color-trans tooltipped" data-tooltip="Ir a la gala actual" data-position="bottom" href="https://thegaminghub.herokuapp.com/gala/GA" data-target="galas"><img style="margin-top:5px"
+						src="/img/copa.png" height="45" width="45" alt="galas"></img></a></li>
+				<li><button class="waves-effect waves-light btn-floating btn-large color-trans tooltipped" data-tooltip="Ver los foros activos" data-position="bottom" onclick="location.href='/foro/r2';" ><img style="margin-top:5px" src="/img/foro.png" height="45" width="45" alt="galas"></img></button></li>
+			</ul>
+		</div>
+		</div>	
+	</nav>
+
+<ul id="slide-out" class="sidenav fondo-geometrico black letrasNav">
+	<li><div class="user-view ">
+			<div class="col-12" th:if="${session.usuario == null}">
+				<a class="waves-effect waves-light btn hoverable purple white-text"
+					href="/registro">Registro</a> 
+					<a class="waves-effect waves-light btn hoverable purple white-text" href="/login">Login</a>
+			</div>
+			<div class="col-12" th:if="${session.usuario != null}">
+				<div class="chip purple white-text ">
+				<img  th:src="|data:image/png;base64,${session.usuario.imgUP}|"alt="Contact Person">					
+					<span th:text="${session.usuario.nombre}"></span> <i th:if="${session.usuario.rol=='admin'}" class="material-icons iPropio"> verified_user</i> 
+				</div>
+				<ul class="collapsible">
+					<li>
+						<div class="collapsible-header letrasNav">
+							<i class="material-icons">brightness_7</i> Opciones
+						</div>
+						<div class="collapsible-body fondo-geometrico color-trans">
+							<ul>
+								<li><a class="waves-effect waves-light btn hoverable purple white-text"
+									href="/logout">Logout</a></li>
+								<li><a class="waves-effect waves-light btn hoverable purple white-text"
+									href="/usuario/uUsuario">Ajustes de usuario</a></li>
+									
+								
+
+							</ul>
+						</div>
+				</ul>
+			</div>
+		</div></li>
+	<li><div class="divider "></div></li>
+	<!--  <li><a href="/premio/r"  class="letrasNav tooltipped" data-tooltip="Ir a la vista para inicar la votacion" data-position="bottom">Votar a los premios</a></li>-->
+
+
+</ul>

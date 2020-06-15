@@ -1,0 +1,64 @@
+<div class="container content">
+			<div class="row">
+				<h1 class="center">Listado de premios</h1>
+			</div>
+			
+			
+			<div class="row">
+				<h5 class="center">Premios para participantes</h5>
+			</div>
+	<table >
+
+		<tr th:each="pParticipante:${pp}">
+		<td >
+		<div class="row">
+			<div class="col s6 m6 l6 xl6 center">
+		<h5 th:text="${pParticipante.nombrePremio}"></h5>
+		</div>
+		<div class="col s6 m6 l6 xl6 center">
+				<form action="/premio/dP" method="post" >
+					<input type="hidden" name="id" th:value="${pParticipante.id}" />
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light pink tooltipped" data-position="bottom" data-tooltip="Cuidado se borrara este elemento al pulsar el boton">
+						<i class="material-icons left">delete</i>
+					</button>
+				</form>
+		</div>
+		</div>
+		</td>
+	</tr>
+
+	</table>
+	
+		<div class="row">
+				<h5 class="center">Premios para juegos</h5>
+			</div>
+	<table>
+		<tr th:each="pJuego:${pj}">
+		<td>
+		<div class="row">
+			<div class="col s6 m6 l6 xl6 center">
+		
+		<h5 th:text="${pJuego.nombrePremio}" class="center"></h5>
+		</div>
+				<div class="col s6 m6 l6 xl6 center">
+				<form action="/premio/dJ" method="post" th:onsubmit="|return confirm('¿Estas seguro de que desea borrar este elemento ?');|">
+					<input type="hidden" name="id" th:value="${pJuego.id}" />
+					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light pink tooltipped" data-position="bottom" data-tooltip="Cuidado se borrara este elemento al pulsar el boton">
+						<i class="material-icons left">delete</i>
+					</button>
+				</form>
+				</div>
+		</div>		
+		</td>
+	</tr>
+	</table>
+	
+	<div class="row separacion">
+		<div class="col s12 m12 l12 xl12 center">
+			<a href="/premio/c" class="btn waves-effect waves-light purple">
+				Crear	
+			</a>
+	</div>
+</div>
+	
+</div>

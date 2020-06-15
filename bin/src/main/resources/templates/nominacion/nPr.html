@@ -1,0 +1,21 @@
+<div class="container content">
+<div class="col m12">
+			<h1>Participantes Nominados</h1>
+		</div>
+	<table class="highlight">
+		<tr>
+			<th>Nombre</th>
+			<th>Premio</th>
+			<th>Votos</th>			
+			
+		<tr>
+		<tr th:each="participantes:${participante}">
+			<td th:text="${participante.nombre}"></td>
+			<td th:text="${participante.premio}"></td>
+			<td th:text="${participante.cantidad_votos}"></td>
+
+			<td>
+
+		</tr>
+	</table>
+</div>
