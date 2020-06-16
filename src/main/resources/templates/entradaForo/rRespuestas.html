@@ -44,7 +44,7 @@
           <span class="card-title" th:text="${MensajeFijado.titulo}"></span>
           <p th:if="${MensajeFijado.comentario!=null}" th:text="|${MensajeFijado.comentario}|"></p>
           <span th:if="${MensajeFijado.img!=null}"><img th:src="|data:image/png;base64,${MensajeFijado.img}|" width="100%" height="100%"></span>
-          <span th:text="${MensajeFijado.escribe.loginname}"></span> <i th:if="${MensajeFijado.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
+          <span th:text="|Autor:${MensajeFijado.escribe.loginname}|"></span> <i th:if="${MensajeFijado.escribe.rol=='admin'}" class="material-icons"> verified_user</i>
           <p th:utext="${#dates.format(MensajeFijado.fechaPublicacion, 'dd-MM-yyyy')}"></p>
           <span th:text="|${MensajeFijado.ranking}|"></span><img  class="separacion-lateral" src="/img/like1.png" width="25px" height="25px">
         </div>

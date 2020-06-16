@@ -80,7 +80,7 @@ public class EntradaForoController {
 		m.put("votaciones", repoVotacion.findAll());
 		m.put("tipo", tipo);
 		switch (tipo) {
-		case "LoginName": {
+		case "Autor": {
 			m.put("entradas", repoEntrada
 					.findByPerteneceIdAndMensajePadreIdAndEscribeLoginnameStartsWithIgnoreCaseOrderByRankingDesc(id,
 							null, filtro));
