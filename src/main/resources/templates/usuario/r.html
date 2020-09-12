@@ -26,7 +26,7 @@
 	<td>
 	<div class="row">
 	<div class="col m4">
-		<form action="https://thegaminghub.herokuapp.com/usuario/uAdmin" method="post">
+		<form action="/usuario/uAdmin" method="post">
 			<input type="hidden" name="id" th:value="${usuario.id}" />
 				<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
 						<i class="material-icons left">edit</i>
@@ -34,7 +34,7 @@
 				</form>
 				</div>
 				<div class="col m4">
-				<form action="https://thegaminghub.herokuapp.com/usuario/d" method="post" >
+				<form action="/usuario/d" method="post" >
 					<input type="hidden" name="id" th:value="${usuario.id}" />
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light pink tooltipped" data-position="bottom" data-tooltip="Cuidado se borrara este elemento al pulsar el boton">
 						<i class="material-icons left">delete</i>
@@ -42,7 +42,7 @@
 				</form>
 			</div>
 			<div class="col m4">
-				<form action="https://thegaminghub.herokuapp.com/usuario/cambiarRol" method="post">
+				<form action="/usuario/cambiarRol" method="post">
 					<input type="hidden" name="id" th:value="${usuario.id}" />
 					<button class="btn waves-effect waves-light pink" onclick="submit()">
 						Rol 
@@ -56,7 +56,7 @@
 	</table>
 	<div class="row">
 	<div class="center">
-	<a href="https://thegaminghub.herokuapp.com/usuario/c">
+	<a href="/usuario/c">
 		<button class="btn waves-effect waves-light purple">
 				Registrarse <i class="material-icons left">send</i>
 				</button>

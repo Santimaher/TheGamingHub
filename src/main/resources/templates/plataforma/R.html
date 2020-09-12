@@ -18,7 +18,7 @@
 		<td class="center" th:if="${session.usuario?.rol=='admin'}">
 		<div class="row">
 		<div class="col m6">
-				<form action="https://thegaminghub.herokuapp.com/plataforma/u" method="get">
+				<form action="/plataforma/u" method="get">
 					<input type="hidden" name="id"  th:value="${plataforma.id}" />
 					<button onclick="submit()"  class="btn-floating btn-large waves-effect waves-light purple">
 						<i class="material-icons left">edit</i>
@@ -26,7 +26,7 @@
 				</form>
 		</div>
 		<div class="col m6">		
-				<form action="https://thegaminghub.herokuapp.com/plataforma/d" method="post" >
+				<form action="/plataforma/d" method="post" >
 					<input type="hidden" name="id" th:value="${plataforma.id}"/>
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light pink tooltipped" data-position="bottom" data-tooltip="Cuidado se borrara este elemento al pulsar el boton" >
 						<i class="material-icons left">delete</i>

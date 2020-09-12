@@ -6,7 +6,7 @@
 			<h3 class="center">Editar Participante</h3>
 		</div>
 		<div class="row">
-	<form method="post" enctype="multipart/form-data" onsubmit="return vfPu()" name="partFormu" action="https://thegaminghub.herokuapp.com/participante/u" class="form">
+	<form method="post" enctype="multipart/form-data" onsubmit="return vfPu()" name="partFormu" action="/participante/u" class="form">
 		<input type="hidden" th:value="${participante.id}" name="id">
 		<div class="input-field col s6">
 		<label for="nombre">Nombre</label>
@@ -41,7 +41,7 @@
 	</form>
 	
 		<div class="col 6">
-			<a href="https://thegaminghub.herokuapp.com/participante/r">
+			<a href="/participante/r">
 				<button class="btn waves-effect waves-light purple">
 				Atras <i class="material-icons left">arrow_back</i>
 				</button>

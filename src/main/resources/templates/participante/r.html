@@ -26,7 +26,7 @@
 			<td>
 			<div class="row">
 			<div class="col s6 m6 l6 xl6">
-				<form action="https://thegaminghub.herokuapp.com/participante/u" method="get">
+				<form action="/participante/u" method="get">
 					<input type="hidden" name="id" th:value="${p.id}" />
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light purple">
 						<i class="material-icons left">edit</i>
@@ -34,7 +34,7 @@
 				</form>
 				</div>
 				<div class="col s6 m6 l6 xl6">
-				<form action="https://thegaminghub.herokuapp.com/participante/d" method="post" >
+				<form action="/participante/d" method="post" >
 					<input type="hidden" name="id" th:value="${p.id}" />
 					<button onclick="submit()" class="btn-floating btn-large waves-effect waves-light pink tooltipped" data-position="bottom" data-tooltip="Cuidado se borrara este elemento al pulsar el boton" >
 						<i class="material-icons left">delete</i>
@@ -47,12 +47,12 @@
 
 	</table>
 	
-	<a href="https://thegaminghub.herokuapp.com/participante/c">
+	<a href="/participante/c">
 		<button  class="btn waves-effect waves-light purple">
 			Añadir <i class="material-icons left">create</i>
 		</button>
 	</a> 
-	<a href="https://thegaminghub.herokuapp.com/">
+	<a href="/">
 		<button class="btn waves-effect waves-light purple">
 			Home <i class="material-icons left">home</i>
 		</button>

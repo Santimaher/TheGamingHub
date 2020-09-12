@@ -22,7 +22,7 @@
 			<td>
 			<div class="row">
 				<div class="col s12 m12 l3 xl3 center">
-				<form action="https://thegaminghub.herokuapp.com/gala/observacion" method="get">
+				<form action="/gala/observacion" method="get">
 					<input type="hidden" name="id" th:value="${gala.id}" />
 					<button onclick="submit()" class="btn waves-effect waves-light purple">
 					Añadir observacion
@@ -30,7 +30,7 @@
 				</form>
 				</div>
 				<div class="col s12 m12 l3 xl3 center">
-				<form action="https://thegaminghub.herokuapp.com/gala/activar" method="post">
+				<form action="/gala/activar" method="post">
 					<input type="hidden" name="id" th:value="${gala.id}" />
 					<button onclick="submit()" class="btn waves-effect waves-light purple">
 					Activar/Desactivar
@@ -38,7 +38,7 @@
 				</form>
 				</div>
 				<div class="col s12 m12 l3 xl3 center">
-				<form action="https://thegaminghub.herokuapp.com/gala/u" method="get">
+				<form action="/gala/u" method="get">
 					<input type="hidden" name="id" th:value="${gala.id}" />
 					<button onclick="submit()" class="btn waves-effect waves-light purple">
 						<i class="material-icons left">edit</i>
@@ -46,7 +46,7 @@
 				</form>
 				</div>
 				<div class="col s12 m12 l3 xl3 center">
-				<form action="https://thegaminghub.herokuapp.com/gala/d" method="post">
+				<form action="/gala/d" method="post">
 					<input type="hidden" name="id" th:value="${gala.id}" />
 					<button onclick="submit()" class="btn waves-effect waves-light pink tooltipped" data-position="bottom" data-tooltip="Cuidado se borrara este elemento al pulsar el boton">
 						<i class="material-icons left">delete</i>

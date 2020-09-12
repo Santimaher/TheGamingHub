@@ -5,7 +5,7 @@
 	</div>
 	</div>
 
-	<form method="post"	action="https://thegaminghub.herokuapp.com/usuario/uUsuarioPost" name="userform" onclick="return vformupdateUser();" class="updateUserform" enctype="multipart/form-data">
+	<form method="post"	action="/usuario/uUsuarioPost" name="userform" onclick="return vformupdateUser();" class="updateUserform" enctype="multipart/form-data">
 		<input type="hidden" name="id" th:value="${usuario.id}">
 
 		<div class="input-field col s12 m12 l12 xl12">
@@ -47,7 +47,7 @@
 
 	</form>
 	<div class="col s4 m4 l4 xl4">
-	<form action="https://thegaminghub.herokuapp.com/usuario/dUsu" method="post">
+	<form action="/usuario/dUsu" method="post">
 								<input type="hidden" name="id" th:value="${session.usuario.id}">
 								<button class="waves-effect waves-light btn hoverable red white-text" onclick="submit()">Borrar perfil <i class="material-icons left">chevron_right</i></button>
 								
